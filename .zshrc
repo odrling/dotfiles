@@ -1,12 +1,11 @@
 
-ANTIGEN_DIR="~/.antigen"
-mkdir -p $ANTIGEN_DIR
+mkdir -p ~/.antigen
 
-if [ ! -f $ANTIGEN_DIR/antigen.zsh ]; then
-    curl -Ls git.io/antigen > $ANTIGEN_DIR/antigen.zsh
+if [ ! -f ~/.antigen/antigen.zsh ]; then
+    curl -Ls git.io/antigen > ~/.antigen/antigen.zsh
 fi
 
-source $ANTIGEN_DIR/antigen.zsh
+source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
