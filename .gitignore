@@ -1,0 +1,28 @@
+# ignore everything except the gitignore file
+/*
+!.gitignore
+
+# ignore cache files
+cache
+Cache
+
+# ignore log files
+*log
+
+# zsh config files
+!/.zshrc
+
+# git config file
+!/.gitconfig
+
+# only add selected config files
+!/.config
+/.config/*
+
+# mpv config file
+!/.config/mpv
+/.config/mpv/*
+!/.config/mpv/mpv.conf
+
+# whipper config files
+!/.config/whipper
