@@ -24,5 +24,8 @@ Cache
 /.config/mpv/*
 !/.config/mpv/mpv.conf
 
+# compton config file
+!/.config/compton.conf
+
 # whipper config files
 !/.config/whipper
