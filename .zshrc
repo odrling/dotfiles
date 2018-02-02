@@ -45,3 +45,4 @@ export EDITOR=vim
 
 alias sshmoethyst="ssh -t amoethyst 'tmux attach -t default ;or tmux new -t default'"
 alias venv="source ~/.venv/bin/activate"
+alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
