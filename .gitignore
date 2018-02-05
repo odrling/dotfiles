@@ -29,3 +29,6 @@ Cache
 
 # whipper config files
 !/.config/whipper
+
+# tmux config file
+!/.tmux.conf
