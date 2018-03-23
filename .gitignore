@@ -32,3 +32,6 @@ Cache
 
 # tmux config file
 !/.tmux.conf
+
+# pypirc
+!/.pypirc
