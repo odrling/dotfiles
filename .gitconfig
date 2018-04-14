@@ -1,5 +1,5 @@
 [user]
-	email = odrling@gmail.com
+	email = florianbadie@odrling.xyz
 	name = odrling
 [filter "lfs"]
 	clean = git-lfs clean -- %f
