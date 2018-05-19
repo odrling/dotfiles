@@ -30,8 +30,21 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle :compinstall filename '/home/odrling/.zshrc'
 zstyle ':completion:*' rehash true
 
-autoload -Uz compinit
+[[ $UID -eq 0 ]] || () {
+    local i
+    local -T SUDO_PATH sudo_path
+    local -U sudo_path
+    sudo_path=($path {,/usr{,/local}}/sbin(N-/))
+    for i in sudo{,x} su{,x}
+    do   zstyle ":completion:*:$i:*" environ PATH="$SUDO_PATH"
+    done
+}
+
+autoload -Uz compinit promptinit
 compinit
+promptinit; prompt gentoo
+
+zstyle ':completion::complete:*' use-cache 1
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -42,10 +55,11 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-export PATH=~/.local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export EDITOR=vim
 #export TERM="xterm"
 
 alias sshmoethyst="ssh -t amoethyst 'tmux attach -t default || tmux new -t default'"
 alias venv="source ~/.venv/bin/activate"
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
+alias oxpath="java -jar ~/.oxpath/oxpath-cli.jar -f json -jsonarr"
