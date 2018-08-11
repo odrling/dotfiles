@@ -59,7 +59,9 @@ export PATH="$HOME/.local/bin:$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export EDITOR=vim
 #export TERM="xterm"
 
-alias sshmoethyst="ssh -t amoethyst 'tmux attach -t default || tmux new -t default'"
+alias sshmoethyst="ssh -t amoethyst '~/.local/bin/tmux-session'"
 alias venv="source ~/.venv/bin/activate"
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
-alias oxpath="java -jar ~/.oxpath/oxpath-cli.jar -f json -jsonarr"
+alias mstream="mpv --no-resume-playback"
+alias mpodcast="mpv --no-video"
+

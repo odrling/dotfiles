@@ -35,3 +35,6 @@ Cache
 
 # pypirc
 !/.pypirc
+
+# vimrc
+!/.vimrc
