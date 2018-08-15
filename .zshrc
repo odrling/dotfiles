@@ -17,6 +17,7 @@ antigen bundle ssh-agent
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
 
 antigen theme gentoo
 
@@ -27,7 +28,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle :compinstall filename '/home/odrling/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 zstyle ':completion:*' rehash true
 
 [[ $UID -eq 0 ]] || () {
