@@ -18,6 +18,7 @@ antigen bundle ssh-agent
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
+antigen bundle chrissicool/zsh-bash
 
 antigen theme gentoo
 
