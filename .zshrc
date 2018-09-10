@@ -66,4 +66,5 @@ alias venv="source ~/.venv/bin/activate"
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 alias mstream="mpv --no-resume-playback"
 alias mpodcast="mpv --no-video"
-
+alias grep="ag"
+alias top="htop"
