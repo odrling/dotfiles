@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/pisces/functions/_pisces_remove.fish
+../fisherman/pisces/functions/_pisces_remove.fish

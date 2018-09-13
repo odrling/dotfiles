@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/humanize_duration/humanize_duration.fish
+../fisherman/humanize_duration/humanize_duration.fish

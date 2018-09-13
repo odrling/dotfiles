@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/pwd_info/pwd_info.fish
+../fisherman/pwd_info/pwd_info.fish

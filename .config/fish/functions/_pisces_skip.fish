@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/pisces/functions/_pisces_skip.fish
+../fisherman/pisces/functions/_pisces_skip.fish

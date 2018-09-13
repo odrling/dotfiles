@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/last_job_id/last_job_id.fish
+../fisherman/last_job_id/last_job_id.fish

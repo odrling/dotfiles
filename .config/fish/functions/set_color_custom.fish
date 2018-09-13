@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/metro/set_color_custom.fish
+../fisherman/metro/set_color_custom.fish

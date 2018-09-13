@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/git_util/git_is_repo.fish
+../fisherman/git_util/git_is_repo.fish

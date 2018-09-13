@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/segment/segment_right.fish
+../fisherman/segment/segment_right.fish

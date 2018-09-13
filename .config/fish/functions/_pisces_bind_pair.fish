@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/pisces/functions/_pisces_bind_pair.fish
+../fisherman/pisces/functions/_pisces_bind_pair.fish

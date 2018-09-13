@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/git_util/git_branch_name.fish
+../fisherman/git_util/git_branch_name.fish

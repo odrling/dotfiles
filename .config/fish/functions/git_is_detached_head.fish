@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/git_util/git_is_detached_head.fish
+../fisherman/git_util/git_is_detached_head.fish

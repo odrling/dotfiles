@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/pisces/functions/_pisces_lookup.fish
+../fisherman/pisces/functions/_pisces_lookup.fish

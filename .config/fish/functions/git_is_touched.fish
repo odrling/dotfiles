@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/git_util/git_is_touched.fish
+../fisherman/git_util/git_is_touched.fish

@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/pisces/functions/_pisces_backspace.fish
+../fisherman/pisces/functions/_pisces_backspace.fish

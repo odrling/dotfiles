@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/metro/fish_right_prompt.fish
+../fisherman/metro/fish_right_prompt.fish

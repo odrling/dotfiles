@@ -1,1 +1,1 @@
-/home/odrling/.config/fisherman/host_info/host_info.fish
+../fisherman/host_info/host_info.fish
