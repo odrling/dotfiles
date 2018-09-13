@@ -1,0 +1,1 @@
+/home/odrling/.config/fisherman/segment/segment_close.fish

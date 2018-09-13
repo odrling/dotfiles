@@ -39,3 +39,14 @@ Cache
 
 # vimrc
 !/.vimrc
+
+# fish config files
+!/.config/fish
+/.config/fish/fishd.*
+!/.config/fisherman
+
+# localbins
+!/.local
+!/.local/bin
+/.local/share
+

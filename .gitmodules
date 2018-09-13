@@ -1,0 +1,30 @@
+[submodule ".local/bin"]
+	path = .local/bin
+	url = gitea@git.odrling.xyz:odrling/localbins.git
+[submodule ".config/fisherman/git_util"]
+	path = .config/fisherman/git_util
+	url = https://github.com/fisherman/git_util
+[submodule ".config/fisherman/host_info"]
+	path = .config/fisherman/host_info
+	url = https://github.com/fisherman/host_info
+[submodule ".config/fisherman/humanize_duration"]
+	path = .config/fisherman/humanize_duration
+	url = https://github.com/fisherman/humanize_duration
+[submodule ".config/fisherman/last_job_id"]
+	path = .config/fisherman/last_job_id
+	url = https://github.com/fisherman/last_job_id
+[submodule ".config/fisherman/metro"]
+	path = .config/fisherman/metro
+	url = https://github.com/fisherman/metro
+[submodule ".config/fisherman/pisces"]
+	path = .config/fisherman/pisces
+	url = https://github.com/laughedelic/pisces
+[submodule ".config/fisherman/pwd_info"]
+	path = .config/fisherman/pwd_info
+	url = https://github.com/fisherman/pwd_info
+[submodule ".config/fisherman/pwd_is_home"]
+	path = .config/fisherman/pwd_is_home
+	url = https://github.com/fisherman/pwd_is_home
+[submodule ".config/fisherman/segment"]
+	path = .config/fisherman/segment
+	url = https://github.com/fisherman/segment
