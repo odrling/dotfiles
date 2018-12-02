@@ -12,6 +12,7 @@ Cache
 # zsh config files
 !/.zshrc
 !/.zprofile
+!/.bash.command-not-found
 
 # git config file
 !/.gitconfig
@@ -49,4 +50,3 @@ Cache
 !/.local
 !/.local/bin
 /.local/share
-

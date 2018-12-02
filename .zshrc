@@ -5,6 +5,7 @@ if [ ! -f ~/.antigen/antigen.zsh ]; then
     curl -Ls git.io/antigen > ~/.antigen/antigen.zsh
 fi
 
+source ~/.bash.command-not-found
 source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -70,3 +71,4 @@ alias top="htop"
 alias ewatch="watch -cn 10 genlop -c"
 alias eupdate="sudo emerge --sync && sudo emerge -u1 portage && sudo emerge -uavD @world"
 alias dotmodules="dots submodule update --recursive --remote"
+alias ytdl="youtube-dl"
