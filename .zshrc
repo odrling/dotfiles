@@ -1,29 +1,13 @@
 
-mkdir -p ~/.antigen
-
-if [ ! -f ~/.antigen/antigen.zsh ]; then
-    curl -Ls git.io/antigen > ~/.antigen/antigen.zsh
+if ! which antibody > /dev/null 2>1; then 
+    echo "installing antibody"
+    curl -sL git.io/antibody | sh -s
 fi
 
-source ~/.bash.command-not-found
-source ~/.antigen/antigen.zsh
+[ ! -f ~/.antibody/plugins.sh ] && antibody bundle < ~/.antibody/plugins > ~/.antibody/plugins.sh
 
-antigen use oh-my-zsh
-
-antigen bundle git
-antigen bundle pip
-antigen bundle command-not-found
-antigen bundle pass
-antigen bundle ssh-agent
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle chrissicool/zsh-bash
-
-antigen theme gentoo
-
-antigen apply
+[ -f ~/.bash.command-not-found ] && source ~/.bash.command-not-found
+source ~/.antibody/plugins.sh
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
@@ -43,9 +27,7 @@ zstyle ':completion:*' rehash true
     done
 }
 
-autoload -Uz compinit promptinit
-compinit
-promptinit; prompt gentoo
+autoload -Uz compinit && compinit
 
 zstyle ':completion::complete:*' use-cache 1
 # End of lines added by compinstall
@@ -58,17 +40,17 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+# Prompt
+autoload -U colors && colors
+PROMPT="%B%{$FG[081]%}%n%{$reset_color%}%b%{$FG[245]%}@%{$reset_color%}%B%{$FG[206]%}%m%{$reset_color%}%b %{$fg[245]%}%B%c%b %(!.%{$FG[001]%}#.%{$FG[081]%}$)%{$reset_color%} "
+
+
 export PATH="$HOME/.local/bin:$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export EDITOR=vim
 #export TERM="xterm"
 
 alias venv="source ~/.venv/bin/activate"
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
-alias mstream="mpv --no-resume-playback"
-alias mpodcast="mpv --no-video"
-alias grep="ag"
 alias top="htop"
-alias ewatch="watch -cn 10 genlop -c"
-alias eupdate="sudo emerge --sync && sudo emerge -u1 portage && sudo emerge -uavD --jobs 4 @world"
 alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"

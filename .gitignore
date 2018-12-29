@@ -50,3 +50,6 @@ Cache
 !/.local
 !/.local/bin
 /.local/share
+
+# ignore antibody
+!/.antibody/plugins
