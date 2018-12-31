@@ -1,5 +1,5 @@
 
-if ! which antibody > /dev/null 2>1; then 
+if [ ! -f $(which antibody 2> /dev/null) ]; then 
     echo "installing antibody"
     curl -sL git.io/antibody | sh -s
 fi
