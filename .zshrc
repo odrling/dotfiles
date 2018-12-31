@@ -1,5 +1,5 @@
 
-if [ ! -f $(which antibody 2> /dev/null) ]; then 
+if ! which antibody > /dev/null 2>&1; then 
     echo "installing antibody"
     curl -sL git.io/antibody | sh -s
 fi
@@ -45,7 +45,12 @@ autoload -U colors && colors
 PROMPT="%B%{$FG[081]%}%n%{$reset_color%}%b%{$FG[245]%}@%{$reset_color%}%B%{$FG[206]%}%m%{$reset_color%}%b %{$fg[245]%}%B%c%b %(!.%{$FG[001]%}#.%{$FG[081]%}$)%{$reset_color%} "
 
 
-export PATH="$HOME/.local/bin:$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+if which ruby > /dev/null 2>&1; then
+    export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+fi
+
 export EDITOR=vim
 #export TERM="xterm"
 
