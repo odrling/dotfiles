@@ -1,14 +1,10 @@
 
-if ! which antibody > /dev/null 2>&1; then 
-    echo "installing antibody"
-    curl -sL git.io/antibody | sh -s
-fi
-
+# load modules
 source ~/.zsh/*/*.zsh
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh 
-source ~/.zsh/omz/oh-my-zsh/plugins/pass 
-source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent
-source ~/.zsh/omz/oh-my-zsh/plugins/adb
+#source ~/.zsh/omz/oh-my-zsh/plugins/pass/*.zsh
+source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent/*.zsh
+#source ~/.zsh/omz/oh-my-zsh/plugins/adb/*.zsh
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'

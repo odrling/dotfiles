@@ -32,6 +32,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
+set number relativenumber
 
 " Enable filetype plugins
 filetype plugin on
@@ -46,6 +47,9 @@ let mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>j :wn<cr>
+nmap <leader>k :wN<cr>
+nmap <leader>; A;<esc>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -134,9 +138,9 @@ set foldcolumn=1
 syntax enable 
 
 " Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+" if $COLORTERM == 'gnome-terminal'
+"     set t_Co=256
+" endif
 
 try
     colorscheme desert
@@ -327,6 +331,26 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Move to the next marker
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+
+" adathings
+autocmd FileType ada inoremap if if  then<CR><++><CR>end if;<CR><++><Esc>3k0e2li
+autocmd FileType ada inoremap while while  loop<CR><++><CR>end loop;<CR><++><Esc>3k0e2li
+autocmd FileType ada inoremap for for  loop<CR><++><CR>end loop;<CR><++><Esc>3k0e2li
+autocmd FileType ada inoremap proc procedure (<++>) is<CR><++><CR>end;<CR><++><ESC>3kela
+autocmd FileType ada inoremap pros procedure (<++>);<CR><++><ESC>k^ela
+autocmd FileType ada inoremap func function (<++>) return <++><CR>end;<CR><++><ESC>3kela
+autocmd FileType ada inoremap funs function (<++>) return <++>;<CR><++><ESC>k^ela
+autocmd FileType ada inoremap pack package is<CR><++><CR>end;<CR><++><ESC>3kela
+
+" pythonthings
+autocmd FileType python map #! ggi#!/usr/bin/env python3<CR>
+autocmd FileType python map ;m oif __name__ == '__main__':<CR>main()<ESC>^
+autocmd FileType python inoremap try: except: <++>:<CR><++><ESC>2kotry:<CR>
+
+" shellthings
+autocmd FileType sh map #! ggi#!/bin/sh<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
