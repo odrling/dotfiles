@@ -1,13 +1,12 @@
 
 # load modules
-bgnotify_threshold=1
-source ~/.zsh/zsh-autosuggestions/*.zsh
-source ~/.zsh/zsh-background-notify/*.zsh
-source ~/.zsh/zsh-completions
-source ~/.zsh/zsh-syntax-highlighting
+bgnotify_threshold=0
+for i in ~/.zsh/*/*.zsh; do
+    source "$i"
+done
 
-source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh 
-source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent/*.zsh
+source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
+source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate

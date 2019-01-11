@@ -351,6 +351,9 @@ autocmd FileType python inoremap try: except: <++>:<CR><++><ESC>2kotry:<CR>
 
 " shellthings
 autocmd FileType sh map #! ggi#!/bin/sh<CR>
+autocmd FileType sh inoremap if if ; then<CR><++><CR>fi<CR><++><ESC>3k^ela
+autocmd FileType sh inoremap for for ; do<CR><++><CR>done<CR><++><ESC>3k^ela
+autocmd FileType sh inoremap while while ; do<CR><++><CR>done<CR><++><ESC>3k^ela
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
