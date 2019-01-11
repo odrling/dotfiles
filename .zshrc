@@ -1,10 +1,14 @@
 
 # load modules
-source ~/.zsh/*/*.zsh
+bgnotify_threshold=1
+source ~/.zsh/zsh-autosuggestions/*.zsh
+source ~/.zsh/zsh-background-notify/*.zsh
+source ~/.zsh/zsh-completions
+source ~/.zsh/zsh-syntax-highlighting
+
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh 
-#source ~/.zsh/omz/oh-my-zsh/plugins/pass/*.zsh
 source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent/*.zsh
-#source ~/.zsh/omz/oh-my-zsh/plugins/adb/*.zsh
+
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'

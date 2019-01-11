@@ -13,3 +13,6 @@
 [submodule ".zsh/omz/oh-my-zsh"]
 	path = .zsh/omz/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule ".zsh/zsh-background-notify"]
+	path = .zsh/zsh-background-notify
+	url = https://github.com/t413/zsh-background-notify.git
