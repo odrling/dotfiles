@@ -4,10 +4,11 @@ if ! which antibody > /dev/null 2>&1; then
     curl -sL git.io/antibody | sh -s
 fi
 
-[ ! -f ~/.antibody/plugins.sh ] && antibody bundle < ~/.antibody/plugins > ~/.antibody/plugins.sh
-
-[ -f ~/.bash.command-not-found ] && source ~/.bash.command-not-found
-source ~/.antibody/plugins.sh
+source ~/.zsh/*/*.zsh
+source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh 
+source ~/.zsh/omz/oh-my-zsh/plugins/pass 
+source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent
+source ~/.zsh/omz/oh-my-zsh/plugins/adb
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
@@ -60,5 +61,7 @@ alias top="htop"
 alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"
 alias pass="gopass"
+alias vim="nvim -u ~/.vimrc"
+alias vi="vim"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local

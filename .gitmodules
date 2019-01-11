@@ -1,30 +1,15 @@
 [submodule ".local/bin"]
 	path = .local/bin
 	url = gitea@git.odrling.xyz:odrling/localbins.git
-[submodule ".config/fisherman/git_util"]
-	path = .config/fish/fisherman/git_util
-	url = https://github.com/fisherman/git_util
-[submodule ".config/fisherman/host_info"]
-	path = .config/fish/fisherman/host_info
-	url = https://github.com/fisherman/host_info
-[submodule ".config/fisherman/humanize_duration"]
-	path = .config/fish/fisherman/humanize_duration
-	url = https://github.com/fisherman/humanize_duration
-[submodule ".config/fisherman/last_job_id"]
-	path = .config/fish/fisherman/last_job_id
-	url = https://github.com/fisherman/last_job_id
-[submodule ".config/fisherman/metro"]
-	path = .config/fish/fisherman/metro
-	url = https://github.com/fisherman/metro
-[submodule ".config/fisherman/pisces"]
-	path = .config/fish/fisherman/pisces
-	url = https://github.com/laughedelic/pisces
-[submodule ".config/fisherman/pwd_info"]
-	path = .config/fish/fisherman/pwd_info
-	url = https://github.com/fisherman/pwd_info
-[submodule ".config/fisherman/pwd_is_home"]
-	path = .config/fish/fisherman/pwd_is_home
-	url = https://github.com/fisherman/pwd_is_home
-[submodule ".config/fisherman/segment"]
-	path = .config/fish/fisherman/segment
-	url = https://github.com/fisherman/segment
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".zsh/zsh-completions"]
+	path = .zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh/omz/oh-my-zsh"]
+	path = .zsh/omz/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
