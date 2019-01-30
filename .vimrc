@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic — @amix3k
 "
 " Awesome_version:
@@ -38,6 +38,10 @@ set number relativenumber
 filetype plugin on
 filetype indent on
 
+" fuzzy search
+set path+=**
+set wildmenu
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -50,8 +54,9 @@ nmap <leader>w :w!<cr>
 nmap <leader>j :wn<cr>
 nmap <leader>k :wN<cr>
 nmap <leader>; A;<esc>
+nmap <leader>b :w<CR>:b<SPACE>
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
@@ -59,11 +64,11 @@ command W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" Set 5 lines to the cursor - when moving vertically using j/k
+set so=5
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -83,7 +88,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -95,23 +100,23 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -135,7 +140,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 " if $COLORTERM == 'gnome-terminal'
@@ -146,6 +151,8 @@ try
     colorscheme desert
 catch
 endtry
+
+let g:airline_theme='minimalist'
 
 set background=dark
 
@@ -208,8 +215,8 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -233,8 +240,8 @@ map <leader>h :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -249,7 +256,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -299,7 +306,7 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee,*.adb,*ads :call CleanExtraSpaces()
 endif
 
 
@@ -319,8 +326,15 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" git
+noremap <C-z> :Gw<CR>
+noremap <C-c> :Gcommit<CR>
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" turn off highlighting
+map <leader>h :noh<CR>
 
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
@@ -332,28 +346,52 @@ map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
 
 " Move to the next marker
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap <C-j> <Esc>/<++><CR>"_c4l
+inoremap <C-j><C-j> <++>
+nnoremap <Space> a<++><ESC>
+
+" file completion
+inoremap <C-f> <C-x><C-f>
+
+" tag completion
+inoremap <C-]> <C-x><C-]>
+
+" create line above
+inoremap <S-Enter> <Esc>O
 
 " adathings
-autocmd FileType ada inoremap if if  then<CR><++><CR>end if;<CR><++><Esc>3k0e2li
-autocmd FileType ada inoremap while while  loop<CR><++><CR>end loop;<CR><++><Esc>3k0e2li
-autocmd FileType ada inoremap for for  loop<CR><++><CR>end loop;<CR><++><Esc>3k0e2li
-autocmd FileType ada inoremap proc procedure (<++>) is<CR><++><CR>end;<CR><++><ESC>3kela
-autocmd FileType ada inoremap pros procedure (<++>);<CR><++><ESC>k^ela
-autocmd FileType ada inoremap func function (<++>) return <++><CR>end;<CR><++><ESC>3kela
-autocmd FileType ada inoremap funs function (<++>) return <++>;<CR><++><ESC>k^ela
-autocmd FileType ada inoremap pack package is<CR><++><CR>end;<CR><++><ESC>3kela
+autocmd FileType ada ab if if then<CR><++><CR>end if;<CR><++><Esc>3k0ea
+autocmd FileType ada ab while while loop<CR><++><CR>end loop;<CR><++><Esc>3k0ea
+autocmd FileType ada ab for for loop<CR><++><CR>end loop;<CR><++><Esc>3k0ea
+autocmd FileType ada ab proc procedure is<CR>begin<CR><++><CR>end;<CR><++><ESC>4k^ea
+autocmd FileType ada ab pros procedure;<CR><++><ESC>k^ea
+autocmd FileType ada ab func function(<++>) return <++><CR>end;<CR><++><ESC>3kea
+autocmd FileType ada ab funs function(<++>) return <++>;<CR><++><ESC>k^ea
+autocmd FileType ada ab pack package is<CR><++><CR>end;<CR><++><ESC>3kea
+autocmd FileType ada ab use use <ESC>0wyf;$pa
+autocmd FileType ada ab case case is<CR>when others => <++><CR>end case;<ESC>2k^ea
+autocmd FileType ada ab loop loop<CR>end loop;<ESC>kA
 
 " pythonthings
-autocmd FileType python map #! ggi#!/usr/bin/env python3<CR>
+autocmd FileType python map #! ggi#!/usr/bin/env python3<CR><ESC>:silent exec "!chmod +x %"<CR>
 autocmd FileType python map ;m oif __name__ == '__main__':<CR>main()<ESC>^
-autocmd FileType python inoremap try: except: <++>:<CR><++><ESC>2kotry:<CR>
+autocmd FileType python ab try: except: <++>:<CR><++><ESC>2kotry:
+autocmd FileType python map <C-i> :w<CR>:silent exec "!isort %"<CR>:e %<CR>
 
 " shellthings
 autocmd FileType sh map #! ggi#!/bin/sh<CR>
 autocmd FileType sh inoremap if if ; then<CR><++><CR>fi<CR><++><ESC>3k^ela
 autocmd FileType sh inoremap for for ; do<CR><++><CR>done<CR><++><ESC>3k^ela
 autocmd FileType sh inoremap while while ; do<CR><++><CR>done<CR><++><ESC>3k^ela
+
+" html
+autocmd BufNewFile *.html 0r ~/.templates/html
+autocmd BufNewFile *.html exe "normal 3jf>l" | startinsert
+
+" file browsing
+let g:netrw_banner=0 " disable the banner
+let g:netrw_liststyle=3 " tree view
+map <C-o> :edit .<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -389,7 +427,7 @@ endfunction
 
 function! CmdLine(str)
     call feedkeys(":" . a:str)
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -407,3 +445,6 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+execute pathogen#infect()
+

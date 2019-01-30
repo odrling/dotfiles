@@ -60,7 +60,6 @@ alias top="htop"
 alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"
 alias pass="gopass"
-alias vim="nvim -u ~/.vimrc"
 alias vi="vim"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
