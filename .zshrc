@@ -61,5 +61,6 @@ alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"
 alias pass="gopass"
 alias vi="vim"
+alias cat="bat"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
