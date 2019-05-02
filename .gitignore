@@ -77,3 +77,6 @@ Cache
 
 # ncmpcpp
 !/.config/ncmpcpp
+
+# alacritty
+!/.config/alacritty
