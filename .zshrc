@@ -69,8 +69,6 @@ alias grep="ag"
 export FZF_DEFAULT_OPTS="-m"
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-[ -f ~/.config/bookmarks.zsh ] && . ~/.config/bookmarks.zsh
-
 alias vid="fd -0 -t f . ~/Videos | fzf --read0 --print0 --tac | xargs -0 -r mpv"
 alias s="vim \$(fd -t f . $HOME/.local/bin | fzf --tac --with-nth=5.. -d/ -e)"
 
