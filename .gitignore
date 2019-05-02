@@ -80,3 +80,6 @@ Cache
 
 # alacritty
 !/.config/alacritty
+
+# fontconfig
+!/.config/fontconfig
