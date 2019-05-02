@@ -69,3 +69,11 @@ Cache
 
 # mako
 !/.config/mako
+
+# mpd
+!/.config/mpd
+/.config/mpd/*
+!/.config/mpd/mpd.conf
+
+# ncmpcpp
+!/.config/ncmpcpp
