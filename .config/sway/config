@@ -25,7 +25,10 @@ hide_edge_borders smart
 
 # Notification daemon
 exec mako
+# pulseaudio
 exec pulseaudio
+# redshift installed from https://github.com/giucam/redshift
+exec ~/.local/bin/redshift
 
 ### Output configuration
 #
