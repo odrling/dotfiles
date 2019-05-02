@@ -60,3 +60,12 @@ Cache
 
 # zsh modules
 !.zsh/
+
+# sway
+!/.config/sway
+
+# i3blocks
+!/.config/i3blocks
+
+# mako
+!/.config/mako

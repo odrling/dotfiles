@@ -1,0 +1,7 @@
+#!/bin/sh
+
+latest=$(curl -s https://www.kernel.org/releases.json | jq -r '.latest_stable.version')
+if ! uname -r | grep $latest > /dev/null; then
+    echo outdated
+    notify-send 'New kernel update' "v$latest available"
+fi
