@@ -34,7 +34,7 @@ exec ~/.local/bin/redshift
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 
-    output * bg "/home/odrling/Pictures/Wallpapers/anime-emotion-crowd-laughter-surprise-girls-emotional-wallpapers-wallpaper-leukjs6k.jpg" fill
+    output * bg "/home/odrling/.wallpaper" fill
 
 #
 # Example configuration:

@@ -11,6 +11,12 @@ do
             cp "$file" /tmp
             notify-send 'Copied to /tmp' "$file is in /tmp"
             ;;
+        "w")
+            setwallpaper "$file"
+            ;;
+        "l")
+            setwallpaper "$file" "$HOME/.lock"
+            ;;
 
     esac
 done
