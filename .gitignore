@@ -89,3 +89,6 @@ Cache
 
 # sxiv
 !/.config/sxiv
+
+# webbookmarks example
+!/.config/webbookmarks.example
