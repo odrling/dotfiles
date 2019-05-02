@@ -4,9 +4,13 @@ do
     case "$1" in
         "y")
             mime=$(file -b --mime-type "$file")
-            wl-copy -t "$mime" < "$file";;
+            wl-copy -t "$mime" < "$file"
+            notify-send 'Copied to clipboard' "$file is in your clipboard"
+            ;;
         "Y")
-            cp "$file" /tmp;;
+            cp "$file" /tmp
+            notify-send 'Copied to /tmp' "$file is in /tmp"
+            ;;
 
     esac
 done
