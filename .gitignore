@@ -83,3 +83,6 @@ Cache
 
 # fontconfig
 !/.config/fontconfig
+
+# neofetch
+!/.config/neofetch
