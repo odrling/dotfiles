@@ -42,7 +42,7 @@ Cache
 !/.vimrc
 !/.vim
 !/.config/nvim
-/.vim/.netrwhist
+.netrwhist
 /.config/nvim/bundle
 
 # fish config files
