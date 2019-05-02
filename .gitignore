@@ -38,9 +38,12 @@ Cache
 # pypirc
 !/.pypirc
 
-# vimrc
+# nvim
 !/.vimrc
 !/.vim
+!/.config/nvim
+/.vim/.netrwhist
+/.config/nvim/bundle
 
 # fish config files
 !/.config/fish

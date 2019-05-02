@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/odrling/.config/i3blocks/battery'
+let g:netrw_dirhist_2='/home/odrling/.local'
+let g:netrw_dirhist_3='/home/odrling/.zsh'
