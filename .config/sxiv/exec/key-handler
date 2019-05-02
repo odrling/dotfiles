@@ -1,0 +1,12 @@
+#!/bin/sh
+while read file
+do
+    case "$1" in
+        "y")
+            mime=$(file -b --mime-type "$file")
+            wl-copy -t "$mime" < "$file";;
+        "Y")
+            cp "$file" /tmp;;
+
+    esac
+done

@@ -86,3 +86,6 @@ Cache
 
 # neofetch
 !/.config/neofetch
+
+# sxiv
+!/.config/sxiv
