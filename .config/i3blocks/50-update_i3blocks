@@ -1,0 +1,4 @@
+#!/bin/sh
+# /etc/NetworkManager/dispatcher.d/50-update_i3blocks
+
+pkill -SIGRTMIN+11 i3blocks
