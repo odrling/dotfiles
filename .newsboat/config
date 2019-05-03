@@ -16,7 +16,7 @@ bind-key k up
 bind-key l open
 bind-key h quit
 
-# solarized
+# colors
 color background         default   default
 color listnormal         default   default
 color listnormal_unread  default   default bold
