@@ -92,3 +92,8 @@ Cache
 
 # webbookmarks example
 !/.config/webbookmarks.example
+
+# newsboat
+!/.newsboat
+/.newsboat/*
+!/.newsboat/config
