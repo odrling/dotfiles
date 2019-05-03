@@ -103,6 +103,7 @@ interval=10
 [kernel]
 label=kernel
 interval=3600
+signal=11
 
 [caffeine]
 label=caffeine
