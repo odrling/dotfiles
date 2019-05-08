@@ -45,11 +45,6 @@ Cache
 .netrwhist
 /.config/nvim/bundle
 
-# fish config files
-!/.config/fish
-/.config/fish/fishd.*
-!/.config/fisherman
-
 # localbins
 !/.local
 !/.local/bin

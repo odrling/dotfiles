@@ -1,1 +1,0 @@
-../fisherman/metro/fish_prompt.fish
