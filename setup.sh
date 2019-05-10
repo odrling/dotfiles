@@ -5,7 +5,4 @@ dots init
 dots remote add origin https://git.odrling.xyz/odrling/dotfiles.git
 dots fetch origin master
 dots checkout -b master --track origin/master
-dots submodule init ~/.zsh
-dots submodule init ~/.vim
-dots submodule init ~/.local/bin
-dots submodule update
+dots submodule update --init --recursive
