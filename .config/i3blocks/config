@@ -66,6 +66,11 @@ label=home
 #DIR=/mnt/data
 interval=30
 
+[news]
+label=news
+interval=once
+signal=20
+
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.

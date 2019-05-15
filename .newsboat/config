@@ -1,5 +1,5 @@
-auto-reload yes
-reload-threads 4
+auto-reload no
+reload-threads 10
 browser firefox
 
 # unbind keys
