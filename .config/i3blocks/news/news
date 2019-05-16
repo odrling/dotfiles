@@ -1,3 +1,5 @@
 #!/bin/sh
-newsboat -x print-unread | cut -d' ' -f1
+lastfile=/tmp/lastnewscount.$USER
+last=$(cat $lastfile)
+(newsboat -x print-unread || echo $last) | cut -d' ' -f1 | tee $lastfile
 
