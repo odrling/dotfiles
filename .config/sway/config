@@ -17,7 +17,7 @@ set $fm nnn
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | ~/.local/bin/bomenu -p '' | xargs swaymsg exec
+set $menu j4-dmenu-desktop --dmenu='(cat; (stest -flx "$HOME/.local/bin" | sort -u)) | bomenu -p ""' | xargs swaymsg exec
 
 # window borders
 default_border pixel 1
