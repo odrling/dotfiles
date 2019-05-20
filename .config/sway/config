@@ -268,7 +268,7 @@ bar {
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
     status_command i3blocks
-    font Aller 10
+    font Sans 10
 
     colors {
         statusline #ffffff
@@ -287,7 +287,7 @@ bar {
     bindsym XF86MonBrightnessDown exec xbacklight -dec 5
     bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
-    bindsym Mod4+l exec lock -f # pkill -USR1 swayidle
+    bindsym Mod4+l exec lock -f
     bindsym $mod+Shift+p exec powermenu
     bindsym Mod4+b exec bluetoothctl power on
     bindsym Mod4+Shift+b exec bluetoothctl power off
