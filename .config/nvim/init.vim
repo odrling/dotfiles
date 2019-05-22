@@ -409,7 +409,7 @@ autocmd BufNewFile *.html exe "normal 3jf>l" | startinsert
 " file browsing
 let g:netrw_banner=0 " disable the banner
 let g:netrw_liststyle=3 " tree view
-map <C-o> :FZF<CR>
+map <C-o> :FZF!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
