@@ -51,7 +51,7 @@ Cache
 # localbins
 !/.local
 !/.local/bin
-/.local/share
+/.local/*
 
 # ignore antibody
 !/.antibody/plugins
