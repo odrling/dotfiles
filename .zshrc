@@ -8,6 +8,8 @@ done
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
 source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 
+# vi key bindings
+set -o vi
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
