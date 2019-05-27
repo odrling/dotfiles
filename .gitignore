@@ -89,3 +89,7 @@ Cache
 !/.newsboat
 /.newsboat/*
 !/.newsboat/config
+
+# fish
+!/.config/fish
+
