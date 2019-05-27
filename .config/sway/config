@@ -11,13 +11,13 @@ set $right l
 # Your preferred terminal emulator
 set $term st
 # lock command
-set $lock ~/.local/bin/lock
+set $lock lock
 # file manager
 set $fm nnn
 
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu j4-dmenu-desktop --dmenu='(cat; (stest -flx "$HOME/.local/bin" | sort -u)) | bomenu -p ""' | xargs swaymsg exec
+set $menu appmenu
 
 # window borders
 default_border pixel 1
@@ -298,7 +298,7 @@ bar {
     bindsym Mod4+p exec toggle_screen
     bindsym Mod4+Shift+p exec swaymsg 'output eDP-1 dpms on'
 
-    bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy && notify-send 'Screenshot taken' 'Current screen in the clipboard'
-    bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy && notify-send 'Screenshot taken' 'Area in the clipboard'
-    bindsym Mod4+Print exec grim - | wl-copy && notify-send 'Screenshot taken' 'Full desktop in the clipboard'
+    bindsym Print exec grimshot screen
+    bindsym Shift+Print exec grimshot area
+    bindsym Mod4+Print exec grimshot
 
