@@ -1,6 +1,6 @@
 [submodule ".local/bin"]
 	path = .local/bin
-	url = gitea@git.odrling.xyz:odrling/localbins.git
+	url = https://git.odrling.xyz/odrling/localbins.git
     ignore = dirty
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
