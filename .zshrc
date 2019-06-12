@@ -56,22 +56,19 @@ fi
 export EDITOR=nvim
 #export TERM="xterm"
 
-alias venv="source ~/.venv/bin/activate"
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
+alias venv="source ~/.venv/bin/activate"
 alias top="htop"
 alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"
-alias pass="gopass"
 alias vi="nvim"
 alias vim="nvim"
-alias cat="bat"
 alias ls="ls --color"
-alias grep="ag"
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND="find . -type f | sed 's|^\./||'"
 
-alias s="vim \$(fd -t f . $HOME/.local/bin | fzf --tac --with-nth=5.. -d/ -e)"
+alias s="vim ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 
 function start_tmux() {
     if type tmux &> /dev/null; then
