@@ -93,3 +93,6 @@ Cache
 # fish
 !/.config/fish
 
+# dunst
+!/.config/dunst
+
