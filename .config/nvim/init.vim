@@ -407,6 +407,7 @@ autocmd BufNewFile *.html 0r ~/.templates/html
 autocmd BufNewFile *.html exe "normal 3jf>l" | startinsert
 
 " file browsing
+set rtp+=~/.vim/fzf
 let g:netrw_banner=0 " disable the banner
 let g:netrw_liststyle=3 " tree view
 map <C-o> :FZF!<CR>
