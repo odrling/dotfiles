@@ -63,7 +63,6 @@ alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"
 alias vi="nvim"
 alias vim="nvim"
-alias ls="ls --color"
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | sed 's|^\./||'"
