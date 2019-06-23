@@ -53,9 +53,6 @@ if which ruby > /dev/null 2>&1; then
     export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 fi
 
-export EDITOR=nvim
-#export TERM="xterm"
-
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 alias venv="source ~/.venv/bin/activate"
 alias top="htop"
@@ -79,3 +76,7 @@ function start_tmux() {
 }
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
+
+[ -f ~/.profile ] && . ~/.profile
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -17,6 +17,9 @@ Cache
 # zsh modules
 !.zsh/
 
+# .profile
+!/.profile
+
 # git config file
 !/.gitconfig
 
