@@ -15,9 +15,7 @@ zstyle ':completion:*' completer _expand _complete _ignored _correct _approximat
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select=1
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle :compinstall filename "${HOME}/.zshrc"
-zstyle ':completion:*' rehash true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s zstyle :compinstall filename "${HOME}/.zshrc" zstyle ':completion:*' rehash true
 
 [[ $UID -eq 0 ]] || () {
     local i
@@ -32,51 +30,29 @@ zstyle ':completion:*' rehash true
 autoload -Uz compinit && compinit
 
 zstyle ':completion::complete:*' use-cache 1
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd notify
 unsetopt beep
 bindkey -e
-# End of lines configured by zsh-newuser-install
 
 # Prompt
 autoload -U colors && colors
 PROMPT="%B%{$FG[081]%}%n%{$reset_color%}%b%{$FG[245]%}@%{$reset_color%}%B%{$FG[206]%}%m%{$reset_color%}%b %{$fg[245]%}%B%c%b %(!.%{$FG[001]%}#.%{$FG[081]%}$)%{$reset_color%} "
 
-
-# PATH
-export PATH="$HOME/.local/bin:$PATH"
-if which ruby > /dev/null 2>&1; then
-    export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-fi
+export FZF_DEFAULT_OPTS="-m --no-mouse"
+export FZF_DEFAULT_COMMAND="find . -type f | sed 's|^\./||'"
 
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
+alias dotmodules="dots submodule update --recursive --remote"
 alias venv="source ~/.venv/bin/activate"
 alias top="htop"
-alias dotmodules="dots submodule update --recursive --remote"
 alias ytdl="youtube-dl"
 alias vi="nvim"
 alias vim="nvim"
 
-export FZF_DEFAULT_OPTS="-m --no-mouse"
-export FZF_DEFAULT_COMMAND="find . -type f | sed 's|^\./||'"
-
 alias s="vim ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 
-function start_tmux() {
-    if type tmux &> /dev/null; then
-        #if not inside a tmux session, and if no session is started, start a new session
-        if [[ -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
-            (tmux -2 attach || tmux -2 new-session)
-        fi
-    fi
-}
-
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
-
-[ -f ~/.profile ] && . ~/.profile
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
