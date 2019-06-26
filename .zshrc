@@ -22,7 +22,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
     local -T SUDO_PATH sudo_path
     local -U sudo_path
     sudo_path=($path {,/usr{,/local}}/sbin(N-/))
-    for i in sudo{,x} su{,x}
+    for i in sudo{,x} su{,x} doas{,x}
     do   zstyle ":completion:*:$i:*" environ PATH="$SUDO_PATH"
     done
 }
