@@ -44,3 +44,9 @@
 [submodule ".vim/bundle/fzf"]
 	path = .vim/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule ".vim/vidir"]
+	path = .vim/vidir
+	url = https://github.com/trapd00r/vidir.git
+[submodule ".vim/bundle/delimitMate"]
+	path = .vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git

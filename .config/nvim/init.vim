@@ -465,5 +465,5 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-execute pathogen#infect()
+execute pathogen#infect('~/.vim/bundle/{}')
 
