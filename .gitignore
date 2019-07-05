@@ -99,3 +99,8 @@ Cache
 # dunst
 !/.config/dunst
 
+# aegisub
+!/.aegisub
+/.aegisub/*
+!/.aegisub/hotkey.json
+!/.aegisub/automation
