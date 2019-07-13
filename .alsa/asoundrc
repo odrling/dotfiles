@@ -1,0 +1,96 @@
+pcm.usbin {
+        type hw
+        card 0
+        device 0
+        subdevice 0
+        format S32_LE
+        rate 48000
+}
+
+pcm.usbout {
+        format S32_LE # S32_LE
+        rate 48000 # can also be 44100
+        type hw
+        card USB # your card
+        device 0 # your device
+        subdevice 0 #important?
+}
+pcm.usbmixer {
+        type dmix
+        ipc_key 456778
+        ipc_perm 0660
+        ipc_gid audio
+
+        slave {
+                channels 2 # make 6 or 5.1 channel
+                pcm "usbout"
+
+                period_size 1024
+                buffer_size 8192
+        }
+
+        bindings {
+                0 0
+                1 1
+        }
+}
+
+pcm.sdacout {
+        format S24_3LE
+        rate 48000
+        type hw
+        card SDAC
+        device 0
+        subdevice 0
+}
+
+pcm.sdacmixer {
+        type dmix
+        ipc_key 5678293
+        ipc_perm 0660
+        ipc_gid audio
+
+        slave {
+                channels 2
+                pcm "sdacout"
+
+                period_size 1024
+                buffer_size 8192
+        }
+
+        bindings {
+                0 0
+                1 1
+        }
+}
+
+pcm.defin {
+        type dsnoop
+        ipc_key 7297129
+        ipc_perm 0660
+        ipc_gid audio
+
+        slave {
+                channels 1
+                pcm "usbin"
+
+                period_size 1024
+                buffer_size 8192
+        }
+        bindings {
+                0 0
+        }
+}
+
+pcm.sdacdef {
+        type asym
+        playback.pcm "sdacmixer"
+        capture.pcm "defin"
+}
+
+pcm.usbdef {
+	type asym
+	playback.pcm "usbmixer"
+	capture.pcm "defin"
+}
+
