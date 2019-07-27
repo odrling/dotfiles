@@ -16,10 +16,10 @@
 			"KP_8"
 		],
 		"time/length/decrease" : [
-			"KP_7"
+			"Z"
 		],
 		"time/length/increase" : [
-			"KP_9"
+			"E"
 		],
 		"time/next" : [
 			"KP_2"
@@ -28,10 +28,10 @@
 			"KP_0"
 		],
 		"time/start/decrease" : [
-			"KP_4"
+			"Shift-Z"
 		],
 		"time/start/increase" : [
-			"KP_6"
+			"Shift-E"
 		]
 	},
 	"Audio" : {
@@ -46,11 +46,11 @@
 			"Shift-G"
 		],
 		"audio/play/line" : [
-			"R"
+			"C"
 		],
 		"audio/play/selection" : [
-			"E",
-			"Space"
+			"Space",
+			"X"
 		],
 		"audio/play/selection/after" : [
 			"F"
@@ -71,10 +71,10 @@
 			"B"
 		],
 		"audio/scroll/left" : [
-			"A"
+			"W"
 		],
 		"audio/scroll/right" : [
-			"F"
+			"V"
 		],
 		"audio/stop" : [
 			"H"
@@ -98,12 +98,12 @@
 			"Shift-KP_Add"
 		],
 		"time/next" : [
-			"Right",
-			"X"
+			"R",
+			"Right"
 		],
 		"time/prev" : [
-			"Left",
-			"Z"
+			"A",
+			"Left"
 		]
 	},
 	"Default" : {
@@ -115,6 +115,12 @@
 		],
 		"automation/lua/karaoke-adjust-1sec/Karaoke 1sec adjust lead-in" : [
 			"Ctrl-K"
+		],
+		"automation/lua/ua.ChangeCase/Change Case" : [
+			"Ctrl-Shift-C"
+		],
+		"automation/lua/ua.HYDRA/HYDRA" : [
+			"Ctrl-Shift-H"
 		],
 		"edit/find_replace" : [
 			"Ctrl-H"
