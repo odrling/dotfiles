@@ -104,3 +104,6 @@ Cache
 /.aegisub/*
 !/.aegisub/hotkey.json
 !/.aegisub/automation
+
+# alsa
+!/.alsa
