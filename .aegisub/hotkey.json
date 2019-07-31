@@ -116,6 +116,9 @@
 		"automation/lua/karaoke-adjust-1sec/Karaoke 1sec adjust lead-in" : [
 			"Ctrl-K"
 		],
+		"automation/lua/karaoke-split/Karaoke split line" : [
+			"Ctrl-Shift-P"
+		],
 		"automation/lua/ua.ChangeCase/Change Case" : [
 			"Ctrl-Shift-C"
 		],
