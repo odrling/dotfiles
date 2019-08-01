@@ -1,0 +1,1 @@
+../amoegisub/duetto-meika.lua
