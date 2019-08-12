@@ -4,7 +4,7 @@ do
     case "$1" in
         "y")
             mime=$(file -b --mime-type "$file")
-            wl-copy -t "$mime" < "$file"
+            xclip -selection clipboard -t "$mime" -i "$file"
             notify-send 'Copied to clipboard' "$file is in your clipboard"
             ;;
         "Y")
