@@ -64,6 +64,33 @@ pcm.sdacmixer {
         }
 }
 
+pcm.internalout {
+	type hw
+	card 0
+	device 0
+	subdevice 0
+}
+
+pcm.internalmixer {
+        type dmix
+        ipc_key 17863093
+        ipc_perm 0660
+        ipc_gid audio
+
+        slave {
+                channels 2
+                pcm "internalout"
+
+                period_size 1024
+                buffer_size 8192
+        }
+
+        bindings {
+                0 0
+                1 1
+        }
+}
+
 pcm.defin {
         type dsnoop
         ipc_key 7297129
@@ -86,6 +113,12 @@ pcm.sdacdef {
         type asym
         playback.pcm "sdacmixer"
         capture.pcm "defin"
+}
+
+pcm.internaldef {
+	type asym
+	playback.pcm "internalmixer"
+	capture.pcm "defin"
 }
 
 pcm.usbdef {
