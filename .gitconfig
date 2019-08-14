@@ -12,3 +12,5 @@
 	fetchJobs = 4
 [diff]
 	mnemonicprefix = true
+[fetch]
+	recurseSubmodules = on-demand
