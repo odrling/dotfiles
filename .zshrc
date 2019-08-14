@@ -37,6 +37,10 @@ setopt appendhistory autocd notify
 unsetopt beep
 bindkey -e
 
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # Prompt
 autoload -U colors && colors
 PROMPT="%B%{$FG[081]%}%n%{$reset_color%}%b%{$FG[245]%}@%{$reset_color%}%B%{$FG[206]%}%m%{$reset_color%}%b %{$fg[245]%}%B%c%b %(!.%{$FG[001]%}#.%{$FG[081]%}$)%{$reset_color%} "
