@@ -58,5 +58,6 @@ alias vim="nvim"
 
 alias s="vim ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 
+[ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
