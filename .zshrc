@@ -30,10 +30,10 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 autoload -Uz compinit && compinit
 
 zstyle ':completion::complete:*' use-cache 1
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory autocd notify
+export HISTFILE=~/.histfile
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt appendhistory autocd notify histexpiredupsfirst histsavenodups incappendhistorytime histnostore histignorespace
 unsetopt beep
 bindkey -e
 
