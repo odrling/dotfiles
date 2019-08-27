@@ -1,6 +1,7 @@
+
 pcm.usbin {
         type hw
-        card 0
+        card USB
         device 0
         subdevice 0
         format S32_LE
@@ -15,6 +16,7 @@ pcm.usbout {
         device 0 # your device
         subdevice 0 #important?
 }
+
 pcm.usbmixer {
         type dmix
         ipc_key 456778
