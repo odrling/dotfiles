@@ -6,7 +6,6 @@ for i in ~/.zsh/*/*.zsh; do
 done
 
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
-source ~/.zsh/omz/oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 
 # vi key bindings
 set -o vi
