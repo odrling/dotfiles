@@ -21,6 +21,12 @@
 		"time/length/increase" : [
 			"E"
 		],
+		"time/mark/connect" : [
+			"I"
+		],
+		"time/mark/no_connect" : [
+			"O"
+		],
 		"time/next" : [
 			"KP_2"
 		],
@@ -104,6 +110,12 @@
 		"time/prev" : [
 			"A",
 			"Left"
+		],
+		"time/tap/connect" : [
+			"I"
+		],
+		"time/tap/no_connect" : [
+			"O"
 		]
 	},
 	"Default" : {
