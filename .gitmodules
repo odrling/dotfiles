@@ -56,9 +56,3 @@
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".aegisub/automation/unanimated"]
-	path = .aegisub/automation/unanimated
-	url = https://github.com/unanimated/luaegisub.git
-[submodule ".aegisub/automation/amoegisub"]
-	path = .aegisub/automation/amoegisub
-	url = https://git.odrling.xyz/odrling/amoegisub.git

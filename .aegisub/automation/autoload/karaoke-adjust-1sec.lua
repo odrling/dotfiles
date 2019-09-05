@@ -1,1 +1,0 @@
-../amoegisub/karaoke-adjust-1sec.lua

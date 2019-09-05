@@ -1,1 +1,0 @@
-../amoegisub/karaoke-split.lua
