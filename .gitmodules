@@ -1,7 +1,7 @@
 [submodule ".local/bin"]
 	path = .local/bin
 	url = https://git.odrling.xyz/odrling/localbins.git
-    ignore = dirty
+	ignore = dirty
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -47,6 +47,7 @@
 [submodule ".vim/bundle/delimitMate"]
 	path = .vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+	ignore = dirty
 [submodule ".vim/bundle/vim-commentary"]
 	path = .vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
