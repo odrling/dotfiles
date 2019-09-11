@@ -330,7 +330,6 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " git
 noremap <C-z> :Gw<CR>
-noremap <C-c> :Gcommit<CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -364,6 +363,9 @@ inoremap <C-]> <C-x><C-]>
 
 " create line above
 inoremap <S-Enter> <Esc>O
+
+" bulk rename (with dirvish)
+nnoremap <C-S-r> :%Shdo mv {} {}<cr>
 
 " adathings
 autocmd FileType ada ab if<space> if then<CR><++><CR>end if;<CR><++><Esc>3k0ea
