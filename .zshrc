@@ -52,8 +52,6 @@ alias dotmodules="dots submodule update --recursive --remote"
 alias venv="source ~/.venv/bin/activate"
 alias top="htop"
 alias ytdl="youtube-dl"
-alias vi="nvim"
-alias vim="nvim"
 
 alias s="vim ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 
