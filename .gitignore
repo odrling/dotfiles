@@ -109,3 +109,5 @@ Cache
 # alsa
 !/.alsa
 
+# xinit
+!/.xinitrc
