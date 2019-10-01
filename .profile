@@ -3,7 +3,7 @@ export EDITOR=vi
 export PRIMARY_SCREEN=eDP1
 export CONNECT_INTERFACE="wlp2s0"
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH:$HOME/.vim/fzf/bin"
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
