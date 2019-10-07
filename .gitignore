@@ -111,3 +111,6 @@ Cache
 
 # xinit
 !/.xinitrc
+
+# gtk config
+!/.config/gtk-3.0
