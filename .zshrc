@@ -1,7 +1,7 @@
 
 # load modules
 bgnotify_threshold=0
-for i in ~/.zsh/*/*.zsh; do
+for i in ~/.zsh/*/*.plugin.zsh; do
     source "$i"
 done
 
