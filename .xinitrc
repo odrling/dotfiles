@@ -19,8 +19,5 @@ setxkbmap fr oss &
 # hide cursor when unused
 unclutter --ignore-scrolling -b
 
-# fix java swing applications
-wmname LG3D
-
 # start dwm
 exec ck-launch-session dbus-launch dwm
