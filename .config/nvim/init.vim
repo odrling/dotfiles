@@ -325,8 +325,8 @@ inoremap <C-j><C-j> <++>
 nnoremap <Space> a<++><ESC>
 
 " copy line to clipboard
-nnoremap <C-b> "+yy
-
+nnoremap <C-c> "+yy
+vnoremap <C-c> "+y
 
 " file completion
 inoremap <C-f> <C-x><C-f>
