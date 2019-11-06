@@ -33,7 +33,6 @@ nmap <leader>; A;<esc>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -386,6 +385,7 @@ set rtp+=~/.vim/fzf
 let g:netrw_banner=0 " disable the banner
 let g:netrw_liststyle=3 " tree view
 map <C-o> :FZF!<CR>
+map <leader><leader> :FZF!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
