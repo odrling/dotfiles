@@ -45,7 +45,7 @@ autoload -U colors && colors
 PROMPT="%B%{$FG[081]%}%n%{$reset_color%}%b%{$FG[245]%}@%{$reset_color%}%B%{$FG[206]%}%m%{$reset_color%}%b %{$fg[245]%}%B%c%b %(!.%{$FG[001]%}#.%{$FG[081]%}$)%{$reset_color%} "
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
-export FZF_DEFAULT_COMMAND="find . -type f | sed 's|^\./||'"
+export FZF_DEFAULT_COMMAND="find . -not \( -name .git -prune \) -type f | sed 's|^\./||'"
 
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 alias dotmodules="dots submodule update --recursive --remote"
