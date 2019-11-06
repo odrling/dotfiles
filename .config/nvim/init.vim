@@ -384,6 +384,7 @@ autocmd BufNewFile *.html exe "normal 3jf>l" | startinsert
 set rtp+=~/.vim/fzf
 let g:netrw_banner=0 " disable the banner
 let g:netrw_liststyle=3 " tree view
+let $FZF_DEFAULT_COMMAND = "grep -lRI . . | grep -v .git | sed 's|^./||g'"
 map <C-o> :FZF!<CR>
 map <leader><leader> :FZF!<CR>
 
