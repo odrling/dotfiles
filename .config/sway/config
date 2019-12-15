@@ -9,7 +9,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term st
+set $term alacritty
 # lock command
 set $lock lock
 # file manager

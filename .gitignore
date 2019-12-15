@@ -76,6 +76,9 @@ Cache
 # ncmpcpp
 !/.config/ncmpcpp
 
+# alacritty
+!/.config/alacritty
+
 # fontconfig
 !/.config/fontconfig
 
