@@ -3,6 +3,16 @@ while read file
 do
     case "$1" in
         "y")
+            opaste "$file"
+            ;;
+        "q")
+            opaste -o "$file"
+            ;;
+        "m")
+            convert "$file" -resize 600x600 "/tmp/$(basename "$file")"
+            opaste "/tmp/$(basename "$file")"
+            ;;
+        "c")
             mime=$(file -b --mime-type "$file")
             xclip -selection clipboard -t "$mime" -i "$file"
             notify-send 'Copied to clipboard' "$file is in your clipboard"
