@@ -20,9 +20,6 @@ Cache
 # .profile
 !/.profile
 
-# git config file
-!/.gitconfig
-
 # only add selected config files
 !/.config
 /.config/*
