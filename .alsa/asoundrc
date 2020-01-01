@@ -17,6 +17,12 @@ pcm.usbout {
         subdevice 0 #important?
 }
 
+pcm.!spdif {
+     type hw
+     card 0
+     device 7
+}
+
 pcm.usbmixer {
         type dmix
         ipc_key 456778
@@ -66,6 +72,25 @@ pcm.sdacmixer {
         }
 }
 
+pcm.hdmimixer {
+        type dmix
+        ipc_key 5678293
+        ipc_perm 0660
+        ipc_gid audio
+
+        slave {
+                channels 2
+                pcm "spdif"
+
+                period_size 1024
+                buffer_size 8192
+        }
+
+        bindings {
+                0 0
+                1 1
+        }
+}
 pcm.internalout {
 	type hw
 	card 0
@@ -120,6 +145,12 @@ pcm.sdacdef {
 pcm.internaldef {
 	type asym
 	playback.pcm "internalmixer"
+	capture.pcm "defin"
+}
+
+pcm.hdmidef {
+	type asym
+	playback.pcm "hdmimixer"
 	capture.pcm "defin"
 }
 
