@@ -5,6 +5,15 @@
 set history=500
 set number relativenumber
 
+" By default ClapQuery will use the bold fg of Normal and the same bg of ClapInput
+
+hi ClapDefaultPreview          ctermbg=237 guibg=#3E4452
+
+hi default link ClapPreview          ClapDefaultPreview
+hi default link ClapDisplay          ClapDefaultPreview
+hi default link ClapSelected         ClapDefaultSelected
+hi default link ClapCurrentSelection ClapDefaultCurrentSelection
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -114,15 +123,13 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable
 
+" use true colors
+set termguicolors
+
 " Enable 256 colors palette in Gnome Terminal
 " if $COLORTERM == 'gnome-terminal'
 "     set t_Co=256
 " endif
-
-try
-    colorscheme desert
-catch
-endtry
 
 let g:airline_theme='minimalist'
 
