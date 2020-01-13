@@ -216,8 +216,8 @@ def_key "j"
 #def_key "space"
 #  toggle_visualization_type
 #
-#def_key "delete"
-#  delete_playlist_items
+def_key "D"
+  delete_playlist_items
 #
 #def_key "delete"
 #  delete_browser_items
@@ -267,11 +267,11 @@ def_key "p"
 def_key "m"
   show_media_library
 #
-#def_key "2"
-#  change_browse_mode
+# def_key "M"
+#   change_browse_mode
 #
-#def_key "3"
-#  show_search_engine
+def_key "/"
+  show_search_engine
 #
 #def_key "3"
 #  reset_search_engine
@@ -288,11 +288,11 @@ def_key "m"
 #def_key "6"
 #  show_tag_editor
 #
-#def_key "7"
-#  show_outputs
+def_key "o"
+  show_outputs
 #
-#def_key "8"
-#  show_visualizer
+def_key "v"
+  show_visualizer
 #
 #def_key "="
 #  show_clock
@@ -303,14 +303,14 @@ def_key "m"
 #def_key "s"
 #  stop
 #
-#def_key "p"
-#  pause
+def_key "d"
+  pause
+
+def_key "g"
+  next
 #
-#def_key ">"
-#  next
-#
-#def_key "<"
-#  previous
+def_key "q"
+  previous
 #
 #def_key "ctrl-h"
 #  jump_to_parent_directory
@@ -324,17 +324,17 @@ def_key "m"
 #def_key "backspace"
 #  replay_song
 #
-#def_key "f"
-#  seek_forward
+def_key "f"
+  seek_forward
 #
-#def_key "b"
-#  seek_backward
+def_key "s"
+  seek_backward
 #
-#def_key "r"
-#  toggle_repeat
+def_key "r"
+  toggle_repeat
 #
-#def_key "z"
-#  toggle_random
+def_key "z"
+  toggle_random
 #
 #def_key "y"
 #  save_tag_changes
@@ -342,8 +342,8 @@ def_key "m"
 #def_key "y"
 #  start_searching
 #
-#def_key "y"
-#  toggle_single
+def_key "y"
+  toggle_single
 #
 #def_key "R"
 #  toggle_consume
@@ -390,14 +390,14 @@ def_key "m"
 #def_key "ctrl-_"
 #  select_found_items
 #
-#def_key "/"
-#  find
+# def_key "/"
+#   find
 #
 #def_key "/"
 #  find_item_forward
 #
-#def_key "?"
-#  find
+def_key "?"
+  find
 #
 #def_key "?"
 #  find_item_backward
@@ -471,14 +471,14 @@ def_key "m"
 #def_key "m"
 #  move_sort_order_up
 #
-#def_key "m"
-#  move_selected_items_up
+def_key "K"
+  move_selected_items_up
 #
 #def_key "n"
 #  move_sort_order_down
 #
-#def_key "n"
-#  move_selected_items_down
+def_key "J"
+  move_selected_items_down
 #
 #def_key "M"
 #  move_selected_items_to
@@ -486,8 +486,8 @@ def_key "m"
 #def_key "A"
 #  add
 #
-#def_key "S"
-#  save_playlist
+def_key "S"
+  save_playlist
 #
 #def_key "o"
 #  jump_to_playing_song
@@ -540,6 +540,6 @@ def_key "m"
 #def_key "ctrl-p"
 #  set_selected_items_priority
 #
-#def_key "q"
-#  quit
+def_key "Q"
+  quit
 #

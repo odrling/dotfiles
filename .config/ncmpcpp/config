@@ -1,1 +1,13 @@
-mpd_host = /home/odrling/.config/mpd/socket
+mpd_host = 127.0.0.1
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_in_stereo = yes
+visualizer_output_name = "vis_fifo"
+visualizer_sync_interval = 30
+visualizer_type = "spectrum"
+visualizer_look = "+█"
+ignore_diacritics = yes
+
+display_bitrate = yes
+user_interface = alternative
+cyclic_scrolling = yes
+display_volume_level = no
