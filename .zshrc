@@ -55,6 +55,9 @@ alias ytdl="youtube-dl"
 
 alias s="vim ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 
+alias ffmpeg="ffmpeg -hide_banner"
+alias ffprobe="ffmpeg -hide_banner"
+
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
