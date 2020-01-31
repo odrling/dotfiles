@@ -72,3 +72,6 @@
 [submodule ".vim/bundle/gruvbox"]
 	path = .vim/bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule ".vim/bundle/coc.nvim"]
+	path = .vim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git

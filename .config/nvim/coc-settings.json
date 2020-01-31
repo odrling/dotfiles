@@ -1,0 +1,22 @@
+{
+    "python.pythonPath": "/usr/bin/python",
+    "languageserver": {
+        "ocaml": {
+           "command": "ocaml-language-server",
+           "args": ["--stdio"],
+           "filetypes": ["ocaml", "reason"]
+        },
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        },
+        "clangd": {
+            "command": "clangd",
+            "args": ["--background-index"],
+            "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["c", "cpp", "objc", "objcpp"]
+        }
+    }
+}
