@@ -374,9 +374,6 @@ autocmd FileType java ab main public static void main(String[] args)
 
 " shellthings
 autocmd FileType sh map #! ggi#!/bin/sh<CR>
-autocmd FileType sh inoremap if if ; then<CR><++><CR>fi<CR><++><ESC>3k^ela
-autocmd FileType sh inoremap for for ; do<CR><++><CR>done<CR><++><ESC>3k^ela
-autocmd FileType sh inoremap while while ; do<CR><++><CR>done<CR><++><ESC>3k^ela
 
 " markdown
 autocmd FileType markdown ab h1 #
