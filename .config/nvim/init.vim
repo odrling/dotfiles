@@ -1,18 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
-set number relativenumber
-
-" By default ClapQuery will use the bold fg of Normal and the same bg of ClapInput
-
-hi ClapDefaultPreview          ctermbg=237 guibg=#3E4452
-
-hi default link ClapPreview          ClapDefaultPreview
-hi default link ClapDisplay          ClapDefaultPreview
-hi default link ClapSelected         ClapDefaultSelected
-hi default link ClapCurrentSelection ClapDefaultCurrentSelection
+source ~/.vim/default.vim
 
 " Enable filetype plugins
 filetype plugin on
@@ -22,73 +11,18 @@ filetype indent on
 set path+=**
 set wildmenu
 
-" Set to auto read when a file is changed from the outside
-set autoread
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
-nmap <leader>j :wn<cr>
-nmap <leader>k :wN<cr>
-nmap <leader>b :w<CR>:b<SPACE>
-
 " Oh well
 nmap <leader>; A;<esc>
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 5 lines to the cursor - when moving vertically using j/k
-set so=5
-
-" Avoid garbled characters in Chinese language windows OS
-let $LANG='en'
-set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
-" Turn on the Wild menu
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
-
-"Always show current position
-set ruler
-
 " Height of the command bar
 set cmdheight=1
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -96,93 +30,18 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
-set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
-
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
-
-" Add a bit extra margin to the left
-set foldcolumn=1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
 
 " use true colors
 set termguicolors
-
-" Enable 256 colors palette in Gnome Terminal
-" if $COLORTERM == 'gnome-terminal'
-"     set t_Co=256
-" endif
-
-let g:airline_theme='minimalist'
-
 set background=dark
 
-" fix weird pink color in coc popups
-highlight Pmenu guibg=black gui=bold
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-
+let g:airline_theme='minimalist'
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -196,9 +55,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /
-"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -328,11 +184,6 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" Move to the next marker
-inoremap <C-j> <Esc>/<++><CR>"_c4l
-inoremap <C-j><C-j> <++>
-nnoremap <Space> a<++><ESC>
-
 " copy line to clipboard
 nnoremap <C-c> "+yy
 vnoremap <C-c> "+y
@@ -348,19 +199,6 @@ inoremap <S-Enter> <Esc>O
 
 " bulk rename (with dirvish)
 nnoremap <C-S-r> :%Shdo mv {} {}<cr>
-
-" adathings
-autocmd FileType ada ab if<space> if then<CR><++><CR>end if;<CR><++><Esc>3k0ea
-autocmd FileType ada ab while while loop<CR><++><CR>end loop;<CR><++><Esc>3k0ea
-autocmd FileType ada ab for for loop<CR><++><CR>end loop;<CR><++><Esc>3k0ea
-autocmd FileType ada ab proc procedure is<CR>begin<CR><++><CR>end;<CR><++><ESC>4k^ea
-autocmd FileType ada ab pros procedure;<CR><++><ESC>k^ea
-autocmd FileType ada ab func function(<++>) return <++><CR>end;<CR><++><ESC>3kea
-autocmd FileType ada ab funs function(<++>) return <++>;<CR><++><ESC>k^ea
-autocmd FileType ada ab pack package is<CR><++><CR>end;<CR><++><ESC>3kea
-autocmd FileType ada ab use use <ESC>0wyf;$pa
-autocmd FileType ada ab case case is<CR>when others => <++><CR>end case;<ESC>2k^ea
-autocmd FileType ada ab loop loop<CR>end loop;<ESC>kA
 
 " pythonthings
 autocmd FileType python map #! ggi#!/usr/bin/env python3<CR><ESC>:silent exec "!chmod +x %"<CR>
@@ -452,10 +290,6 @@ endfunction
 " if hidden is not set, TextEdit might fail.
 set hidden
 
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
 " Better display for messages
 set cmdheight=2
 
@@ -539,7 +373,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Create mappings for function text object, requires document symbols feature of languageserver.
+" Create mappings for function t<++>ext object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
@@ -580,4 +414,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 execute pathogen#infect('~/.vim/bundle/{}')
+
+colorscheme space-vim-dark
 
