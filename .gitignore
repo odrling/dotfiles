@@ -29,6 +29,7 @@ Cache
 /.config/mpv/*
 !/.config/mpv/mpv.conf
 !/.config/mpv/input.conf
+!/.config/mpv/scripts
 
 # compton config file
 !/.config/compton.conf
