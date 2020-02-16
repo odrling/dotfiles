@@ -33,6 +33,10 @@ set magic
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" wrap long lines
+set wrap
+set linebreak
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
