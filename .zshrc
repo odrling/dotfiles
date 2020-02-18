@@ -1,4 +1,6 @@
 
+stty -ixon # Disable ctrl-s and ctrl-q.
+
 # load modules
 bgnotify_threshold=0
 for i in ~/.zsh/*/*.plugin.zsh; do
