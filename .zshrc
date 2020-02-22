@@ -8,6 +8,10 @@ for i in ~/.zsh/*/*.plugin.zsh; do
 done
 
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
+source ~/.zsh/omz/oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # vi key bindings
 set -o vi
