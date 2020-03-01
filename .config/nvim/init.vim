@@ -217,14 +217,6 @@ autocmd FileType java ab main public static void main(String[] args)
 " shellthings
 autocmd FileType sh map #! ggi#!/bin/sh<CR>
 
-" markdown
-autocmd FileType markdown ab h1 #
-autocmd FileType markdown ab h2 ##
-autocmd FileType markdown ab h3 ###
-autocmd FileType markdown ab h4 ####
-autocmd FileType markdown ab h5 #####
-autocmd FileType markdown ab h6 ######
-
 " html
 autocmd BufNewFile *.html 0r ~/.templates/html
 autocmd BufNewFile *.html exe "normal 3jf>l" | startinsert
