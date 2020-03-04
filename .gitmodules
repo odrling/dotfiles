@@ -78,3 +78,6 @@
 [submodule ".vim/bundle/eleline.vim"]
 	path = .vim/bundle/eleline.vim
 	url = https://github.com/liuchengxu/eleline.vim.git
+[submodule ".zsh/zsh-autoenv"]
+	path = .zsh/zsh-autoenv
+	url = https://github.com/Tarrasch/zsh-autoenv.git
