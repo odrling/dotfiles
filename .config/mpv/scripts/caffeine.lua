@@ -1,4 +1,4 @@
--- caffeine script - don't lock the screen will mpv is open
+-- caffeine script - don't lock the screen and disable redshift when mpv is open
 local utils = require 'mp.utils'
 
 local function start_caffeine()
