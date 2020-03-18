@@ -32,6 +32,7 @@ Cache
 !/.config/mpv/scripts
 /.config/mpv/scripts/amoethyst.lua
 /.config/mpv/scripts/aniupdate.lua
+!/.config/mpv/shaders
 
 # compton config file
 !/.config/compton.conf
