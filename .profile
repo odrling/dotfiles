@@ -10,7 +10,7 @@ export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # start ssh-agent
-eval $(ssh-agent > /dev/null)
+eval $(ssh-agent)
 
 [ -f ~/.profile.local ] && . ~/.profile.local
 
