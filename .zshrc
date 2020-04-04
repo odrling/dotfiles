@@ -62,7 +62,7 @@ alias ytdl="youtube-dl"
 alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 
 alias ffmpeg="ffmpeg -hide_banner"
-alias ffprobe="ffmpeg -hide_banner"
+alias ffprobe="ffprobe -hide_banner"
 
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
