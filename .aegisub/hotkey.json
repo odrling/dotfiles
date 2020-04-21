@@ -235,10 +235,10 @@
 			"Ctrl-Space"
 		],
 		"video/frame/next" : [
-			"Ctrl-KP_6"
+			"Ctrl-;"
 		],
 		"video/frame/prev" : [
-			"Ctrl-KP_4"
+			"Ctrl-,"
 		],
 		"video/jump" : [
 			"Ctrl-G"
