@@ -9,7 +9,7 @@ redshift -l 43.6006786:1.3628012 -t 6000:2500 &
 # compositor
 xcompmgr &
 # status bar
-slstatus &
+dwmblocks &
 # default screen brightness
 xbacklight -set 30 &
 
