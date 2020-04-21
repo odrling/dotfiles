@@ -1,6 +1,21 @@
 
 stty -ixon # Disable ctrl-s and ctrl-q.
 
+# ssh-agent
+start_ssh_agent() {
+	ssh-agent | grep -v \^echo > "$SSH_ENV"
+	chmod 1600 "$SSH_ENV"
+}
+
+SSH_ENV="/tmp/.ssh_env.$USER"
+if [ -f "$SSH_ENV" ]; then
+    . "$SSH_ENV"
+    ps q $SSH_AGENT_PID > /dev/null || start_ssh_agent
+else
+    start_ssh_agent
+fi
+. "$SSH_ENV"
+
 # load modules
 bgnotify_threshold=0
 for i in ~/.zsh/*/*.plugin.zsh; do
@@ -67,3 +82,4 @@ alias ffprobe="ffprobe -hide_banner"
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
