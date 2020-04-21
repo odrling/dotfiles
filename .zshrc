@@ -25,6 +25,8 @@ done
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
 source ~/.zsh/omz/oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
 
+source ~/.zsh/command-not-found
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
