@@ -32,5 +32,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 fcitx &
 
+# map left control to escape
+xcape -e 'Control_L=Escape' &
 # start dwm
 exec dwm
