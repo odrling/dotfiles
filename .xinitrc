@@ -3,7 +3,7 @@
 eval "$(dbus-launch --sh-syntax --exit-with-session)"
 
 # set wallpaper
-setoutput || setwallpaper
+setoutput &
 
 # notification daemon
 dunst &
