@@ -34,5 +34,8 @@ fcitx &
 
 # map left control to escape
 xcape -e 'Control_L=Escape' &
+
+[ -e "$HOME/.xinitrc.local" ] && . "$HOME/.xinitrc.local"
+
 # start dwm
 exec dwm
