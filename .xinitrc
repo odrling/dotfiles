@@ -22,6 +22,10 @@ setxkbmap fr oss &
 # hide cursor when unused
 unclutter --ignore-scrolling -b
 
+# sound daemons
+jack_control start
+pulseaudio --start
+
 # fcitx
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
