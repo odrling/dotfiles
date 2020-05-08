@@ -72,6 +72,7 @@
 [submodule ".vim/bundle/coc.nvim"]
 	path = .vim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
+	branch = release
 [submodule ".vim/bundle/space-vim-dark"]
 	path = .vim/bundle/space-vim-dark
 	url = https://github.com/liuchengxu/space-vim-dark.git
