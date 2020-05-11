@@ -123,3 +123,7 @@ Cache
 
 # kitty config
 !/.config/kitty
+
+# jack
+!/.config/jack
+
