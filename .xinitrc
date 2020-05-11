@@ -25,6 +25,7 @@ unclutter --ignore-scrolling -b
 # sound daemons
 jack_control start
 pulseaudio --start
+jack_output_monitor &
 
 # fcitx
 export XMODIFIERS=@im=fcitx
