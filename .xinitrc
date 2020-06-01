@@ -17,7 +17,7 @@ dwmblocks &
 xbacklight -set 30 &
 
 # default keyboard layout
-setxkbmap fr oss &
+setxkbmap -layout fr -variant oss -option "caps:none,shift:both_capslock" &
 
 # hide cursor when unused
 unclutter --ignore-scrolling -b
