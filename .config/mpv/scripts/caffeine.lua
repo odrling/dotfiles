@@ -2,24 +2,13 @@
 local utils = require 'mp.utils'
 
 local function start_caffeine()
-    local caffeine_command = {}
-    local redshift_command = {}
-
-    caffeine_command.args = {"caffeine", "enable"}
-    redshift_command.args = {"control_redshift", "disable"}
-    utils.subprocess_detached(redshift_command)
-    utils.subprocess_detached(caffeine_command)
+    mp.commandv("run", "caffeine", "enable")
+    mp.commandv("run", "control_redshift", "disable")
 end
 
 local function stop_caffeine()
-    local caffeine_command = {}
-    local redshift_command = {}
-
-    caffeine_command.args = {"caffeine", "disable"}
-    redshift_command.args = {"control_redshift", "enable"}
-
-    utils.subprocess_detached(caffeine_command)
-    utils.subprocess_detached(redshift_command)
+    mp.commandv("run", "caffeine", "disable")
+    mp.commandv("run", "control_redshift", "enable")
 end
 
 mp.register_event('shutdown', stop_caffeine)
