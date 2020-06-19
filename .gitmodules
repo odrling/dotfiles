@@ -82,3 +82,6 @@
 [submodule ".zsh/zsh-autoenv"]
 	path = .zsh/zsh-autoenv
 	url = https://github.com/Tarrasch/zsh-autoenv.git
+[submodule ".zsh/zsh-nix-shell"]
+	path = .zsh/zsh-nix-shell
+	url = https://github.com/chisui/zsh-nix-shell.git

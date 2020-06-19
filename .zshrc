@@ -59,6 +59,8 @@ setopt appendhistory autocd notify histexpiredupsfirst histsavenodups incappendh
 unsetopt beep
 bindkey -e
 
+NIX_BUILD_SHELL=zsh
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
