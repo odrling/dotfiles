@@ -23,9 +23,7 @@ setxkbmap -layout fr -variant oss -option "caps:none,shift:both_capslock" &
 unclutter --ignore-scrolling -b
 
 # sound daemons
-jack_control start
-audio_input &
-audio_output &
+jack_start &
 pulseaudio --start
 
 # fcitx

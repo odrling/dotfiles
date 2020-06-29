@@ -4,7 +4,7 @@ JACK settings, as persisted by D-Bus object.
 You probably don't want to edit this because
 it will be overwritten next time jackdbus saves.
 -->
-<!-- Mon May 25 19:33:05 2020 -->
+<!-- Thu Jun 25 22:14:51 2020 -->
 <jack>
  <engine>
   <option name="driver">alsa</option>
@@ -13,20 +13,27 @@ it will be overwritten next time jackdbus saves.
   <option name="clock-source">0</option>
   <option name="replace-registry">false</option>
   <option name="sync">false</option>
-  <option name="slave-drivers">loopback</option>
+  <option name="slave-drivers"></option>
  </engine>
  <drivers>
+  <driver name="loopback">
+   <option name="channels">2</option>
+  </driver>
+  <driver name="net">
+  </driver>
+  <driver name="proxy">
+  </driver>
   <driver name="alsa">
    <option name="device">hw:0</option>
-   <option name="capture">capture</option>
-   <option name="playback">none</option>
+   <option name="capture">hw:USB</option>
+   <option name="playback">hw:SDAC</option>
    <option name="rate">48000</option>
    <option name="period">1024</option>
    <option name="nperiods">3</option>
    <option name="hwmon">false</option>
    <option name="duplex">true</option>
    <option name="softmode">false</option>
-   <option name="monitor">true</option>
+   <option name="monitor">false</option>
    <option name="dither">s</option>
    <option name="inchannels">2</option>
    <option name="outchannels">2</option>
@@ -34,32 +41,25 @@ it will be overwritten next time jackdbus saves.
    <option name="input-latency">0</option>
    <option name="output-latency">0</option>
   </driver>
+  <driver name="alsarawmidi">
+  </driver>
   <driver name="dummy">
    <option name="capture">2</option>
    <option name="playback">2</option>
    <option name="rate">48000</option>
    <option name="monitor">true</option>
   </driver>
-  <driver name="net">
-  </driver>
-  <driver name="loopback">
-   <option name="channels">2</option>
-  </driver>
   <driver name="netone">
-  </driver>
-  <driver name="proxy">
-  </driver>
-  <driver name="alsarawmidi">
   </driver>
  </drivers>
  <internals>
-  <internal name="netmanager">
+  <internal name="profiler">
   </internal>
-  <internal name="netadapter">
+  <internal name="netmanager">
   </internal>
   <internal name="audioadapter">
   </internal>
-  <internal name="profiler">
+  <internal name="netadapter">
   </internal>
  </internals>
 </jack>
