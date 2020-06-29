@@ -1,20 +1,26 @@
-auto-reload no
+auto-reload yes
+suppress-first-reload yes
+reload-time 5
 reload-threads 10
 browser firefox
+notify-program nb-notifier
+show-read-feeds no
 
 # unbind keys
 unbind-key ENTER
-unbind-key j
-unbind-key k
 unbind-key J
 unbind-key K
-
 
 # bind keys - vim style
 bind-key j down
 bind-key k up
 bind-key l open
 bind-key h quit
+bind-key G end
+bind-key g home
+bind-key r toggle-show-read-feeds
+
+macro m set browser "setsid -f umpv" ; open-in-browser ; set browser firefox
 
 # colors
 color background         default   default
@@ -26,7 +32,15 @@ color info               default   black
 color article            default   default
 
 # highlights
+highlight all "---.*---" white magenta
+highlight feedlist ".*(0/0))" black
+highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
+highlight article "(^Link:.*|^Date:.*)" default default
+highlight article "https?://[^ ]+" green default
 highlight article "^(Title):.*$" blue default
-highlight article "https?://[^ ]+" red default
-highlight article "\\[image\\ [0-9]+\\]" green default
-
+highlight article "\\[[0-9][0-9]*\\]" magenta default bold
+highlight article "\\[image\\ [0-9]+\\]" green default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
+highlight article ":.*\\(link\\)$" cyan default
+highlight article ":.*\\(image\\)$" blue default
+highlight article ":.*\\(embedded flash\\)$" magenta default
