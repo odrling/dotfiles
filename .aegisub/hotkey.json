@@ -125,6 +125,12 @@
 		"app/options" : [
 			"Alt-O"
 		],
+		"automation/lua/Flux.Selegator/Selegator/Current Style/Next" : [
+			"Ctrl-J"
+		],
+		"automation/lua/Flux.Selegator/Selegator/Current Style/Previous" : [
+			"Ctrl-K"
+		],
 		"automation/lua/duetto-meika/Deduetto Meika" : [
 			"Ctrl-Shift-D"
 		],
@@ -135,7 +141,7 @@
 			"Ctrl-Alt-Shift-K"
 		],
 		"automation/lua/karaoke-adjust-1sec/Karaoke 1sec adjust lead-in" : [
-			"Ctrl-K"
+			"Alt-K"
 		],
 		"automation/lua/karaoke-adjust-1sec/Mugenizer" : [
 			"Ctrl-Shift-K"
