@@ -73,9 +73,6 @@
 	path = .vim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 	branch = release
-[submodule ".vim/bundle/space-vim-dark"]
-	path = .vim/bundle/space-vim-dark
-	url = https://github.com/liuchengxu/space-vim-dark.git
 [submodule ".vim/bundle/eleline.vim"]
 	path = .vim/bundle/eleline.vim
 	url = https://github.com/liuchengxu/eleline.vim.git
@@ -85,3 +82,6 @@
 [submodule ".zsh/zsh-nix-shell"]
 	path = .zsh/zsh-nix-shell
 	url = https://github.com/chisui/zsh-nix-shell.git
+[submodule ".vim/bundle/space-vim-theme"]
+	path = .vim/bundle/space-vim-theme
+	url = git@github.com:liuchengxu/space-vim-theme.git
