@@ -44,10 +44,6 @@ set linebreak
 " use true colors
 set termguicolors
 set background=dark
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -200,6 +196,10 @@ inoremap <S-Enter> <Esc>O
 
 " bulk rename (with dirvish)
 nnoremap <C-S-r> :%Shdo mv {} {}<cr>
+
+" diff
+nnoremap <leader>d :windo diffthis<cr>
+nnoremap <leader>gd :vertical Gdiff<cr>
 
 " pythonthings
 autocmd FileType python map #! ggi#!/usr/bin/env python3<CR><ESC>:silent exec "!chmod +x %"<CR>
