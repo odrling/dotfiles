@@ -131,11 +131,8 @@
 		"automation/lua/Flux.Selegator/Selegator/Current Style/Previous" : [
 			"Ctrl-K"
 		],
-		"automation/lua/duetto-meika/Deduetto Meika" : [
-			"Ctrl-Shift-D"
-		],
-		"automation/lua/duetto-meika/Duetto Meika" : [
-			"Ctrl-D"
+		"automation/lua/Flux.Selegator/Selegator/Select Until End" : [
+			"Ctrl-G"
 		],
 		"automation/lua/kara-templater/Apply karaoke template" : [
 			"Ctrl-Alt-Shift-K"
@@ -158,9 +155,6 @@
 		"automation/lua/ua.ScriptCleanup/Script Cleanup" : [
 			"Ctrl-Shift-O"
 		],
-		"edit/find_replace" : [
-			"Ctrl-H"
-		],
 		"edit/line/copy" : [
 			"Ctrl-C"
 		],
@@ -169,6 +163,9 @@
 		],
 		"edit/line/delete" : [
 			"Ctrl-Delete"
+		],
+		"edit/line/duplicate" : [
+			"Ctrl-D"
 		],
 		"edit/line/paste" : [
 			"Ctrl-V"
@@ -362,7 +359,7 @@
 			"Right"
 		],
 		"video/frame/next/boundary" : [
-			"Ctrl-Right"
+			"Ctrl-L"
 		],
 		"video/frame/next/keyframe" : [
 			"Shift-Right"
@@ -374,13 +371,16 @@
 			"Left"
 		],
 		"video/frame/prev/boundary" : [
-			"Ctrl-Left"
+			"Ctrl-H"
 		],
 		"video/frame/prev/keyframe" : [
 			"Shift-Left"
 		],
 		"video/frame/prev/large" : [
 			"Alt-Left"
+		],
+		"video/play/line" : [
+			"Ctrl-P"
 		],
 		"video/tool/clip" : [
 			"H"
