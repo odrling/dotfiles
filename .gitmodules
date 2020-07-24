@@ -89,5 +89,5 @@
 	path = .vim/bundle/space-vim-theme
 	url = https://github.com/liuchengxu/space-vim-theme.git
 [submodule "/home/odrling/.tmux/plugins/tpm"]
-	path = /home/odrling/.tmux/plugins/tpm
+	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
