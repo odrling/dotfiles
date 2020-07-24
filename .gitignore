@@ -127,3 +127,5 @@ Cache
 # jack
 !/.config/jack
 
+# tmux tpm
+!/.tmux/plugins/tpm
