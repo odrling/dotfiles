@@ -27,6 +27,9 @@ source ~/.zsh/omz/oh-my-zsh/plugins/history-substring-search/history-substring-s
 
 source ~/.zsh/command-not-found
 
+source ~/.vim/fzf/shell/completion.zsh
+source ~/.vim/fzf/shell/key-bindings.zsh
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
