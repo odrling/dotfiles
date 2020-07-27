@@ -132,6 +132,7 @@
 			"Ctrl-K"
 		],
 		"automation/lua/Flux.Selegator/Selegator/Select Until End" : [
+			"Ctrl-G",
 			"Ctrl-G"
 		],
 		"automation/lua/kara-templater/Apply karaoke template" : [
@@ -174,7 +175,8 @@
 			"Ctrl-Shift-V"
 		],
 		"edit/line/split/after" : [
-			"Ctrl-Alt-Shift-D"
+			"Ctrl-Alt-Shift-D",
+			"Ctrl-Shift-D"
 		],
 		"edit/line/split/before" : [
 			"Ctrl-Alt-D"
@@ -240,11 +242,17 @@
 		"video/frame/next" : [
 			"Ctrl-;"
 		],
+		"video/frame/next/boundary" : [
+			"Ctrl-L"
+		],
 		"video/frame/prev" : [
 			"Ctrl-,"
 		],
+		"video/frame/prev/boundary" : [
+			"Ctrl-H"
+		],
 		"video/jump" : [
-			"Ctrl-G"
+			"Ctrl-Shift-G"
 		],
 		"video/jump/end" : [
 			"Ctrl-2"
