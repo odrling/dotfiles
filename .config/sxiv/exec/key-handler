@@ -27,6 +27,9 @@ do
         "l")
             setwallpaper "$file" "$HOME/.lock"
             ;;
+        "g")
+            gimp "$file"
+            ;;
 
     esac
 done
