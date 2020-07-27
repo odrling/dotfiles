@@ -10,7 +10,7 @@ dunst &
 # night light
 redshift -l 43.6006786:1.3628012 -t 6000:2500 &
 # compositor
-xcompmgr &
+picom &
 # status bar
 dwmblocks &
 # default screen brightness

@@ -34,8 +34,8 @@ Cache
 /.config/mpv/scripts/aniupdate.lua
 !/.config/mpv/shaders
 
-# compton config file
-!/.config/compton.conf
+# picom config file
+!/.config/picom.conf
 
 # whipper config files
 !/.config/whipper
