@@ -92,16 +92,10 @@
 			"V"
 		],
 		"time/length/decrease" : [
-			"KP_Subtract"
-		],
-		"time/length/decrease/shift" : [
-			"Shift-KP_Subtract"
+			"L"
 		],
 		"time/length/increase" : [
-			"KP_Add"
-		],
-		"time/length/increase/shift" : [
-			"Shift-KP_Add"
+			"M"
 		],
 		"time/next" : [
 			"R",
@@ -110,6 +104,12 @@
 		"time/prev" : [
 			"A",
 			"Left"
+		],
+		"time/start/decrease" : [
+			"J"
+		],
+		"time/start/increase" : [
+			"K"
 		],
 		"time/tap/connect" : [
 			"I"
@@ -168,6 +168,9 @@
 		"edit/line/duplicate" : [
 			"Ctrl-D"
 		],
+		"edit/line/join/concatenate" : [
+			"Ctrl-Shift-X"
+		],
 		"edit/line/paste" : [
 			"Ctrl-V"
 		],
@@ -179,7 +182,8 @@
 			"Ctrl-Shift-D"
 		],
 		"edit/line/split/before" : [
-			"Ctrl-Alt-D"
+			"Ctrl-Alt-D",
+			"Ctrl-Shift-C"
 		],
 		"edit/redo" : [
 			"Ctrl-Y"
@@ -245,11 +249,17 @@
 		"video/frame/next/boundary" : [
 			"Ctrl-L"
 		],
+		"video/frame/next/keyframe" : [
+			"Alt-L"
+		],
 		"video/frame/prev" : [
 			"Ctrl-,"
 		],
 		"video/frame/prev/boundary" : [
 			"Ctrl-H"
+		],
+		"video/frame/prev/keyframe" : [
+			"Alt-H"
 		],
 		"video/jump" : [
 			"Ctrl-Shift-G"
