@@ -1,5 +1,4 @@
 auto-reload yes
-suppress-first-reload yes
 reload-time 5
 reload-threads 10
 browser firefox
