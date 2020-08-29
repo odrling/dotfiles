@@ -119,17 +119,8 @@
 		]
 	},
 	"Default" : {
-		"app/exit" : [
-			"Ctrl-Q"
-		],
 		"app/options" : [
 			"Alt-O"
-		],
-		"automation/lua/Flux.Selegator/Selegator/Current Style/Next" : [
-			"Ctrl-J"
-		],
-		"automation/lua/Flux.Selegator/Selegator/Current Style/Previous" : [
-			"Ctrl-K"
 		],
 		"automation/lua/Flux.Selegator/Selegator/Select Until End" : [
 			"Ctrl-G",
@@ -192,9 +183,11 @@
 			"Ctrl-Z"
 		],
 		"grid/line/next" : [
+			"Ctrl-J",
 			"Ctrl-KP_2"
 		],
 		"grid/line/prev" : [
+			"Ctrl-K",
 			"Ctrl-KP_8"
 		],
 		"grid/move/down" : [
@@ -224,6 +217,12 @@
 		],
 		"subtitle/save/as" : [
 			"Ctrl-Shift-S"
+		],
+		"time/continuous/end" : [
+			"Ctrl-Shift-O"
+		],
+		"time/continuous/start" : [
+			"Ctrl-Shift-I"
 		],
 		"time/frame/current" : [
 			"Ctrl-6"
@@ -320,6 +319,9 @@
 		]
 	},
 	"Subtitle Grid" : {
+		"edit/line/join/concatenate" : [
+			"Ctrl-Shift-J"
+		],
 		"subtitle/select/all" : [
 			"Ctrl-A"
 		],
