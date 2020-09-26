@@ -8,7 +8,7 @@ setoutput &
 # notification daemon
 dunst &
 # night light
-redshift -l 43.6006786:1.3628012 -t 6000:2500 &
+# redshift -l 43.6006786:1.3628012 -t 6000:2500 &
 # compositor
 picom &
 # status bar
