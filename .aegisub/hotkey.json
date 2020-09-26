@@ -122,6 +122,12 @@
 		"app/options" : [
 			"Alt-O"
 		],
+		"automation/lua/Flux.Selegator/Selegator/Current Style/Next" : [
+			"Ctrl-Shift-J"
+		],
+		"automation/lua/Flux.Selegator/Selegator/Current Style/Previous" : [
+			"Ctrl-Shift-K"
+		],
 		"automation/lua/Flux.Selegator/Selegator/Select Until End" : [
 			"Ctrl-G",
 			"Ctrl-G"
@@ -133,7 +139,7 @@
 			"Alt-K"
 		],
 		"automation/lua/karaoke-adjust-1sec/Mugenizer" : [
-			"Ctrl-Shift-K"
+			"Ctrl-Alt-K"
 		],
 		"automation/lua/karaoke-split/Split karaoke line" : [
 			"Ctrl-Shift-P"
@@ -320,7 +326,7 @@
 	},
 	"Subtitle Grid" : {
 		"edit/line/join/concatenate" : [
-			"Ctrl-Shift-J"
+			"Ctrl-Alt-J"
 		],
 		"subtitle/select/all" : [
 			"Ctrl-A"
@@ -375,6 +381,9 @@
 		]
 	},
 	"Video" : {
+		"time/align" : [
+			"KP_TAB"
+		],
 		"video/frame/next" : [
 			"Right"
 		],
