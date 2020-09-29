@@ -1,7 +1,7 @@
 auto-reload yes
 reload-time 5
 reload-threads 10
-browser firefox
+browser w3m
 notify-program nb-notifier
 show-read-feeds no
 
@@ -19,7 +19,8 @@ bind-key G end
 bind-key g home
 bind-key r toggle-show-read-feeds
 
-macro m set browser "setsid -f umpv" ; open-in-browser ; set browser firefox
+macro m set browser "setsid -f umpv" ; open-in-browser ; set browser w3m
+macro f set browser "firefox" ; open-in-browser ; set browser w3m
 
 # colors
 color background         default   default
