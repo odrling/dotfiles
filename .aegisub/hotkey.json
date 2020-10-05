@@ -147,6 +147,9 @@
 		"automation/lua/ua.ChangeCase/Change Case" : [
 			"Ctrl-Shift-C"
 		],
+		"automation/lua/ua.Cycles/Cycles/Blur Cycle" : [
+			"Ctrl-B"
+		],
 		"automation/lua/ua.HYDRA/HYDRA" : [
 			"Ctrl-Shift-H"
 		],
@@ -325,11 +328,20 @@
 		]
 	},
 	"Subtitle Grid" : {
+		"automation/lua/lyger.GradientByChar/Gradient by character/Apply Gradient" : [
+			"Ctrl-Shift-G"
+		],
 		"edit/line/join/concatenate" : [
 			"Ctrl-Alt-J"
 		],
 		"subtitle/select/all" : [
 			"Ctrl-A"
+		],
+		"time/snap/end_video" : [
+			"Ctrl-Shift-Right"
+		],
+		"time/snap/start_video" : [
+			"Ctrl-Shift-Left"
 		],
 		"video/frame/next" : [
 			"Right"
