@@ -25,14 +25,14 @@ Cache
 /.config/*
 
 # mpv config file
-!/.config/mpv
-/.config/mpv/*
-!/.config/mpv/mpv.conf
-!/.config/mpv/input.conf
-!/.config/mpv/scripts
-/.config/mpv/scripts/amoethyst.lua
-/.config/mpv/scripts/aniupdate.lua
-!/.config/mpv/shaders
+!/.mpv
+/.mpv/*
+!/.mpv/mpv.conf
+!/.mpv/input.conf
+!/.mpv/scripts
+/.mpv/scripts/amoethyst.lua
+/.mpv/scripts/aniupdate.lua
+!/.mpv/shaders
 
 # picom config file
 !/.config/picom.conf
