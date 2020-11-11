@@ -1,0 +1,3 @@
+set exaliases.mpvsafe js -p tri.excmds.shellescape(JS_ARG).then(url => tri.excmds.exclaim_quiet('umpv ' + url))
+bind ,m js tri.excmds.exclaim_quiet('umpv ' + document.location.href)
+bind ,M hint -W mpvsafe

@@ -129,3 +129,6 @@ Cache
 
 # tmux tpm
 !/.tmux/plugins/tpm
+
+# tridactly
+!/.tridactylrc
