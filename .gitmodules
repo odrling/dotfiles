@@ -20,14 +20,11 @@
 [submodule ".vim/vim-fugitive"]
 	path = .vim/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/vim-pathogen"]
-	path = .vim/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
 [submodule ".vim/bundle/sleuth"]
-	path = .vim/bundle/sleuth
+	path = .local/share/nvim/site/pack/sleuth/start/sleuth
 	url = https://tpope.io/vim/sleuth.git
 [submodule ".vim/bundle/vim-polyglot"]
-	path = .vim/bundle/vim-polyglot
+	path = .local/share/nvim/site/pack/vim-polyglot/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
@@ -45,36 +42,36 @@
 	path = .vim/vidir
 	url = https://github.com/trapd00r/vidir.git
 [submodule ".vim/bundle/delimitMate"]
-	path = .vim/bundle/delimitMate
+	path = .local/share/nvim/site/pack/delimitMate/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 	ignore = dirty
 [submodule ".vim/bundle/vim-commentary"]
-	path = .vim/bundle/vim-commentary
+	path = .local/share/nvim/site/pack/vim-commentary/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
 [submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
+	path = .local/share/nvim/site/pack/vim-surround/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-repeat"]
-	path = .vim/bundle/vim-repeat
+	path = .local/share/nvim/site/pack/vim-repeat/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
 [submodule ".vim/bundle/vim-dirvish"]
-	path = .vim/bundle/vim-dirvish
+	path = .local/share/nvim/site/pack/vim-dirvish/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
 [submodule ".vim/bundle/vim-eunuch"]
-	path = .vim/bundle/vim-eunuch
+	path = .local/share/nvim/site/pack/vim-eunuch/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
 [submodule ".vim/bundle/vim-unimpaired"]
-	path = .vim/bundle/vim-unimpaired
+	path = .local/share/nvim/site/pack/vim-unimpaired/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule ".vim/bundle/vim-clap"]
-	path = .vim/bundle/vim-clap
+	path = .local/share/nvim/site/pack/vim-clap/start/vim-clap
 	url = https://github.com/liuchengxu/vim-clap.git
 [submodule ".vim/bundle/coc.nvim"]
-	path = .vim/bundle/coc.nvim
+	path = .local/share/nvim/site/pack/coc.nvim/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 	branch = release
 [submodule ".vim/bundle/eleline.vim"]
-	path = .vim/bundle/eleline.vim
+	path = .local/share/nvim/site/pack/eleline.vim/start/eleline.vim
 	url = https://github.com/liuchengxu/eleline.vim.git
 [submodule ".zsh/zsh-autoenv"]
 	path = .zsh/zsh-autoenv
@@ -83,10 +80,10 @@
 	path = .zsh/zsh-nix-shell
 	url = https://github.com/chisui/zsh-nix-shell.git
 [submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
+	path = .local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/space-vim-theme"]
-	path = .vim/bundle/space-vim-theme
+	path = .local/share/nvim/site/pack/space-vim-theme/start/space-vim-theme
 	url = https://github.com/liuchengxu/space-vim-theme.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm

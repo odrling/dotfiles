@@ -46,13 +46,6 @@ Cache
 # pypirc
 !/.pypirc
 
-# nvim
-!/.vimrc
-!/.vim
-!/.config/nvim
-.netrwhist
-/.config/nvim/bundle
-
 # localbins
 !/.local
 !/.local/bin
@@ -132,3 +125,14 @@ Cache
 
 # tridactly
 !/.tridactylrc
+
+# nvim
+!/.vimrc
+!/.vim
+!/.local/share
+/.local/share/*
+!/.local/share/nvim
+!/.config/nvim
+.netrwhist
+/.config/nvim/bundle
+

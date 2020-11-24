@@ -281,7 +281,5 @@ endfunction
 
 source ~/.vim/coc.conf.vim
 
-execute pathogen#infect('~/.vim/bundle/{}')
-
 colorscheme space_vim_theme
 
