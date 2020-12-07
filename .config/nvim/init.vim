@@ -37,6 +37,11 @@ set mat=2
 set wrap
 set linebreak
 
+" disable wrapping the input
+set textwidth=0
+set wrapmargin=0
+set formatoptions-=t
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
