@@ -31,6 +31,7 @@ Cache
 !/.mpv/input.conf
 !/.mpv/scripts
 /.mpv/scripts/amoethyst.lua
+/.mpv/scripts/japan7.lua
 /.mpv/scripts/aniupdate.lua
 !/.mpv/shaders
 
