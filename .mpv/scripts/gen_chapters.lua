@@ -5,7 +5,7 @@ local new_chapters = true
 function add_chapter()
     local time = format(mp.get_property_number("time-pos"))
     local title = mp.get_property("media-title")
-    local out = utils.join_path(utils.getcwd(), title.."chapters.ass")
+    local out = utils.join_path(utils.getcwd(), title.." chapters.ass")
     local file
     if new_chapters then
         file = io.open(out, "w")
@@ -18,6 +18,8 @@ function add_chapter()
 
     file:write("Comment: 0,"..time..","..time..",Default,chapter,0,0,0,,\n")
     file:close()
+
+    mp.osd_message("added chapter at "..time)
 end
 
 function format(seconds)
