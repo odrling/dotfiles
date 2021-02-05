@@ -137,3 +137,5 @@ Cache
 .netrwhist
 /.config/nvim/bundle
 
+# flake8
+!/.flake8
