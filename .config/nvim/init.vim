@@ -11,6 +11,9 @@ filetype indent on
 set path+=**
 set wildmenu
 
+" disable ale lsp
+let g:ale_disable_lsp = 1
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -149,9 +152,9 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.c,*.js,*.py,*.java,*.wiki,*.sh,*.coffee,*.adb,*ads :call CleanExtraSpaces()
-endif
+" if has("autocmd")
+"     autocmd BufWritePre *.txt,*.c,*.js,*.py,*.java,*.wiki,*.sh,*.coffee,*.adb,*ads :call CleanExtraSpaces()
+" endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -210,6 +213,7 @@ nnoremap <leader>gd :vertical Gdiff<cr>
 autocmd FileType python map #! ggi#!/usr/bin/env python3<CR><ESC>:silent exec "!chmod +x %"<CR>
 autocmd FileType python map ;m oif __name__ == '__main__':<CR>main()<ESC>^
 autocmd FileType python map <C-i> :w<CR>:silent exec "!isort %"<CR>:e %<CR>
+autocmd FileType python map <leader>o :CocCommand pyright.organizeimports<CR>
 
 " javathings
 autocmd FileType java ab sop System.out.print
@@ -288,3 +292,9 @@ source ~/.vim/coc.conf.vim
 
 colorscheme space_vim_theme
 
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL

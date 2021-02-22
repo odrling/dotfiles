@@ -91,3 +91,6 @@
 [submodule ".aegisub/automation/0x539"]
 	path = .aegisub/automation/0x539
 	url = https://github.com/The0x539/Aegisub-Scripts.git
+[submodule ".local/share/nvim/site/pack/ale/start/ale"]
+	path = .local/share/nvim/site/pack/ale/start/ale
+	url = git@github.com:dense-analysis/ale.git
