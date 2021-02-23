@@ -228,7 +228,7 @@ let g:netrw_banner=0 " disable the banner
 let g:netrw_liststyle=3 " tree view
 let $FZF_DEFAULT_COMMAND = "grep -lrsI . . | grep -v .git | sed 's|^./||g'"
 map <C-o> :Clap files<CR>
-map <leader><leader> :FZF!<CR>
+map <leader><leader> :Clap files<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
