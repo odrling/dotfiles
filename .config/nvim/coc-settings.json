@@ -1,7 +1,6 @@
 {
     "diagnostic.displayByAle": true,
     "python.pythonPath": "python",
-    "python.linting.flake8Enabled": true,
     "python.analysis.autoSearchPaths": true,
     "python.analysis.typeCheckingMode": "basic",
     "languageserver": {
