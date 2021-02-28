@@ -77,7 +77,7 @@ export FZF_DEFAULT_COMMAND="find . -not \( -name .git -prune \) -type f | sed 's
 
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 alias dotmodules="dots submodule update --recursive --remote"
-alias venv="source ~/.venv/bin/activate"
+alias venv="source ~/.venvs/venv/bin/activate"
 alias top="htop"
 alias ytdl="youtube-dl"
 
