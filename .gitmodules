@@ -94,3 +94,6 @@
 [submodule ".local/share/nvim/site/pack/ale/start/ale"]
 	path = .local/share/nvim/site/pack/ale/start/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule ".local/share/nvim/site/pack/vim-grammarous/start/vim-grammarous"]
+	path = .local/share/nvim/site/pack/vim-grammarous/start/vim-grammarous
+	url = https://github.com/rhysd/vim-grammarous.git
