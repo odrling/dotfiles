@@ -8,6 +8,8 @@ ignore =
     E731,
     # line break before binary operator
     W503,
+    # line break after binary operator
+    W504,
     # blank line at end of file
     W391,
     # whitespace around arithmetic operator
