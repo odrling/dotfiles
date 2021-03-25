@@ -43,6 +43,11 @@ Cache
 
 # tmux config file
 !/.tmux.conf
+!/.tmux
+/.tmux/*
+!/.tmux/plugins
+/.tmux/plugins/*
+!/.tmux/plugins/tpm
 
 # pypirc
 !/.pypirc
@@ -121,9 +126,6 @@ Cache
 # jack
 !/.config/jack
 
-# tmux tpm
-!/.tmux/plugins/tpm
-
 # tridactly
 !/.tridactylrc
 
@@ -133,6 +135,7 @@ Cache
 !/.local/share
 /.local/share/*
 !/.local/share/nvim
+/.local/share/nvim/shada
 !/.config/nvim
 .netrwhist
 /.config/nvim/bundle
