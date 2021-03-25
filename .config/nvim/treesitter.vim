@@ -1,39 +1,11 @@
-" highlight
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    custom_captures = {
-      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      ["foo.bar"] = "Identifier",
-    },
-  },
+  -- Modules and its options go here
+  highlight = { enable = true },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
 }
 EOF
-
-" incremental selection
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
-EOF
-
-" indentation
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   indent = {
-"     enable = true
-"   }
-" }
-" EOF
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
