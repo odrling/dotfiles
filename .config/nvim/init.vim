@@ -283,7 +283,7 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-source ~/.vim/coc.conf.vim
+source ~/.config/nvim/coc.vim
 source ~/.config/nvim/treesitter.vim
 
 colorscheme space_vim_theme
