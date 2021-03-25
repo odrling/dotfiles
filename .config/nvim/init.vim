@@ -285,6 +285,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 source ~/.vim/coc.conf.vim
+source ~/.config/nvim/treesitter.vim
 
 colorscheme space_vim_theme
 
