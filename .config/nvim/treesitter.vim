@@ -27,13 +27,13 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " indentation
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  indent = {
-    enable = true
-  }
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   indent = {
+"     enable = true
+"   }
+" }
+" EOF
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
