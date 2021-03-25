@@ -285,7 +285,6 @@ endfunction
 
 function! ConfUpdate()
     CocUpdate
-    TSUpdate
     Clap install-binary
 endfunction
 
