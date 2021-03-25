@@ -209,7 +209,6 @@ nnoremap <leader>gd :vertical Gdiff<cr>
 autocmd FileType python map #! ggi#!/usr/bin/env python3<CR><ESC>:silent exec "!chmod +x %"<CR>
 autocmd FileType python map ;m oif __name__ == '__main__':<CR>main()<ESC>^
 autocmd FileType python map <C-i> :w<CR>:silent exec "!isort %"<CR>:e %<CR>
-autocmd FileType python map <leader>o :CocCommand pyright.organizeimports<CR>
 
 " javathings
 autocmd FileType java ab sop System.out.print
