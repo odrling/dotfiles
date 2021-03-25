@@ -283,6 +283,12 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+function! ConfUpdate()
+    CocUpdate
+    TSUpdate
+    Clap install-binary
+endfunction
+
 source ~/.config/nvim/coc.vim
 source ~/.config/nvim/treesitter.vim
 
