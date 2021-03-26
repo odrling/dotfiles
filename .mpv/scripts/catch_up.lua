@@ -16,7 +16,7 @@ local catchup_until = settings.catchup_until
 
 
 function stop_catchup()
-   local remaining = mp.get_property_number("demuxer-cache-duration")
+   local remaining = mp.get_property_number("demuxer-cache-duration", 0)
 
    if remaining < catchup_until then
       mp.set_property("speed", 1.00)
