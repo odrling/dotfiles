@@ -23,6 +23,8 @@ for i in ~/.zsh/*/*.plugin.zsh; do
 done
 
 source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
+source ~/.zsh/omz/oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
+
 source ~/.zsh/command-not-found
 
 source ~/.vim/fzf/shell/completion.zsh
@@ -87,3 +89,4 @@ alias ffprobe="ffprobe -hide_banner"
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
