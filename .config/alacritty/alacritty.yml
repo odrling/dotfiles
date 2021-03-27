@@ -11,8 +11,12 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
+  WINIT_X11_SCALE_FACTOR: "1"
 
 window:
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -38,7 +42,7 @@ window:
     y: 2
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -67,19 +71,7 @@ scrolling:
   # to allow mouse scrolling for applications like `man`.
   #
   # Specifying `0` will disable faux scrolling.
-  multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-tabspaces: 4
+  faux_multiplier: 3
 
 # Font configuration (changes require restart)
 font:
@@ -88,8 +80,7 @@ font:
     # Font family
     #
     # Default:
-    #   - (macOS) Menlo
-    #   - (Linux) monospace
+    #   - (macOS) Menlo - (Linux) monospace
     #   - (Windows) Consolas
     family: monospace
 
@@ -119,7 +110,7 @@ font:
     style: Italic
 
   # Point size
-  size: 10.0
+  size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -157,7 +148,7 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x181224'
+    background: '0x222222'
     foreground: '0xfcfcfa'
 
     # Bright and dim foreground colors
@@ -252,7 +243,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -261,7 +252,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.97
+background_opacity: 1.0
 
 # Mouse bindings
 #
@@ -319,9 +310,6 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: false
 
-# Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
-
 cursor:
   # Cursor style
   #
@@ -329,7 +317,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  # style: Underline
+  style: Underline
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -452,14 +440,16 @@ alt_send_esc: true
 #   - AppKeypad
 key_bindings:
   # (Windows/Linux only)
-  #- { key: V,        mods: Control|Shift, action: Paste            }
-  #- { key: C,        mods: Control|Shift, action: Copy             }
-  #- { key: Insert,   mods: Shift,         action: PasteSelection   }
-  #- { key: Key0,     mods: Control,       action: ResetFontSize    }
-  #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
-  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: V,        mods: Alt,           action: Paste            }
+  - { key: C,        mods: Alt,           action: Copy             }
+  - { key: K,        mods: Alt,           action: ScrollLineUp     }
+  - { key: J,        mods: Alt,           action: ScrollLineDown   }
+  # - { key: Insert,   mods: Shift,         action: PasteSelection   }
+  # - { key: Key0,     mods: Alt,           action: ResetFontSize    }
+  # - { key: I,        mods: Alt,           action: IncreaseFontSize }
+  # - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  # - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  # - { key: D,        mods: Alt,           action: DecreaseFontSize }
 
   # (macOS only)
   #- { key: Key0,   mods: Command, action: ResetFontSize    }
@@ -474,7 +464,7 @@ key_bindings:
   #- { key: Q,      mods: Command, action: Quit             }
   #- { key: W,      mods: Command, action: Quit             }
 
-  - { key: B,        mods: Control, action: ScrollToBottom                   }
+  # - { key: B,        mods: Control, action: ScrollToBottom                   }
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
   - { key: L,        mods: Control, action: ClearLogNotice                   }
@@ -485,15 +475,17 @@ key_bindings:
   - { key: End,      mods: Alt,     chars: "\x1b[1;3F"                       }
   - { key: End,                     chars: "\x1bOF",        mode: AppCursor  }
   - { key: End,                     chars: "\x1b[F",        mode: ~AppCursor }
-  - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
   - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~",     mode: Alt        }
+  - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
   - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                       }
-  - { key: PageUp,   mods: Alt,     chars: "\x1b[5;3~"                       }
+  # - { key: PageUp,   mods: Alt,     chars: "\x1b[5;3~"                       }
+  - { key: PageUp,   mods: Alt,     action: IncreaseFontSize                 }
   - { key: PageUp,                  chars: "\x1b[5~"                         }
   - { key: PageDown, mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
   - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~",     mode: Alt        }
   - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                       }
-  - { key: PageDown, mods: Alt,     chars: "\x1b[6;3~"                       }
+  # - { key: PageDown, mods: Alt,     chars: "\x1b[6;3~"                       }
+  - { key: PageDown, mods: Alt,     action: DecreaseFontSize                 }
   - { key: PageDown,                chars: "\x1b[6~"                         }
   - { key: Tab,      mods: Shift,   chars: "\x1b[Z"                          }
   - { key: Back,                    chars: "\x7f"                            }
