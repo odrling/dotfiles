@@ -1,4 +1,3 @@
-
 stty -ixon # Disable ctrl-s and ctrl-q.
 
 # ssh-agent
@@ -53,6 +52,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 }
 
 autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
 
 zstyle ':completion::complete:*' use-cache 1
 export HISTFILE=~/.histfile
@@ -89,4 +89,3 @@ alias ffprobe="ffprobe -hide_banner"
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
