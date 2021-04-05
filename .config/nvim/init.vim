@@ -284,8 +284,8 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 function! ConfUpdate()
-    CocUpdate
-    Clap install-binary
+    CocUpdateSync
+    quit
 endfunction
 
 source ~/.config/nvim/coc.vim

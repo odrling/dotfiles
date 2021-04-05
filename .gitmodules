@@ -63,9 +63,6 @@
 [submodule ".vim/bundle/vim-unimpaired"]
 	path = .local/share/nvim/site/pack/vim-unimpaired/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule ".vim/bundle/vim-clap"]
-	path = .local/share/nvim/site/pack/vim-clap/start/vim-clap
-	url = https://github.com/liuchengxu/vim-clap.git
 [submodule ".vim/bundle/coc.nvim"]
 	path = .local/share/nvim/site/pack/coc.nvim/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
