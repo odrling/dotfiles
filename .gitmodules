@@ -100,3 +100,6 @@
 [submodule ".local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter"]
 	path = .local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".zsh/evalcache"]
+	path = .zsh/evalcache
+	url = https://github.com/mroth/evalcache.git
