@@ -7,17 +7,13 @@ setoutput &
 
 # notification daemon
 dunst &
-# night light
-# redshift -l 43.6006786:1.3628012 -t 6000:2500 &
 # compositor
 picom &
-# status bar
-dwmblocks &
 # default screen brightness
 xbacklight -set 30 &
 
 # default keyboard layout
-setxkbmap -layout fr -variant oss -option "caps:none,shift:both_capslock" &
+sethid &
 
 # hide cursor when unused
 unclutter --ignore-scrolling -b
