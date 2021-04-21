@@ -1,8 +1,8 @@
 
 settings = {
 
-   speed_up = 1.10,
-   catchup_until = 3,
+   speed_up = 1.05,
+   catchup_until = 4,
 
 }
 
@@ -15,14 +15,19 @@ local catch_up_timeout = 1
 local catchup_until = settings.catchup_until
 
 
-function stop_catchup()
+function catchup_loop()
    local remaining = mp.get_property_number("demuxer-cache-duration", 0)
 
    if remaining < catchup_until then
       mp.set_property("speed", 1.00)
-      catch_up = false
    else
-      mp.add_timeout(catch_up_timeout, stop_catchup)
+      mp.set_property("speed", settings.speed_up)
+   end
+
+   if catch_up then
+      mp.add_timeout(catch_up_timeout, catchup_loop)
+   else
+      mp.set_property("speed", 1.00)
    end
 end
 
@@ -31,10 +36,11 @@ function catchup()
    catch_up = not catch_up
 
    if catch_up then
-      mp.set_property("speed", settings.speed_up)
       mp.set_property("pause", "no")
-      mp.add_timeout(catch_up_timeout, stop_catchup)
+      mp.osd_message("catch up enabled")
+      catchup_loop()
    else
+      mp.osd_message("catch up disabled")
       mp.set_property("speed", 1.00)
    end
 end
@@ -54,6 +60,15 @@ function decrease_catch_up()
    update_catch_up_until(-1)
 end
 
+function on_load()
+   catch_up = not mp.get_property_bool("seekable") and mp.get_property_bool("demuxer-via-network")
+
+   if catch_up then
+      catchup_loop()
+   end
+end
+
+mp.register_event('file-loaded', on_load)
 
 mp.add_key_binding("P", "catch_up", catchup)
 mp.add_key_binding("Ctrl+p", "increase_catch_up", increase_catch_up)
