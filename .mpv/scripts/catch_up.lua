@@ -11,6 +11,7 @@ opts.read_options(settings, "catch_up")
 
 
 local catch_up = false
+local paused_for_cache = false
 local catch_up_timeout = 1
 local catchup_until = settings.catchup_until
 
@@ -19,9 +20,16 @@ function catchup_loop()
    local remaining = mp.get_property_number("demuxer-cache-duration", 0)
 
    if remaining < catchup_until then
-      mp.set_property("speed", 1.00)
+      if paused_for_cache then
+         mp.set_property("speed", 1.00 - (settings.speed_up - 1.00))
+      else
+         mp.set_property("speed", 1.00)
+      end
    else
-      mp.set_property("speed", settings.speed_up)
+      paused_for_cache = false
+      if mp.get_property_number("speed") < settings.speed_up then
+         mp.set_property("speed", settings.speed_up)
+      end
    end
 
    if catch_up then
@@ -67,6 +75,17 @@ function on_load()
       catchup_loop()
    end
 end
+
+
+function on_pause_for_cache(name, value)
+   if value then
+      update_catch_up_until(1)
+      paused_for_cache = true
+   end
+end
+
+
+mp.observe_property("paused-for-cache", "bool", on_pause_for_cache)
 
 mp.register_event('file-loaded', on_load)
 
