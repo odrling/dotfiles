@@ -20,9 +20,6 @@
 [submodule ".vim/vim-fugitive"]
 	path = .vim/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/sleuth"]
-	path = .local/share/nvim/site/pack/sleuth/start/sleuth
-	url = https://tpope.io/vim/sleuth.git
 [submodule ".vim/bundle/vim-polyglot"]
 	path = .local/share/nvim/site/pack/vim-polyglot/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
@@ -100,3 +97,9 @@
 [submodule ".zsh/evalcache"]
 	path = .zsh/evalcache
 	url = https://github.com/mroth/evalcache.git
+[submodule ".local/share/nvim/site/pack/nvim-treesitter/start/playground"]
+	path = .local/share/nvim/site/pack/nvim-treesitter/start/playground
+	url = https://github.com/nvim-treesitter/playground.git
+[submodule ".local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects"]
+	path = .local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects
+	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
