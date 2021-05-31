@@ -5,7 +5,6 @@ try
     highlight = { enable = false },
     incremental_selection = { enable = true },
     textobjects = { enable = true },
-    indent = { enable = true },
     playground = {
       enable = true,
       updatetime = 25
