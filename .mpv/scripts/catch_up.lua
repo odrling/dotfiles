@@ -78,7 +78,7 @@ end
 
 
 function on_pause_for_cache(name, value)
-   if value then
+   if value and catch_up then
       update_catch_up_until(1)
       paused_for_cache = true
    end
