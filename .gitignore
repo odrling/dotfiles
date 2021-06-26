@@ -142,3 +142,6 @@ Cache
 
 # flake8
 !/.flake8
+
+# bottom
+!/.config/bottom
