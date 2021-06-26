@@ -33,6 +33,12 @@
 		"time/prev" : [
 			"KP_0"
 		],
+		"time/snap/end_video" : [
+			"Ctrl-Shift-Right"
+		],
+		"time/snap/start_video" : [
+			"Ctrl-Shift-Left"
+		],
 		"time/start/decrease" : [
 			"Shift-Z"
 		],
@@ -85,6 +91,9 @@
 		"audio/stop" : [
 			"H"
 		],
+		"grid/line/next/create" : [
+			"Ctrl-Enter"
+		],
 		"time/lead/in" : [
 			"C"
 		],
@@ -129,14 +138,13 @@
 			"Ctrl-Shift-K"
 		],
 		"automation/lua/Flux.Selegator/Selegator/Select Until End" : [
-			"Ctrl-G",
 			"Ctrl-G"
 		],
 		"automation/lua/kara-templater/Apply karaoke template" : [
 			"Ctrl-Alt-Shift-K"
 		],
 		"automation/lua/karaoke-adjust-1sec/Karaoke 1sec adjust lead-in" : [
-			"Alt-K"
+			"Ctrl-K"
 		],
 		"automation/lua/karaoke-adjust-1sec/Mugenizer" : [
 			"Ctrl-Alt-K"
@@ -192,11 +200,11 @@
 			"Ctrl-Z"
 		],
 		"grid/line/next" : [
-			"Ctrl-J",
+			"Alt-J",
 			"Ctrl-KP_2"
 		],
 		"grid/line/prev" : [
-			"Ctrl-K",
+			"Alt-K",
 			"Ctrl-KP_8"
 		],
 		"grid/move/down" : [
@@ -240,19 +248,18 @@
 			"Ctrl-I"
 		],
 		"time/snap/end_video" : [
+			"Alt-Shift-L",
 			"Ctrl-4"
 		],
 		"time/snap/scene" : [
 			"Ctrl-5"
 		],
 		"time/snap/start_video" : [
+			"Alt-Shift-H",
 			"Ctrl-3"
 		],
-		"video/focus_seek" : [
-			"Ctrl-Space"
-		],
 		"video/frame/next" : [
-			"Ctrl-;"
+			"Alt-;"
 		],
 		"video/frame/next/boundary" : [
 			"Ctrl-L"
@@ -261,7 +268,7 @@
 			"Alt-L"
 		],
 		"video/frame/prev" : [
-			"Ctrl-,"
+			"Alt-,"
 		],
 		"video/frame/prev/boundary" : [
 			"Ctrl-H"
@@ -276,9 +283,13 @@
 			"Ctrl-2"
 		],
 		"video/jump/start" : [
-			"Ctrl-1"
+			"Ctrl-1",
+			"Escape"
 		],
 		"video/play" : [
+			"Ctrl-Shift-P"
+		],
+		"video/play/line" : [
 			"Ctrl-P"
 		],
 		"video/zoom/in" : [
