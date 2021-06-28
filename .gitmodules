@@ -51,9 +51,6 @@
 [submodule ".vim/bundle/vim-repeat"]
 	path = .local/share/nvim/site/pack/vim-repeat/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/vim-dirvish"]
-	path = .local/share/nvim/site/pack/vim-dirvish/start/vim-dirvish
-	url = https://github.com/justinmk/vim-dirvish.git
 [submodule ".vim/bundle/vim-eunuch"]
 	path = .local/share/nvim/site/pack/vim-eunuch/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
@@ -73,9 +70,6 @@
 [submodule ".zsh/zsh-nix-shell"]
 	path = .zsh/zsh-nix-shell
 	url = https://github.com/chisui/zsh-nix-shell.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .local/share/nvim/site/pack/vim-fugitive/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/space-vim-theme"]
 	path = .local/share/nvim/site/pack/space-vim-theme/start/space-vim-theme
 	url = https://github.com/liuchengxu/space-vim-theme.git
@@ -103,3 +97,12 @@
 [submodule ".local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects"]
 	path = .local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
+[submodule ".local/share/nvim/site/pack/git/start/neogit"]
+	path = .local/share/nvim/site/pack/git/start/neogit
+	url = https://github.com/TimUntersberger/neogit.git
+[submodule ".local/share/nvim/site/pack/git/start/plenary.nvim"]
+	path = .local/share/nvim/site/pack/git/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule ".local/share/nvim/site/pack/git/start/diffview.nvim"]
+	path = .local/share/nvim/site/pack/git/start/diffview.nvim
+	url = https://github.com/sindrets/diffview.nvim.git
