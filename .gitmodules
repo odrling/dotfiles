@@ -42,9 +42,6 @@
 	path = .local/share/nvim/site/pack/delimitMate/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 	ignore = dirty
-[submodule ".vim/bundle/vim-commentary"]
-	path = .local/share/nvim/site/pack/vim-commentary/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .local/share/nvim/site/pack/vim-surround/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -120,3 +117,6 @@
 [submodule ".local/share/nvim/site/pack/stabilize/stabilize.nvim"]
 	path = .local/share/nvim/site/pack/stabilize/stabilize.nvim
 	url = https://github.com/luukvbaal/stabilize.nvim.git
+[submodule ".local/share/nvim/site/pack/comment/start/Comment.nvim"]
+	path = .local/share/nvim/site/pack/comment/start/Comment.nvim
+	url = https://github.com/numToStr/Comment.nvim.git
