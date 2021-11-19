@@ -283,19 +283,15 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-function! ConfUpdate()
-    CocUpdateSync
-    quit
-endfunction
-
-source ~/.config/nvim/coc.vim
 source ~/.config/nvim/treesitter.vim
+source ~/.config/nvim/lsp.vim
 
 colorscheme space_vim_theme
 
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
+
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL

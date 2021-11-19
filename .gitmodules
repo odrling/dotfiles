@@ -57,10 +57,6 @@
 [submodule ".vim/bundle/vim-unimpaired"]
 	path = .local/share/nvim/site/pack/vim-unimpaired/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule ".vim/bundle/coc.nvim"]
-	path = .local/share/nvim/site/pack/coc.nvim/start/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git
-	branch = release
 [submodule ".vim/bundle/eleline.vim"]
 	path = .local/share/nvim/site/pack/eleline.vim/start/eleline.vim
 	url = https://github.com/liuchengxu/eleline.vim.git
@@ -97,12 +93,27 @@
 [submodule ".local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects"]
 	path = .local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
-[submodule ".local/share/nvim/site/pack/git/start/neogit"]
-	path = .local/share/nvim/site/pack/git/start/neogit
-	url = https://github.com/TimUntersberger/neogit.git
-[submodule ".local/share/nvim/site/pack/git/start/plenary.nvim"]
-	path = .local/share/nvim/site/pack/git/start/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
-[submodule ".local/share/nvim/site/pack/git/start/diffview.nvim"]
-	path = .local/share/nvim/site/pack/git/start/diffview.nvim
-	url = https://github.com/sindrets/diffview.nvim.git
+[submodule ".local/share/nvim/site/pack/lspconfig/start/nvim-lspconfig"]
+	path = .local/share/nvim/site/pack/lspconfig/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".local/share/nvim/site/pack/lspconfig/start/nvim-cmp"]
+	path = .local/share/nvim/site/pack/lspconfig/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule ".local/share/nvim/site/pack/lspconfig/start/cmp-nvim-lsp"]
+	path = .local/share/nvim/site/pack/lspconfig/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule ".local/share/nvim/site/pack/lspconfig/start/cmp_luasnip"]
+	path = .local/share/nvim/site/pack/lspconfig/start/cmp_luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip
+[submodule ".local/share/nvim/site/pack/lspconfig/start/LuaSnip"]
+	path = .local/share/nvim/site/pack/lspconfig/start/LuaSnip
+	url = https://github.com/L3MON4D3/LuaSnip
+[submodule ".local/share/nvim/site/pack/lspconfig/start/nvim-lsp-installer"]
+	path = .local/share/nvim/site/pack/lspconfig/start/nvim-lsp-installer
+	url = https://github.com/williamboman/nvim-lsp-installer
+[submodule ".local/share/nvim/site/pack/space-vim-theme/start/space-vim-dark"]
+	path = .local/share/nvim/site/pack/space-vim-theme/start/space-vim-dark
+	url = https://github.com/liuchengxu/space-vim-dark.git
+[submodule ".local/share/nvim/site/pack/space-vim-theme/start/space-nvim"]
+	path = .local/share/nvim/site/pack/space-vim-theme/start/space-nvim
+	url = https://github.com/Th3Whit3Wolf/space-nvim.git
