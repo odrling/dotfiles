@@ -117,3 +117,6 @@
 [submodule ".local/share/nvim/site/pack/space-vim-theme/start/space-nvim"]
 	path = .local/share/nvim/site/pack/space-vim-theme/start/space-nvim
 	url = https://github.com/Th3Whit3Wolf/space-nvim.git
+[submodule ".local/share/nvim/site/pack/stabilize/stabilize.nvim"]
+	path = .local/share/nvim/site/pack/stabilize/stabilize.nvim
+	url = https://github.com/luukvbaal/stabilize.nvim.git
