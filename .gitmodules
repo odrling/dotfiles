@@ -129,3 +129,15 @@
 [submodule ".local/share/nvim/site/pack/lspconfig/start/lspsaga.nvim"]
 	path = .local/share/nvim/site/pack/lspconfig/start/lspsaga.nvim
 	url = https://github.com/tami5/lspsaga.nvim.git
+[submodule ".local/share/nvim/site/pack/git/start/neogit"]
+	path = .local/share/nvim/site/pack/git/start/neogit
+	url = https://github.com/TimUntersberger/neogit.git
+[submodule ".local/share/nvim/site/pack/git/start/plenary.nvim"]
+	path = .local/share/nvim/site/pack/git/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule ".local/share/nvim/site/pack/git/start/diffview.nvim"]
+	path = .local/share/nvim/site/pack/git/start/diffview.nvim
+	url = https://github.com/sindrets/diffview.nvim.git
+[submodule ".local/share/nvim/site/pack/space-vim-theme/start/gitsigns.nvim"]
+	path = .local/share/nvim/site/pack/git/start/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
