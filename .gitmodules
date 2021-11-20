@@ -120,3 +120,12 @@
 [submodule ".local/share/nvim/site/pack/comment/start/Comment.nvim"]
 	path = .local/share/nvim/site/pack/comment/start/Comment.nvim
 	url = https://github.com/numToStr/Comment.nvim.git
+[submodule ".local/share/nvim/site/pack/lspconfig/start/lsp-status.nvim"]
+	path = .local/share/nvim/site/pack/lspconfig/start/lsp-status.nvim
+	url = https://github.com/nvim-lua/lsp-status.nvim.git
+[submodule ".local/share/nvim/site/pack/lspconfig/start/lsp_signature.nvim"]
+	path = .local/share/nvim/site/pack/lspconfig/start/lsp_signature.nvim
+	url = https://github.com/ray-x/lsp_signature.nvim.git
+[submodule ".local/share/nvim/site/pack/lspconfig/start/lspsaga.nvim"]
+	path = .local/share/nvim/site/pack/lspconfig/start/lspsaga.nvim
+	url = https://github.com/tami5/lspsaga.nvim.git

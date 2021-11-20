@@ -88,15 +88,55 @@ cmp.setup {
   },
 }
 
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
+
 local lsp_installer = require("nvim-lsp-installer")
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
-    local opts = {}
+    local opts = {
+      on_attach = function(client, bufnr)
+        require "lsp_signature".on_attach({
+          always_trigger = true,
+        })
+      end
+    }
 
     -- This setup() function is exactly the same as lspconfig's setup function.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(opts)
 end)
+
 EOF
+
+" code action
+nnoremap <silent><leader>ca <cmd>Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+
+" show hover doc
+nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>
+
+" scroll down hover doc or scroll in definition preview
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+" scroll up hover doc
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+" show signature help
+" nnoremap <silent> gs <cmd>Lspsaga signature_help<CR>
+
+" rename
+nnoremap <silent>gr <cmd>Lspsaga rename<CR>
+
+" preview definition
+nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+
+" show diagnostic
+nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+" only show diagnostic if cursor is over the area
+nnoremap <silent><leader>cc <cmd>Lspsaga show_cursor_diagnostics<CR>
+
+" jump between diagnostics
+nnoremap <silent> [e <cmd>Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent> ]e <cmd>Lspsaga diagnostic_jump_next<CR>

@@ -19,6 +19,7 @@ let g:ale_set_balloons = 1
 let g:ale_hover_to_preview = 1
 let g:ale_floating_preview = 1
 let g:ale_languagetool_options = '-l en-GB'
+set signcolumn=yes
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -230,6 +231,9 @@ let g:netrw_liststyle=3 " tree view
 map <C-o> :Clap files<CR>
 map <leader><leader> :FZF<CR>
 
+" neogit
+map <leader>n :Neogit<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,6 +289,8 @@ endfunction
 
 source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/lsp.vim
+source ~/.config/nvim/diffview.vim
+source ~/.config/nvim/neogit.vim
 
 colorscheme space_vim_theme
 

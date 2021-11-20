@@ -2,9 +2,20 @@ try
   lua <<EOF
   require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
-    highlight = { enable = false },
+    highlight = { enable = true },
     incremental_selection = { enable = true },
-    textobjects = { enable = true },
+    textobjects = {
+      select = {
+        enable = true,
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+        },
+      },
+    },
     playground = {
       enable = true,
       updatetime = 25
