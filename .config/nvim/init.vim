@@ -289,8 +289,6 @@ endfunction
 
 source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/lsp.vim
-source ~/.config/nvim/diffview.vim
-source ~/.config/nvim/neogit.vim
 
 colorscheme space_vim_theme
 
