@@ -91,6 +91,21 @@ cmp.setup {
 local saga = require 'lspsaga'
 saga.init_lsp_saga()
 
+local null_ls = require("null-ls")
+
+local sources = {
+  null_ls.builtins.diagnostics.flake8,
+  null_ls.builtins.formatting.isort.with({
+    args = { "--stdout", "--profile", "black", "-e", "-" }
+  }),
+}
+
+null_ls.config({
+  sources = sources,
+  diagnostics_format = "[#{s}] #{c}: #{m}"
+})
+nvim_lsp["null-ls"].setup( { } )
+
 local lsp_installer = require("nvim-lsp-installer")
 
 -- Register a handler that will be called for all installed servers.
@@ -140,3 +155,6 @@ nnoremap <silent><leader>cc <cmd>Lspsaga show_cursor_diagnostics<CR>
 " jump between diagnostics
 nnoremap <silent> [e <cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> ]e <cmd>Lspsaga diagnostic_jump_next<CR>
+
+" format
+nnoremap <silent> <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
