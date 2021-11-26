@@ -23,8 +23,8 @@ try
   }
 EOF
 
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
+  " set foldmethod=expr
+  " set foldexpr=nvim_treesitter#foldexpr()
 catch
   echo "treesitter is not set up properly"
 endtry
