@@ -141,3 +141,6 @@
 [submodule ".zsh/fast-syntax-highlighting"]
 	path = .zsh/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
+[submodule ".local/share/zinit/zinit"]
+	path = .local/share/zinit/zinit
+	url = https://github.com/zdharma-continuum/zinit.git
