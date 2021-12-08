@@ -141,3 +141,9 @@
 [submodule ".local/share/nvim/site/pack/lspconfig/start/null-ls.nvim"]
 	path = .local/share/nvim/site/pack/lspconfig/start/null-ls.nvim
 	url = https://github.com/jose-elias-alvarez/null-ls.nvim.git
+[submodule ".local/share/nvim/site/pack/dap/start/nvim-dap"]
+	path = .local/share/nvim/site/pack/dap/start/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git
+[submodule ".local/share/nvim/site/pack/dap/start/DAPInstall.nvim"]
+	path = .local/share/nvim/site/pack/dap/start/DAPInstall.nvim
+	url = https://github.com/Pocco81/DAPInstall.nvim.git

@@ -80,7 +80,7 @@ alias dotmodules="dots submodule update --recursive --remote"
 alias dotupdate="dots pull && vi --headless -c 'call ConfUpdate()'"
 alias venv="source ~/.venvs/venv/bin/activate"
 alias top="htop"
-alias ytdl="youtube-dl"
+alias ytdl="yt-dlp"
 alias ag="ag --nogroup"
 
 alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
