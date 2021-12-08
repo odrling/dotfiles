@@ -1,3 +1,7 @@
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
 stty -ixon # Disable ctrl-s and ctrl-q.
 
 # ssh-agent
@@ -17,17 +21,32 @@ fi
 
 # load modules
 bgnotify_threshold=0
-for i in ~/.zsh/*/*.plugin.zsh; do
-    source "$i"
-done
 
-source ~/.zsh/omz/oh-my-zsh/lib/spectrum.zsh
-source ~/.zsh/omz/oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
+
+zinit light mroth/evalcache
+zinit light zsh-users/zsh-completions
+
+zinit ice wait"1" lucid
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice wait"1" lucid
+zinit light Tarrasch/zsh-autoenv
+
+zinit ice wait"5" lucid
+zinit light t413/zsh-background-notify.git
+
+zinit ice wait"1" lucid
+zinit light chisui/zsh-nix-shell
+
+zinit snippet OMZL::spectrum.zsh
+zinit snippet OMZP::history-substring-search/history-substring-search.zsh
+zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 
 source ~/.zsh/command-not-found
-
-source ~/.vim/fzf/shell/completion.zsh
-source ~/.vim/fzf/shell/key-bindings.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -51,8 +70,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
     done
 }
 
-autoload -Uz compinit && compinit
-autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
 
 zstyle ':completion::complete:*' use-cache 1
 export HISTFILE=~/.histfile
@@ -91,3 +108,27 @@ alias ffprobe="ffprobe -hide_banner"
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+# zinit light-mode for \
+#     zdharma-continuum/zinit-annex-as-monitor \
+#     zdharma-continuum/zinit-annex-bin-gem-node \
+#     zdharma-continuum/zinit-annex-patch-dl \
+#     zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
+
+zinit cdreplay -q

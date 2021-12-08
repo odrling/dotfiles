@@ -2,9 +2,6 @@
 	path = .local/bin
 	url = https://git.odrling.xyz/odrling/localbins.git
 	ignore = dirty
-[submodule ".zsh/zsh-syntax-highlighting"]
-	path = .zsh/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".zsh/zsh-completions"]
 	path = .zsh/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
@@ -147,3 +144,9 @@
 [submodule ".local/share/nvim/site/pack/dap/start/DAPInstall.nvim"]
 	path = .local/share/nvim/site/pack/dap/start/DAPInstall.nvim
 	url = https://github.com/Pocco81/DAPInstall.nvim.git
+[submodule ".zsh/fast-syntax-highlighting"]
+	path = .zsh/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
+[submodule ".local/share/zinit/zinit"]
+	path = .local/share/zinit/zinit.git
+	url = https://github.com/zdharma-continuum/zinit.git
