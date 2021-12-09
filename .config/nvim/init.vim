@@ -289,10 +289,10 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-" source ~/.config/nvim/treesitter.vim
-" source ~/.config/nvim/lsp.vim
-" source ~/.config/nvim/diffview.vim
-" source ~/.config/nvim/neogit.vim
+source ~/.config/nvim/treesitter.vim
+source ~/.config/nvim/lsp.vim
+source ~/.config/nvim/diffview.vim
+source ~/.config/nvim/neogit.vim
 
 lua require('gitsigns').setup({ current_line_blame = true })
 
