@@ -2,18 +2,6 @@
 	path = .local/bin
 	url = https://git.odrling.xyz/odrling/localbins.git
 	ignore = dirty
-[submodule ".zsh/zsh-completions"]
-	path = .zsh/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions.git
-[submodule ".zsh/zsh-autosuggestions"]
-	path = .zsh/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule ".zsh/omz/oh-my-zsh"]
-	path = .zsh/omz/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".zsh/zsh-background-notify"]
-	path = .zsh/zsh-background-notify
-	url = https://github.com/t413/zsh-background-notify.git
 [submodule ".vim/vim-fugitive"]
 	path = .vim/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -32,24 +20,12 @@
 [submodule ".vim/vidir"]
 	path = .vim/vidir
 	url = https://github.com/trapd00r/vidir.git
-[submodule ".zsh/zsh-autoenv"]
-	path = .zsh/zsh-autoenv
-	url = https://github.com/Tarrasch/zsh-autoenv.git
-[submodule ".zsh/zsh-nix-shell"]
-	path = .zsh/zsh-nix-shell
-	url = https://github.com/chisui/zsh-nix-shell.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule ".aegisub/automation/0x539"]
 	path = .aegisub/automation/0x539
 	url = https://github.com/The0x539/Aegisub-Scripts.git
-[submodule ".zsh/evalcache"]
-	path = .zsh/evalcache
-	url = https://github.com/mroth/evalcache.git
-[submodule ".zsh/fast-syntax-highlighting"]
-	path = .zsh/fast-syntax-highlighting
-	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
 [submodule ".local/share/zinit/zinit"]
 	path = .local/share/zinit/zinit.git
 	url = https://github.com/zdharma-continuum/zinit.git
