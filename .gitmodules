@@ -2,9 +2,6 @@
 	path = .local/bin
 	url = https://git.odrling.xyz/odrling/localbins.git
 	ignore = dirty
-[submodule ".config/fish/modules/fish-ssh-agent"]
-	path = .config/fish/modules/fish-ssh-agent
-	url = https://github.com/danhper/fish-ssh-agent.git
 [submodule ".vim/bundle/fzf"]
 	path = .vim/fzf
 	url = https://github.com/junegunn/fzf.git
