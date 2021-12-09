@@ -2,6 +2,7 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.vim/default.vim
+source ~/.config/nvim/packer.vim
 
 " Enable filetype plugins
 filetype plugin on
@@ -20,6 +21,7 @@ let g:ale_hover_to_preview = 1
 let g:ale_floating_preview = 1
 let g:ale_languagetool_options = '-l en-GB'
 set signcolumn=yes
+
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -287,10 +289,10 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-source ~/.config/nvim/treesitter.vim
-source ~/.config/nvim/lsp.vim
-source ~/.config/nvim/diffview.vim
-source ~/.config/nvim/neogit.vim
+" source ~/.config/nvim/treesitter.vim
+" source ~/.config/nvim/lsp.vim
+" source ~/.config/nvim/diffview.vim
+" source ~/.config/nvim/neogit.vim
 
 lua require('gitsigns').setup({ current_line_blame = true })
 

@@ -17,9 +17,6 @@
 [submodule ".vim/vim-fugitive"]
 	path = .vim/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-polyglot"]
-	path = .local/share/nvim/site/pack/vim-polyglot/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
@@ -35,118 +32,27 @@
 [submodule ".vim/vidir"]
 	path = .vim/vidir
 	url = https://github.com/trapd00r/vidir.git
-[submodule ".vim/bundle/delimitMate"]
-	path = .local/share/nvim/site/pack/delimitMate/start/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
-	ignore = dirty
-[submodule ".vim/bundle/vim-surround"]
-	path = .local/share/nvim/site/pack/vim-surround/start/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-repeat"]
-	path = .local/share/nvim/site/pack/vim-repeat/start/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/vim-eunuch"]
-	path = .local/share/nvim/site/pack/vim-eunuch/start/vim-eunuch
-	url = https://github.com/tpope/vim-eunuch.git
-[submodule ".vim/bundle/vim-unimpaired"]
-	path = .local/share/nvim/site/pack/vim-unimpaired/start/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-[submodule ".vim/bundle/eleline.vim"]
-	path = .local/share/nvim/site/pack/eleline.vim/start/eleline.vim
-	url = https://github.com/liuchengxu/eleline.vim.git
 [submodule ".zsh/zsh-autoenv"]
 	path = .zsh/zsh-autoenv
 	url = https://github.com/Tarrasch/zsh-autoenv.git
 [submodule ".zsh/zsh-nix-shell"]
 	path = .zsh/zsh-nix-shell
 	url = https://github.com/chisui/zsh-nix-shell.git
-[submodule ".vim/bundle/space-vim-theme"]
-	path = .local/share/nvim/site/pack/space-vim-theme/start/space-vim-theme
-	url = https://github.com/liuchengxu/space-vim-theme.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule ".aegisub/automation/0x539"]
 	path = .aegisub/automation/0x539
 	url = https://github.com/The0x539/Aegisub-Scripts.git
-[submodule ".local/share/nvim/site/pack/vim-grammarous/start/vim-grammarous"]
-	path = .local/share/nvim/site/pack/vim-grammarous/start/vim-grammarous
-	url = https://github.com/rhysd/vim-grammarous.git
-[submodule ".local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter"]
-	path = .local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule ".zsh/evalcache"]
 	path = .zsh/evalcache
 	url = https://github.com/mroth/evalcache.git
-[submodule ".local/share/nvim/site/pack/nvim-treesitter/start/playground"]
-	path = .local/share/nvim/site/pack/nvim-treesitter/start/playground
-	url = https://github.com/nvim-treesitter/playground.git
-[submodule ".local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects"]
-	path = .local/share/nvim/site/pack/nvim-treesitter/start/nvim-treesitter-textobjects
-	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
-[submodule ".local/share/nvim/site/pack/lspconfig/start/nvim-lspconfig"]
-	path = .local/share/nvim/site/pack/lspconfig/start/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule ".local/share/nvim/site/pack/lspconfig/start/nvim-cmp"]
-	path = .local/share/nvim/site/pack/lspconfig/start/nvim-cmp
-	url = https://github.com/hrsh7th/nvim-cmp
-[submodule ".local/share/nvim/site/pack/lspconfig/start/cmp-nvim-lsp"]
-	path = .local/share/nvim/site/pack/lspconfig/start/cmp-nvim-lsp
-	url = https://github.com/hrsh7th/cmp-nvim-lsp
-[submodule ".local/share/nvim/site/pack/lspconfig/start/cmp_luasnip"]
-	path = .local/share/nvim/site/pack/lspconfig/start/cmp_luasnip
-	url = https://github.com/saadparwaiz1/cmp_luasnip
-[submodule ".local/share/nvim/site/pack/lspconfig/start/LuaSnip"]
-	path = .local/share/nvim/site/pack/lspconfig/start/LuaSnip
-	url = https://github.com/L3MON4D3/LuaSnip
-[submodule ".local/share/nvim/site/pack/lspconfig/start/nvim-lsp-installer"]
-	path = .local/share/nvim/site/pack/lspconfig/start/nvim-lsp-installer
-	url = https://github.com/williamboman/nvim-lsp-installer
-[submodule ".local/share/nvim/site/pack/space-vim-theme/start/space-vim-dark"]
-	path = .local/share/nvim/site/pack/space-vim-theme/start/space-vim-dark
-	url = https://github.com/liuchengxu/space-vim-dark.git
-[submodule ".local/share/nvim/site/pack/space-vim-theme/start/space-nvim"]
-	path = .local/share/nvim/site/pack/space-vim-theme/start/space-nvim
-	url = https://github.com/Th3Whit3Wolf/space-nvim.git
-[submodule ".local/share/nvim/site/pack/stabilize/stabilize.nvim"]
-	path = .local/share/nvim/site/pack/stabilize/stabilize.nvim
-	url = https://github.com/luukvbaal/stabilize.nvim.git
-[submodule ".local/share/nvim/site/pack/comment/start/Comment.nvim"]
-	path = .local/share/nvim/site/pack/comment/start/Comment.nvim
-	url = https://github.com/numToStr/Comment.nvim.git
-[submodule ".local/share/nvim/site/pack/lspconfig/start/lsp-status.nvim"]
-	path = .local/share/nvim/site/pack/lspconfig/start/lsp-status.nvim
-	url = https://github.com/nvim-lua/lsp-status.nvim.git
-[submodule ".local/share/nvim/site/pack/lspconfig/start/lsp_signature.nvim"]
-	path = .local/share/nvim/site/pack/lspconfig/start/lsp_signature.nvim
-	url = https://github.com/ray-x/lsp_signature.nvim.git
-[submodule ".local/share/nvim/site/pack/lspconfig/start/lspsaga.nvim"]
-	path = .local/share/nvim/site/pack/lspconfig/start/lspsaga.nvim
-	url = https://github.com/tami5/lspsaga.nvim.git
-[submodule ".local/share/nvim/site/pack/git/start/neogit"]
-	path = .local/share/nvim/site/pack/git/start/neogit
-	url = https://github.com/TimUntersberger/neogit.git
-[submodule ".local/share/nvim/site/pack/git/start/plenary.nvim"]
-	path = .local/share/nvim/site/pack/git/start/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
-[submodule ".local/share/nvim/site/pack/git/start/diffview.nvim"]
-	path = .local/share/nvim/site/pack/git/start/diffview.nvim
-	url = https://github.com/sindrets/diffview.nvim.git
-[submodule ".local/share/nvim/site/pack/space-vim-theme/start/gitsigns.nvim"]
-	path = .local/share/nvim/site/pack/git/start/gitsigns.nvim
-	url = https://github.com/lewis6991/gitsigns.nvim.git
-[submodule ".local/share/nvim/site/pack/lspconfig/start/null-ls.nvim"]
-	path = .local/share/nvim/site/pack/lspconfig/start/null-ls.nvim
-	url = https://github.com/jose-elias-alvarez/null-ls.nvim.git
-[submodule ".local/share/nvim/site/pack/dap/start/nvim-dap"]
-	path = .local/share/nvim/site/pack/dap/start/nvim-dap
-	url = https://github.com/mfussenegger/nvim-dap.git
-[submodule ".local/share/nvim/site/pack/dap/start/DAPInstall.nvim"]
-	path = .local/share/nvim/site/pack/dap/start/DAPInstall.nvim
-	url = https://github.com/Pocco81/DAPInstall.nvim.git
 [submodule ".zsh/fast-syntax-highlighting"]
 	path = .zsh/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
 [submodule ".local/share/zinit/zinit"]
 	path = .local/share/zinit/zinit.git
 	url = https://github.com/zdharma-continuum/zinit.git
+[submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
+	path = .local/share/nvim/site/pack/packer.nvim/start/packer.nvim
+	url = https://github.com/wbthomason/packer.nvim

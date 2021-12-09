@@ -136,6 +136,8 @@ Cache
 /.local/share/*
 !/.local/share/nvim
 /.local/share/nvim/shada
+/.local/share/nvim/site/pack/packer/start/*
+!/.local/share/nvim/site/pack/packer/start/packer
 !/.config/nvim
 .netrwhist
 /.config/nvim/bundle
