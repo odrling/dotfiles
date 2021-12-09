@@ -23,10 +23,7 @@ fi
 bgnotify_threshold=0
 
 
-zinit light mroth/evalcache
 zinit light zsh-users/zsh-completions
-
-zinit ice wait"1" lucid
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid
@@ -42,14 +39,15 @@ zinit ice wait"1" lucid
 zinit light chisui/zsh-nix-shell
 
 zinit snippet OMZL::spectrum.zsh
-zinit snippet OMZP::history-substring-search/history-substring-search.zsh
-zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+# zinit snippet OMZP::history-substring-search/history-substring-search.zsh
+# zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+zinit ice wait"" lucid
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
+zinit ice wait"1" lucid
+zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
 
-source ~/.zsh/command-not-found
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 
 # vi key bindings
 set -o vi
@@ -109,15 +107,6 @@ alias ffprobe="ffprobe -hide_banner"
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
-
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -127,7 +116,6 @@ fi
 #     zdharma-continuum/zinit-annex-patch-dl \
 #     zdharma-continuum/zinit-annex-rust
 
-### End of Zinit's installer chunk
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
 
