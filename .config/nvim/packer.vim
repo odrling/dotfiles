@@ -18,23 +18,7 @@ return require('packer').startup(function()
   use 'nvim-lua/lsp-status.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'williamboman/nvim-lsp-installer'
-  use { 
-    'hrsh7th/nvim-cmp',
-    config = function ()
-      require'cmp'.setup {
-      snippet = {
-        expand = function(args)
-          require'luasnip'.lsp_expand(args.body)
-        end
-      },
-    
-      sources = {
-        { name = 'luasnip' },
-        -- more sources
-      },
-    }
-    end
-  }
+  use 'hrsh7th/nvim-cmp'
   use { 'saadparwaiz1/cmp_luasnip' }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'tami5/lspsaga.nvim', requires = 'neovim/nvim-lspconfig' }
