@@ -40,8 +40,7 @@ zinit light chisui/zsh-nix-shell
 
 zinit snippet OMZL::spectrum.zsh
 # zinit snippet OMZP::history-substring-search/history-substring-search.zsh
-# zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-zinit ice wait"" lucid
+zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
