@@ -4,7 +4,7 @@ configuration {
   terminal: "st";
   matching: "fuzzy";
   normalize-match: true;
-  sort: false;
+  sort: true;
   /* sorting-method: "fzf"; */
   fixed-num-lines: false;
   timeout {
