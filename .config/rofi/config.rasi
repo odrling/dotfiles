@@ -1,0 +1,33 @@
+configuration {
+  modi: "window,run,ssh,mugen:~/.config/rofi/modi/mugen,combi";
+  font: "sans 12";
+  terminal: "st";
+  matching: "fuzzy";
+  normalize-match: true;
+  sort: false;
+  /* sorting-method: "fzf"; */
+  fixed-num-lines: false;
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "purple"
+
+#window {
+    anchor: north;
+    location: north;
+    border: 0;
+    width: 100%;
+}
+#listview {
+    /* layout: horizontal; */
+    spacing: 5px;
+    lines: 8;
+    border: 0;
+}

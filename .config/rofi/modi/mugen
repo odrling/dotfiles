@@ -1,0 +1,28 @@
+#!/bin/sh
+kara_api="${MUGEN_KARA_API:-https://kara.moe/api/karas}"
+karamedia="${MUGEN_KARAOKEMEDIA:-https://kara.moe/downloads}"
+
+# karaoke medias and lyrics directories
+medias="$karamedia/medias"
+lyrics="$karamedia/lyrics"
+
+if [ -z "$@" ]; then
+    # cache results for 30 minutes
+    karas=/tmp/$USER-mugen-karas
+    find "$karas" -mmin 30 > /dev/null 2>&1 || (curl "$kara_api" | jq -r '.content | .[] | "\(.mediafile)\u0000info\u001f\(.kid)"' > "$karas")
+    cat "$karas"
+    exit 0
+fi
+
+# choose karaoke
+kid=$ROFI_INFO
+[ -z "$kid" ] && exit
+
+# find karaoke files
+kara="$(curl "$kara_api/$kid" | jq '{mediafile: .mediafile, subfile: .subfile, gain: .gain}')"
+media="$(echo "$kara" | jq -r '.mediafile' | sed 's/#/%23/g')"
+sub="$(echo "$kara" | jq -r '.subfile' | sed 's/#/%23/g')"
+gain="$(echo "$kara" | jq -r '.gain')"
+
+mpv --replaygain-fallback=$gain --sub-file="$lyrics/$sub" "$medias/$media" > /dev/null 2>&1 &
+exec 1>&-

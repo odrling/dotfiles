@@ -152,3 +152,6 @@ Cache
 !/.local/share/zinit
 /.local/share/zinit/*
 !/.local/share/zinit/zinit.git
+
+# rofi
+!/.config/rofi
