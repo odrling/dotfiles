@@ -24,6 +24,7 @@ bgnotify_threshold=0
 
 
 zinit light zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid
