@@ -2,7 +2,6 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.vim/default.vim
-source ~/.config/nvim/packer.vim
 
 " Enable filetype plugins
 filetype plugin on
@@ -65,6 +64,8 @@ set formatoptions-=t
 " use true colors
 set termguicolors
 set background=dark
+
+source ~/.config/nvim/packer.vim
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
