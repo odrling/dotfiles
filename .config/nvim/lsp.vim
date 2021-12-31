@@ -100,11 +100,10 @@ local sources = {
   }),
 }
 
-null_ls.config({
+null_ls.setup({
   sources = sources,
   diagnostics_format = "[#{s}] #{c}: #{m}"
 })
-nvim_lsp["null-ls"].setup( { } )
 
 local lsp_installer = require("nvim-lsp-installer")
 
