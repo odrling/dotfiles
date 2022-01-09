@@ -2,15 +2,12 @@
 # dbus
 eval "$(dbus-launch --sh-syntax --exit-with-session)"
 
-# set wallpaper
-setoutput &
-
 # notification daemon
 dunst &
 # compositor
 picom &
 # default screen brightness
-xbacklight -set 30 &
+backlight 50 &
 
 # default keyboard layout
 sethid &
@@ -29,5 +26,9 @@ xcape -e 'Control_L=Escape' &
 
 [ -e "$HOME/.xinitrc.local" ] && . "$HOME/.xinitrc.local"
 
+# set wallpaper
+setoutput
+
 # start dwm
 exec dwm
+# exec pw-jack dwm
