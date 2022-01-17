@@ -13,7 +13,6 @@ Cache
 !/.zshrc
 !/.zprofile
 !/.bash.command-not-found
-!/.p10k.zsh
 
 # zsh modules
 !.zsh/
