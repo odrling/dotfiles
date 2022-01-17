@@ -49,14 +49,10 @@ zinit light t413/zsh-background-notify.git
 zinit ice wait"1" lucid
 zinit light chisui/zsh-nix-shell
 
-# zinit snippet OMZP::history-substring-search/history-substring-search.zsh
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
-
-# bindkey '^[[A' history-substring-search-up
-# bindkey '^[[B' history-substring-search-down
 
 # vi key bindings
 set -o vi
@@ -111,15 +107,6 @@ alias ffprobe="ffprobe -hide_banner"
 [ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-# zinit light-mode for \
-#     zdharma-continuum/zinit-annex-as-monitor \
-#     zdharma-continuum/zinit-annex-bin-gem-node \
-#     zdharma-continuum/zinit-annex-patch-dl \
-#     zdharma-continuum/zinit-annex-rust
 
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
