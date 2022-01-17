@@ -49,7 +49,6 @@ zinit light t413/zsh-background-notify.git
 zinit ice wait"1" lucid
 zinit light chisui/zsh-nix-shell
 
-zinit snippet OMZL::spectrum.zsh
 # zinit snippet OMZP::history-substring-search/history-substring-search.zsh
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
@@ -92,10 +91,6 @@ export NIX_BUILD_SHELL=zsh
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
-# Prompt
-autoload -U colors && colors
-PROMPT="%B%{$FG[081]%}%n%{$reset_color%}%b%{$FG[245]%}@%{$reset_color%}%B%{$FG[206]%}%m%{$reset_color%}%b %{$fg[245]%}%B%c%b %(!.%{$FG[001]%}#.%{$FG[081]%}$)%{$reset_color%} "
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="fd"
