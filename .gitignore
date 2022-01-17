@@ -14,9 +14,6 @@ Cache
 !/.zprofile
 !/.bash.command-not-found
 
-# zsh modules
-!.zsh/
-
 # .profile
 !/.profile
 
