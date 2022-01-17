@@ -93,7 +93,6 @@ export FZF_DEFAULT_COMMAND="fd"
 
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 alias dotmodules="dots submodule update --recursive --remote"
-alias dotupdate="dots pull && vi --headless -c 'call ConfUpdate()'"
 alias venv="source ~/.venvs/venv/bin/activate"
 alias top="htop"
 alias ytdl="yt-dlp"
