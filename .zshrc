@@ -54,9 +54,6 @@ zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bi
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
 
-# vi key bindings
-set -o vi
-
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 zstyle ':completion:*' max-errors 2
@@ -85,6 +82,7 @@ bindkey -e
 export NIX_BUILD_SHELL=zsh
 
 # vi mode
+set -o vi
 bindkey -v
 export KEYTIMEOUT=1
 
