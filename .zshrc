@@ -43,7 +43,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait"1" lucid
 zinit light Tarrasch/zsh-autoenv
 
-zinit ice wait"5" lucid
+zinit ice wait"1" lucid
 zinit light t413/zsh-background-notify.git
 
 zinit ice wait"1" lucid
