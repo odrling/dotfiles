@@ -12,7 +12,7 @@ opts.read_options(settings, "catch_up")
 
 local catch_up = false
 local paused_for_cache = false
-local catch_up_timeout = 1
+local catch_up_timeout = 0.5
 local catchup_until = settings.catchup_until
 
 
@@ -79,7 +79,6 @@ end
 
 function on_pause_for_cache(name, value)
    if value and catch_up then
-      update_catch_up_until(1)
       paused_for_cache = true
    end
 end
