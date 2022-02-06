@@ -232,7 +232,13 @@ let g:netrw_banner=0 " disable the banner
 let g:netrw_liststyle=3 " tree view
 let $FZF_DEFAULT_COMMAND = "fd -t f"
 " map <C-o> :Clap files<CR>
-map <leader><leader> :FZF<CR>
+" map <leader><leader> :FZF<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader><leader> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " neogit
 map <leader>n :Neogit<CR>
@@ -294,6 +300,7 @@ source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/diffview.vim
 source ~/.config/nvim/neogit.vim
+source ~/.config/nvim/telescope.vim
 
 lua require('gitsigns').setup({ current_line_blame = true })
 
