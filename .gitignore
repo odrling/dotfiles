@@ -152,3 +152,6 @@ Cache
 
 # rofi
 !/.config/rofi
+
+# starship
+!/.config/starship.toml
