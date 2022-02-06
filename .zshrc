@@ -21,7 +21,7 @@ zinit light starship/starship
 zinit ice wait lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+zinit as"program" has'go' make'!' atclone'./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh" for \
         direnv/direnv
 
