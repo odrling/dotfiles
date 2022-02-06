@@ -54,9 +54,9 @@ zstyle ':completion::complete:*' use-cache 1
 export HISTFILE=~/.histfile
 export HISTSIZE=100000
 export SAVEHIST=100000
-setopt appendhistory autocd notify histexpiredupsfirst histsavenodups incappendhistorytime histnostore histignorespace
+
+setopt appendhistory notify histexpiredupsfirst histsavenodups incappendhistorytime histnostore histignorespace
 unsetopt beep
-bindkey -e
 
 # vi mode
 set -o vi
