@@ -37,8 +37,9 @@ zinit light starship/starship
 zinit ice wait lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit ice wait"1" lucid
-zinit light Tarrasch/zsh-autoenv
+zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+    atpull'%atclone' pick"direnv" src"zhook.zsh" for \
+        direnv/direnv
 
 zinit ice wait"1" lucid
 zinit light t413/zsh-background-notify.git
