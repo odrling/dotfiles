@@ -38,6 +38,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s zstyle :compinstall filename "${HOME}/.zshrc" zstyle ':completion:*' rehash true
+zstyle ':completion::complete:*' use-cache 1
 
 [[ $UID -eq 0 ]] || () {
     local i
@@ -49,8 +50,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
     done
 }
 
-
-zstyle ':completion::complete:*' use-cache 1
 export HISTFILE=~/.histfile
 export HISTSIZE=100000
 export SAVEHIST=100000
