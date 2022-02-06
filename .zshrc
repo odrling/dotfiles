@@ -58,8 +58,6 @@ setopt appendhistory autocd notify histexpiredupsfirst histsavenodups incappendh
 unsetopt beep
 bindkey -e
 
-export NIX_BUILD_SHELL=zsh
-
 # vi mode
 set -o vi
 bindkey -v
