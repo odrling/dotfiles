@@ -42,9 +42,6 @@ zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
         direnv/direnv
 
 zinit ice wait"1" lucid
-zinit light t413/zsh-background-notify.git
-
-zinit ice wait"1" lucid
 zinit light chisui/zsh-nix-shell
 
 zinit ice has'fzf' wait"" lucid; zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
