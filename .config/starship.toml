@@ -8,3 +8,6 @@ show_always = true
 [hostname]
 format = "[$hostname]($style) "
 ssh_only = false
+
+[cmd_duration]
+show_notifications = true
