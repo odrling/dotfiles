@@ -20,9 +20,6 @@ fi
 . "$SSH_ENV"
 
 # load modules
-bgnotify_threshold=0
-
-
 zinit light zsh-users/zsh-completions
 zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
