@@ -1,2 +1,10 @@
 # Inserts a blank line between shell prompts
 add_newline = false
+
+[username]
+format = "[$user]($style)@"
+show_always = true
+
+[hostname]
+format = "[$hostname]($style) "
+ssh_only = false
