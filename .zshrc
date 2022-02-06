@@ -4,26 +4,13 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# ssh-agent
-start_ssh_agent() {
-	ssh-agent | grep -v \^echo > "$SSH_ENV"
-	chmod 1600 "$SSH_ENV"
-}
-
-SSH_ENV="/tmp/.ssh_env.$USER"
-if [ -f "$SSH_ENV" ]; then
-    . "$SSH_ENV"
-    ps q $SSH_AGENT_PID > /dev/null || start_ssh_agent
-else
-    start_ssh_agent
-fi
-. "$SSH_ENV"
-
 # load modules
 zinit light zsh-users/zsh-completions
 zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light jeffreytse/zsh-vi-mode
+
+zinit ice has'ssh-agent' wait lucid; zinit snippet OMZP::ssh-agent
 
 # Load starship theme
 zinit ice as"command" from"gh-r" \
