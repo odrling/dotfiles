@@ -58,11 +58,6 @@ export SAVEHIST=100000
 setopt appendhistory notify histexpiredupsfirst histsavenodups incappendhistorytime histnostore histignorespace
 unsetopt beep
 
-# vi mode
-set -o vi
-bindkey -v
-export KEYTIMEOUT=1
-
 export FZF_DEFAULT_OPTS="-m"
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
@@ -75,9 +70,7 @@ alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 
-[ -f ~/.local_env ] && . ~/.local_env
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
