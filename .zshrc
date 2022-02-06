@@ -12,7 +12,6 @@ zinit light jeffreytse/zsh-vi-mode
 
 zinit ice has'ssh-agent' wait lucid; zinit snippet OMZP::ssh-agent
 
-# Load starship theme
 zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
@@ -33,6 +32,7 @@ zinit ice has'fzf' wait"" lucid; zinit snippet https://raw.githubusercontent.com
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
 
+# completion settings
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 zstyle ':completion:*' max-errors 2
@@ -40,6 +40,7 @@ zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s zstyle :compinstall filename "${HOME}/.zshrc" zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' use-cache 1
 
+# root commands completion for sudo/doas
 [[ $UID -eq 0 ]] || () {
     local i
     local -T SUDO_PATH sudo_path
@@ -50,11 +51,12 @@ zstyle ':completion::complete:*' use-cache 1
     done
 }
 
+# history file settings
 export HISTFILE=~/.histfile
 export HISTSIZE=100000
 export SAVEHIST=100000
-
 setopt appendhistory notify histexpiredupsfirst histsavenodups incappendhistorytime histnostore histignorespace
+
 unsetopt beep
 
 export FZF_DEFAULT_OPTS="-m"
