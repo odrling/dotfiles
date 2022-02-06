@@ -14,7 +14,7 @@ show_notifications = true
 min_time_to_notify = 2_000
 
 [git_branch]
-format = "on [$branch]($style)"
+format = "on [$branch]($style) "
 
 [package]
 format = "is [$version]($style) "
