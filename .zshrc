@@ -63,18 +63,15 @@ set -o vi
 bindkey -v
 export KEYTIMEOUT=1
 
-export FZF_DEFAULT_OPTS="-m --no-mouse"
-export FZF_DEFAULT_COMMAND="fd"
+export FZF_DEFAULT_OPTS="-m"
+command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 alias dotmodules="dots submodule update --recursive --remote"
 alias venv="source ~/.venvs/venv/bin/activate"
-alias top="htop"
 alias ytdl="yt-dlp"
 alias ag="ag --nogroup"
-
 alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
-
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 
