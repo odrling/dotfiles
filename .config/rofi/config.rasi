@@ -6,6 +6,7 @@ configuration {
   matching: "fuzzy";
   normalize-match: true;
   sort: true;
+  replace: true;
   /* sorting-method: "fzf"; */
   fixed-num-lines: false;
   timeout {
