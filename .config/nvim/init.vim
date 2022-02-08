@@ -45,6 +45,9 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
+" mouse
+set mouse=nv
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -303,6 +306,15 @@ source ~/.config/nvim/neogit.vim
 source ~/.config/nvim/telescope.vim
 
 lua require('gitsigns').setup({ current_line_blame = true })
+lua << EOF
+require("bufferline").setup {
+    options = {
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        show_buffer_icons = false,
+    }
+}
+EOF
 
 colorscheme space_vim_theme
 
