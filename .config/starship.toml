@@ -11,7 +11,7 @@ ssh_only = false
 
 [cmd_duration]
 show_notifications = true
-min_time_to_notify = 2_000
+min_time_to_notify = 15_000
 
 [git_branch]
 format = "on [$branch]($style) "
