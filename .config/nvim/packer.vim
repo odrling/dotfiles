@@ -8,7 +8,8 @@ lua << EOF
 return require('packer').startup { 
   function()
     use 'lewis6991/impatient.nvim'
-    use 'nathom/filetype.nvim'
+    use {'nathom/filetype.nvim',
+         setup = [[vim.cmd('runtime! autoload/dist/ft.vim')]]}
 
     -- git
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
@@ -65,7 +66,7 @@ return require('packer').startup {
       config = function()
         require("better_escape").setup { 
           mapping = {"jj"},
-          timeoiut = vim.o.timeoutlen,
+          timeout = vim.o.timeoutlen,
           clear_empty_lines = false,
           keys = "<ESC>",
         }
