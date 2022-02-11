@@ -10,7 +10,7 @@ zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light jeffreytse/zsh-vi-mode
 
-zinit ice has'ssh-agent' wait lucid; zinit snippet OMZP::ssh-agent
+zinit ice has'ssh-agent' wait silent; zinit snippet OMZP::ssh-agent
 
 zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
