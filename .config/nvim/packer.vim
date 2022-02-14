@@ -50,6 +50,7 @@ return require('packer').startup {
     use {'nvim-telescope/telescope-ui-select.nvim'}
     use {'akinsho/bufferline.nvim'}
     use {'moll/vim-bbye'}
+    use 'luukvbaal/nnn.nvim'
 
     -- Misc
     use {
