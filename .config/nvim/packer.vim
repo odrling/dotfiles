@@ -34,12 +34,11 @@ return require('packer').startup {
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- Interface
-    use 'liuchengxu/space-vim-theme'
-    use { 'nvim-lualine/lualine.nvim' }
     use {
       "mcchrish/zenbones.nvim",
-      requires = "rktjmp/lush.nvim"
+      requires = "rktjmp/lush.nvim",
     }
+    use { 'nvim-lualine/lualine.nvim' }
     use 'folke/tokyonight.nvim'
     use 'NLKNguyen/papercolor-theme'
     use {

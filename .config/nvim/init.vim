@@ -11,20 +11,6 @@ filetype indent on
 set path+=**
 set wildmenu
 
-" ALE
-let g:ale_disable_lsp = 1
-let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 0
-let g:ale_set_balloons = 1
-let g:ale_hover_to_preview = 1
-let g:ale_floating_preview = 1
-let g:ale_languagetool_options = '-l en-GB'
-set signcolumn=yes
-
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -68,7 +54,6 @@ set formatoptions-=t
 set termguicolors
 set background=light
 
-source ~/.config/nvim/packer.vim
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -299,6 +284,10 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+source ~/.config/nvim/packer.vim
+
+colorscheme rose-pine
+
 source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/diffview.vim
@@ -316,8 +305,6 @@ require("bufferline").setup {
     }
 }
 EOF
-
-colorscheme zenbones
 
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
