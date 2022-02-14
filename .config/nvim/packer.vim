@@ -40,6 +40,7 @@ return require('packer').startup {
       "mcchrish/zenbones.nvim",
       requires = "rktjmp/lush.nvim",
     }
+    use 'karb94/neoscroll.nvim'
     use { 'nvim-lualine/lualine.nvim' }
     use 'pappasam/papercolor-theme-slim'
     use 'folke/tokyonight.nvim'
