@@ -66,7 +66,7 @@ set formatoptions-=t
 
 " use true colors
 set termguicolors
-set background=dark
+set background=light
 
 source ~/.config/nvim/packer.vim
 
@@ -316,7 +316,7 @@ require("bufferline").setup {
 }
 EOF
 
-colorscheme space_vim_theme
+colorscheme zenbones
 
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.

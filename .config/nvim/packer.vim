@@ -36,6 +36,10 @@ return require('packer').startup {
     -- Interface
     use 'liuchengxu/space-vim-theme'
     use 'liuchengxu/eleline.vim'
+    use {
+      "mcchrish/zenbones.nvim",
+      requires = "rktjmp/lush.nvim"
+    }
     use 'folke/tokyonight.nvim'
     use 'NLKNguyen/papercolor-theme'
     use {
