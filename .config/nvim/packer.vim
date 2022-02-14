@@ -55,6 +55,7 @@ return require('packer').startup {
     use {'akinsho/bufferline.nvim'}
     use {'moll/vim-bbye'}
     use 'luukvbaal/nnn.nvim'
+    use 'ggandor/lightspeed.nvim'
 
     -- Misc
     use {
