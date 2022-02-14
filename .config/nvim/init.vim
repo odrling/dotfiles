@@ -286,7 +286,7 @@ endfunction
 
 source ~/.config/nvim/packer.vim
 
-colorscheme rose-pine
+colorscheme PaperColorSlim
 
 source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/lsp.vim

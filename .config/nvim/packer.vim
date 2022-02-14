@@ -39,6 +39,7 @@ return require('packer').startup {
       requires = "rktjmp/lush.nvim",
     }
     use { 'nvim-lualine/lualine.nvim' }
+    use 'pappasam/papercolor-theme-slim'
     use 'folke/tokyonight.nvim'
     use 'NLKNguyen/papercolor-theme'
     use {
