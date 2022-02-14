@@ -31,6 +31,8 @@ return require('packer').startup {
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'nvim-treesitter/playground', requires = 'nvim-treesitter/nvim-treesitter' }
+    use 'RRethy/nvim-treesitter-endwise'
+    use 'windwp/nvim-ts-autotag'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- Interface

@@ -22,6 +22,12 @@ try
     playground = {
       enable = true,
       updatetime = 25
+    },
+    endwise = {
+      enable = true
+    },
+    autotag = {
+      enable = true
     }
   }
 EOF
