@@ -299,6 +299,12 @@ source ~/.config/nvim/nnn.vim
 lua require('neoscroll').setup()
 lua require('gitsigns').setup({ current_line_blame = true })
 lua << EOF
+require("indent_blankline").setup {
+    show_current_context = true,
+    show_current_context_start = true,
+}
+EOF
+lua << EOF
 require("bufferline").setup {
     options = {
         show_buffer_close_icons = false,

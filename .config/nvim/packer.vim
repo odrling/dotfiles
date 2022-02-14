@@ -41,6 +41,7 @@ return require('packer').startup {
       requires = "rktjmp/lush.nvim",
     }
     use 'karb94/neoscroll.nvim'
+    use 'lukas-reineke/indent-blankline.nvim'
     use { 'nvim-lualine/lualine.nvim' }
     use 'pappasam/papercolor-theme-slim'
     use 'folke/tokyonight.nvim'
