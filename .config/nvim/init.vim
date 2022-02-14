@@ -304,6 +304,7 @@ source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/diffview.vim
 source ~/.config/nvim/neogit.vim
 source ~/.config/nvim/telescope.vim
+source ~/.config/nvim/lualine.vim
 
 lua require('gitsigns').setup({ current_line_blame = true })
 lua << EOF
