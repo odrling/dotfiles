@@ -41,6 +41,7 @@ return require('packer').startup {
       "mcchrish/zenbones.nvim",
       requires = "rktjmp/lush.nvim",
     }
+    use 'projekt0n/github-nvim-theme'
     use 'karb94/neoscroll.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use { 'nvim-lualine/lualine.nvim' }

@@ -289,7 +289,7 @@ endfunction
 
 source ~/.config/nvim/packer.vim
 
-colorscheme PaperColorSlim
+colorscheme github_light
 
 source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/lsp.vim
