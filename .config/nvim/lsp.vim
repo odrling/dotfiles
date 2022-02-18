@@ -31,7 +31,18 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
+  if client.resolved_capabilities.document_highlight then
+    vim.cmd [[
+      hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      hi! LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      hi! LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]]
+  end
 end
 
 -- Add additional capabilities supported by nvim-cmp
@@ -164,3 +175,7 @@ nnoremap <silent> ]e <cmd>Lspsaga diagnostic_jump_next<CR>
 
 " format
 nnoremap <silent> <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
+
+" Show line diagnostics automatically in hover window
+set updatetime=250
+autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
