@@ -27,6 +27,7 @@ return require('packer').startup {
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'hrsh7th/cmp-nvim-lsp' }
     use { 'tami5/lspsaga.nvim', requires = 'neovim/nvim-lspconfig' }
+    use 'hrsh7th/cmp-path'
 
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
