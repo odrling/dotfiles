@@ -150,39 +150,38 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (PaperColor - Light)
+# github Alacritty Colors
 colors:
   # Default colors
   primary:
-    background: '0xeeeeee'
-    foreground: '0x444444'
-
-  cursor:
-    text: '0xeeeeee'
-    cursor: '0x878787'
+    background: '0xffffff'
+    foreground: '0x24292f'
 
   # Normal colors
   normal:
-    black:   '0xeeeeee'
-    red:     '0xaf0000'
-    green:   '0x008700'
-    yellow:  '0x5f8700'
-    blue:    '0x0087af'
-    magenta: '0x878787'
-    cyan:    '0x005f87'
-    white:   '0x444444'
+    black:   '0x24292e'
+    red:     '0xd73a49'
+    green:   '0x28a745'
+    yellow:  '0xdbab09'
+    blue:    '0x0366d6'
+    magenta: '0x5a32a3'
+    cyan:    '0x0598bc'
+    white:   '0x6a737d'
 
   # Bright colors
   bright:
-    black:   '0xbcbcbc'
-    red:     '0xd70000'
-    green:   '0xd70087'
-    yellow:  '0x8700af'
-    blue:    '0xd75f00'
-    magenta: '0xd75f00'
-    cyan:    '0x005faf'
-    white:   '0x005f87'
+    black:   '0x959da5'
+    red:     '0xcb2431'
+    green:   '0x22863a'
+    yellow:  '0xb08800'
+    blue:    '0x005cc5'
+    magenta: '0x5a32a3'
+    cyan:    '0x3192aa'
+    white:   '0xd1d5da'
 
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcb2431' }
 
 
 # Visual Bell
