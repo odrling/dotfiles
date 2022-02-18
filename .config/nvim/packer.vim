@@ -48,6 +48,10 @@ return require('packer').startup {
     use 'pappasam/papercolor-theme-slim'
     use 'folke/tokyonight.nvim'
     use 'NLKNguyen/papercolor-theme'
+    use { 
+        "projekt0n/circles.nvim", 
+        requires = "kyazdani42/nvim-web-devicons", 
+    }
     use {
       'nvim-telescope/telescope.nvim',
       requires = { {'nvim-lua/plenary.nvim'} }

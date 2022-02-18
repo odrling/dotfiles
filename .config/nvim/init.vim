@@ -304,6 +304,17 @@ lua require('neoscroll').setup()
 lua require('gitsigns').setup({ current_line_blame = true })
 
 lua << EOF
+require("circles").setup({
+  icons = {
+        empty = "○",
+        filled = "●",
+        lsp_prefix = "●"
+    },
+    lsp = true
+})
+EOF
+
+lua << EOF
 require("bufferline").setup {
     options = {
         show_buffer_close_icons = false,
