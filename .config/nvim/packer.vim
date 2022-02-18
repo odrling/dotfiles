@@ -50,7 +50,7 @@ return require('packer').startup {
       'nvim-telescope/telescope.nvim',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use "natecraddock/telescope-zf-native.nvim"
     use {'nvim-telescope/telescope-ui-select.nvim'}
     use {'akinsho/bufferline.nvim'}
     use {'moll/vim-bbye'}
