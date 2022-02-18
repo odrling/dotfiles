@@ -1,5 +1,5 @@
-highlight IndentBlanklineIndent1 guibg=#eeeeee gui=nocombine
-highlight IndentBlanklineIndent2 guibg=#e4e4e4 gui=nocombine
+highlight IndentBlanklineIndent1 guibg=#ffffff gui=nocombine
+highlight IndentBlanklineIndent2 guibg=#f8f8f8 gui=nocombine
 
 lua << EOF
 require("indent_blankline").setup {
