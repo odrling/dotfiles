@@ -74,9 +74,10 @@ return require('packer').startup {
           require('Comment').setup()
       end
     }
-    use 'Raimondi/delimitMate'
+    use {'ZhiyuanLck/smart-pairs', event = 'InsertEnter', config = function() require('pairs'):setup() end}
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
+    use 'kenn7/vim-arsync'
     use {
       "max397574/better-escape.nvim",
       config = function()

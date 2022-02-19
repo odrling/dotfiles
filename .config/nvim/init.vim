@@ -302,6 +302,7 @@ source ~/.config/nvim/indent_blankline.vim
 
 lua require('neoscroll').setup()
 lua require('gitsigns').setup({ current_line_blame = true })
+PackerCompile
 
 lua << EOF
 require("circles").setup({
