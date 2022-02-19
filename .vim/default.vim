@@ -159,11 +159,11 @@ endif
 highlight clear SignColumn  " SignColumn should match background
 " highlight clear LineNr      " Current line number row will have same background color in relative mode
 
-if has('unnamedplus')
-  set clipboard=unnamedplus,unnamed
-else
-  set clipboard+=unnamed
-endif
+" if has('unnamedplus')
+"   set clipboard=unnamedplus,unnamed
+" else
+"   set clipboard+=unnamed
+" endif
 
 if get(g:, 'vim_better_default_persistent_undo', 0)
   if has('persistent_undo')
