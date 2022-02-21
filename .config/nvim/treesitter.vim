@@ -29,6 +29,9 @@ try
     autotag = {
       enable = true
     }
+    yati = {
+        enable = true
+    }
   }
 EOF
 

@@ -35,6 +35,7 @@ return require('packer').startup {
     use 'RRethy/nvim-treesitter-endwise'
     use 'windwp/nvim-ts-autotag'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
 
     -- Interface
     use {
