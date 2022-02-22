@@ -232,7 +232,10 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " neogit
-map <leader>n :Neogit<CR>
+map <leader>n <cmd>Neogit<CR>
+
+" arsync
+nnoremap <leader>p <cmd>ARsyncUp<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
