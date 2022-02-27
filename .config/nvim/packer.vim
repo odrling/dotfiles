@@ -5,19 +5,50 @@ augroup end
 
 lua << EOF
 
-return require('packer').startup { 
+require('packer').startup { 
   function()
     use 'lewis6991/impatient.nvim'
     use {'nathom/filetype.nvim',
          setup = [[vim.cmd('runtime! autoload/dist/ft.vim')]]}
 
     -- git
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-    use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+    use { 'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('config.neogit')
+        end
+    }
+    use { 'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('gitsigns').setup({ current_line_blame = true }) 
+        end
+    }
+    use { 'sindrets/diffview.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('config.diffview')
+        end
+    }
 
     -- lsp
-    use 'neovim/nvim-lspconfig'
+    use {'neovim/nvim-lspconfig',
+        requires = {
+                'ray-x/lsp_signature.nvim',
+                'L3MON4D3/LuaSnip',
+                'nvim-lua/lsp-status.nvim',
+                'jose-elias-alvarez/null-ls.nvim',
+                'williamboman/nvim-lsp-installer',
+                'hrsh7th/nvim-cmp',
+                'saadparwaiz1/cmp_luasnip',
+                'hrsh7th/cmp-nvim-lsp',
+                'tami5/lspsaga.nvim',
+                'hrsh7th/cmp-path'
+        },
+        config = function()
+            require('config.lsp')
+        end
+    }
     use 'ray-x/lsp_signature.nvim'
     use 'L3MON4D3/LuaSnip' 
     use 'nvim-lua/lsp-status.nvim'
@@ -30,38 +61,79 @@ return require('packer').startup {
     use 'hrsh7th/cmp-path'
 
     -- Treesitter
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'nvim-treesitter/playground', requires = 'nvim-treesitter/nvim-treesitter' }
-    use 'RRethy/nvim-treesitter-endwise'
-    use 'windwp/nvim-ts-autotag'
-    use 'JoosepAlviste/nvim-ts-context-commentstring'
-    use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
+    use { 'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        requires = {
+                'nvim-treesitter/playground',
+                'RRethy/nvim-treesitter-endwise',
+                'windwp/nvim-ts-autotag',
+                'JoosepAlviste/nvim-ts-context-commentstring',
+                'yioneko/nvim-yati'
+        },
+        config = function()
+            require('config.treesitter')
+        end
+    }
 
     -- Interface
     use {
       "mcchrish/zenbones.nvim",
       requires = "rktjmp/lush.nvim",
     }
-    use 'projekt0n/github-nvim-theme'
-    use 'karb94/neoscroll.nvim'
-    use 'lukas-reineke/indent-blankline.nvim'
-    use { 'nvim-lualine/lualine.nvim' }
+    use {'projekt0n/github-nvim-theme',
+        config = function()
+            vim.cmd [[ colorscheme github_light ]]
+        end
+    }
+    use {'karb94/neoscroll.nvim',
+        config = function()
+            require('neoscroll').setup()
+        end
+    }
+    use {'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require('config.indent_blankline')
+        end
+    }
+    use { 'nvim-lualine/lualine.nvim',
+        config = function()
+            require('config.lualine')
+        end
+    }
     use 'pappasam/papercolor-theme-slim'
     use 'folke/tokyonight.nvim'
     use 'NLKNguyen/papercolor-theme'
     use { 
         "projekt0n/circles.nvim", 
-        requires = "kyazdani42/nvim-web-devicons", 
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require('config.circles')
+        end
     }
     use {
       'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'natecraddock/telescope-zf-native.nvim',
+        'nvim-telescope/telescope-ui-select.nvim'
+      },
+      config = function()
+          require('config.telescope')
+      end
     }
     use "natecraddock/telescope-zf-native.nvim"
     use {'nvim-telescope/telescope-ui-select.nvim'}
-    use {'akinsho/bufferline.nvim'}
+    use {'akinsho/bufferline.nvim',
+        config = function()
+            require('config.bufferline')
+        end
+    }
     use {'moll/vim-bbye'}
-    use 'luukvbaal/nnn.nvim'
+    use { 'luukvbaal/nnn.nvim',
+        config = function()
+            require('config.nnn')
+        end
+    }
     use 'ggandor/lightspeed.nvim'
 
     -- Misc
@@ -96,4 +168,5 @@ return require('packer').startup {
   }
 }
 
+require('packer_compiled')
 EOF

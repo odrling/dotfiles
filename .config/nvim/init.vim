@@ -292,42 +292,6 @@ endfunction
 
 source ~/.config/nvim/packer.vim
 
-colorscheme github_light
-
-source ~/.config/nvim/treesitter.vim
-source ~/.config/nvim/lsp.vim
-source ~/.config/nvim/diffview.vim
-source ~/.config/nvim/neogit.vim
-source ~/.config/nvim/telescope.vim
-source ~/.config/nvim/lualine.vim
-source ~/.config/nvim/nnn.vim
-source ~/.config/nvim/indent_blankline.vim
-
-lua require('neoscroll').setup()
-lua require('gitsigns').setup({ current_line_blame = true })
-PackerCompile
-
-lua << EOF
-require("circles").setup({
-  icons = {
-        empty = "○",
-        filled = "●",
-        lsp_prefix = "●"
-    },
-    lsp = true
-})
-EOF
-
-lua << EOF
-require("bufferline").setup {
-    options = {
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-        show_buffer_icons = false,
-    }
-}
-EOF
-
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall

@@ -1,5 +1,3 @@
-lua << EOF
-
 require('lualine').setup {
   options = {
     icons_enabled = false,
@@ -8,5 +6,3 @@ require('lualine').setup {
     section_separators = { left = '', right = ''},
   }
 }
-
-EOF

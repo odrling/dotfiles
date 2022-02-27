@@ -1,4 +1,3 @@
-lua << EOF
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -141,7 +140,8 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-EOF
+
+vim.cmd [[
 
 " code action
 nnoremap <silent><leader>ca <cmd>Lspsaga code_action<CR>
@@ -179,3 +179,5 @@ nnoremap <silent> <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 " Show line diagnostics automatically in hover window
 set updatetime=250
 autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
+
+]]
