@@ -168,5 +168,9 @@ require('packer').startup {
   }
 }
 
-require('packer_compiled')
 EOF
+
+try
+    lua require('packer_compiled')
+catch
+endtry
