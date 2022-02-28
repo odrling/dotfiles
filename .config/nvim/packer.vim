@@ -148,6 +148,12 @@ require('packer').startup {
         config = function() require("stabilize").setup() end
     }
     use {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("project_nvim").setup {}
+      end
+    }
+    use {
       'numToStr/Comment.nvim',
       config = function()
           require('Comment').setup()
