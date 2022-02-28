@@ -85,6 +85,12 @@ require('packer').startup {
             vim.cmd [[ colorscheme github_light ]]
         end
     }
+    use({
+      'mvllow/modes.nvim',
+      config = function()
+        require('modes').setup()
+      end
+    })
     use {'karb94/neoscroll.nvim',
         config = function()
             require('neoscroll').setup()
