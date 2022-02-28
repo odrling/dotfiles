@@ -135,14 +135,10 @@ require('packer').startup {
         end
     }
     use {'moll/vim-bbye'}
-    use { 'luukvbaal/nnn.nvim',
-        config = function()
-            require('config.nnn')
-        end
-    }
     use 'ggandor/lightspeed.nvim'
 
     -- Misc
+    use "elihunter173/dirbuf.nvim"
     use {
         "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
