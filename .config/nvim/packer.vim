@@ -166,6 +166,7 @@ require('packer').startup {
         end}
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
+    use 'tpope/vim-sleuth'
     use 'kenn7/vim-arsync'
     use {
       "max397574/better-escape.nvim",
