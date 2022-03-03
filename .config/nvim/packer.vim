@@ -77,8 +77,8 @@ require('packer').startup {
 
     -- Interface
     use {
-      "mcchrish/zenbones.nvim",
-      requires = "rktjmp/lush.nvim",
+        "mcchrish/zenbones.nvim",
+        requires = "rktjmp/lush.nvim",
     }
     use {'projekt0n/github-nvim-theme',
         config = function()
@@ -144,16 +144,16 @@ require('packer').startup {
         config = function() require("stabilize").setup() end
     }
     use {
-      "ahmedkhalf/project.nvim",
-      config = function()
-        require("project_nvim").setup {}
-      end
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup {}
+        end
     }
     use {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup()
-      end
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
     }
     use {'ZhiyuanLck/smart-pairs',
         event = 'InsertEnter',
@@ -169,13 +169,13 @@ require('packer').startup {
     use 'tpope/vim-sleuth'
     use 'kenn7/vim-arsync'
     use {
-      "max397574/better-escape.nvim",
-      config = function()
+        "max397574/better-escape.nvim",
+        config = function()
         require("better_escape").setup { 
-          mapping = {"jj"},
-          timeout = vim.o.timeoutlen,
-          clear_empty_lines = false,
-          keys = "<ESC>",
+            mapping = {"jj"},
+            timeout = vim.o.timeoutlen,
+            clear_empty_lines = false,
+            keys = "<ESC>",
         }
       end,
     }
