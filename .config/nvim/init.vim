@@ -25,6 +25,9 @@ nmap <leader>; A;<esc>
 " Height of the command bar
 set cmdheight=1
 
+" always show sign column
+set signcolumn=yes
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
