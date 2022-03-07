@@ -219,7 +219,7 @@ let $FZF_DEFAULT_COMMAND = "fd -t f"
 " map <C-o> :Clap files<CR>
 " map <leader><leader> :FZF<CR>
 " Find files using Telescope command-line sugar.
-nnoremap <leader>o <cmd>Dirbuf<CR>
+nnoremap <leader>o <cmd>Dirbuf %<CR>
 nnoremap <leader>x <cmd>Dirbuf<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader><leader> <cmd>Telescope find_files<cr>
