@@ -157,6 +157,9 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+" close buffer
+nnoremap <leader>q :Bdelete<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -170,12 +173,6 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " turn off highlighting
 map <leader>h :noh<CR>
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -192,9 +189,6 @@ inoremap <C-]> <C-x><C-]>
 
 " create line above
 inoremap <S-Enter> <Esc>O
-
-" bulk rename (with dirvish)
-nnoremap <C-S-r> :%Shdo mv {} {}<cr>
 
 " diff
 nnoremap <leader>d :windo diffthis<cr>
@@ -225,10 +219,12 @@ let $FZF_DEFAULT_COMMAND = "fd -t f"
 " map <C-o> :Clap files<CR>
 " map <leader><leader> :FZF<CR>
 " Find files using Telescope command-line sugar.
+nnoremap <leader>o <cmd>Dirbuf<CR>
+nnoremap <leader>x <cmd>Dirbuf<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader><leader> <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " neogit
