@@ -155,15 +155,7 @@ require('packer').startup {
             require('Comment').setup()
         end
     }
-    use {'ZhiyuanLck/smart-pairs',
-        event = 'InsertEnter',
-        config = function()
-            require('pairs'):setup({
-                enter = {
-                    enable_mapping = false
-                }
-            })
-        end}
+    use {'ZhiyuanLck/smart-pairs', event = 'InsertEnter', config = function() require('pairs'):setup() end}
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'tpope/vim-sleuth'
