@@ -92,6 +92,12 @@ require('packer').startup {
             vim.cmd [[ colorscheme github_light ]]
         end
     }
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end
+    }
     use({
       'mvllow/modes.nvim',
       config = function()
