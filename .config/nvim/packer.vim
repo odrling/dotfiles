@@ -141,7 +141,7 @@ require('packer').startup {
             require('config.bufferline')
         end
     }
-    use {'moll/vim-bbye'}
+    use 'rbgrouleff/bclose.vim'
     use 'ggandor/lightspeed.nvim'
 
     -- Misc
