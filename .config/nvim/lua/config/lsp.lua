@@ -170,7 +170,7 @@ nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_sag
 " nnoremap <silent> gs <cmd>Lspsaga signature_help<CR>
 
 " rename
-nnoremap <silent>gr <cmd>Lspsaga rename<CR>
+nnoremap <leader>r <cmd>Lspsaga rename<CR>
 
 " preview definition
 nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
