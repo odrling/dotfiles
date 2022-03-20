@@ -161,7 +161,7 @@ map <leader>sa zg
 map <leader>s? z=
 
 " close buffer
-nnoremap <leader>q :Bdelete<CR>
+nnoremap <leader>q :Bclose<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

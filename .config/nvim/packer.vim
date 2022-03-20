@@ -74,6 +74,13 @@ require('packer').startup {
             require('config.treesitter')
         end
     }
+    use {
+        "narutoxy/dim.lua",
+        requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+        config = function()
+            require('dim').setup({})
+        end
+    }
 
     -- Interface
     use {
@@ -83,6 +90,12 @@ require('packer').startup {
     use {'projekt0n/github-nvim-theme',
         config = function()
             vim.cmd [[ colorscheme github_light ]]
+        end
+    }
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
         end
     }
     use({
@@ -134,7 +147,7 @@ require('packer').startup {
             require('config.bufferline')
         end
     }
-    use {'moll/vim-bbye'}
+    use 'rbgrouleff/bclose.vim'
     use 'ggandor/lightspeed.nvim'
 
     -- Misc
@@ -160,17 +173,6 @@ require('packer').startup {
     use 'tpope/vim-surround'
     use 'tpope/vim-sleuth'
     use 'kenn7/vim-arsync'
-    use {
-        "max397574/better-escape.nvim",
-        config = function()
-        require("better_escape").setup { 
-            mapping = {"jj"},
-            timeout = vim.o.timeoutlen,
-            clear_empty_lines = false,
-            keys = "<ESC>",
-        }
-      end,
-    }
   end,
   config = {
     compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"
