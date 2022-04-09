@@ -4,6 +4,9 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent quiet yes
+
 # load modules
 zinit light zsh-users/zsh-completions
 zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
