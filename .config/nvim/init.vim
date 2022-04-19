@@ -49,6 +49,9 @@ set textwidth=0
 set wrapmargin=0
 set formatoptions-=t
 
+" GUI settings
+set guifont=monospace:h12
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
