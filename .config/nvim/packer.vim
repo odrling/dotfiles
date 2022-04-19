@@ -168,20 +168,6 @@ require('packer').startup {
             require('Comment').setup()
         end
     }
-    use {'steelsojka/pears.nvim', 
-         config = function()
-            require "pears".setup(function(conf)
-                conf.disabled_filetypes { '' }
-                conf.on_enter(function(pears_handle)
-                    if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected ~= -1 then
-                        return vim.fn["compe#confirm"]("<CR>")
-                    else
-                        pears_handle()
-                    end
-                end)
-            end)
-         end
-    }
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'tpope/vim-sleuth'
