@@ -141,8 +141,12 @@ nvim_lsp.clangd.setup { on_attach = on_attach }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 nvim_lsp.jsonls.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
 }
+
+-- xml
+nvim_lsp.lemminx.setup { on_attach = on_attach }
 
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
