@@ -18,6 +18,10 @@ require('packer').startup {
             require('config.neogit')
         end
     }
+    use {'akinsho/git-conflict.nvim', config = function()
+        require('git-conflict').setup()
+    end}
+
     use { 'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
