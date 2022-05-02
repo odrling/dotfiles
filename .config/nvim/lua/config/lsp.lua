@@ -134,6 +134,16 @@ nvim_lsp.jdtls.setup { on_attach = on_attach }
 -- C
 nvim_lsp.clangd.setup { on_attach = on_attach }
 
+-- json
+-- Neovim does not currently include built-in snippets.
+-- vscode-json-language-server only provides completions when snippet support
+-- is enabled
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+nvim_lsp.jsonls.setup {
+  capabilities = capabilities,
+}
+
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 for type, icon in pairs(signs) do
