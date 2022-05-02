@@ -12,6 +12,10 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap=true, silent=true }
 
+  require "lsp_signature".on_attach({
+    always_trigger = true,
+  })
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -30,18 +34,26 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  if client.resolved_capabilities.document_highlight then
+
+  if client.server_capabilities.documentHighlightProvider then
     vim.cmd [[
       hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
       hi! LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
       hi! LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
     ]]
+    vim.api.nvim_create_augroup('lsp_document_highlight', {})
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = 'lsp_document_highlight',
+      buffer = 0,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = 'lsp_document_highlight',
+      buffer = 0,
+      callback = vim.lsp.buf.clear_references,
+    })
   end
+
 end
 
 -- Add additional capabilities supported by nvim-cmp
@@ -102,6 +114,27 @@ cmp.setup {
 local saga = require 'lspsaga'
 saga.init_lsp_saga()
 
+require("nvim-lsp-installer").setup { automatic_installation = true }
+
+-- python
+nvim_lsp.pyright.setup { on_attach = on_attach }
+
+-- lua
+nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
+
+-- java
+nvim_lsp.jdtls.setup { on_attach = on_attach }
+
+-- C
+nvim_lsp.clangd.setup { on_attach = on_attach }
+
+
+local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 local null_ls = require("null-ls")
 
 local sources = {
@@ -115,30 +148,6 @@ null_ls.setup({
   sources = sources,
   diagnostics_format = "[#{s}] #{c}: #{m}"
 })
-
-local lsp_installer = require("nvim-lsp-installer")
-
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-      on_attach = function(client, bufnr)
-        require "lsp_signature".on_attach({
-          always_trigger = true,
-        })
-      end
-    }
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
-
-local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
 
 
 vim.cmd [[
