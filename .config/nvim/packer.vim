@@ -47,7 +47,8 @@ require('packer').startup {
                 'saadparwaiz1/cmp_luasnip',
                 'hrsh7th/cmp-nvim-lsp',
                 'tami5/lspsaga.nvim',
-                'hrsh7th/cmp-path'
+                'hrsh7th/cmp-path',
+                'b0o/schemastore.nvim'
         },
         config = function()
             require('config.lsp')

@@ -128,7 +128,7 @@ saga.init_lsp_saga()
 require("nvim-lsp-installer").setup { automatic_installation = true }
 
 local servers = { 'pyright', 'sumneko_lua', 'jdtls', 'clangd', 'lemminx',
-                  'jsonls', 'tsserver' }
+                  'tsserver' }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -136,6 +136,16 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+
+nvim_lsp.jsonls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
+}
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 for type, icon in pairs(signs) do
