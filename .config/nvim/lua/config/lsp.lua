@@ -147,6 +147,18 @@ nvim_lsp.jsonls.setup {
   },
 }
 
+nvim_lsp.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = true
+      }
+    }
+  }
+}
+
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
