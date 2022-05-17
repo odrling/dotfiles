@@ -59,6 +59,11 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+--
+-- Neovim does not currently include built-in snippets.
+-- vscode-json-language-server only provides completions when snippet support
+-- is enabled
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -122,32 +127,15 @@ saga.init_lsp_saga()
 
 require("nvim-lsp-installer").setup { automatic_installation = true }
 
--- python
-nvim_lsp.pyright.setup { on_attach = on_attach }
+local servers = { 'pyright', 'sumneko_lua', 'jdtls', 'clangd', 'lemminx',
+                  'jsonls', 'tsserver' }
 
--- lua
-nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
-
--- java
-nvim_lsp.jdtls.setup { on_attach = on_attach }
-
--- C
-nvim_lsp.clangd.setup { on_attach = on_attach }
-
--- json
--- Neovim does not currently include built-in snippets.
--- vscode-json-language-server only provides completions when snippet support
--- is enabled
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-nvim_lsp.jsonls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- xml
-nvim_lsp.lemminx.setup { on_attach = on_attach }
-
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+end
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 for type, icon in pairs(signs) do
