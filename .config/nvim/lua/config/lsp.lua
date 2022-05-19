@@ -142,6 +142,7 @@ nvim_lsp.jsonls.setup {
   capabilities = capabilities,
   settings = {
     json = {
+      validate = { enable = true },
       schemas = require('schemastore').json.schemas(),
     },
   },
