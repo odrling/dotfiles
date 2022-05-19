@@ -16,24 +16,50 @@ local on_attach = function(client, bufnr)
     always_trigger = true,
   })
 
+  vim.cmd [[
+
+  " scroll down hover doc or scroll in definition preview
+  nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+  " scroll up hover doc
+  nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+  " show signature help
+  " nnoremap <silent> gs <cmd>Lspsaga signature_help<CR>
+
+  " show diagnostic
+  nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+  " only show diagnostic if cursor is over the area
+  nnoremap <silent><leader>cc <cmd>Lspsaga show_cursor_diagnostics<CR>
+
+  " jump between diagnostics
+  nnoremap <silent> [e <cmd>Lspsaga diagnostic_jump_prev<CR>
+  nnoremap <silent> ]e <cmd>Lspsaga diagnostic_jump_next<CR>
+
+  " Show line diagnostics automatically in hover window
+  set updatetime=250
+  autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
+  ]]
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
+  buf_set_keymap('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>r', '<cmd>Lspsaga rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 
   if client.server_capabilities.documentHighlightProvider then
     vim.cmd [[
@@ -179,45 +205,3 @@ null_ls.setup({
   sources = sources,
   diagnostics_format = "[#{s}] #{c}: #{m}"
 })
-
-
-vim.cmd [[
-
-" code action
-nnoremap <silent><leader>ca <cmd>Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-
-" show hover doc
-nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>
-
-" scroll down hover doc or scroll in definition preview
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-" scroll up hover doc
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-
-" show signature help
-" nnoremap <silent> gs <cmd>Lspsaga signature_help<CR>
-
-" rename
-nnoremap <leader>r <cmd>Lspsaga rename<CR>
-
-" preview definition
-nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-
-" show diagnostic
-nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
-" only show diagnostic if cursor is over the area
-nnoremap <silent><leader>cc <cmd>Lspsaga show_cursor_diagnostics<CR>
-
-" jump between diagnostics
-nnoremap <silent> [e <cmd>Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> ]e <cmd>Lspsaga diagnostic_jump_next<CR>
-
-" format
-nnoremap <silent> <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
-
-" Show line diagnostics automatically in hover window
-set updatetime=250
-autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
-
-]]
