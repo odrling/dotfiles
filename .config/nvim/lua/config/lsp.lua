@@ -186,6 +186,16 @@ nvim_lsp.yamlls.setup {
   }
 }
 
+nvim_lsp.taplo.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    toml = {
+      schemas = require('schemastore').json.schemas(),
+    }
+  }
+}
+
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
