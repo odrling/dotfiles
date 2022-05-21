@@ -37,6 +37,9 @@ set magic
 " mouse
 set mouse=nv
 
+" disable modelines
+set nomodeline
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
