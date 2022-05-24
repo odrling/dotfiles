@@ -6,7 +6,7 @@ export PATH="$HOME/.local/bin:$PATH:$HOME/.vim/fzf/bin"
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
 
-export LESS="-R"
+export LESS="-R -z-2 -j4"
 
 # fix java swing applications
 export _JAVA_AWT_WM_NONREPARENTING=1
