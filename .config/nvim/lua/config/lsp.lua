@@ -151,8 +151,7 @@ saga.init_lsp_saga()
 
 require("nvim-lsp-installer").setup { automatic_installation = true }
 
-local servers = { 'pyright', 'sumneko_lua', 'jdtls', 'clangd', 'lemminx',
-                  'tsserver' }
+local servers = { 'pyright', 'jdtls', 'clangd', 'lemminx', 'tsserver' }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -160,6 +159,18 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+
+nvim_lsp.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim', 'aegisub', 'mp' }
+      }
+    }
+  }
+}
 
 nvim_lsp.jsonls.setup {
   on_attach = on_attach,
