@@ -156,3 +156,6 @@ Cache
 
 # starship
 !/.config/starship.toml
+
+# ncdu
+!/.config/ncdu
