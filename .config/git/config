@@ -1,0 +1,46 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[color]
+	ui = auto
+[submodule]
+	fetchJobs = 4
+[diff]
+	mnemonicprefix = true
+	tool = difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+[fetch]
+	recurseSubmodules = on-demand
+[core]
+	longpaths = true
+[pull]
+	rebase = false
+[alias]
+	l = log --date=short --graph --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\"
+	ll = log --stat
+	lf = log --date=short --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\"
+	rh = reset --hard
+	d = diff --patch-with-stat
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+	difftool = true
+
+[delta]
+	light = true
+	navigate = true
+
+[interactive]
+	diffFilter = delta --color-only
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = master

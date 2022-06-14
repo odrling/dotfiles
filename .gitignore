@@ -1,6 +1,5 @@
 # ignore everything except the gitignore file
 /*
-!.gitignore
 
 # ignore cache files
 cache
@@ -162,3 +161,7 @@ Cache
 
 # fd
 !/.config/fd
+
+# git config
+!.gitignore
+!/.config/git
