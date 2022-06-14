@@ -73,6 +73,7 @@ alias ag="ag --nogroup"
 alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
+alias fd="fd --hidden"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
