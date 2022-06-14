@@ -159,3 +159,6 @@ Cache
 
 # ncdu
 !/.config/ncdu
+
+# fd
+!/.config/fd
