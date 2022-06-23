@@ -114,9 +114,12 @@ require('packer').startup {
              require('nvim-autopairs').setup()
          end
         }
-    use {'karb94/neoscroll.nvim',
+    use {'declancm/cinnamon.nvim',
         config = function()
-            require('neoscroll').setup()
+            require('cinnamon').setup {
+                extra_keymaps = true,
+                scroll_limit = 50,
+            }
         end
     }
     use {'lukas-reineke/indent-blankline.nvim',
