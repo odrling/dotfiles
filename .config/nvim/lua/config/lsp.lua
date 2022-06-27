@@ -151,7 +151,7 @@ saga.init_lsp_saga()
 
 require("nvim-lsp-installer").setup { automatic_installation = true }
 
-local servers = { 'pyright', 'jdtls', 'clangd', 'lemminx', 'tsserver' }
+local servers = { 'pyright', 'jdtls', 'clangd', 'lemminx', 'tsserver', 'vimls'}
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
