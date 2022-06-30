@@ -178,6 +178,8 @@ cmp.setup.cmdline(':', {
   })
 })
 
+require("cmp_git").setup()
+
 local saga = require 'lspsaga'
 saga.init_lsp_saga()
 
