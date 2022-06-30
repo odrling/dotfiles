@@ -48,6 +48,12 @@ require('packer').startup {
                 'hrsh7th/cmp-nvim-lsp',
                 'tami5/lspsaga.nvim',
                 'hrsh7th/cmp-path',
+                'hrsh7th/cmp-buffer',
+                'hrsh7th/cmp-cmdline',
+                'ray-x/cmp-treesitter',
+                'kdheepak/cmp-latex-symbols',
+                'hrsh7th/cmp-emoji',
+                'petertriho/cmp-git',
                 'b0o/schemastore.nvim'
         },
         config = function()
