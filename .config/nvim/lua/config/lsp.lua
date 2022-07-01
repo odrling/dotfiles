@@ -12,6 +12,10 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap=true, silent=true }
 
+  require "lsp_signature".on_attach({
+    always_trigger = true,
+  })
+
   vim.cmd [[
 
   " scroll down hover doc or scroll in definition preview
@@ -137,7 +141,6 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'treesitter' },

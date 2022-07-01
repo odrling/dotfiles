@@ -38,6 +38,7 @@ require('packer').startup {
     -- lsp
     use {'neovim/nvim-lspconfig',
         requires = {
+                'ray-x/lsp_signature.nvim',
                 'L3MON4D3/LuaSnip',
                 'nvim-lua/lsp-status.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
@@ -45,7 +46,6 @@ require('packer').startup {
                 'hrsh7th/nvim-cmp',
                 'saadparwaiz1/cmp_luasnip',
                 'hrsh7th/cmp-nvim-lsp',
-                'hrsh7th/cmp-nvim-lsp-signature-help',
                 'tami5/lspsaga.nvim',
                 'hrsh7th/cmp-path',
                 'hrsh7th/cmp-buffer',
@@ -60,6 +60,7 @@ require('packer').startup {
             require('config.lsp')
         end
     }
+    use 'ray-x/lsp_signature.nvim'
     use 'L3MON4D3/LuaSnip' 
     use 'nvim-lua/lsp-status.nvim'
     use 'jose-elias-alvarez/null-ls.nvim'
