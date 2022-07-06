@@ -224,12 +224,15 @@ let $FZF_DEFAULT_COMMAND = "fd -t f"
 " map <leader><leader> :FZF<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>o <cmd>Dirbuf %<CR>
-nnoremap <leader>x <cmd>Dirbuf<CR>
+nnoremap <leader>O <cmd>Dirbuf<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader><leader> <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" run commands
+nnoremap <leader>x <cmd>.!sh<cr>
 
 " neogit
 map <leader>n <cmd>Neogit<CR>
