@@ -128,14 +128,6 @@ require('packer').startup {
              require('nvim-autopairs').setup()
          end
         }
-    use {'declancm/cinnamon.nvim',
-        config = function()
-            require('cinnamon').setup {
-                extra_keymaps = true,
-                scroll_limit = 50,
-            }
-        end
-    }
     use {'lukas-reineke/indent-blankline.nvim',
         config = function()
             require('config.indent_blankline')
