@@ -1,6 +1,8 @@
 #!/bin/sh
-kara_api="${MUGEN_KARA_API:-https://kara.moe/api/karas}"
-karamedia="${MUGEN_KARAOKEMEDIA:-https://kara.moe/downloads}"
+mugen_host=${MUGEN_HOST:-https://kara.moe}
+kara_api="${MUGEN_KARA_API:-$mugen_host/api/karas}"
+collections=asia,geek,world,shitpost
+karamedia="${MUGEN_KARAOKEMEDIA:-$mugen_host/downloads}"
 
 # karaoke medias and lyrics directories
 medias="$karamedia/medias"
@@ -9,7 +11,7 @@ lyrics="$karamedia/lyrics"
 if [ -z "$@" ]; then
     # cache results for 30 minutes
     karas=/tmp/$USER-mugen-karas
-    find "$karas" -mmin 30 > /dev/null 2>&1 || (curl "$kara_api" | jq -r '.content | .[] | "\(.mediafile)\u0000info\u001f\(.kid)"' > "$karas")
+    find "$karas" -mmin 30 > /dev/null 2>&1 || (curl "$kara_api?collections=$collections" | jq -r '.content | .[] | "\(.mediafile)\u0000info\u001f\(.kid)"' > "$karas")
     cat "$karas"
     exit 0
 fi
