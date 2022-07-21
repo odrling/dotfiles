@@ -31,8 +31,8 @@ require'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true
   },
-  indent = {
-    enable = true
+  yati = {
+      enable = true
   }
 }
 
