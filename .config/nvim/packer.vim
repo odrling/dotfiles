@@ -79,6 +79,7 @@ require('packer').startup {
                 'RRethy/nvim-treesitter-endwise',
                 'windwp/nvim-ts-autotag',
                 'JoosepAlviste/nvim-ts-context-commentstring',
+                'yioneko/nvim-yati',
                 'nvim-treesitter/nvim-treesitter-textobjects'
         },
         config = function()
