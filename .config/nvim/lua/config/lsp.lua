@@ -183,7 +183,8 @@ require("cmp_git").setup()
 local saga = require 'lspsaga'
 saga.init_lsp_saga()
 
-require("nvim-lsp-installer").setup { automatic_installation = true }
+require("mason").setup()
+require("mason-lspconfig").setup { automatic_installation = true }
 
 local servers = { 'pyright', 'jdtls', 'clangd', 'lemminx', 'tsserver', 'vimls'}
 

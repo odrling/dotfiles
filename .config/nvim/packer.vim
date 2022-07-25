@@ -42,7 +42,8 @@ require('packer').startup {
                 'L3MON4D3/LuaSnip',
                 'nvim-lua/lsp-status.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
-                'williamboman/nvim-lsp-installer',
+                'williamboman/mason.nvim',
+                'williamboman/mason-lspconfig.nvim',
                 'hrsh7th/nvim-cmp',
                 'saadparwaiz1/cmp_luasnip',
                 'hrsh7th/cmp-nvim-lsp',
@@ -64,7 +65,6 @@ require('packer').startup {
     use 'L3MON4D3/LuaSnip' 
     use 'nvim-lua/lsp-status.nvim'
     use 'jose-elias-alvarez/null-ls.nvim'
-    use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/nvim-cmp'
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'hrsh7th/cmp-nvim-lsp' }
