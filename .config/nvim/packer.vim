@@ -170,6 +170,7 @@ require('packer').startup {
     use 'ggandor/lightspeed.nvim'
 
     -- Misc
+    use "antoinemadec/FixCursorHold.nvim"
     use "elihunter173/dirbuf.nvim"
     use {
         "luukvbaal/stabilize.nvim",
