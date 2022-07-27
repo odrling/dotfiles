@@ -168,7 +168,10 @@ require('packer').startup {
         end
     }
     use 'rbgrouleff/bclose.vim'
-    use 'ggandor/lightspeed.nvim'
+    use {'ggandor/leap.nvim',
+         config = function()
+                require('leap').set_default_keymaps()
+         end}
 
     -- Misc
     use "antoinemadec/FixCursorHold.nvim"
