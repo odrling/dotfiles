@@ -1,12 +1,13 @@
 (require-macros :hibiscus.vim)
+(macro setup [module args]
+  `(fn [] ((. (require ,module) :setup) ,args)))
+
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
           [[BufWritePost] packer.fnl "PackerCompile"])
           
 
 (require-macros :hibiscus.packer)
-
-(packer-setup)
 
 (packer
   (use! :wbthomason/packer.nvim)
@@ -21,13 +22,11 @@
         :module :config.neogit)
 
   (use! :akinsho/git-conflict.nvim
-        :config (fn [] 
-                 (. (require :git-conflict) :setup)))
+        :config (setup :git-conflict {}))
    
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
-        :config (fn []
-                  ((. (require :gitsigns) :setup) {:current_line_blame true})))
+        :config (setup :gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
@@ -57,9 +56,7 @@
         
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
-        :config (fn []
-                  ((. (require :nvim-autopairs) :setup) {})))
-        
+        :config (setup :nvim-autopairs {}))
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
@@ -78,10 +75,7 @@
         :requires [
                    :nvim-treesitter/nvim-treesitter
                    :neovim/nvim-lspconfig]
-        
-        :config (fn []
-                  ((. (require :dim) :setup) {})))
-        
+        :config (setup :dim {}))
 
   (use! :gpanders/nvim-parinfer)
 
@@ -90,11 +84,9 @@
         :config (fn []
                   (exec [[:colorscheme :github_light]])))
   (use! :folke/which-key.nvim
-        :config (fn []
-                  ((. (require :which-key) :setup) {})))
+        :config (setup :which-key {}))
   (use! :mvllow/modes.nvim
-        :config (fn []
-                  ((. (require :modes) :setup) {:opacity 0.15})))
+        :config (setup :modes {:opacity 0.15}))
   (use! :lukas-reineke/indent-blankline.nvim
         :module :config.indent_blankline)
   (use! :nvim-lualine/lualine.nvim
@@ -111,19 +103,15 @@
         :module :config.bufferline)
   (use! :rbgrouleff/bclose.vim)
   (use! :ggandor/leap.nvim
-        :config (fn []
-                  ((. (require :leap) :set_default_keymaps) {})))
+        :config (setup :leap {}))
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim)
   (use! :luukvbaal/stabilize.nvim
-        :config (fn []
-                  ((. (require :stabilize) :setup) {})))
+        :config (setup :stabilize {}))
   (use! :ahmedkhalf/project.nvim
-        :config (fn []
-                  ((. (require :project_nvim) :setup) {})))
+        :config (setup :project_nvim {}))
   (use! :numToStr/Comment.nvim
-        :config (fn []
-                  ((. (require :Comment) :setup) {})))
+        :config (setup :Comment {}))
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
