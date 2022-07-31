@@ -9,6 +9,7 @@
 (packer-setup)
 
 (packer
+  (use! :wbthomason/packer.nvim)
   (use! :udayvir-singh/tangerine.nvim)
   (use! :udayvir-singh/hibiscus.nvim)
   (use! :lewis6991/impatient.nvim)
