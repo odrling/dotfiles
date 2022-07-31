@@ -1,11 +1,13 @@
 (require-macros :hibiscus.vim)
+(macro cfgcall [module func args]
+  `(fn [] ((. (require ,module) ,func) ,args)))
+
 (macro setup [module args]
-  `(fn [] ((. (require ,module) :setup) ,args)))
+  `(cfgcall ,module :setup ,args))
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
           [[BufWritePost] packer.fnl "PackerCompile"])
-          
 
 (require-macros :hibiscus.packer)
 
@@ -68,21 +70,19 @@
                    "JoosepAlviste/nvim-ts-context-commentstring"
                    "yioneko/nvim-yati"
                    "nvim-treesitter/nvim-treesitter-textobjects"]
-         
         :module :config.treesitter)
         
   (use! :narutoxy/dim.lua
         :requires [
-                   :nvim-treesitter/nvim-treesitter
-                   :neovim/nvim-lspconfig]
+                    :nvim-treesitter/nvim-treesitter
+                    :neovim/nvim-lspconfig]
         :config (setup :dim {}))
 
   (use! :gpanders/nvim-parinfer)
 
   ; Interface
   (use! :projekt0n/github-nvim-theme
-        :config (fn []
-                  (exec [[:colorscheme :github_light]])))
+        :config (fn [] (exec [[:colorscheme :github_light]])))
   (use! :folke/which-key.nvim
         :config (setup :which-key {}))
   (use! :mvllow/modes.nvim
@@ -103,7 +103,7 @@
         :module :config.bufferline)
   (use! :rbgrouleff/bclose.vim)
   (use! :ggandor/leap.nvim
-        :config (setup :leap {}))
+        :config (cfgcall :leap :set_default_keymaps))
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim)
   (use! :luukvbaal/stabilize.nvim
