@@ -20,4 +20,8 @@ bootstrap "https://github.com/lewis6991/impatient.nvim"
 bootstrap "https://github.com/wbthomason/packer.nvim"
 
 require "impatient"
-require "tangerine".setup {}
+require "tangerine".setup {
+	compiler = {
+		hooks = {"oninit"}
+	}
+}
