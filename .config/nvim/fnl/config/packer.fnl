@@ -1,4 +1,4 @@
-(require-macros :hibiscus.vim)
+(import-macros {: augroup! : exec } :hibiscus.vim)
 (macro cfgcall [module func args]
   `(fn [] ((. (require ,module) ,func) ,args)))
 
@@ -9,7 +9,7 @@
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
           [[BufWritePost] packer.fnl "PackerCompile"])
 
-(require-macros :hibiscus.packer)
+(import-macros {: packer : use!} :hibiscus.packer)
 
 (packer
   (use! :wbthomason/packer.nvim)
