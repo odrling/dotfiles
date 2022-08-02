@@ -1,5 +1,6 @@
 (require-macros :hibiscus.core)
 (require-macros :hibiscus.vim)
+(import-macros {: has! } :macros.misc)
 
 ;autocmds
 (augroup! :init
@@ -83,12 +84,9 @@
 (map! [v] :<M-j> ":m'>+<cr>`<my`>mzgv`yo`z")
 (map! [v] :<M-k> ":m'<-2<cr>`>my`<mzgv`yo`z")
 
-;if has("mac") || has("macunix")
-  ;nmap <D-j> <M-j>
-  ;nmap <D-k> <M-k>
-  ;vmap <D-j> <M-j>
-  ;vmap <D-k> <M-k>
-;endif
+(when (or (vim.fn.has :mac) (vim.fn.has :macunix))
+    (map! [nv] :<D-j> :<M-j>)
+    (map! [nv] :<D-k> :<M-k>))
 
 ; => Spell checking
 ; Pressing ,ss will toggle and untoggle spell checking
