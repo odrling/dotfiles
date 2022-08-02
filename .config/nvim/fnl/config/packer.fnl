@@ -118,4 +118,6 @@
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
         :config (setup :retrail {:trim {:blanklines true
-                                        :whitespace false}})))
+                                        :whitespace false}}))
+  (use! :vladdoster/remember.nvim
+        :module :remember))

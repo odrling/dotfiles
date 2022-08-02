@@ -60,8 +60,8 @@
 ; Switch CWD to the directory of the open buffer
 (map! [n] :<leader>cd ":cd %:p:h<cr>:pwd<cr>")
 
-; Return to last edit position when opening files (You want this!)
-; au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+; Let remember.nvim deal with it
+(g! leave_my_cursor_position_alone "")
 
 ; => Status line
 ; Always show the status line
