@@ -25,7 +25,7 @@
 
   (use! :akinsho/git-conflict.nvim
         :config (setup :git-conflict {}))
-   
+
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
         :config (setup :gitsigns {:current_line_blame true}))
@@ -55,7 +55,7 @@
                    :petertriho/cmp-git
                    :b0o/schemastore.nvim
                    :windwp/nvim-autopairs]
-        
+
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
         :config (setup :nvim-autopairs {}))
@@ -71,7 +71,7 @@
                    "yioneko/nvim-yati"
                    "nvim-treesitter/nvim-treesitter-textobjects"]
         :module :config.treesitter)
-        
+
   (use! :narutoxy/dim.lua
         :requires [
                     :nvim-treesitter/nvim-treesitter
@@ -115,4 +115,7 @@
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
-  (use! :kenn7/vim-arsync))
+  (use! :kenn7/vim-arsync)
+  (use! :zakharykaplan/nvim-retrail
+        :config (setup :retrail {:trim {:blanklines true
+                                        :whitespace false}})))
