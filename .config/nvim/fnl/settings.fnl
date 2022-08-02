@@ -2,8 +2,8 @@
 (import-macros {: has! } :macros.misc)
 
 ;autocmds
-(augroup! :settings.fnl
-          [[BufWritePost] :init.fnl "silent! FnlCompileBuffer"])
+(augroup! :settings
+          [[BufWritePost] :settings.fnl "silent! FnlCompileBuffer"])
 
 ; better :find
 (set+ path "**")
