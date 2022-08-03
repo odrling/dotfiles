@@ -180,6 +180,7 @@
 ; wrap long lines
 (set! wrap)
 (set! linebreak)
+(set! breakindent)  ; keep indentation when wrapping
 
 ; disable wrapping the input
 (set! textwidth 0)
