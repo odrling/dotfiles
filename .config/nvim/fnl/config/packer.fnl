@@ -1,4 +1,6 @@
 (import-macros {: augroup! : exec : color! } :hibiscus.vim)
+(import-macros {: packer : use! } :macros)
+
 (macro cfgcall [module func args]
   `(fn [] ((. (require ,module) ,func) ,args)))
 
@@ -9,10 +11,7 @@
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
           [[BufWritePost] packer.fnl "PackerCompile"])
 
-(import-macros {: packer : use!} :hibiscus.packer)
-
 (packer
-  (use! :wbthomason/packer.nvim)
   (use! :udayvir-singh/tangerine.nvim)
   (use! :udayvir-singh/hibiscus.nvim)
   (use! :lewis6991/impatient.nvim)
