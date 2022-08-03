@@ -1,4 +1,4 @@
-(import-macros {: augroup! : exec } :hibiscus.vim)
+(import-macros {: augroup! : exec : color! } :hibiscus.vim)
 (macro cfgcall [module func args]
   `(fn [] ((. (require ,module) ,func) ,args)))
 
@@ -82,7 +82,7 @@
 
   ; Interface
   (use! :projekt0n/github-nvim-theme
-        :config (fn [] (exec [[:colorscheme :github_light]])))
+        :config (fn [] (color! github_light)))
   (use! :folke/which-key.nvim
         :config (setup :which-key {}))
   (use! :mvllow/modes.nvim
