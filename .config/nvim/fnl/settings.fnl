@@ -45,8 +45,8 @@
 (map! [n] :<C-h> :<C-W>h)
 (map! [n] :<C-l> :<C-W>l)
 
-(map! [n] :<leader>l ":bnext<cr>")
-(map! [n] :<leader>h ":bprevious<cr>")
+(map! [n] :<leader>k ":bnext<cr>")
+(map! [n] :<leader>j ":bprevious<cr>")
 
 ; Useful mappings for managing tabs
 ;map <leader>tn :tabnew<cr>
