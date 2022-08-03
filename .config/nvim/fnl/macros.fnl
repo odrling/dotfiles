@@ -1,5 +1,5 @@
 
-(fn has! [feature]
+(lambda has! [feature]
   [vim.fn.has feature])
 
 {: has!}
