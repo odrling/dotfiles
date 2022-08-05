@@ -43,6 +43,7 @@
                    :williamboman/mason-lspconfig.nvim
                    :hrsh7th/nvim-cmp
                    :saadparwaiz1/cmp_luasnip
+                   :rafamadriz/friendly-snippets
                    :hrsh7th/cmp-nvim-lsp
                    :tami5/lspsaga.nvim
                    :hrsh7th/cmp-path
