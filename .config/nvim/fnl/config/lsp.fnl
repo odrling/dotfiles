@@ -53,7 +53,7 @@
 (local cmp (require :cmp))
 (cmp.event:on :confirm_done (cmp_autopairs.on_confirm_done {:map_char {:tex ""}}))
 
-(cmp.setup {:snippet {:expand (fn [args] ((. (require :luasnip) :lsp_expand) args.body))}
+(cmp.setup {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
             :mapping {:<C-p> (cmp.mapping.select_prev_item)
                       :<C-n> (cmp.mapping.select_prev_item)
                       :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace
