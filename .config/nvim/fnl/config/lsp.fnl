@@ -1,5 +1,7 @@
 (import-macros {: map! : augroup! : exec : set!} :hibiscus.vim)
-(local nvim_lsp (require :lspconfig))
+(import-macros {: merge} :hibiscus.core)
+(import-macros {: setup} :macros)
+
 (fn on_attach [client bufnr]
   ((. (require :lsp_signature) :on_attach) {:always_trigger true})
 
@@ -87,32 +89,13 @@
                         :sources [{:name :path}
                                   {:name :cmdline}]})
 
-((. (require :cmp_git) :setup))
+(setup :cmp_git)
 
 (local saga (require :lspsaga))
 (saga.init_lsp_saga)
 
-((. (require :mason) :setup))
-((. (require :mason-lspconfig) :setup) {:automatic_installation true})
-
-(local servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls])
-(each [_ lsp (ipairs servers)]
-  ((. (. nvim_lsp lsp) :setup) {:on_attach on_attach
-                                :capabilities capabilities}))
-
-(local schemastore (require :schemastore))
-(nvim_lsp.jsonls.setup {:on_attach on_attach
-                        :capabilities capabilities
-                        :settings {:json {:validate {:enable true}
-                                          :schemas (schemastore.json.schemas)}}})
-
-(nvim_lsp.yamlls.setup {:on_attach on_attach
-                        :capabilities capabilities
-                        :settings {:yaml {:schemaStore {:enable true}}}})
-
-(nvim_lsp.taplo.setup {:on_attach on_attach
-                       :capabilities capabilities
-                       :settings {:toml {:schemas (schemastore.json.schemas)}}})
+(setup :mason)
+(setup :mason-lspconfig {:automatic_installation true})
 
 (local signs {:Error :E
               :Warn :W
@@ -123,6 +106,23 @@
   (vim.fn.sign_define hl {:text icon
                           :texthl hl
                           :numhl hl}))
+
+(local nvim_lsp (require :lspconfig))
+(lambda setup_ls [lsp options]
+  (local settings (vim.tbl_deep_extend :force {:on_attach on_attach
+                                               :capabilities capabilities} options))
+  ((. (. (require :lspconfig) lsp) :setup) settings))
+
+(local servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls])
+(each [_ lsp (ipairs servers)] (setup_ls lsp {}))
+
+(local schemastore (require :schemastore))
+(setup_ls :jsonls {:settings {:json {:validate {:enable true}
+                                       :schemas (schemastore.json.schemas)}}})
+
+(setup_ls :yamlls {:settings {:yaml {:schemaStore {:enable true}}}})
+
+(setup_ls :taplo {:settings {:toml {:schemas (schemastore.json.schemas)}}})
 
 (local null_ls (require :null-ls))
 (local sources [null_ls.builtins.diagnostics.flake8

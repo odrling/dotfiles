@@ -1,8 +1,5 @@
 (import-macros {: augroup! : exec : color! } :hibiscus.vim)
-(import-macros {: packer : use! } :macros)
-
-(macro cfgcall [module func args]
-  `(fn [] ((. (require ,module) ,func) ,args)))
+(import-macros {: packer : use! : cfgcall } :macros)
 
 (macro setup [module args]
   `(cfgcall ,module :setup ,args))

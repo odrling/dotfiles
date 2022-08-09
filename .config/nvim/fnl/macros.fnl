@@ -50,7 +50,14 @@
   :return
   `(use ,(parse-conf name [...])))
 
+(fn cfgcall [module func args]
+  `(fn [] ((. (require ,module) ,func) ,args)))
+
+(fn setup [module args]
+  `((. (require ,module) :setup) ,args))
 
 {: has!
  : packer
- : use!}
+ : use!
+ : cfgcall
+ : setup}
