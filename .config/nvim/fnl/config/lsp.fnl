@@ -1,5 +1,4 @@
 (import-macros {: map! : augroup! : exec : set!} :hibiscus.vim)
-(import-macros {: merge} :hibiscus.core)
 (import-macros {: setup} :macros)
 
 (fn on_attach [client bufnr]
