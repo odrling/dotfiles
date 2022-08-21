@@ -65,6 +65,7 @@
                    "windwp/nvim-ts-autotag"
                    "JoosepAlviste/nvim-ts-context-commentstring"
                    "yioneko/nvim-yati"
+                   "p00f/nvim-ts-rainbow"
                    "nvim-treesitter/nvim-treesitter-textobjects"]
         :module :config.treesitter)
 
