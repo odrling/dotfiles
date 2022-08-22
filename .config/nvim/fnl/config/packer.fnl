@@ -77,6 +77,9 @@
 
   (use! :gpanders/nvim-parinfer)
 
+  (use! :mickael-menu/zk-nvim
+        :module :config.zk)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme
         :config (fn [] (color! github_light)))
