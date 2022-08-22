@@ -1,9 +1,6 @@
 (import-macros {: augroup! : exec : color! } :hibiscus.vim)
 (import-macros {: packer : use! : cfgcall } :macros)
 
-(macro setup [module args]
-  `(cfgcall ,module :setup ,args))
-
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
           [[BufWritePost] packer.fnl "PackerCompile"])
@@ -20,11 +17,11 @@
         :module :config.neogit)
 
   (use! :akinsho/git-conflict.nvim
-        :config (setup :git-conflict {}))
+        :setup (:git-conflict {}))
 
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
-        :config (setup :gitsigns {:current_line_blame true}))
+        :setup (:gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
@@ -54,7 +51,7 @@
 
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
-        :config (setup :nvim-autopairs {}))
+        :setup (:nvim-autopairs {}))
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
@@ -74,7 +71,7 @@
         :requires [
                     :nvim-treesitter/nvim-treesitter
                     :neovim/nvim-lspconfig]
-        :config (setup :dim {}))
+        :setup (:dim {}))
 
   (use! :gpanders/nvim-parinfer)
 
@@ -85,9 +82,9 @@
   (use! :projekt0n/github-nvim-theme
         :config (fn [] (color! github_light)))
   (use! :folke/which-key.nvim
-        :config (setup :which-key {}))
+        :setup (:which-key {}))
   (use! :mvllow/modes.nvim
-        :config (setup :modes {:opacity 0.15}))
+        :setup (:modes {:opacity 0.15}))
   (use! :lukas-reineke/indent-blankline.nvim
         :module :config.indent_blankline)
   (use! :nvim-lualine/lualine.nvim
@@ -108,17 +105,17 @@
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim)
   (use! :luukvbaal/stabilize.nvim
-        :config (setup :stabilize {}))
+        :setup (:stabilize {}))
   (use! :ahmedkhalf/project.nvim
-        :config (setup :project_nvim {}))
+        :setup (:project_nvim {}))
   (use! :numToStr/Comment.nvim
-        :config (setup :Comment {}))
+        :setup (:Comment {}))
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
-        :config (setup :retrail {:trim {:blanklines true
-                                        :whitespace false}}))
+        :setup (:retrail {:trim {:blanklines true
+                                 :whitespace false}}))
   (use! :vladdoster/remember.nvim
         :module :remember))

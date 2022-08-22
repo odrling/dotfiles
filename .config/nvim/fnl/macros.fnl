@@ -27,6 +27,9 @@
       (if _G.packer_bootstrap
           ((. ,packer :sync))))))
 
+(fn cfgcall [module func args]
+  `#((. (require ,module) ,func) ,args))
+
 (lambda parse-conf [name opts]
   "parses 'name' and list of 'opts' into valid packer.use args."
   (local out [name])
@@ -35,6 +38,8 @@
     (if (odd? idx)
         (match val
           :module (tset out :config `#(require ,nval))
+          :setup  (let [(mod conf) (unpack nval)]
+                    (tset out :config `#((. (require ,mod) :setup) ,conf)))
           _       (tset out val nval))))
   :return out)
 
@@ -49,9 +54,6 @@
     (.. "  packer-use: error in :" name ", opts must contain even number of key-value pairs."))
   :return
   `(use ,(parse-conf name [...])))
-
-(fn cfgcall [module func args]
-  `(fn [] ((. (require ,module) ,func) ,args)))
 
 (fn setup [module args]
   `((. (require ,module) :setup) ,args))
