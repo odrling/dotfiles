@@ -188,7 +188,7 @@
 (rem! formatoptions :t)
 
 ; GUI settings
-(set! guifont "monospace:h12")
+(set! guifont "monospace:h7")
 
 ; use true colors
 (set! termguicolors)
