@@ -37,7 +37,7 @@
           :module (tset out :config `#(require ,nval))
           :setup  (let [(mod conf) (unpack nval)]
                     (tset out :config `#((. (require ,mod) :setup) ,conf)))
-          :config (tset out :config `#(,nval))
+          :config (tset out :config `(fn [] ,nval))
           _       (tset out val nval))))
   :return out)
 
