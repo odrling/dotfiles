@@ -80,7 +80,7 @@
 
   ; Interface
   (use! :projekt0n/github-nvim-theme
-        :config (fn [] (color! github_light)))
+        :config (color! github_light))
   (use! :folke/which-key.nvim
         :setup (:which-key {}))
   (use! :mvllow/modes.nvim
