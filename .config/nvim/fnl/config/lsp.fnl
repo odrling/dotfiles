@@ -90,8 +90,7 @@
 
 (setup :cmp_git)
 
-(local saga (require :lspsaga))
-(saga.init_lsp_saga)
+(cfgcall :lspsaga :init_lsp_saga)
 
 (setup :mason)
 (setup :mason-lspconfig {:automatic_installation true})
