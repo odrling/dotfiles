@@ -1,8 +1,8 @@
 (import-macros {: map! : augroup! : exec : set!} :hibiscus.vim)
-(import-macros {: setup} :macros)
+(import-macros {: setup : cfgcall} :macros)
 
 (fn on_attach [client bufnr]
-  ((. (require :lsp_signature) :on_attach) {:always_trigger true})
+  (cfgcall :lsp_signature :on_attach {:always_trigger true})
 
   ; scroll down hover doc or scroll in definition preview
   (map! [n] :<C-f> '((. (require :lspsaga.action) :smart_scroll_with_saga) 1))
@@ -34,24 +34,24 @@
               [[CursorMoved] * 'vim.lsp.buf.clear_references])))
 
 ; add additional capabilities supported by nvim-cmp
-(local capabilities (vim.lsp.protocol.make_client_capabilities))
-(local cmp_nvim_lsp (require :cmp_nvim_lsp))
-(= capabilities (cmp_nvim_lsp.update_capabilities capabilities))
+(var capabilities (vim.lsp.protocol.make_client_capabilities))
+(let [cmp_nvim_lsp (require :cmp_nvim_lsp)]
+  (set capabilities (cmp_nvim_lsp.update_capabilities capabilities)))
 
 ; Neovim does not currently include built-in snippets.
 ; vscode-json-language-server only provides completions when snippet support
 ; is enabled)
-(= capabilities.textDocument.completion.completionItem.snippetSupport true)
+(set capabilities.textDocument.completion.completionItem.snippetSupport true)
 (set! completeopt "menuone,noselect")
 
 ; luasnip
 (local luasnip (require :luasnip))
-(. (require :luasnip.loaders.from_vscode) :lazy_load)
+(cfgcall :luasnip.loaders.from_vscode :lazy_load)
 
 ; nvim-cmp setup
-(local cmp_autopairs (require :nvim-autopairs.completion.cmp))
 (local cmp (require :cmp))
-(cmp.event:on :confirm_done (cmp_autopairs.on_confirm_done {:map_char {:tex ""}}))
+(let [cmp_autopairs (require :nvim-autopairs.completion.cmp)]
+  (cmp.event:on :confirm_done (cmp_autopairs.on_confirm_done {:map_char {:tex ""}})))
 
 (cmp.setup {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
             :mapping {:<C-p> (cmp.mapping.select_prev_item)
@@ -96,24 +96,23 @@
 (setup :mason)
 (setup :mason-lspconfig {:automatic_installation true})
 
-(local signs {:Error :E
-              :Warn :W
-              :Hint :H
-              :Info :I})
-(each [type icon (pairs signs)]
-  (local hl (.. :DiagnosticSign type))
-  (vim.fn.sign_define hl {:text icon
-                          :texthl hl
-                          :numhl hl}))
+(let [signs {:Error :E
+             :Warn :W
+             :Hint :H
+             :Info :I}]
+  (each [type icon (pairs signs)]
+    (let [hl (.. :DiagnosticSign type)]
+      (vim.fn.sign_define hl {:text icon
+                              :texthl hl
+                              :numhl hl}))))
 
-(local nvim_lsp (require :lspconfig))
 (lambda setup_ls [lsp options]
   (local settings (vim.tbl_deep_extend :force {:on_attach on_attach
                                                :capabilities capabilities} options))
   ((. (. (require :lspconfig) lsp) :setup) settings))
 
-(local servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls])
-(each [_ lsp (ipairs servers)] (setup_ls lsp {}))
+(let [servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls]]
+  (each [_ lsp (ipairs servers)] (setup_ls lsp {})))
 
 (local schemastore (require :schemastore))
 (setup_ls :jsonls {:settings {:json {:validate {:enable true}
@@ -124,8 +123,7 @@
 (setup_ls :taplo {:settings {:toml {:schemas (schemastore.json.schemas)}}})
 
 (local null_ls (require :null-ls))
-(local sources [null_ls.builtins.diagnostics.flake8
-                (null_ls.builtins.formatting.isort.with {:args ["--stdout" "--profile" "black" "-e"]})])
-
-(null_ls.setup {:sources sources
-                :diagnostics_format "[#{s}] #{c}: #{m}"})
+(let [sources [null_ls.builtins.diagnostics.flake8
+               (null_ls.builtins.formatting.isort.with {:args ["--stdout" "--profile" "black" "-e"]})]]
+  (null_ls.setup {:sources sources
+                  :diagnostics_format "[#{s}] #{c}: #{m}"}))
