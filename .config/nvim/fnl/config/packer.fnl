@@ -47,7 +47,9 @@
                    :hrsh7th/cmp-emoji
                    :petertriho/cmp-git
                    :b0o/schemastore.nvim
-                   :windwp/nvim-autopairs]
+                   :windwp/nvim-autopairs
+                   :Olical/conjure
+                   :PaterJason/cmp-conjure]
 
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
@@ -74,6 +76,7 @@
         :setup (:dim {}))
 
   (use! :gpanders/nvim-parinfer)
+  (use! :Olical/conjure)
 
   (use! :mickael-menu/zk-nvim
         :module :config.zk)

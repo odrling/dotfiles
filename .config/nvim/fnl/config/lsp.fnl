@@ -71,6 +71,7 @@
                                       (luasnip.jump -1))
                                     (fallback)))}
             :sources [{:name :nvim_lsp}
+                      {:name :conjure}
                       {:name :luasnip}
                       {:name :path}
                       {:name :treesitter}
