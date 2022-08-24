@@ -1,28 +1,28 @@
-(import-macros {: map! : augroup! : exec : set!} :hibiscus.vim)
-(import-macros {: setup : cfgcall} :macros)
+(import-macros {: augroup! : exec : set!} :hibiscus.vim)
+(import-macros {: setup : cfgcall : map!} :macros)
 
 (fn on_attach [client bufnr]
   (cfgcall :lsp_signature :on_attach {:always_trigger true})
 
   ; scroll down hover doc or scroll in definition preview
-  (map! [n] :<C-f> '((. (require :lspsaga.action) :smart_scroll_with_saga) 1))
-  (map! [n] :<C-b> '((. (require :lspsaga.action) :smart_scroll_with_saga) -1))
+  (map! [n (:buffer bufnr)] :<C-f> '((. (require :lspsaga.action) :smart_scroll_with_saga) 1))
+  (map! [n (:buffer bufnr)] :<C-b> '((. (require :lspsaga.action) :smart_scroll_with_saga) -1))
   ; show diagnostic
-  (map! [n] :<leader>cd "<cmd>Lspsaga show_line_diagnostics<CR>")
-  (map! [n] :<leader>cc "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+  (map! [n (:buffer bufnr)] :<leader>cd "<cmd>Lspsaga show_line_diagnostics<CR>")
+  (map! [n (:buffer bufnr)] :<leader>cc "<cmd>Lspsaga show_cursor_diagnostics<CR>")
   ; show line diagnostics automatically in hover window
   (augroup! :lspsaga
             [[CursorHold CursorHoldI] :* "Lspsaga show_line_diagnostics"])
 
-  (map! [n :buffer] :gD 'vim.lsp.buf.declaration)
-  (map! [n :buffer] :gd 'vim.lsp.buf.definition)
-  (map! [n :buffer] :K "<cmd>Lspsaga hover_doc<CR>")
-  (map! [n :buffer] :gi 'vim.lsp.buf.implementation)
-  (map! [n :buffer] :<C-k> 'vim.lsp.buf.signature_help)
-  (map! [n :buffer] :<leader>r "<cmd>Lspsaga rename<CR>")
-  (map! [n :buffer] :<leader>ca 'vim.lsp.buf.code_action)
-  (map! [n :buffer] :gr 'vim.lsp.buf.references)
-  (map! [n :buffer] :<leader>r '(vim.lsp.buf.format {:async true}))
+  (map! [n (:buffer bufnr)] :gD 'vim.lsp.buf.declaration)
+  (map! [n (:buffer bufnr)] :gd 'vim.lsp.buf.definition)
+  (map! [n (:buffer bufnr)] :K "<cmd>Lspsaga hover_doc<CR>")
+  (map! [n (:buffer bufnr)] :gi 'vim.lsp.buf.implementation)
+  (map! [n (:buffer bufnr)] :<C-k> 'vim.lsp.buf.signature_help)
+  (map! [n (:buffer bufnr)] :<leader>r "<cmd>Lspsaga rename<CR>")
+  (map! [n (:buffer bufnr)] :<leader>ca 'vim.lsp.buf.code_action)
+  (map! [n (:buffer bufnr)] :gr 'vim.lsp.buf.references)
+  (map! [n (:buffer bufnr)] :<leader>r '(vim.lsp.buf.format {:async true}))
 
   (when client.server_capabilities.documentHighlightProvider
     (exec [[:hi! "LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow"]

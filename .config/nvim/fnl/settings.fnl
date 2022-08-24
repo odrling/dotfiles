@@ -1,5 +1,5 @@
-(import-macros {: augroup! : set+ : set! : rem! : g! : map! : exec} :hibiscus.vim)
-(import-macros {: has! } :macros)
+(import-macros {: augroup! : set+ : set! : rem! : g! : exec} :hibiscus.vim)
+(import-macros {: has! : map!} :macros)
 
 ;autocmds
 (augroup! :settings

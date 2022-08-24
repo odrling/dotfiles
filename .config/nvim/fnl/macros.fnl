@@ -53,6 +53,43 @@
   :return
   `(use ,(parse-conf name [...])))
 
+(lambda quote? [x]
+  "checks if 'x' is quoted value."
+  (let [ref (?. x 1 1)]
+    (= ref :quote)))
+
+(lambda parse-cmd [xs ...]
+  "parses command 'xs', wrapping it in function if quoted."
+  (if (quote? xs)
+      (let [ref (. xs 2)]
+        (if (list? ref) `(fn [] ,ref) ref))
+      :else xs))
+
+(lambda parse-map-args [args]
+  "parses map 'args' into (modes opts) chunk."
+  (let [modes []
+        opts  {:silent true}]
+    ; parse modes
+    (each [mode (string.gmatch (tostring (table.remove args 1)) ".")]
+      (table.insert modes mode))
+    ; parse options
+    (each [_ key (ipairs args)]
+      (match key
+        :verbose (tset opts :silent false)
+        [k v]    (tset opts k v)
+        _        (tset opts key true)))
+    :return
+    (values modes opts)))
+
+(lambda map! [args lhs rhs ?desc]
+  "defines vim keymap for modes in 'args'."
+  (assert-compile (. args 1)
+    "map: missing required argument 'mode'." args)
+  (local (modes opts) (parse-map-args args))
+  (set opts.desc ?desc)
+  :return
+  `(vim.keymap.set ,modes ,lhs ,(parse-cmd rhs) ,opts))
+
 (fn cfgcall [module func args]
   `((. (require ,module) ,func) ,args))
 
@@ -63,4 +100,5 @@
  : packer
  : use!
  : cfgcall
- : setup}
+ : setup
+ : map!}
