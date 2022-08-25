@@ -1,19 +1,5 @@
+(import-macros {: or= : ++ : inc : odd? : even? : string? : tappend : append : empty?} :core_macros)
 (local M {})
-
-;; -------------------- ;;
-;;        FENNEL        ;;
-;; -------------------- ;;
-(fn fennel []
-  ; require fennel
-  (var (ok out) (pcall require :tangerine.fennel))
-  (if ok
-    (set out (out.load))
-    (set (ok out) (pcall require :fennel)))
-  ; assert
-  (assert-compile ok
-    (.. "  hibiscus: module for \34fennel\34 not found.\n\n"
-        "    * install fennel globally or install tangerine.nvim."))
-  :return out)
 
 
 ;; -------------------- ;;
@@ -34,16 +20,6 @@
   `(tset M ,(tostring name)
            (fn ,name ,args (do ,(unpack asrt)) ,...)))
 
-(lambda set- [name val]
-  "sets variable 'name' to 'val' and returns its value."
-  `(do (set ,name ,val)
-       :return ,name))
-
-(lambda tset- [tbl key val]
-  "sets 'key' in 'tbl' to 'val' and returns its value."
-  `(do (tset ,tbl ,key ,val)
-       :return (. ,tbl ,key)))
-
 (lambda dolist [lst]
   "unpacks 'lst' and wrap it within do block."
   `(do ,(unpack lst)))
@@ -62,168 +38,6 @@
 
 (lmd has! [feature]
   [vim.fn.has feature])
-
-
-;; -------------------- ;;
-;;       GENERAL        ;;
-;; -------------------- ;;
-(macro or= [x ...]
-  "checks if 'x' is equal to any one of {...}"
-  `(do
-    (var out# false)
-    (each [# v# (ipairs [,...])]
-      (when (= ,x v#)
-        (set out# true)
-        (lua :break)))
-    :return out#))
-
-
-;; -------------------- ;;
-;;       FSTRING        ;;
-;; -------------------- ;;
-(lmd ast [expr]
-  "parses fennel 'expr' into ast."
-  (local (ok out)
-         (((. (fennel) :parser) expr "fstring")))
-  :return out)
-
-(lmd fstring [str]
-  "wrapper around string.format, works like javascript's template literates."
-  (local args [])
-  (each [xs (str:gmatch "$([({][^$]+[})])")]
-    (if (xs:find "^{")
-        (table.insert args (sym (xs:match "^{(.+)}$")))
-        (table.insert args (ast xs))))
-  :return
-  `(string.format ,(str:gsub "$[({][^$]+[})]" "%%s") ,(unpack args)))
-
-
-;; -------------------- ;;
-;;       CHECKING       ;;
-;; -------------------- ;;
-(lambda nil? [x]
-  "checks if value of 'x' is nil."
-  `(= nil ,x))
-
-(lambda boolean? [x]
-  "checks if 'x' is of boolean type."
-  `(= :boolean (type ,x)))
-
-(lambda string? [x]
-  "checks if 'x' is of string type."
-  `(= :string (type ,x)))
-
-(lambda number? [x]
-  "checks if 'x' is of number type."
-  `(= :number (type ,x)))
-
-(lambda odd? [x]
-  "checks if 'x' is mathematically of odd parity ;}"
-  `(and (= :number (type ,x)) (= 1 (% ,x 2))))
-
-(lambda even? [x]
-  "checks if 'x' is mathematically of even parity ;}"
-  `(and (= :number (type ,x)) (= 0 (% ,x 2))))
-
-(lambda fn? [x]
-  "checks if 'x' is of function type."
-  `(= :function (type ,x)))
-
-(lambda table? [x]
-  "checks if 'x' is of table type."
-  `(= :table (type ,x)))
-
-(lambda list? [tbl]
-  "checks if 'tbl' is a valid list."
-  `(vim.tbl_islist ,tbl))
-
-(lambda empty? [tbl]
-  "checks if 'tbl' is empty."
-  `(and ,(table? tbl)
-        (= 0 (length ,tbl))))
-
-
-;; -------------------- ;;
-;;        NUMBER        ;;
-;; -------------------- ;;
-(lmd inc [int]
-  "increments 'int' by 1."
-  `(+ ,int 1))
-
-(lmd ++ [v]
-  "increments variable 'v' by 1."
-  (var v v)
-  (set- v (+ v 1)))
-
-(lmd dec [int]
-  "decrements 'int' by 1."
-  `(- ,int 1))
-
-(lmd -- [v]
-  "decrements variable 'v' by 1."
-  (var v v)
-  (set- v (dec v)))
-
-
-;; -------------------- ;;
-;;        STRING        ;;
-;; -------------------- ;;
-(lmd append [v str]
-  "appends 'str' to variable 'v'."
-  (var v v)
-  (set- v (list `.. v str)))
-
-(lmd tappend [tbl key str]
-  "appends 'str' to 'key' of table 'tbl'."
-  (tset- tbl key `(.. (or (. ,tbl ,key) "") ,str)))
-
-(lmd prepend [v str]
-  "prepends 'str' to variable 'v'."
-  (var v v)
-  (set- v (list `.. str v)))
-
-(lmd tprepend [tbl key str]
-  "prepends 'str' to 'key' of table 'tbl'."
-  (tset- tbl key `(.. ,str (or (. ,tbl ,key) ""))))
-
-
-;; -------------------- ;;
-;;        TABLE         ;;
-;; -------------------- ;;
-(lmd merge-list [list1 list2]
-  "merges all values of 'list1' and 'list2' together."
-  `(let [out# []]
-     (each [# v# (ipairs ,list1)]
-           (table.insert out# v#))
-     (each [# v# (ipairs ,list2)]
-           (table.insert out# v#))
-     :return out#))
-
-(lmd merge [tbl1 tbl2]
-  "merges 'tbl2' onto 'tbl1', correctly appending lists."
-  `(if (and ,(list? tbl1) ,(list? tbl2))
-       ,(merge-list tbl1 tbl2)
-       :else
-       (vim.tbl_deep_extend "force" ,tbl1 ,tbl2)))
-
-(lmd merge! [v tbl]
-  "merges 'tbl' onto variable 'v'."
-  (var v v)
-  (set- v (M.merge v tbl)))
-
-
-;; -------------------- ;;
-;;     PRETTY PRINT     ;;
-;; -------------------- ;;
-(fun dump [...]
-  "pretty prints {...} into human readable form."
-  `(let [out# []]
-     (if (?. _G.tangerine :api :serialize)
-         (table.insert out# [(_G.tangerine.api.serialize ,...)])
-         (each [# v# (ipairs [,...])]
-           (table.insert out# [(vim.inspect v#)])))
-     (vim.api.nvim_echo out# false [])))
-
 
 
 ;; -------------------- ;;
@@ -325,7 +139,7 @@
       (tset opts e true)
       (table.remove events i)))
   (local events (parse-list events))
-  (assert-compile (empty? events)) "events must contain at least one element" events
+  (assert-compile (not (empty? events)) "events must contain at least one element" events)
   ; parse patterns
   (local pattern
     (if (sequence? pattern) (parse-list pattern) (parse-sym pattern)))
