@@ -1,5 +1,3 @@
-(import-macros {: setup : reqcall : map!} :macros)
-
-(setup :FTerm)
+(import-macros {: reqcall : map!} :macros)
 
 (map! [nt] "<leader>t" #(reqcall :FTerm :toggle))
