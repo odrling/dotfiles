@@ -1,4 +1,4 @@
-(import-macros {: setup : augroup!} :macros)
+(import-macros {: cfgcall : setup} :macros)
 
 (setup :nvim-treesitter.configs {:highlight {:enable true
                                              :additional_vim_regex_highlighting false}
@@ -17,8 +17,4 @@
                                  :yati {:enable true}})
 
 
-(fn install_current_filetype []
-  (local install_mod (require "nvim-treesitter.install"))
-  (pcall install_mod.ensure_installed vim.bo.filetype))
-
-(augroup! :treesitter [[BufEnter] * 'install_current_filetype])
+(cfgcall "nvim-treesitter.install" :setup_auto_install)
