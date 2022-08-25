@@ -1,4 +1,4 @@
-(import-macros {: setup} :macros)
+(import-macros {: setup : map!} :macros)
 
 (setup :neogit {:disable_signs false
                 :disable_context_highlighting false
@@ -10,3 +10,5 @@
                         :hunk ["" ""]}
 
                 :integrations {:diffview true}})
+
+(map! [n] :<leader>n :<cmd>Neogit<CR>)

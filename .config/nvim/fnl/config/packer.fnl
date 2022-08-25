@@ -1,4 +1,4 @@
-(import-macros {: augroup! : exec : color! : packer : use! : cfgcall } :macros)
+(import-macros {: augroup! : exec : color! : packer : use! : cfgcall : map!} :macros)
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
@@ -100,11 +100,13 @@
         :module :config.telescope)
   (use! :akinsho/bufferline.nvim
         :module :config.bufferline)
-  (use! :rbgrouleff/bclose.vim)
+  (use! :famiu/bufdelete.nvim
+        :config (map! [n] :<leader>q "<cmd>Bdelete<cr>"))
   (use! :ggandor/leap.nvim
         :config (cfgcall :leap :set_default_keymaps))
   (use! :antoinemadec/FixCursorHold.nvim)
-  (use! :elihunter173/dirbuf.nvim)
+  (use! :elihunter173/dirbuf.nvim
+        :module :config.dirbuf)
   (use! :luukvbaal/stabilize.nvim
         :setup (stabilize {}))
   (use! :ahmedkhalf/project.nvim
@@ -114,7 +116,8 @@
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
-  (use! :kenn7/vim-arsync)
+  (use! :kenn7/vim-arsync
+        :config (map! [n] :<leader>p :<cmd>ARsyncUp<cr>))
   (use! :zakharykaplan/nvim-retrail
         :setup (retrail {:trim {:blanklines true
                                 :whitespace false}}))
