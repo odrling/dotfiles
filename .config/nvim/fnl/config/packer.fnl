@@ -80,6 +80,8 @@
   ; Interface
   (use! :projekt0n/github-nvim-theme
         :config (color! github_light))
+  (use! :numtostr/FTerm.nvim
+        :module :config/fterm)
   (use! :folke/which-key.nvim
         :setup (which-key {}))
   (use! :mvllow/modes.nvim
