@@ -54,7 +54,7 @@
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
-        :run (cfgcall :nvim-treesitter.install :update {:with_sync true})
+        :run #(cfgcall :nvim-treesitter.install :update {:with_sync true})
         :requires [
                    "nvim-treesitter/playground"
                    "RRethy/nvim-treesitter-endwise"
@@ -79,7 +79,7 @@
 
   ; Interface
   (use! :projekt0n/github-nvim-theme
-        :config (color! github_light))
+        :config #(color! github_light))
   (use! :numtostr/FTerm.nvim
         :module :config/fterm)
   (use! :folke/which-key.nvim
@@ -101,9 +101,9 @@
   (use! :akinsho/bufferline.nvim
         :module :config.bufferline)
   (use! :famiu/bufdelete.nvim
-        :config (map! [n] :<leader>q #(cfgcall :bufdelete :bufdelete [0 true])))
+        :config #(map! [n] :<leader>q #(cfgcall :bufdelete :bufdelete [0 true])))
   (use! :ggandor/leap.nvim
-        :config (cfgcall :leap :set_default_keymaps))
+        :config #(cfgcall :leap :set_default_keymaps))
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim
         :module :config.dirbuf)
@@ -117,7 +117,7 @@
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
   (use! :kenn7/vim-arsync
-        :config (map! [n] :<leader>p :<cmd>ARsyncUp<cr>))
+        :config #(map! [n] :<leader>p :<cmd>ARsyncUp<cr>))
   (use! :zakharykaplan/nvim-retrail
         :setup (retrail {:trim {:blanklines true
                                 :whitespace false}}))
