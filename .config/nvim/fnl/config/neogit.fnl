@@ -9,6 +9,7 @@
                         :item [">" "v"]
                         :hunk ["" ""]}
 
+                :mappings {:status {:<leader>q "Close"}}
                 :integrations {:diffview true}})
 
 (map! [n] :<leader>n :<cmd>Neogit<CR>)
