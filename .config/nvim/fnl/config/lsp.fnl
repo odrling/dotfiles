@@ -1,5 +1,4 @@
-(import-macros {: augroup! : exec : set!} :hibiscus.vim)
-(import-macros {: setup : cfgcall : map!} :macros)
+(import-macros {: augroup! : exec : set! : setup : cfgcall : map!} :macros)
 
 (fn on_attach [client bufnr]
   (cfgcall :lsp_signature :on_attach {:always_trigger true})

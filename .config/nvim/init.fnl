@@ -1,4 +1,4 @@
-(import-macros {: augroup!} :hibiscus.vim)
+(import-macros {: augroup!} :macros)
 
 ;autocmds
 (augroup! :init

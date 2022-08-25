@@ -1,5 +1,4 @@
-(import-macros {: augroup! : exec : color! } :hibiscus.vim)
-(import-macros {: packer : use! : cfgcall } :macros)
+(import-macros {: augroup! : exec : color! : packer : use! : cfgcall } :macros)
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
@@ -7,7 +6,6 @@
 
 (packer
   (use! :udayvir-singh/tangerine.nvim)
-  (use! :udayvir-singh/hibiscus.nvim)
   (use! :lewis6991/impatient.nvim)
   (use! :nathom/filetype.nvim)
 
@@ -50,7 +48,6 @@
                    :windwp/nvim-autopairs
                    :Olical/conjure
                    :PaterJason/cmp-conjure]
-
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
         :setup (:nvim-autopairs {}))

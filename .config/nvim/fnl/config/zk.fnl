@@ -1,5 +1,4 @@
-(import-macros {: augroup! : command!} :hibiscus.vim)
-(import-macros {: map! : setup} :macros)
+(import-macros {: augroup! : command! : map! : setup} :macros)
 
 (local zk_util (require :zk.util))
 

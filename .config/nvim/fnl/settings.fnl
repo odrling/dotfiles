@@ -1,5 +1,4 @@
-(import-macros {: augroup! : set+ : set! : rem! : g! : exec} :hibiscus.vim)
-(import-macros {: has! : map!} :macros)
+(import-macros {: augroup! : set+ : set! : rem! : g! : exec : has! : map!} :macros)
 
 ;autocmds
 (augroup! :settings
@@ -195,4 +194,4 @@
 (set! background :light)
 
 ; sign column matches background
-(exec [["highlight clear SignColumn"]])
+;(exec [["highlight clear SignColumn"]])
