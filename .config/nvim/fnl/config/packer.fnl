@@ -101,7 +101,7 @@
   (use! :akinsho/bufferline.nvim
         :module :config.bufferline)
   (use! :famiu/bufdelete.nvim
-        :config (map! [n] :<leader>q "<cmd>Bdelete<cr>"))
+        :config (map! [n] :<leader>q #(cfgcall :bufdelete :bufdelete [0 true])))
   (use! :ggandor/leap.nvim
         :config (cfgcall :leap :set_default_keymaps))
   (use! :antoinemadec/FixCursorHold.nvim)
