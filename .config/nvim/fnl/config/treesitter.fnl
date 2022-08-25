@@ -1,4 +1,4 @@
-(import-macros {: set! : setup : augroup!} :macros)
+(import-macros {: setup : augroup!} :macros)
 
 (setup :nvim-treesitter.configs {:highlight {:enable true
                                              :additional_vim_regex_highlighting false}
