@@ -15,11 +15,11 @@
         :module :config.neogit)
 
   (use! :akinsho/git-conflict.nvim
-        :setup (:git-conflict {}))
+        :setup (git-conflict {}))
 
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
-        :setup (:gitsigns {:current_line_blame true}))
+        :setup (gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
@@ -50,7 +50,7 @@
                    :PaterJason/cmp-conjure]
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
-        :setup (:nvim-autopairs {}))
+        :setup (nvim-autopairs {}))
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
@@ -69,7 +69,7 @@
         :requires [
                     :nvim-treesitter/nvim-treesitter
                     :neovim/nvim-lspconfig]
-        :setup (:dim {}))
+        :setup (dim {}))
 
   (use! :gpanders/nvim-parinfer)
   (use! :Olical/conjure)
@@ -81,9 +81,9 @@
   (use! :projekt0n/github-nvim-theme
         :config (color! github_light))
   (use! :folke/which-key.nvim
-        :setup (:which-key {}))
+        :setup (which-key {}))
   (use! :mvllow/modes.nvim
-        :setup (:modes {:opacity 0.15}))
+        :setup (modes {:opacity 0.15}))
   (use! :lukas-reineke/indent-blankline.nvim
         :module :config.indent_blankline)
   (use! :nvim-lualine/lualine.nvim
@@ -104,17 +104,17 @@
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim)
   (use! :luukvbaal/stabilize.nvim
-        :setup (:stabilize {}))
+        :setup (stabilize {}))
   (use! :ahmedkhalf/project.nvim
-        :setup (:project_nvim {}))
+        :setup (project_nvim {}))
   (use! :numToStr/Comment.nvim
-        :setup (:Comment {}))
+        :setup (Comment {}))
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
-        :setup (:retrail {:trim {:blanklines true
-                                 :whitespace false}}))
+        :setup (retrail {:trim {:blanklines true
+                                :whitespace false}}))
   (use! :vladdoster/remember.nvim
         :module :remember))
