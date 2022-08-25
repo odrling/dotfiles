@@ -14,5 +14,4 @@
                                               :updatetime 25}
                                  :endwise {:enable true}
                                  :autotag {:enable true}
-                                 :rainbow {:enable true}
                                  :yati {:enable true}})

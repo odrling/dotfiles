@@ -242,6 +242,15 @@
       (if (. _G :packer.nvim_bootstrap)
           ((. ,packer :sync))))))
 
+(lambda create-func [val])
+
+(lambda parse-func [f]
+  (if (string? f)
+      (do f)
+      (if (func? f)
+          (do f)
+          `(fn [] ,f))))
+
 (lambda parse-conf [name opts]
   "parses 'name' and list of 'opts' into valid packer.use args."
   (local out [name])
@@ -250,6 +259,7 @@
     (if (odd? idx)
         (match val
           :module (tset out :config `#(require ,nval))
+          :run    (tset out :run (parse-func nval))
           :setup  (let [(mod conf) (unpack nval)]
                     (tset out :config `#((. (require ,mod) :setup) ,conf)))
           :config (tset out :config `(fn [] ,nval))

@@ -18,7 +18,6 @@ end
 bootstrap "https://github.com/udayvir-singh/tangerine.nvim"
 bootstrap "https://github.com/lewis6991/impatient.nvim"
 bootstrap "https://github.com/wbthomason/packer.nvim"
-bootstrap "https://github.com/nvim-treesitter/nvim-treesitter"
 
 require "impatient"
 require "tangerine".setup {

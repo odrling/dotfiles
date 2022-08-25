@@ -54,14 +54,13 @@
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
-        :run ":TSUpdate"
+        :run (cfgcall :nvim-treesitter.install :update {:with_sync true})
         :requires [
                    "nvim-treesitter/playground"
                    "RRethy/nvim-treesitter-endwise"
                    "windwp/nvim-ts-autotag"
                    "JoosepAlviste/nvim-ts-context-commentstring"
                    "yioneko/nvim-yati"
-                   "p00f/nvim-ts-rainbow"
                    "nvim-treesitter/nvim-treesitter-textobjects"]
         :module :config.treesitter)
 
