@@ -194,4 +194,4 @@
 (set! background :light)
 
 ; sign column matches background
-;(exec [["highlight clear SignColumn"]])
+(exec [["highlight clear SignColumn"]])
