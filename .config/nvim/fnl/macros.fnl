@@ -276,7 +276,7 @@
   :return
   `(use ,(parse-conf name [...])))
 
-(fun cfgcall [module func args]
+(fun reqcall [module func args]
   `((. (require ,module) ,func) ,args))
 
 (fun setup [module args]

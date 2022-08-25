@@ -1,4 +1,4 @@
-(import-macros {: cfgcall : setup} :macros)
+(import-macros {: reqcall : setup} :macros)
 
 (setup :nvim-treesitter.configs {:highlight {:enable true
                                              :additional_vim_regex_highlighting false}
@@ -17,4 +17,4 @@
                                  :yati {:enable true}})
 
 
-(cfgcall "nvim-treesitter.install" :setup_auto_install)
+(reqcall "nvim-treesitter.install" :setup_auto_install)

@@ -1,5 +1,5 @@
-(import-macros {: setup : cfgcall : map!} :macros)
+(import-macros {: setup : reqcall : map!} :macros)
 
 (setup :FTerm)
 
-(map! [nt] "<leader>t" #(cfgcall :FTerm :toggle))
+(map! [nt] "<leader>t" #(reqcall :FTerm :toggle))

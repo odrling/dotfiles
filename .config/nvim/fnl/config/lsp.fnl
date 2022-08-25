@@ -1,7 +1,7 @@
-(import-macros {: augroup! : exec : set! : setup : cfgcall : map!} :macros)
+(import-macros {: augroup! : exec : set! : setup : reqcall : map!} :macros)
 
 (fn on_attach [client bufnr]
-  (cfgcall :lsp_signature :on_attach {:always_trigger true})
+  (reqcall :lsp_signature :on_attach {:always_trigger true})
 
   ; scroll down hover doc or scroll in definition preview
   (map! [n (:buffer bufnr)] :<C-f> '((. (require :lspsaga.action) :smart_scroll_with_saga) 1))
@@ -45,7 +45,7 @@
 
 ; luasnip
 (local luasnip (require :luasnip))
-(cfgcall :luasnip.loaders.from_vscode :lazy_load)
+(reqcall :luasnip.loaders.from_vscode :lazy_load)
 
 ; nvim-cmp setup
 (local cmp (require :cmp))
@@ -90,7 +90,7 @@
 
 (setup :cmp_git)
 
-(cfgcall :lspsaga :init_lsp_saga)
+(reqcall :lspsaga :init_lsp_saga)
 
 (setup :mason)
 (setup :mason-lspconfig {:automatic_installation true})

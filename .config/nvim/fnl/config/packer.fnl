@@ -1,4 +1,4 @@
-(import-macros {: augroup! : exec : color! : packer : use! : cfgcall : map!} :macros)
+(import-macros {: augroup! : exec : color! : packer : use! : reqcall : map!} :macros)
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
@@ -54,7 +54,7 @@
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
-        :run #(cfgcall :nvim-treesitter.install :update {:with_sync true})
+        :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
         :requires [
                    "nvim-treesitter/playground"
                    "RRethy/nvim-treesitter-endwise"
@@ -101,9 +101,9 @@
   (use! :akinsho/bufferline.nvim
         :module :config.bufferline)
   (use! :famiu/bufdelete.nvim
-        :config #(map! [n] :<leader>q #(cfgcall :bufdelete :bufdelete [0 true])))
+        :config #(map! [n] :<leader>q #(reqcall :bufdelete :bufdelete [0 true])))
   (use! :ggandor/leap.nvim
-        :config #(cfgcall :leap :set_default_keymaps))
+        :config #(reqcall :leap :set_default_keymaps))
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim
         :module :config.dirbuf)
