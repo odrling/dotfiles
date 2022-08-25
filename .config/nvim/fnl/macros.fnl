@@ -261,7 +261,7 @@
           :module (tset out :config `#(require ,nval))
           :run    (tset out :run (parse-func nval))
           :setup  (let [(mod conf) (unpack nval)]
-                    (tset out :config `#((. (require ,(parse-sym mod) :setup) ,conf))))
+                    (tset out :config `#((. (require ,(parse-sym mod)) :setup) ,conf)))
           :config (tset out :config `(fn [] ,nval))
           _       (tset out val nval))))
   :return out)
