@@ -1,4 +1,4 @@
-(import-macros {: augroup! : exec : color! : packer : use! : reqcall : map!} :macros)
+(import-macros {: augroup! : exec : color! : packer : use! : reqcall : map! : g!} :macros)
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
@@ -84,8 +84,6 @@
         :module :config/fterm)
   (use! :folke/which-key.nvim
         :setup (which-key {}))
-  (use! :mvllow/modes.nvim
-        :setup (modes {:opacity 0.15}))
   (use! :lukas-reineke/indent-blankline.nvim
         :module :config.indent_blankline)
   (use! :nvim-lualine/lualine.nvim
@@ -98,12 +96,15 @@
                     :natecraddock/telescope-zf-native.nvim
                     :nvim-telescope/telescope-ui-select.nvim]
         :module :config.telescope)
-  (use! :akinsho/bufferline.nvim
-        :module :config.bufferline)
+  (use! :romgrk/barbar.nvim
+        :requires :kyazdani42/nvim-web-devicons
+        :setup (bufferline {:closable false}))
   (use! :famiu/bufdelete.nvim
         :config #(map! [n] :<leader>q #(reqcall :bufdelete :bufdelete [0 true])))
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))
+  (use! :jinh0/eyeliner.nvim
+        :module :config.eyeliner)
   (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim
         :module :config.dirbuf)
