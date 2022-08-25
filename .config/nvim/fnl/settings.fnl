@@ -1,4 +1,4 @@
-(import-macros {: augroup! : set+ : set! : rem! : g! : exec : has! : map!} :macros)
+(import-macros {: hl! : augroup! : set+ : set! : rem! : g! : exec : has! : map!} :macros)
 
 ;autocmds
 (augroup! :settings
@@ -125,7 +125,6 @@
 (map! [n] :<leader>x :<cmd>.!sh<cr>)
 
 ; User Interface
-(set! cursorline) ; highlight current line
 (set! number)
 (set! relativenumber)
 
@@ -135,6 +134,8 @@
 
 ; always show sign column
 (set! signcolumn :yes)
+; sign column matches background
+(hl! :SignColumn {})
 
 ; don't redraw while executing macros
 (set! lazyredraw)
@@ -171,6 +172,3 @@
 ; use true colors
 (set! termguicolors)
 (set! background :light)
-
-; sign column matches background
-(exec [["highlight clear SignColumn"]])

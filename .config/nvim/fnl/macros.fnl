@@ -282,4 +282,7 @@
 (fun setup [module args]
   `((. (require ,module) :setup) ,args))
 
+(fun hl! [group opts]
+  `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
+
 :return M
