@@ -94,8 +94,7 @@
         :module :config.circles)
   (use! :nvim-telescope/telescope.nvim
         :requires [ :nvim-lua/plenary.nvim
-                    :natecraddock/telescope-zf-native.nvim
-                    :nvim-telescope/telescope-ui-select.nvim]
+                    :natecraddock/telescope-zf-native.nvim]
         :module :config.telescope)
   (use! :stevearc/dressing.nvim
         :module :config.dressing)
