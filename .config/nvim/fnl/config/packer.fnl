@@ -98,9 +98,7 @@
         :module :config.telescope)
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
-        :setup (bufferline {:closable false}))
-  (use! :famiu/bufdelete.nvim
-        :config #(map! [n] :<leader>q #(reqcall :bufdelete :bufdelete [0 true])))
+        :module :config.barbar)
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))
   (use! :jinh0/eyeliner.nvim
@@ -117,8 +115,7 @@
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
-  (use! :kenn7/vim-arsync
-        :config #(map! [n] :<leader>p :<cmd>ARsyncUp<cr>))
+  (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
         :setup (retrail {:trim {:blanklines true
                                 :whitespace false}}))
