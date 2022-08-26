@@ -115,9 +115,12 @@
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
+  (use! :tpope/vim-abolish)
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
         :setup (retrail {:trim {:blanklines true
                                 :whitespace false}}))
   (use! :vladdoster/remember.nvim
-        :module :remember))
+        :module :remember)
+  (use! :gbprod/substitute.nvim
+        :module :config.substitute))
