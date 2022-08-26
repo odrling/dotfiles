@@ -98,6 +98,8 @@
         :module :config.telescope)
   (use! :stevearc/dressing.nvim
         :module :config.dressing)
+  (use! :rcarriga/nvim-notify
+        :config #(set vim.notify (require :notify)))
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
         :module :config.barbar)
