@@ -1,5 +1,7 @@
 (import-macros {: augroup! : exec : set! : setup : reqcall : map!} :macros)
 
+(setup :inc_rename {})
+
 (fn on_attach [client bufnr]
   (reqcall :lsp_signature :on_attach {:always_trigger true})
 
@@ -18,10 +20,10 @@
   (map! [n (:buffer bufnr)] :K "<cmd>Lspsaga hover_doc<CR>")
   (map! [n (:buffer bufnr)] :gi 'vim.lsp.buf.implementation)
   (map! [n (:buffer bufnr)] :<C-k> 'vim.lsp.buf.signature_help)
-  (map! [n (:buffer bufnr)] :<leader>r "<cmd>Lspsaga rename<CR>")
+  (map! [n (:buffer bufnr)] :<leader>r #(reqcall :inc_rename :rename {:default (vim.fn.expand "<cword>")}))
   (map! [n (:buffer bufnr)] :<leader>ca 'vim.lsp.buf.code_action)
   (map! [n (:buffer bufnr)] :gr 'vim.lsp.buf.references)
-  (map! [n (:buffer bufnr)] :<leader>r '(vim.lsp.buf.format {:async true}))
+  (map! [n (:buffer bufnr)] :<leader>fm '(vim.lsp.buf.format {:async true}))
 
   (when client.server_capabilities.documentHighlightProvider
     (exec [[:hi! "LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow"]

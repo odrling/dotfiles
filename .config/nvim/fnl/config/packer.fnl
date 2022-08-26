@@ -47,7 +47,8 @@
                    :b0o/schemastore.nvim
                    :windwp/nvim-autopairs
                    :Olical/conjure
-                   :PaterJason/cmp-conjure]
+                   :PaterJason/cmp-conjure
+                   :smjonas/inc-rename.nvim]
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
         :setup (nvim-autopairs {}))
@@ -96,6 +97,8 @@
                     :natecraddock/telescope-zf-native.nvim
                     :nvim-telescope/telescope-ui-select.nvim]
         :module :config.telescope)
+  (use! :stevearc/dressing.nvim
+        :module :config.dressing)
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
         :module :config.barbar)
