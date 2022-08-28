@@ -65,8 +65,7 @@
                    "nvim-treesitter/nvim-treesitter-textobjects"]
         :module :config.treesitter)
 
-  (use! :Gelio/dim.lua
-        :branch :fix-hl_ns-breaking-change
+  (use! :narutoxy/dim.lua
         :requires [
                     :nvim-treesitter/nvim-treesitter
                     :neovim/nvim-lspconfig]
