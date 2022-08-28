@@ -1,11 +1,4 @@
-(import-macros {: augroup! : exec : color! } :hibiscus.vim)
-(import-macros {: packer : use! } :macros)
-
-(macro cfgcall [module func args]
-  `(fn [] ((. (require ,module) ,func) ,args)))
-
-(macro setup [module args]
-  `(cfgcall ,module :setup ,args))
+(import-macros {: augroup! : exec : color! : packer : use! : reqcall : map! : g!} :macros)
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
@@ -13,7 +6,6 @@
 
 (packer
   (use! :udayvir-singh/tangerine.nvim)
-  (use! :udayvir-singh/hibiscus.nvim)
   (use! :lewis6991/impatient.nvim)
   (use! :nathom/filetype.nvim)
 
@@ -23,11 +15,11 @@
         :module :config.neogit)
 
   (use! :akinsho/git-conflict.nvim
-        :config (setup :git-conflict {}))
+        :setup (git-conflict {}))
 
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
-        :config (setup :gitsigns {:current_line_blame true}))
+        :setup (gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
@@ -54,15 +46,17 @@
                    :hrsh7th/cmp-emoji
                    :petertriho/cmp-git
                    :b0o/schemastore.nvim
-                   :windwp/nvim-autopairs]
-
+                   :windwp/nvim-autopairs
+                   :Olical/conjure
+                   :PaterJason/cmp-conjure
+                   :smjonas/inc-rename.nvim]
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
-        :config (setup :nvim-autopairs {}))
+        :setup (nvim-autopairs {}))
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
-        :run ":TSUpdate"
+        :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
         :requires [
                    "nvim-treesitter/playground"
                    "RRethy/nvim-treesitter-endwise"
@@ -76,17 +70,21 @@
         :requires [
                     :nvim-treesitter/nvim-treesitter
                     :neovim/nvim-lspconfig]
-        :config (setup :dim {}))
+        :setup (dim {}))
 
   (use! :gpanders/nvim-parinfer)
+  (use! :Olical/conjure)
+
+  (use! :mickael-menu/zk-nvim
+        :module :config.zk)
 
   ; Interface
   (use! :projekt0n/github-nvim-theme
-        :config (fn [] (color! github_light)))
+        :config #(color! github_light))
+  (use! :numtostr/FTerm.nvim
+        :module :config/fterm)
   (use! :folke/which-key.nvim
-        :config (setup :which-key {}))
-  (use! :mvllow/modes.nvim
-        :config (setup :modes {:opacity 0.15}))
+        :setup (which-key {}))
   (use! :lukas-reineke/indent-blankline.nvim
         :module :config.indent_blankline)
   (use! :nvim-lualine/lualine.nvim
@@ -96,28 +94,42 @@
         :module :config.circles)
   (use! :nvim-telescope/telescope.nvim
         :requires [ :nvim-lua/plenary.nvim
-                    :natecraddock/telescope-zf-native.nvim
-                    :nvim-telescope/telescope-ui-select.nvim]
+                    :natecraddock/telescope-zf-native.nvim]
         :module :config.telescope)
-  (use! :akinsho/bufferline.nvim
-        :module :config.bufferline)
-  (use! :rbgrouleff/bclose.vim)
+  (use! :stevearc/dressing.nvim
+        :module :config.dressing)
+  (use! :rcarriga/nvim-notify
+        :config #(set vim.notify (require :notify)))
+  (use! :anuvyklack/hydra.nvim
+        :module :config.hydra
+        :requires [
+                   :lewis6991/gitsigns.nvim
+                   :TimUntersberger/neogit])
+  (use! :romgrk/barbar.nvim
+        :requires :kyazdani42/nvim-web-devicons
+        :module :config.barbar)
   (use! :ggandor/leap.nvim
-        :config (cfgcall :leap :set_default_keymaps))
+        :config #(reqcall :leap :set_default_keymaps))
+  (use! :jinh0/eyeliner.nvim
+        :module :config.eyeliner)
   (use! :antoinemadec/FixCursorHold.nvim)
-  (use! :elihunter173/dirbuf.nvim)
+  (use! :elihunter173/dirbuf.nvim
+        :module :config.dirbuf)
   (use! :luukvbaal/stabilize.nvim
-        :config (setup :stabilize {}))
+        :setup (stabilize {}))
   (use! :ahmedkhalf/project.nvim
-        :config (setup :project_nvim {}))
+        :setup (project_nvim {}))
   (use! :numToStr/Comment.nvim
-        :config (setup :Comment {}))
+        :setup (Comment {}))
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
+  (use! :tpope/vim-abolish)
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
-        :config (setup :retrail {:trim {:blanklines true
-                                        :whitespace false}}))
+        :setup (retrail {:trim {:blanklines true
+                                :whitespace false}}))
   (use! :vladdoster/remember.nvim
-        :module :remember))
+        :module :remember)
+  (use! :gbprod/substitute.nvim
+        :module :config.substitute))

@@ -1,5 +1,4 @@
-(import-macros {: augroup! : set+ : set! : rem! : g! : map! : exec} :hibiscus.vim)
-(import-macros {: has! } :macros)
+(import-macros {: hl! : augroup! : set+ : set! : rem! : g! : exec : has! : map!} :macros)
 
 ;autocmds
 (augroup! :settings
@@ -94,11 +93,6 @@
 (map! [n] :<leader>sa :zg)
 (map! [n] :<leader>s? :z=)
 
-; close buffer
-(map! [n] :<leader>q ":Bclose<CR>")
-
-; => Misc
-
 ; set python interpreter path
 (g! python3_host_prog :python3)
 
@@ -106,7 +100,7 @@
 (map! [n] :<Leader>m "mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm")
 
 ; turn off highlighting
-(map! [n] :<leader>h ":noh<CR>")
+(map! [n] :<leader>h "<cmd>noh<CR>")
 
 ; Toggle paste mode on and off
 (map! [n] :<leader>pp ":setlocal paste!<cr>")
@@ -127,27 +121,10 @@
 ; diff
 (map! [n] :<leader>d ":windo diffthis<cr>")
 
-; file browsing
-(g! $FZF_DEFAULT_COMMAND "fd -t f")
-(map! [n] :<leader>o "<cmd>Dirbuf %<CR>")
-(map! [n] :<leader>O :<cmd>Dirbuf<CR>)
-(map! [n] :<leader>ff "<cmd>Telescope find_files<cr>")
-(map! [n] :<leader><leader> "<cmd>Telescope find_files<cr>")
-(map! [n] :<leader>g "<cmd>Telescope live_grep<cr>")
-(map! [n] :<leader>bb "<cmd>Telescope buffers<cr>")
-(map! [n] :<leader>fh "<cmd>Telescope help_tags<cr>")
-
 ; run commands
 (map! [n] :<leader>x :<cmd>.!sh<cr>)
 
-; neogit
-(map! [n] :<leader>n :<cmd>Neogit<CR>)
-
-; arsync
-(map! [n] :<leader>p :<cmd>ARsyncUp<cr>)
-
 ; User Interface
-(set! cursorline) ; highlight current line
 (set! number)
 (set! relativenumber)
 
@@ -157,6 +134,8 @@
 
 ; always show sign column
 (set! signcolumn :yes)
+; sign column matches background
+(hl! :SignColumn {})
 
 ; don't redraw while executing macros
 (set! lazyredraw)
@@ -188,11 +167,8 @@
 (rem! formatoptions :t)
 
 ; GUI settings
-(set! guifont "monospace:h12")
+(set! guifont "monospace:h7")
 
 ; use true colors
 (set! termguicolors)
 (set! background :light)
-
-; sign column matches background
-(exec [["highlight clear SignColumn"]])
