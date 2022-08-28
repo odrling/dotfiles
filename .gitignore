@@ -19,6 +19,7 @@ Cache
 # only add selected config files
 !/.config
 /.config/*
+!/.config/.envrc
 
 # mpv config file
 !/.mpv
