@@ -99,6 +99,11 @@
         :module :config.dressing)
   (use! :rcarriga/nvim-notify
         :config #(set vim.notify (require :notify)))
+  (use! :anuvyklack/hydra.nvim
+        :module :config.hydra
+        :requires [
+                   :lewis6991/gitsigns.nvim
+                   :TimUntersberger/neogit])
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
         :module :config.barbar)
