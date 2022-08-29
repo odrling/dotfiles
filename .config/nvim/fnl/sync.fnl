@@ -10,9 +10,9 @@
 (local dotroot (vim.fn.expand "$HOME"))
 
 (fn is_dots_file [file]
-  (if (vim.fn.filereadable file)
+  (if (and (> (length file) 0) (vim.fn.filereadable file))
       (do (vim.fn.system ["git" "--git-dir" dotdir "--work-tree" dotroot "ls-files" "--error-unmatch" file])
-          (~= vim.v.shell_error 0))
+          (= vim.v.shell_error 0))
       false))
 
 (augroup! :dots
