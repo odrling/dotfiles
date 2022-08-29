@@ -129,8 +129,7 @@
   (use! :tpope/vim-abolish)
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
-        :setup (retrail {:trim {:blanklines true
-                                :whitespace false}}))
+        :module :config.retrail)
   (use! :vladdoster/remember.nvim
         :module :remember)
   (use! :gbprod/substitute.nvim
