@@ -2,7 +2,9 @@
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
-          [[BufWritePost] packer.fnl "PackerCompile"])
+          [[BufWritePost] packer.fnl (fn []
+                                       (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]])
+                                       (reqcall :packer :compile))])
 
 (packer
   (use! :udayvir-singh/tangerine.nvim)
