@@ -21,7 +21,7 @@ bootstrap "https://github.com/wbthomason/packer.nvim"
 
 local hooks
 if _G["tangerine.nvim_bootstrap"] then
-	hooks = {"oninit"}
+	hooks = {"oninit", "onsave"}
 else
 	hooks = {"onsave"}
 end
