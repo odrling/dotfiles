@@ -6,3 +6,4 @@
 
 (require :config.packer)
 (require :settings)
+(require :sync)

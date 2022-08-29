@@ -19,9 +19,17 @@ bootstrap "https://github.com/udayvir-singh/tangerine.nvim"
 bootstrap "https://github.com/lewis6991/impatient.nvim"
 bootstrap "https://github.com/wbthomason/packer.nvim"
 
-require "impatient"
+local hooks
+if _G["tangerine.nvim_bootstrap"] then
+	hooks = {"oninit"}
+else
+	hooks = {"onsave"}
+end
+
+-- require "impatient"
 require "tangerine".setup {
 	compiler = {
-		hooks = {"oninit"}
+		verbose = false,
+		hooks = hooks
 	}
 }
