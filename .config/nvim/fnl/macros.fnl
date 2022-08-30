@@ -286,9 +286,16 @@
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
 
+(fn parse-heads [...]
+  (local heads [])
+  (each [i head (pairs [...])]
+    (tset heads i [(unpack head)]))
+  :return heads)
+
 
 (fun defhydra [name config ...]
-  (local heads [...])
-  `(local ,name ((require :hydra) ,(merge config {:heads heads}))))
+  (local heads (parse-heads ...))
+  (local hconfig (merge config {:heads heads}))
+  `(local ,name ((require :hydra) ,hconfig)))
 
 :return M
