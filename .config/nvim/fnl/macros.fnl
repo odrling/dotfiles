@@ -236,11 +236,12 @@
   "syntactic sugar over packer's startup function."
   (local packer `(require :packer))
   `((. ,packer :startup)
-    (lambda [(unquote (sym :use))]
-      (use :wbthomason/packer.nvim)
-      (do ,...)
-      (if (. _G :packer.nvim_bootstrap)
-          ((. ,packer :sync))))))
+    {1 (lambda [(unquote (sym :use))]
+         (use :wbthomason/packer.nvim)
+         (do ,...)
+         (if (. _G :packer.nvim_bootstrap)
+             ((. ,packer :sync))))
+     :config {:autoremove true}}))
 
 (lambda create-func [val])
 
