@@ -15,23 +15,23 @@
 (local git_hydra (Hydra {:name "Git"
                          :hint git_hint
                          :config {:buffer true
-                                        :color :pink
-                                        :invoke_on_body true
-                                        :hint {:border "rounded"}
-                                        :on_enter (fn []
-                                                    (exec [[:mkview]
-                                                           [:silent! "%foldopen"]])
-                                                    (set vim.bo.modifiable false)
-                                                    (gitsigns.toggle_signs true)
-                                                    (gitsigns.toggle_linehl true))
-                                        :on_exit (fn []
-                                                   (local cursor_pos (vim.api.nvim_win_get_cursor 0))
-                                                   (exec [[:loadview]])
-                                                   (vim.api.nvim_win_set_cursor 0 cursor_pos)
-                                                   (exec [[:normal "zv"]])
-                                                   (gitsigns.toggle_signs false)
-                                                   (gitsigns.toggle_linehl false)
-                                                   (gitsigns.toggle_deleted false))}
+                                  :color :pink
+                                  :invoke_on_body true
+                                  :hint {:border "rounded"}
+                                  :on_enter (fn []
+                                              (exec [[:mkview]
+                                                     [:silent! "%foldopen"]])
+                                              (set vim.bo.modifiable false)
+                                              (gitsigns.toggle_signs true)
+                                              (gitsigns.toggle_linehl true))
+                                  :on_exit (fn []
+                                             (local cursor_pos (vim.api.nvim_win_get_cursor 0))
+                                             (exec [[:loadview]])
+                                             (vim.api.nvim_win_set_cursor 0 cursor_pos)
+                                             (exec [[:normal "zv"]])
+                                             (gitsigns.toggle_signs false)
+                                             (gitsigns.toggle_linehl false)
+                                             (gitsigns.toggle_deleted false))}
                          :mode ["n" "x"]
                          :heads [[:J (fn [] (if vim.wo.diff "]c"
                                                 (do (vim.schedule #(gitsigns.next_hunk))
