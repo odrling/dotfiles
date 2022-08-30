@@ -49,8 +49,6 @@
                    :petertriho/cmp-git
                    :b0o/schemastore.nvim
                    :windwp/nvim-autopairs
-                   :Olical/conjure
-                   :PaterJason/cmp-conjure
                    :smjonas/inc-rename.nvim]
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
@@ -75,7 +73,6 @@
         :setup (dim {}))
 
   (use! :gpanders/nvim-parinfer)
-  (use! :Olical/conjure)
 
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
