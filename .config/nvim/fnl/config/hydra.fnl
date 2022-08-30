@@ -12,6 +12,12 @@
  ^ ^              _<Enter>_: Neogit              _q_: exit
 ")
 
+(fn is_git_file [file]
+  (if (and (> (length file) 0) (vim.fn.filereadable file))
+      (do (vim.fn.system ["git" "ls-files" "--error-unmatch" file])
+          (= vim.v.shell_error 0))
+      false))
+
 (local git_hydra (Hydra {:name "Git"
                          :hint git_hint
                          :config {
@@ -20,15 +26,17 @@
                                   :hint {:border "rounded"}
                                   :on_enter (fn []
                                               (gitsigns.toggle_linehl true)
-                                              (exec [[:mkview]
-                                                     [:silent! "%foldopen"]]))
+                                              (if is_git_file (vim.fn.expand "%:p")
+                                                  (exec [[:mkview
+                                                          [:silent! "%foldopen"]]])))
                                   :on_exit (fn []
                                              (gitsigns.toggle_linehl false)
                                              (gitsigns.toggle_deleted false)
-                                             (local cursor_pos (vim.api.nvim_win_get_cursor 0))
-                                             (exec [[:loadview]])
-                                             (vim.api.nvim_win_set_cursor 0 cursor_pos)
-                                             (exec [[:normal "zv"]]))}
+                                             (when (is_git_file (vim.fn.expand "%:p"))
+                                                 (local cursor_pos (vim.api.nvim_win_get_cursor 0))
+                                                 (exec [[:loadview]])
+                                                 (vim.api.nvim_win_set_cursor 0 cursor_pos)
+                                                 (exec [[:normal "zv"]])))}
                          :mode ["n" "x"]
                          :heads [[:J (fn [] (if vim.wo.diff "]c"
                                                 (do (vim.schedule #(gitsigns.next_hunk))
