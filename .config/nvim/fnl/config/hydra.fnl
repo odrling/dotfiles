@@ -14,24 +14,21 @@
 
 (local git_hydra (Hydra {:name "Git"
                          :hint git_hint
-                         :config {:buffer true
+                         :config {
                                   :color :pink
                                   :invoke_on_body true
                                   :hint {:border "rounded"}
                                   :on_enter (fn []
+                                              (gitsigns.toggle_linehl true)
                                               (exec [[:mkview]
-                                                     [:silent! "%foldopen"]])
-                                              (set vim.bo.modifiable false)
-                                              (gitsigns.toggle_signs true)
-                                              (gitsigns.toggle_linehl true))
+                                                     [:silent! "%foldopen"]]))
                                   :on_exit (fn []
+                                             (gitsigns.toggle_linehl false)
+                                             (gitsigns.toggle_deleted false)
                                              (local cursor_pos (vim.api.nvim_win_get_cursor 0))
                                              (exec [[:loadview]])
                                              (vim.api.nvim_win_set_cursor 0 cursor_pos)
-                                             (exec [[:normal "zv"]])
-                                             (gitsigns.toggle_signs false)
-                                             (gitsigns.toggle_linehl false)
-                                             (gitsigns.toggle_deleted false))}
+                                             (exec [[:normal "zv"]]))}
                          :mode ["n" "x"]
                          :heads [[:J (fn [] (if vim.wo.diff "]c"
                                                 (do (vim.schedule #(gitsigns.next_hunk))
@@ -56,4 +53,4 @@
                                           :nowait true
                                           :desc "exit"}]]}))
 
-(map! [n] "<leader>G" #(git_hydra:activate))
+(map! [n] "<leader>g" #(git_hydra:activate))
