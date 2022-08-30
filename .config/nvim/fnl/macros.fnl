@@ -1,4 +1,4 @@
-(import-macros {: or= : ++ : inc : odd? : even? : string? : tappend : append : empty?} :core_macros)
+(import-macros {: or= : ++ : inc : odd? : even? : string? : tappend : append : empty? : merge} :core_macros)
 (local M {})
 
 
@@ -285,5 +285,10 @@
 
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
+
+
+(fun defhydra [name config ...]
+  (local heads [...])
+  `(local ,name ((require :hydra) ,(merge config {:heads heads}))))
 
 :return M
