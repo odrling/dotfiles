@@ -289,7 +289,11 @@
 (fn parse-heads [...]
   (local heads [])
   (each [i head (pairs [...])]
-    (tset heads i [(unpack head)]))
+    (let [(opts desc key func) (unpack head)]
+      (local hopts {:desc desc})
+      (each [_ v (ipairs opts)]
+        (tset hopts v true))
+      (tset heads i [key func hopts])))
   :return heads)
 
 

@@ -25,28 +25,24 @@
                          (gitsigns.toggle_deleted false))}
      :mode ["n" "x"]}
 
-    (:J #(if vim.wo.diff "]c"
-                 (do (vim.schedule #(gitsigns.next_hunk))
-                     :return "<Ignore>"))
-         {:expr true
-          :desc "next hunk"})
-    (:K #(if vim.wo.diff "[c"
+    [[:expr] "next hunk"
+     :J #(if vim.wo.diff "]c"
+                  (do (vim.schedule #(gitsigns.next_hunk))
+                      :return "<Ignore>"))]
+    [[:expr] "prev hunk"
+     :K #(if vim.wo.diff "[c"
               (do (vim.schedule #(gitsigns.prev_hunk))
-                  :return "<Ignore>"))
-     {:expr true
-      :desc "next hunk"})
+                  :return "<Ignore>"))]
 
-    (:s "<CMD>Gitsigns stage_hunk<CR>" {:silent true :desc "stage hunk"})
-    (:u gitsigns.undo_stage_hunk {:desc "undo last stage"})
-    (:S gitsigns.stage_buffer {:desc "stage buffer"})
-    (:p gitsigns.preview_hunk {:desc "preview hunk"})
-    (:d gitsigns.toggle_deleted {:nowait true :desc "toggle deleted"})
-    (:b gitsigns.blame_line {:desc "blame"})
-    (:B #(gitsigns.blame_line {:full true}) {:desc "blame show full"})
-    (:/ gitsigns.show {:exit true :desc "show base file"})
-    (:<Enter> "<CMD>Neogit<CR>" {:exit true :desc "Neogit"})
-    (:q nil {:exit true
-             :nowait true
-             :desc "exit"}))
+    [[:silent]       "stage hunk"      :s       "<CMD>Gitsigns stage_hunk<CR>"]
+    [[]              "undo last stage" :u       gitsigns.undo_stage_hunk]
+    [[]              "stage buffer"    :S       gitsigns.stage_buffer]
+    [[]              "preview hunk"    :p       gitsigns.preview_hunk]
+    [[:nowait]       "toggle deleted"  :d       gitsigns.toggle_deleted]
+    [[]              "blame"           :b       gitsigns.blame_line]
+    [[]              "blame show full" :B       #(gitsigns.blame_line {:full true})]
+    [[:exit]         "show base file"  :/       gitsigns.show]
+    [[:exit]         "Neogit"          :<Enter> "<CMD>Neogit<CR>"]
+    [[:exit :nowait] "exit"            :q       nil])
 
 (map! [n] "<leader>g" #(git_hydra:activate))
