@@ -19,9 +19,12 @@
               :color :pink
               :invoke_on_body true
               :hint {:border "rounded"}
-              :on_enter #(gitsigns.toggle_linehl true)
+              :on_enter (fn []
+                            (gitsigns.toggle_linehl true)
+                            (gitsigns.toggle_word_diff true))
               :on_exit (fn []
                          (gitsigns.toggle_linehl false)
+                         (gitsigns.toggle_word_diff false)
                          (gitsigns.toggle_deleted false))}
      :mode ["n" "x"]}
 
