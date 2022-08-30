@@ -2,9 +2,6 @@
 	path = .local/bin
 	url = https://git.odrling.xyz/odrling/localbins.git
 	ignore = dirty
-[submodule ".vim/vidir"]
-	path = .vim/vidir
-	url = https://github.com/trapd00r/vidir.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
