@@ -123,6 +123,8 @@
         :setup (project_nvim {}))
   (use! :numToStr/Comment.nvim
         :setup (Comment {}))
+  (use! :ruifm/gitlinker.nvim
+        :module :config.gitlinker)
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
   (use! :tpope/vim-sleuth)
