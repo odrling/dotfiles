@@ -31,4 +31,3 @@ setoutput
 
 # start dwm
 exec dwm
-# exec pw-jack dwm
