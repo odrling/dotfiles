@@ -21,7 +21,8 @@
               :hint {:border "rounded"}
               :on_enter (fn []
                             (gitsigns.toggle_linehl true)
-                            (gitsigns.toggle_word_diff true))
+                            (gitsigns.toggle_word_diff true)
+                            (set vim.bo.modifiable false))
               :on_exit (fn []
                          (gitsigns.toggle_linehl false)
                          (gitsigns.toggle_word_diff false)
