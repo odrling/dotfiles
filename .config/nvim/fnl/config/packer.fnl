@@ -111,6 +111,9 @@
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
         :module :config.barbar)
+  (use! :goolord/alpha-nvim
+        :requires [:kyazdani42/nvim-web-devicons]
+        :setup (alpha (. (require :alpha.themes.startify) :config)))
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))
   (use! :jinh0/eyeliner.nvim
