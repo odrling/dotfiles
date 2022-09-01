@@ -106,6 +106,7 @@
         :module :config.hydra
         :requires [
                    :lewis6991/gitsigns.nvim
+                   :akinsho/git-conflict.nvim
                    :TimUntersberger/neogit
                    :mrjones2014/smart-splits.nvim])
   (use! :romgrk/barbar.nvim
