@@ -1,4 +1,4 @@
-(import-macros {: map!} :macros)
+(import-macros {: map! : reqcall} :macros)
 
-(map! [n] :<leader>o "<cmd>Dirbuf %<CR>")
-(map! [n] :<leader>O :<cmd>Dirbuf<CR>)
+(map! [n] :<leader>o #(reqcall :dirbuf :open ""))
+(map! [n] :<leader>O #(reqcall :dirbuf :open (vim.fn.fnameescape (vim.fn.getcwd))))
