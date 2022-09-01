@@ -1,7 +1,7 @@
 export BROWSER=firefox
 export EDITOR=vi
 
-export PATH="$HOME/.local/bin:$PATH:$HOME/.vim/fzf/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
