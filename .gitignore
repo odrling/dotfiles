@@ -142,7 +142,8 @@ Cache
 !/.config/bottom
 
 # zinit
-!/.local/share/zinit
+!/.local/share
+/.local/share/*
 /.local/share/zinit/*
 !/.local/share/zinit/zinit.git
 

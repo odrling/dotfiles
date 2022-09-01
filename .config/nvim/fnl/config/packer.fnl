@@ -106,7 +106,8 @@
         :module :config.hydra
         :requires [
                    :lewis6991/gitsigns.nvim
-                   :TimUntersberger/neogit])
+                   :TimUntersberger/neogit
+                   :mrjones2014/smart-splits.nvim])
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
         :module :config.barbar)

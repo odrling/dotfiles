@@ -15,12 +15,6 @@ sethid &
 # hide cursor when unused
 unclutter --ignore-scrolling -b
 
-# fcitx
-export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-fcitx &
-
 # map left control to escape
 xcape -e 'Control_L=Escape' &
 
@@ -29,6 +23,11 @@ xcape -e 'Control_L=Escape' &
 # set wallpaper
 setoutput
 
+# fcitx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+fcitx &
+
 # start dwm
 exec dwm
-# exec pw-jack dwm
