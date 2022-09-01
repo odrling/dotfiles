@@ -27,6 +27,8 @@
 	rh = reset --hard
 	d = diff --patch-with-stat
 	s = status
+	p = push
+	pf = push --force-with-lease
 
 [pager]
 	diff = delta
