@@ -3,14 +3,14 @@ while read file
 do
     case "$1" in
         "y")
-            opaste "$file"
+            hikari -c "$file"
             ;;
         "q")
-            opaste -o "$file"
+            hikari -c -o "$file"
             ;;
         "m")
             convert "$file" -resize 600x600 "/tmp/$(basename "$file")"
-            opaste "/tmp/$(basename "$file")"
+            hikari -c "/tmp/$(basename "$file")"
             ;;
         "c")
             mime=$(file -b --mime-type "$file")
