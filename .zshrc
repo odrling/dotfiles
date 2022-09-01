@@ -81,3 +81,8 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
 
 zinit cdreplay -q
+
+# pnpm
+export PNPM_HOME="/home/odrling/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
