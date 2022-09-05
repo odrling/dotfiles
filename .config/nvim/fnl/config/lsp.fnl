@@ -23,7 +23,7 @@
   (map! [n (:buffer bufnr)] :<leader>r #(reqcall :inc_rename :rename {:default (vim.fn.expand "<cword>")}))
   (map! [n (:buffer bufnr)] :<leader>ca 'vim.lsp.buf.code_action)
   (map! [n (:buffer bufnr)] :gr 'vim.lsp.buf.references)
-  (map! [n (:buffer bufnr)] :<leader>fm '(vim.lsp.buf.format {:async true}))
+  (map! [n (:buffer bufnr)] :<leader>f '(vim.lsp.buf.format {:async true}))
 
   (when client.server_capabilities.documentHighlightProvider
     (exec [[:hi! "LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow"]
