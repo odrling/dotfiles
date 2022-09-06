@@ -200,5 +200,4 @@
            (table.insert out# [(vim.inspect v#)])))
      (vim.api.nvim_echo out# false [])))
 
-
 :return M

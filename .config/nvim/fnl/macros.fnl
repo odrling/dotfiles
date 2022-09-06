@@ -261,7 +261,9 @@
         (match val
           :module (tset out :config `#(require ,nval))
           :setup  (let [(mod conf) (unpack nval)]
-                    (tset out :config `#((. (require ,(parse-sym mod)) :setup) ,conf)))
+                    (tset out :config `#(let [(ok?# mod#) (pcall require ,(parse-sym mod))]
+                                           (when ok?#
+                                             (mod#.setup ,conf)))))
           _       (tset out val nval))))
   :return out)
 
@@ -281,7 +283,9 @@
   `((. (require ,module) ,func) ,...))
 
 (fun setup [module args]
-  `((. (require ,module) :setup) ,args))
+  `(let [(ok?# mod#) (pcall require ,module)]
+      (when ok?#
+        (mod#.setup ,args))))
 
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
