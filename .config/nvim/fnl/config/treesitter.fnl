@@ -1,7 +1,9 @@
-(import-macros {: reqcall : setup} :macros)
+(import-macros {: reqcall : setup : exec : command!} :macros)
 
 (setup :nvim-treesitter.configs {:highlight {:enable true
                                              :additional_vim_regex_highlighting false}
+                                 :auto_install true
+                                 :ensure_installed [:fennel :lua :python :java :c :cpp :rust]
                                  :incremental_selection {:enable true}
                                  :textobjects {:select {:enable true
                                                         ; Automatically jump forward to textobj
@@ -14,5 +16,8 @@
                                  :autotag {:enable true}
                                  :yati {:enable true}})
 
+(fn force_reinstall_parser []
+  (local lang (reqcall :nvim-treesitter.parsers :get_buf_lang))
+  (exec [[:TSInstall! lang]]))
 
-(reqcall "nvim-treesitter.install" :setup_auto_install)
+(command! [] :TSReload 'force_reinstall_parser)
