@@ -30,14 +30,11 @@
   (use! :neovim/nvim-lspconfig
         :requires [
                    :ray-x/lsp_signature.nvim
-                   :L3MON4D3/LuaSnip
                    :nvim-lua/lsp-status.nvim
                    :jose-elias-alvarez/null-ls.nvim
                    :williamboman/mason.nvim
                    :williamboman/mason-lspconfig.nvim
                    :hrsh7th/nvim-cmp
-                   :saadparwaiz1/cmp_luasnip
-                   :rafamadriz/friendly-snippets
                    :hrsh7th/cmp-nvim-lsp
                    :kkharji/lspsaga.nvim
                    "https://git.sr.ht/~whynothugo/lsp_lines.nvim"

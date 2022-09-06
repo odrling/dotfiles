@@ -42,39 +42,19 @@
 (set capabilities.textDocument.completion.completionItem.snippetSupport true)
 (set! completeopt "menuone,noselect")
 
-; luasnip
-(local luasnip (require :luasnip))
-(reqcall :luasnip.loaders.from_vscode :lazy_load)
-
 ; nvim-cmp setup
 (local cmp (require :cmp))
 (let [cmp_autopairs (require :nvim-autopairs.completion.cmp)]
   (cmp.event:on :confirm_done (cmp_autopairs.on_confirm_done {:map_char {:tex ""}})))
 
-(cmp.setup {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
-            :mapping {:<C-p> (cmp.mapping.select_prev_item)
+(cmp.setup {:mapping {:<C-p> (cmp.mapping.select_prev_item)
                       :<C-n> (cmp.mapping.select_prev_item)
                       :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace
-                                                  :select true})
-                      :<Tab> (fn [fallback]
-                               (if (cmp.visible
-                                     (cmp.select_next_item))
-                                   (luasnip.expand_or_jumpable)
-                                   (luasnip.expand_or_jump)
-                                   (fallback)))
-                      :<S-Tab> (fn [fallback]
-                                 (if (cmp.visible
-                                      (cmp.select_prev_item))
-                                    (luasnip.jumpable -1
-                                      (luasnip.jump -1))
-                                    (fallback)))}
+                                                  :select true})}
             :sources [{:name :nvim_lsp}
-                      {:name :conjure}
-                      {:name :luasnip}
                       {:name :path}
                       {:name :treesitter}
-                      {:name :latex_symbols}
-                      {:name :emoji}]})
+                      {:name :latex_symbols}]})
 
 (cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}
                                                               {:name :buffer}])})
