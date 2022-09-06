@@ -40,11 +40,7 @@ Cache
 
 # tmux config file
 !/.tmux.conf
-!/.tmux
-/.tmux/*
-!/.tmux/plugins
-/.tmux/plugins/*
-!/.tmux/plugins/tpm
+!/.tmate.conf
 
 # pypirc
 !/.pypirc
