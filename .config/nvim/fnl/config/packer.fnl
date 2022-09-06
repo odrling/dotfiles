@@ -21,7 +21,7 @@
 
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
-        :setup (gitsigns {}))
+        :setup (gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
