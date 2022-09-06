@@ -67,6 +67,10 @@ setopt appendhistory notify histexpiredupsfirst histsavenodups incappendhistoryt
 unsetopt beep
 
 export FZF_DEFAULT_OPTS="-m"
+
+# fixes conflict with zsh-autosuggestions
+export ZVM_VI_INS_LEGACY_UNDO=1
+
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
 alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
