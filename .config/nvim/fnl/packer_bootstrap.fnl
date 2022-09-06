@@ -1,8 +1,12 @@
 (import-macros {: reqcall : augroup!} :macros)
 
+(set _G.bootstraping_packer true)
+(fn load_all_packages_once []
+  (when _G.bootstraping_packer
+    (vim.cmd.packloadall {:bang true})
+    (set _G.bootstraping_packer false)))
+
 (augroup! :packer-bootstrap
-          [[User] PackerComplete (fn []
-                                   (vim.cmd.packloadall {:bang true})
-                                   (vim.defer_fn #(vim.cmd.augroup {1 :packer-bootstrap :bang true}) 15000))])
+          [[User] PackerComplete 'load_all_packages_once])
 
 (reqcall :packer :sync)
