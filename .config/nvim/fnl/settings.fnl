@@ -169,3 +169,5 @@
 ; use true colors
 (set! termguicolors)
 (set! background :light)
+
+(set! cursorline)
