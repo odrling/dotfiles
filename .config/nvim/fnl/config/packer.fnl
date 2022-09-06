@@ -39,7 +39,8 @@
                    :saadparwaiz1/cmp_luasnip
                    :rafamadriz/friendly-snippets
                    :hrsh7th/cmp-nvim-lsp
-                   :tami5/lspsaga.nvim
+                   :kkharji/lspsaga.nvim
+                   "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
                    :hrsh7th/cmp-path
                    :hrsh7th/cmp-buffer
                    :hrsh7th/cmp-cmdline

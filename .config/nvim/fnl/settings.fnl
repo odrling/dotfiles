@@ -118,9 +118,6 @@
 ; create line above
 (map! [i] :<S-Enter> :<Esc>O)
 
-; diff
-(map! [n] :<leader>d ":windo diffthis<cr>")
-
 ; run commands
 (map! [n] :<leader>x :<cmd>.!sh<cr>)
 

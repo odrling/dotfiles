@@ -5,19 +5,16 @@
 (fn on_attach [client bufnr]
   (reqcall :lsp_signature :on_attach {:always_trigger true})
 
-  ; scroll down hover doc or scroll in definition preview
-  (map! [n (:buffer bufnr)] :<C-f> '((. (require :lspsaga.action) :smart_scroll_with_saga) 1))
-  (map! [n (:buffer bufnr)] :<C-b> '((. (require :lspsaga.action) :smart_scroll_with_saga) -1))
-  ; show diagnostic
-  (map! [n (:buffer bufnr)] :<leader>cd "<cmd>Lspsaga show_line_diagnostics<CR>")
-  (map! [n (:buffer bufnr)] :<leader>cc "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-  ; show line diagnostics automatically in hover window
-  (augroup! :lspsaga
-            [[CursorHold CursorHoldI] :* "Lspsaga show_line_diagnostics"])
+  (tset vim.lsp.handlers :textDocument/publishDiagnostics
+    (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics {:virtual_text false}))
 
+  (map! [n (:buffer bufnr)] :<leader>l #(: (require :config.hydras.lsp) :activate))
+  (map! [n (:buffer bufnr)] :<leader>L #(reqcall :lsp_lines :toggle))
+
+  (map! [n (:buffer bufnr)] :<leader>D "<cmd>Telescope diagnostics<CR>")
   (map! [n (:buffer bufnr)] :gD 'vim.lsp.buf.declaration)
   (map! [n (:buffer bufnr)] :gd 'vim.lsp.buf.definition)
-  (map! [n (:buffer bufnr)] :K "<cmd>Lspsaga hover_doc<CR>")
+  (map! [n (:buffer bufnr)] :K #(reqcall :lspsaga.hover :render_hover_doc))
   (map! [n (:buffer bufnr)] :gi 'vim.lsp.buf.implementation)
   (map! [n (:buffer bufnr)] :<C-k> 'vim.lsp.buf.signature_help)
   (map! [n (:buffer bufnr)] :<leader>r #(reqcall :inc_rename :rename {:default (vim.fn.expand "<cword>")}))
@@ -125,6 +122,8 @@
 
 (local null_ls (require :null-ls))
 (let [sources [null_ls.builtins.diagnostics.flake8
-               (null_ls.builtins.formatting.isort.with {:args ["--stdout" "--profile" "black" "-e"]})]]
+               null_ls.builtins.formatting.isort]]
   (null_ls.setup {:sources sources
                   :diagnostics_format "[#{s}] #{c}: #{m}"}))
+
+(setup :lsp_lines {})
