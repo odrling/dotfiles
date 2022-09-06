@@ -217,7 +217,7 @@
 
 (lmd color! [name]
   "sets vim colorscheme to 'name'."
-  `(vim.cmd (.. "colorscheme " ,(parse-sym name))))
+  `(vim.cmd.colorscheme ,(parse-sym name)))
 
 
 ;; -------------------- ;;
