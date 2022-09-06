@@ -10,8 +10,9 @@ local function bootstrap (url)
 
 		vim.fn.system {"git", "clone", "--depth", "1", url, path}
 
-		vim.cmd [[redraw]]
+		vim.cmd.redraw()
 		print(name .. ": finished installing")
+		vim.cmd.packadd(name)
 	end
 end
 
@@ -20,14 +21,14 @@ bootstrap "https://github.com/lewis6991/impatient.nvim"
 bootstrap "https://github.com/wbthomason/packer.nvim"
 
 require "impatient"
+
 local hooks
 if _G["tangerine.nvim_bootstrap"] then
-	hooks = {"oninit", "onsave"}
+	hooks = {"onsave", "oninit"}
 else
 	hooks = {"onsave"}
 end
 
--- require "impatient"
 require "tangerine".setup {
 	compiler = {
 		verbose = false,

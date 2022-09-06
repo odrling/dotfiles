@@ -239,8 +239,8 @@
     {1 (lambda [(unquote (sym :use))]
          (use :wbthomason/packer.nvim)
          (do ,...)
-         (if (. _G :packer.nvim_bootstrap)
-             ((. ,packer :sync))))
+         (when (. _G :packer.nvim_bootstrap)
+             (require :packer_bootstrap)))
      :config {:autoremove true}}))
 
 (lambda create-func [val])
@@ -260,10 +260,6 @@
     (if (odd? idx)
         (match val
           :module (tset out :config `#(require ,nval))
-          :setup  (let [(mod conf) (unpack nval)]
-                    (tset out :config `#(let [(ok?# mod#) (pcall require ,(parse-sym mod))]
-                                           (when ok?#
-                                             (mod#.setup ,conf)))))
           _       (tset out val nval))))
   :return out)
 
@@ -280,12 +276,16 @@
   `(use ,(parse-conf name [...])))
 
 (fun reqcall [module func ...]
-  `((. (require ,module) ,func) ,...))
+  `(let [(ok?# mod#) (pcall require ,module)]
+      (if ok?#
+        ((. mod# ,func) ,...)
+        (vim.notify (.. ,module "could not be loaded") vim.log.levels.ERROR))))
 
 (fun setup [module args]
   `(let [(ok?# mod#) (pcall require ,module)]
-      (when ok?#
-        (mod#.setup ,args))))
+      (if ok?#
+        (mod#.setup ,args)
+        (vim.notify (.. ,module " could not be loaded") vim.log.levels.ERROR))))
 
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))

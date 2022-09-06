@@ -1,4 +1,4 @@
-(import-macros {: augroup! : exec : color! : packer : use! : reqcall : map! : g!} :macros)
+(import-macros {: augroup! : exec : color! : packer : use! : reqcall : map! : g! : setup} :macros)
 
 (augroup! :packer
           [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
@@ -17,11 +17,11 @@
         :module :config.neogit)
 
   (use! :akinsho/git-conflict.nvim
-        :setup (git-conflict {}))
+        :config #(setup :git-conflict {}))
 
   (use! :lewis6991/gitsigns.nvim
         :requires :nvim-lua/plenary.nvim
-        :setup (gitsigns {:current_line_blame true}))
+        :config #(setup :gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
@@ -50,30 +50,37 @@
                    :smjonas/inc-rename.nvim]
         :module :config.lsp)
   (use! :windwp/nvim-autopairs
-        :setup (nvim-autopairs {}))
+        :config #(setup :nvim-autopairs {}))
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
         :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
         :requires [
-                   "nvim-treesitter/playground"
-                   "RRethy/nvim-treesitter-endwise"
-                   "windwp/nvim-ts-autotag"
-                   "JoosepAlviste/nvim-ts-context-commentstring"
-                   "yioneko/nvim-yati"
-                   "nvim-treesitter/nvim-treesitter-textobjects"]
+                   :nvim-treesitter/playground
+                   :RRethy/nvim-treesitter-endwise
+                   :windwp/nvim-ts-autotag
+                   :JoosepAlviste/nvim-ts-context-commentstring
+                   :yioneko/nvim-yati
+                   :nvim-treesitter/nvim-treesitter-textobjects]
         :module :config.treesitter)
+  (use! :windwp/nvim-ts-autotag
+        :after :nvim-treesitter)
+  (use! :yioneko/nvim-yati
+        :after :nvim-treesitter)
+  (use! :JoosepAlviste/nvim-ts-context-commentstring
+        :after :nvim-treesitter)
+  (use! :nvim-treesitter/nvim-treesitter-textobjects
+        :after :nvim-treesitter)
 
   (use! :narutoxy/dim.lua
         :requires [
                     :nvim-treesitter/nvim-treesitter
                     :neovim/nvim-lspconfig]
-        :setup (dim {}))
+        :config #(setup :dim {}))
 
   (use! :gpanders/nvim-parinfer)
 
-  (use! :sheerun/vim-polyglot
-        :config #(g! polyglot_disabled [:autoindent :sensible]))
+  (use! :sheerun/vim-polyglot)
 
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
@@ -84,7 +91,7 @@
   (use! :numtostr/FTerm.nvim
         :module :config/fterm)
   (use! :folke/which-key.nvim
-        :setup (which-key {}))
+        :config #(setup :which-key))
   (use! :nvim-lualine/lualine.nvim
         :module :config.lualine)
   (use! :projekt0n/circles.nvim
@@ -96,8 +103,7 @@
         :module :config.telescope)
   (use! :stevearc/dressing.nvim
         :module :config.dressing)
-  (use! :rcarriga/nvim-notify
-        :config #(set vim.notify (require :notify)))
+  (use! :rcarriga/nvim-notify)
   (use! :anuvyklack/hydra.nvim
         :module :config.hydra
         :requires [
@@ -110,7 +116,7 @@
         :module :config.barbar)
   (use! :goolord/alpha-nvim
         :requires [:kyazdani42/nvim-web-devicons]
-        :setup (alpha (. (require :alpha.themes.startify) :config)))
+        :config #(setup :alpha (. (require :alpha.themes.startify) :config)))
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))
   (use! :jinh0/eyeliner.nvim
@@ -119,11 +125,11 @@
   (use! :elihunter173/dirbuf.nvim
         :module :config.dirbuf)
   (use! :luukvbaal/stabilize.nvim
-        :setup (stabilize {}))
+        :config #(setup :stabilize {}))
   (use! :ahmedkhalf/project.nvim
-        :setup (project_nvim {}))
+        :config #(setup :project_nvim {}))
   (use! :numToStr/Comment.nvim
-        :setup (Comment {}))
+        :config #(setup :Comment {}))
   (use! :ruifm/gitlinker.nvim
         :module :config.gitlinker)
   (use! :tpope/vim-repeat)
