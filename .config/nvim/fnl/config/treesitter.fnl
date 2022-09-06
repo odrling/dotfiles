@@ -10,8 +10,6 @@
                                                                   :if "@function.inner"
                                                                   :ac "@class.outer"
                                                                   :ic "@class.inner"}}}
-                                 :playground {:enable true
-                                              :updatetime 25}
                                  :endwise {:enable true}
                                  :autotag {:enable true}
                                  :yati {:enable true}})
