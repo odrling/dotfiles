@@ -47,13 +47,14 @@
 (let [cmp_autopairs (require :nvim-autopairs.completion.cmp)]
   (cmp.event:on :confirm_done (cmp_autopairs.on_confirm_done {:map_char {:tex ""}})))
 
-(cmp.setup {:mapping {:<C-p> (cmp.mapping.select_prev_item)
-                      :<C-n> (cmp.mapping.select_next_item)
-                      :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace
-                                                  :select true})}
+(cmp.setup {:mapping {:<C-p>   (cmp.mapping.select_prev_item)
+                      :<C-n>   (cmp.mapping.select_next_item)
+                      :<TAB>   (cmp.mapping.select_next_item)
+                      :<S-TAB> (cmp.mapping.select_prev_item)
+                      :<CR>    (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace})}
             :sources [{:name :nvim_lsp}
                       {:name :path}
-                      {:name :treesitter}
+                      {:name :buffer}
                       {:name :latex_symbols}]})
 
 (cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}
