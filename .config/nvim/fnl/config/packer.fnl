@@ -85,8 +85,6 @@
         :module :config/fterm)
   (use! :folke/which-key.nvim
         :setup (which-key {}))
-  (use! :lukas-reineke/indent-blankline.nvim
-        :module :config.indent_blankline)
   (use! :nvim-lualine/lualine.nvim
         :module :config.lualine)
   (use! :projekt0n/circles.nvim
