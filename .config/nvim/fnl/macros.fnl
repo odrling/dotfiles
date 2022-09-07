@@ -259,7 +259,10 @@
     (local nval (. opts (+ idx 1)))
     (if (odd? idx)
         (match val
-          :module (tset out :config `#(require ,nval))
+          :module (tset out :config `#(let [(ok?# mod#) (pcall require ,nval)]
+                                        (when (not ok?#)
+                                          (vim.notify (.. "module " ,nval " could not be loaded")
+                                                      vim.log.levels.ERROR))))
           _       (tset out val nval))))
   :return out)
 

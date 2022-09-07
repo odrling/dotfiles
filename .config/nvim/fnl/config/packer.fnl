@@ -91,6 +91,10 @@
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
 
+  (use! :rmagatti/auto-session
+        :requires :rmagatti/session-lens
+        :module :config.auto-session)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme
         :config #(color! github_light))
