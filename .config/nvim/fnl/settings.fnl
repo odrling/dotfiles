@@ -1,9 +1,5 @@
 (import-macros {: hl! : augroup! : set+ : set! : rem! : g! : exec : has! : map!} :macros)
 
-;autocmds
-(augroup! :settings
-          [[BufWritePost] :settings.fnl "silent! FnlCompileBuffer"])
-
 ; better :find
 (set+ path "**")
 (set! wildmenu)
@@ -174,3 +170,8 @@
 (set! cursorlineopt "number")
 
 (set! shell "/bin/sh")
+
+; autoreload changed files
+(set! updatetime 300)
+(set! autoread)
+(augroup! :autoread-hold [[CursorHold] * :checktime])
