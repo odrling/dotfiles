@@ -171,5 +171,6 @@
 (set! background :light)
 
 (set! cursorline)
+(set! cursorlineopt "number")
 
 (set! shell "/bin/sh")
