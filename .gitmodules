@@ -5,6 +5,3 @@
 [submodule ".aegisub/automation/0x539"]
 	path = .aegisub/automation/0x539
 	url = https://github.com/The0x539/Aegisub-Scripts.git
-[submodule ".local/share/zinit/zinit"]
-	path = .local/share/zinit/zinit.git
-	url = https://github.com/zdharma-continuum/zinit.git
