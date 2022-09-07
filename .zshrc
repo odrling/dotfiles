@@ -6,10 +6,10 @@ mkdir -p "$(dirname $ZINIT_HOME)"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # fixes conflict with zsh-autosuggestions
-ZVM_VI_INS_LEGACY_UNDO=1
-
 # Do the initialization when the script is sourced (i.e. Initialize instantly)
 ZVM_INIT_MODE=sourcing
+# avoid showing a syntax highlighting mess
+ZVM_VI_INS_LEGACY_UNDO=1
 
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
