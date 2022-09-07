@@ -14,6 +14,8 @@
                                                                   :ic "@class.inner"}}}
                                  :endwise {:enable true}
                                  :autotag {:enable true}
+                                 :rainbow {:enable true
+                                           :extended_mode true}
                                  :yati {:enable true}})
 
 (fn force_reinstall_parser []
