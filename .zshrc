@@ -5,6 +5,12 @@ mkdir -p "$(dirname $ZINIT_HOME)"
 [ -f "$ZINIT_HOME/zinit.zsh" ] || git clone --depth 1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# fixes conflict with zsh-autosuggestions
+ZVM_VI_INS_LEGACY_UNDO=1
+
+# Do the initialization when the script is sourced (i.e. Initialize instantly)
+ZVM_INIT_MODE=sourcing
+
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -15,6 +21,7 @@ zstyle :omz:plugins:ssh-agent quiet yes
 zinit light zsh-users/zsh-completions
 zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
+zinit light z-shell/F-Sy-H
 zinit light jeffreytse/zsh-vi-mode
 
 zinit ice has'ssh-agent' wait silent; zinit snippet OMZP::ssh-agent
@@ -23,9 +30,6 @@ zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
-
-zinit ice wait lucid
-zinit light z-shell/F-Sy-H
 
 zinit as"program" has'go' make'!' atclone'./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh" for \
@@ -68,8 +72,6 @@ unsetopt beep
 
 export FZF_DEFAULT_OPTS="-m"
 
-# fixes conflict with zsh-autosuggestions
-export ZVM_VI_INS_LEGACY_UNDO=1
 
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
