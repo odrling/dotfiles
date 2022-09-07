@@ -22,8 +22,10 @@
                    :return {:col [(vim.opt.columns:get)]
                             :height {1 next_height :frequency 10}})
                  (fn []
+                   :return {:opacity [100]
+                            :col [(vim.opt.columns:get)]})
+                 (fn []
                    :return {:time true
-                            :opacity [100]
                             :col [(vim.opt.columns:get)]})
                  (fn []
                    :return {:opacity {1 0 :frequency 2}
