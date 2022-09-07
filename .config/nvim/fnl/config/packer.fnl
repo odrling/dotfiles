@@ -95,6 +95,9 @@
         :requires :rmagatti/session-lens
         :module :config.auto-session)
 
+  (use! :folke/todo-comments.nvim
+        :module :config.todo-comments)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme
         :config #(color! github_light))
