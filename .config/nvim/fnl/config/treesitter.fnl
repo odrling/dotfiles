@@ -12,11 +12,21 @@
                                                                   :if "@function.inner"
                                                                   :ac "@class.outer"
                                                                   :ic "@class.inner"}}}
-                                 :endwise {:enable true}
-                                 :autotag {:enable true}
-                                 :rainbow {:enable true
-                                           :extended_mode true}
-                                 :yati {:enable true}})
+                                 :endwise  {:enable true}
+                                 :autotag  {:enable true}
+                                 :refactor {:enable true
+                                            :highlight_definitions {:enable true
+                                                                    :clear_on_cursor_move true}
+                                            :highlight_current_scope {:enable false}
+                                            :navigation {:enable true
+                                                         :keymaps {:goto_definition_lsp_fallback "gd"
+                                                                   :goto_next_usage "<a-n>"
+                                                                   :goto_previous_usage "<a-N>"}}
+                                            :smart_rename {:enable true
+                                                           :keymaps {:smart_rename "<leader>r"}}}
+                                 :rainbow  {:enable true
+                                            :extended_mode true}
+                                 :yati     {:enable true}})
 
 (fn force_reinstall_parser []
   (local lang (reqcall :nvim-treesitter.parsers :get_buf_lang))

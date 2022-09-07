@@ -57,6 +57,7 @@
         :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
         :requires [
                    :nvim-treesitter/playground
+                   :nvim-treesitter/nvim-treesitter-refactor
                    :p00f/nvim-ts-rainbow
                    :RRethy/nvim-treesitter-endwise
                    :windwp/nvim-ts-autotag
@@ -64,6 +65,8 @@
                    :yioneko/nvim-yati
                    :nvim-treesitter/nvim-treesitter-textobjects]
         :module :config.treesitter)
+  (use! :nvim-treesitter/nvim-treesitter-refactor
+        :after :nvim-treesitter)
   (use! :p00f/nvim-ts-rainbow
         :after :nvim-treesitter)
   (use! :windwp/nvim-ts-autotag

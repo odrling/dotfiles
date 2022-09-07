@@ -13,7 +13,6 @@
 
   (map! [n (:buffer bufnr)] :<leader>D "<cmd>Telescope diagnostics<CR>")
   (map! [n (:buffer bufnr)] :gD 'vim.lsp.buf.declaration)
-  (map! [n (:buffer bufnr)] :gd 'vim.lsp.buf.definition)
   (map! [n (:buffer bufnr)] :K #(reqcall :lspsaga.hover :render_hover_doc))
   (map! [n (:buffer bufnr)] :gi 'vim.lsp.buf.implementation)
   (map! [n (:buffer bufnr)] :<C-k> 'vim.lsp.buf.signature_help)
