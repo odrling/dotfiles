@@ -13,6 +13,7 @@
 
   ; git
   (use! :TimUntersberger/neogit
+        :cmd :Neogit
         :requires :nvim-lua/plenary.nvim
         :module :config.neogit)
 
