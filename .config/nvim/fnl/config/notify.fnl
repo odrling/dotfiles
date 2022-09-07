@@ -1,10 +1,5 @@
 (import-macros {: setup : hl! : reqcall : prequire : exec} :macros)
 
-;; set default background (before actual colorscheme is loaded)
-(if (= vim.o.background "light")
-  (hl! Normal {:bg "#ffffff"})
-  (hl! Normal {:bg "#000000"}))
-
 (prequire stages_util :notify.stages.util
   (local stages [(fn [state]
                    (local next_row (stages_util.available_slot state.open_windows state.message.height stages_util.DIRECTION.TOP_DOWN))

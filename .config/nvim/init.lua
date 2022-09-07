@@ -20,6 +20,7 @@ bootstrap "https://github.com/udayvir-singh/tangerine.nvim"
 bootstrap "https://github.com/lewis6991/impatient.nvim"
 bootstrap "https://github.com/wbthomason/packer.nvim"
 bootstrap "https://github.com/rcarriga/nvim-notify"
+bootstrap "https://github.com/projekt0n/github-nvim-theme"
 
 require "impatient"
 

@@ -99,8 +99,7 @@
         :module :config.todo-comments)
 
   ; Interface
-  (use! :projekt0n/github-nvim-theme
-        :config #(color! github_light))
+  (use! :projekt0n/github-nvim-theme)
   (use! :numtostr/FTerm.nvim
         :module :config/fterm)
   (use! :folke/which-key.nvim
