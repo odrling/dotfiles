@@ -150,6 +150,4 @@
   (use! :zakharykaplan/nvim-retrail
         :module :config.retrail)
   (use! :vladdoster/remember.nvim
-        :module :remember)
-  (use! :gbprod/substitute.nvim
-        :module :config.substitute))
+        :module :remember))
