@@ -29,6 +29,7 @@
 	s = status
 	p = push
 	pf = push --force-with-lease
+	pushall = !git remote | xargs -L1 git push --all
 
 [pager]
 	diff = delta
