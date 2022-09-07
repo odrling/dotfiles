@@ -16,9 +16,11 @@
                             :row next_row
                             :opacity 0})
                  (fn [state]
-                   (vim.api.nvim_buf_call state.buffer #(exec [[:set (.. "textwidth=" state.message.width)]
-                                                               [:%normal :gq]]))
-                   (local next_height (+ (vim.api.nvim_buf_line_count state.buffer) 1))
+                   (vim.api.nvim_buf_call state.buffer (fn [] (set vim.bo.modifiable true)
+                                                              (set vim.bo.textwidth state.message.width)
+                                                              (exec [[:%normal "gqq"]])
+                                                              (set vim.bo.modifiable false)))
+                   (local next_height (vim.api.nvim_buf_line_count state.buffer))
                    :return {:col [(vim.opt.columns:get)]
                             :height {1 next_height :frequency 10}})
                  (fn []
@@ -33,8 +35,5 @@
 
   (prequire notify :notify
     (notify.setup {:max_width 80
-                   :stages stages
-                   :on_open (fn [win]
-                              (vim.api.nvim_win_set_option win :wrap true)
-                              (vim.api.nvim_win_set_option win :linebreak true))})
+                   :stages stages})
     (set vim.notify notify)))
