@@ -98,6 +98,9 @@
   (use! :folke/todo-comments.nvim
         :module :config.todo-comments)
 
+  (use! :gaoDean/autolist.nvim
+        :config #(setup :autolist {}))
+
   ; Interface
   (use! :projekt0n/github-nvim-theme)
   (use! :numtostr/FTerm.nvim
