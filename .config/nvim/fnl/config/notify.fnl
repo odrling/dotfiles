@@ -13,11 +13,10 @@
                     :row 1
                     :opacity 100})
                  (fn [state]
-                   (local winid (vim.api.nvim_buf_call state.buffer (fn [] (set vim.bo.modifiable true)
-                                                                           (set vim.bo.textwidth state.message.width)
-                                                                           (exec [[:%normal "gqq"]])
-                                                                           (set vim.bo.modifiable false)
-                                                                           (vim.fn.win_getid))))
+                   (vim.api.nvim_buf_call state.buffer (fn [] (set vim.bo.modifiable true)
+                                                              (set vim.bo.textwidth state.message.width)
+                                                              (exec [[:%normal "gqq"]])
+                                                              (set vim.bo.modifiable false)))
                    (local next_height (vim.api.nvim_buf_line_count state.buffer))
                    (local next_row (stages_util.available_slot state.open_windows next_height stages_util.DIRECTION.BOTTOM_UP))
                    {:col [(vim.opt.columns:get)]
