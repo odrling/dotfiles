@@ -279,16 +279,17 @@
   `(use ,(parse-conf name [...])))
 
 (fun reqcall [module func ...]
-  `(let [(ok?# mod#) (pcall require ,module)]
-      (if ok?#
-        ((. mod# ,func) ,...)
-        (vim.notify (.. ,module "could not be loaded") vim.log.levels.ERROR))))
+  `(xpcall #((. (require ,module) ,func) ,...)
+           (fn [e#]
+             (vim.notify (.. ,module "." ,func " could not be called") vim.log.levels.ERROR)
+             (vim.notify (.. ,module "." ,func ":\n" e#) vim.log.levels.DEBUG))))
 
-(fun setup [module args]
-  `(let [(ok?# mod#) (pcall require ,module)]
-      (if ok?#
-        (mod#.setup ,args)
-        (vim.notify (.. ,module " could not be loaded") vim.log.levels.ERROR))))
+
+(fun setup [module ...]
+  `(xpcall #((. (require ,module) :setup) ,...)
+           (fn [e#]
+             (vim.notify (.. ,module ".setup could not be called") vim.log.levels.ERROR)
+             (vim.notify (.. ,module ".setup:\n" e#) vim.log.levels.DEBUG))))
 
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
