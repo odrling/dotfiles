@@ -1,8 +1,15 @@
-(import-macros {: setup : hl! : reqcall : prequire : exec} :macros)
+(import-macros {: setup : hl! : reqcall : exec} :macros)
+
+(macro prequire [name module ...]
+  `(let [(ok?# mod#) (pcall require ,module)]
+     (when ok?#
+       (local ,name mod#)
+       (do ,...))))
+
 
 (prequire stages_util :notify.stages.util
   (local stages [(fn [state]
-                   (local next_row (stages_util.available_slot state.open_windows state.message.height stages_util.DIRECTION.BOTTOM_UP))
+                   (local next_row (stages_util.available_slot state.open_windows state.message.height stages_util.DIRECTION.TOP_DOWN))
                    {:height state.message.height
                     :width state.message.width
                     :relative :editor
@@ -10,7 +17,7 @@
                     :border :rounded
                     :style :minimal
                     :col (vim.opt.columns:get)
-                    :row 1
+                    :row next_row
                     :opacity 100})
                  (fn [state]
                    (vim.api.nvim_buf_call state.buffer (fn [] (set vim.bo.modifiable true)
@@ -20,7 +27,6 @@
                    (local next_height (vim.api.nvim_buf_line_count state.buffer))
                    (local next_row (stages_util.available_slot state.open_windows next_height stages_util.DIRECTION.BOTTOM_UP))
                    {:col [(vim.opt.columns:get)]
-                    :row [1 next_row :frequency 10]
                     :height {1 next_height :frequency 10}})
                  (fn [state]
                    {:opacity [100]
@@ -35,5 +41,6 @@
   (prequire notify :notify
     (notify.setup {:max_width 80
                    :stages stages
-                   :fps 10})
+                   :fps 10
+                   :level vim.log.levels.WARN})
     (set vim.notify notify)))

@@ -300,12 +300,6 @@
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
 
-(fun prequire [name module ...]
-  `(let [(ok?# mod#) (pcall require ,module)]
-     (when ok?#
-       (local ,name mod#)
-       (do ,...))))
-
 (fn parse-heads [...]
   (local heads [])
   (each [i head (pairs [...])]
