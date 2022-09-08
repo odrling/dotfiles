@@ -7,6 +7,7 @@
                   :extensions {:ui-select [(telescope_themes.get_dropdown {})]}})
 
 (telescope.load_extension :zf-native)
+(telescope.load_extension :notify)
 
 (map! [n] :<leader><leader> "<cmd>Telescope find_files<cr>")
 (map! [n] :<leader>G "<cmd>Telescope live_grep<cr>")
