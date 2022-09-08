@@ -107,3 +107,4 @@
                   :diagnostics_format "[#{s}] #{c}: #{m}"}))
 
 (setup :lsp_lines {})
+(vim.diagnostic.config {:virtual_text false})
