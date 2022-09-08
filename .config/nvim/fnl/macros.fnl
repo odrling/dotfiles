@@ -259,10 +259,14 @@
     (local nval (. opts (+ idx 1)))
     (if (odd? idx)
         (match val
-          :module (tset out :config `#(let [(ok?# mod#) (pcall require ,nval)]
-                                        (when (not ok?#)
-                                          (vim.notify (.. "module " ,nval " could not be loaded")
-                                                      vim.log.levels.ERROR))))
+          :module (tset out :config `#(xpcall #(require ,nval)
+                                              (fn [e#]
+                                                (vim.notify (.. ,name ": module " ,nval " could not be loaded") vim.log.levels.ERROR)
+                                                (vim.notify (.. ,name ":\n" e#) vim.log.levels.DEBUG))))
+          :config (tset out :config `#(xpcall ,nval
+                                              (fn [e#]
+                                                (vim.notify (.. "failed to configure " ,name) vim.log.levels.ERROR)
+                                                (vim.notify (.. ,name ":\n" e#) vim.log.levels.DEBUG))))
           _       (tset out val nval))))
   :return out)
 
@@ -279,17 +283,19 @@
   `(use ,(parse-conf name [...])))
 
 (fun reqcall [module func ...]
-  `(xpcall #((. (require ,module) ,func) ,...)
-           (fn [e#]
-             (vim.notify (.. ,module "." ,func " could not be called") vim.log.levels.ERROR)
-             (vim.notify (.. ,module "." ,func ":\n" e#) vim.log.levels.DEBUG))))
+  `(let [(status# ret#) (xpcall #((. (require ,module) ,func) ,...)
+                                (fn [e#]
+                                  (vim.notify (.. ,module "." ,func " could not be called") vim.log.levels.ERROR)
+                                  (vim.notify (.. ,module "." ,func ":\n" e#) vim.log.levels.DEBUG)))]
+     (when status# ret#)))
 
 
 (fun setup [module ...]
-  `(xpcall #((. (require ,module) :setup) ,...)
-           (fn [e#]
-             (vim.notify (.. ,module ".setup could not be called") vim.log.levels.ERROR)
-             (vim.notify (.. ,module ".setup:\n" e#) vim.log.levels.DEBUG))))
+  `(let [(status# ret#) (xpcall #((. (require ,module) :setup) ,...)
+                                (fn [e#]
+                                  (vim.notify (.. ,module ".setup could not be called") vim.log.levels.ERROR)
+                                  (vim.notify (.. ,module ".setup:\n" e#) vim.log.levels.DEBUG)))]
+     (when status# ret#)))
 
 (fun hl! [group opts]
   `(vim.api.nvim_set_hl 0 ,(parse-sym group) ,opts))
