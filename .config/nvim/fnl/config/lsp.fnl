@@ -89,7 +89,7 @@
                                                :capabilities capabilities} options))
   ((. (. (require :lspconfig) lsp) :setup) settings))
 
-(let [servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls]]
+(let [servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls :sumneko_lua]]
   (each [_ lsp (ipairs servers)] (setup_ls lsp {})))
 
 (local schemastore (require :schemastore))
@@ -102,7 +102,8 @@
 
 (local null_ls (require :null-ls))
 (let [sources [null_ls.builtins.diagnostics.flake8
-               null_ls.builtins.formatting.isort]]
+               null_ls.builtins.formatting.isort
+               null_ls.builtins.formatting.stylua]]
   (null_ls.setup {:sources sources
                   :diagnostics_format "[#{s}] #{c}: #{m}"}))
 
