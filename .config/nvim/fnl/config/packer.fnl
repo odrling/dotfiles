@@ -34,6 +34,9 @@
                    :jose-elias-alvarez/null-ls.nvim
                    :williamboman/mason.nvim
                    :williamboman/mason-lspconfig.nvim
+                   :L3MON4D3/LuaSnip
+                   :saadparwaiz1/cmp_luasnip
+                   :rafamadriz/friendly-snippets
                    :hrsh7th/nvim-cmp
                    :hrsh7th/cmp-nvim-lsp
                    :kkharji/lspsaga.nvim
