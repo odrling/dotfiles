@@ -100,21 +100,38 @@
                               :texthl hl
                               :numhl hl}))))
 
+
+;; lsp helpers
+(local configured_ls [])
+
+(let [lsputil (require :lspconfig.util)]
+  (lsputil.add_hook_before lsputil.on_setup
+                           (fn [config] (tset configured_ls config.name true))))
+
 (lambda setup_ls [lsp options]
   (local settings (vim.tbl_deep_extend :force {:on_attach on_attach
                                                :capabilities capabilities} options))
-  ((. (. (require :lspconfig) lsp) :setup) settings))
+  (if (. configured_ls lsp)
+    (vim.notify (.. lsp " is set up several times") vim.log.levels.WARN)
+    ((. (. (require :lspconfig) lsp) :setup) settings)))
 
-(let [servers [:pyright :jdtls :clangd :lemminx :tsserver :vimls :sumneko_lua]]
-  (each [_ lsp (ipairs servers)] (setup_ls lsp {})))
-
-(local schemastore (require :schemastore))
-(setup_ls :jsonls {:settings {:json {:validate {:enable true}
+;; init servers with manual configuration
+(let [schemastore (require :schemastore)]
+  (setup_ls :jsonls {:settings {:json {:validate {:enable true}
                                        :schemas (schemastore.json.schemas)}}})
 
-(setup_ls :yamlls {:settings {:yaml {:schemaStore {:enable true}}}})
+  (setup_ls :yamlls {:settings {:yaml {:schemaStore {:enable true}}}})
 
-(setup_ls :taplo {:settings {:toml {:schemas (schemastore.json.schemas)}}})
+  (setup_ls :taplo {:settings {:toml {:schemas (schemastore.json.schemas)}}}))
+
+;; setup installed ls and a set of ensured servers with default configuration
+(let [servers (vim.tbl_deep_extend
+                :force
+                [:pyright :jdtls :clangd :lemminx :tsserver :vimls :sumneko_lua]
+                (reqcall :mason-lspconfig :get_installed_servers))]
+  (each [_ lsp (ipairs servers)]
+    (when (not (. configured_ls lsp))
+      (setup_ls lsp {}))))
 
 (local null_ls (require :null-ls))
 (let [sources [null_ls.builtins.diagnostics.flake8
