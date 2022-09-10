@@ -14,4 +14,5 @@
   (augroup! :firenvim
             [[BufEnter] * #(if (< vim.o.lines min_lines)
                                (vim.defer_fn #(set! lines min_lines) 50))]
-            [[BufEnter] :github.com_* #(set! filetype :markdown)]))
+            [[BufEnter] :github.com_* #(set! filetype :markdown)]
+            [[BufEnter] :discord.com_* #(set! filetype :markdown)]))
