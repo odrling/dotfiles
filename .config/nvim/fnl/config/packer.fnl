@@ -161,6 +161,7 @@
   (use! :zakharykaplan/nvim-retrail
         :module :config.retrail)
   (use! :glacambre/firenvim
-        :run #((. vim.fn :firenvim#install) 0))
+        :run #((. vim.fn :firenvim#install) 0)
+        :module :config.firenvim)
   (use! :vladdoster/remember.nvim
         :module :remember))
