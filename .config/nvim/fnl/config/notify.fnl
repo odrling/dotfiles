@@ -42,5 +42,5 @@
     (notify.setup {:max_width 80
                    :stages stages
                    :fps 10
-                   :level vim.log.levels.WARN})
+                   :level vim.log.levels.INFO})
     (set vim.notify notify)))
