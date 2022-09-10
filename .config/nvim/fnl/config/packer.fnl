@@ -37,6 +37,8 @@
                    :L3MON4D3/LuaSnip
                    :saadparwaiz1/cmp_luasnip
                    :rafamadriz/friendly-snippets
+                   ;; TODO:check :jayp0521/mason-null-ls.nvim
+                   :WhoIsSethDaniel/mason-tool-installer.nvim
                    :hrsh7th/nvim-cmp
                    :hrsh7th/cmp-nvim-lsp
                    :kkharji/lspsaga.nvim
