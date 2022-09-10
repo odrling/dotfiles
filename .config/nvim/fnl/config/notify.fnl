@@ -43,4 +43,7 @@
                    :stages stages
                    :fps 10
                    :level vim.log.levels.INFO})
-    (set vim.notify notify)))
+    (fn notify_fn [msg level opts]
+      (vim.defer_fn #(notify msg level opts) 1000))
+    (set vim.notify notify_fn)
+    (vim.defer_fn #(set vim.notify notify) 2000)))
