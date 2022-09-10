@@ -1,18 +1,34 @@
 (import-macros {: augroup! : set! : g!} :macros)
 
+(local MIN_LINES 5)
+
+(macro firenvim_config [...]
+  (local entries {".*" {:takeover :never
+                        :priority 0}})
+  (local filetypes {})
+  (local aucmds [])
+  (each [_ entry (pairs [...])]
+    (let [(domain filetype takeover) (unpack entry)]
+      (let [takeover (if (= takeover nil) :always takeover)
+            regex (.. "https://[^/]*" (string.gsub domain "[.]" "\\.") "/.*")
+            glob (.. domain "_*")]
+        (tset entries regex {:takeover takeover
+                             :priority 1})
+        (when (~= filetype nil)
+          (tset filetypes domain filetype)))))
+  `(do
+     (set ,(sym :vim.g.firenvim_config) {:localSettings ,entries})
+     (augroup! :firenvim
+            [[BufEnter] * (fn []
+                            (if (< vim.o.lines MIN_LINES)
+                              (vim.defer_fn #(set! lines MIN_LINES) 50))
+                            (local expected_domain# (string.gsub (vim.fn.expand "%:t") "_.*" ""))
+                            (local filetype# (. ,filetypes expected_domain#))
+                            (when (~= filetype# nil)
+                              (tset vim.bo :filetype filetype#)))])))
+
+
 (when (~= vim.g.started_by_firenvim nil)
 
-  (local fc {})
-  (tset fc ".*" {:takeover :never})
-  (tset fc "https://github\\.com/.*" {:takeover :once
-                                        :priority 1})
-
-  (set vim.g.firenvim_config {:globalSettings {:alt :all}
-                              :localSettings fc})
-
-  (local min_lines 5)
-  (augroup! :firenvim
-            [[BufEnter] * #(if (< vim.o.lines min_lines)
-                               (vim.defer_fn #(set! lines min_lines) 50))]
-            [[BufEnter] :github.com_* #(set! filetype :markdown)]
-            [[BufEnter] :discord.com_* #(set! filetype :markdown)]))
+  (firenvim_config (:github.com :markdown)
+                   (:discord.com :markdown :never)))
