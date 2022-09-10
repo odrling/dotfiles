@@ -164,5 +164,9 @@
   (use! :glacambre/firenvim
         :run #((. vim.fn :firenvim#install) 0)
         :module :config.firenvim)
+  (use! :Djancyp/custom-theme.nvim
+        :config #(setup :custom-theme))
+  (use! :NvChad/nvim-colorizer.lua
+        :config #(setup :colorizer))
   (use! :vladdoster/remember.nvim
         :module :remember))
