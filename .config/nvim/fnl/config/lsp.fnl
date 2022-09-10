@@ -75,13 +75,14 @@
 (cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}
                                                               {:name :buffer}])})
 
-(each [_ v (ipairs ["/" "?"])]
-  (cmp.setup.cmdline v {:mapping (cmp.mapping.preset.cmdline)
-                        :sources [{:name :buffer}]}))
+(when (= vim.g.started_by_firenvim nil)
+  (each [_ v (ipairs ["/" "?"])]
+    (cmp.setup.cmdline v {:mapping (cmp.mapping.preset.cmdline)
+                          :sources [{:name :buffer}]}))
 
-(cmp.setup.cmdline ":" {:mapping (cmp.mapping.preset.cmdline)
-                        :sources [{:name :path}
-                                  {:name :cmdline}]})
+  (cmp.setup.cmdline ":" {:mapping (cmp.mapping.preset.cmdline)
+                          :sources [{:name :path}
+                                    {:name :cmdline}]}))
 
 (setup :cmp_git)
 
