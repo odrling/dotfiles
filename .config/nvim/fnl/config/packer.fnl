@@ -89,7 +89,8 @@
                     :neovim/nvim-lspconfig]
         :config #(setup :dim {}))
 
-  (use! :gpanders/nvim-parinfer)
+  (use! :gpanders/nvim-parinfer
+        :module :config.parinfer)
 
   (use! :sheerun/vim-polyglot)
 
