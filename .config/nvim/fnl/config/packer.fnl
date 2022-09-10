@@ -160,5 +160,7 @@
   (use! :kenn7/vim-arsync)
   (use! :zakharykaplan/nvim-retrail
         :module :config.retrail)
+  (use! :glacambre/firenvim
+        :run #((. vim.fn :firenvim#install) 0))
   (use! :vladdoster/remember.nvim
         :module :remember))
