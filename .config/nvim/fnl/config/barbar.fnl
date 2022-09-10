@@ -5,5 +5,6 @@
                     :auto_hide auto_hide})
 
 (map! [n] :<leader>q "<cmd>BufferClose<cr>")
+(map! [n] :<leader>Q "<cmd>silent! BufferCloseAllButCurrentOrPinned<cr>")
 (map! [n] :<leader>b "<cmd>BufferPick<cr>")
 (map! [n] :<leader>p "<cmd>BufferPin<cr>")
