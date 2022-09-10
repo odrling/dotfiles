@@ -262,11 +262,11 @@
           :module (tset out :config `#(xpcall #(require ,nval)
                                               (fn [e#]
                                                 (vim.notify (.. ,name ": module " ,nval " could not be loaded") vim.log.levels.ERROR)
-                                                (vim.notify (.. ,name ":\n" e#) vim.log.levels.DEBUG))))
+                                                (vim.notify (.. ,name ":\n" e#) vim.log.levels.TRACE))))
           :config (tset out :config `#(xpcall ,nval
                                               (fn [e#]
                                                 (vim.notify (.. "failed to configure " ,name) vim.log.levels.ERROR)
-                                                (vim.notify (.. ,name ":\n" e#) vim.log.levels.DEBUG))))
+                                                (vim.notify (.. ,name ":\n" e#) vim.log.levels.TRACE))))
           _       (tset out val nval))))
   :return out)
 
@@ -286,7 +286,7 @@
   `(let [(status# ret#) (xpcall #((. (require ,module) ,func) ,...)
                                 (fn [e#]
                                   (vim.notify (.. ,module "." ,func " could not be called") vim.log.levels.ERROR)
-                                  (vim.notify (.. ,module "." ,func ":\n" e#) vim.log.levels.DEBUG)))]
+                                  (vim.notify (.. ,module "." ,func ":\n" e#) vim.log.levels.TRACE)))]
      (when status# ret#)))
 
 
@@ -294,7 +294,7 @@
   `(let [(status# ret#) (xpcall #((. (require ,module) :setup) ,...)
                                 (fn [e#]
                                   (vim.notify (.. ,module ".setup could not be called") vim.log.levels.ERROR)
-                                  (vim.notify (.. ,module ".setup:\n" e#) vim.log.levels.DEBUG)))]
+                                  (vim.notify (.. ,module ".setup:\n" e#) vim.log.levels.TRACE)))]
      (when status# ret#)))
 
 (fun hl! [group opts]
