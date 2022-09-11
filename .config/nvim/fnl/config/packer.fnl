@@ -1,8 +1,8 @@
 (import-macros {: augroup! : exec : color! : packer : use! : reqcall : map! : g! : setup} :macros)
 
 (augroup! :packer
-          [[BufWritePost] packer.fnl "silent! FnlCompileBuffer"]
           [[BufWritePost] packer.fnl (fn []
+                                       (reqcall :tangerine.api.compile :buffer)
                                        (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]])
                                        (reqcall :packer :compile))])
 
