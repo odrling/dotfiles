@@ -100,6 +100,8 @@
   (use! :rmagatti/auto-session
         :requires :rmagatti/session-lens
         :module :config.auto-session)
+  (use! :rmagatti/session-lens
+        :after :telescope.nvim)
 
   (use! :folke/todo-comments.nvim
         :module :config.todo-comments)
