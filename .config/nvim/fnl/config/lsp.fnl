@@ -3,19 +3,6 @@
 
 (local setup_ls (require :config.lsp.setup_ls))
 
-(set! completeopt "menuone,noselect")
-
-(let [signs {:Error :E
-             :Warn :W
-             :Hint :H
-             :Info :I}]
-  (each [type icon (pairs signs)]
-    (let [hl (.. :DiagnosticSign type)]
-      (vim.fn.sign_define hl {:text icon
-                              :texthl hl
-                              :numhl hl}))))
-
-
 (setup :mason)
 (setup :mason-lspconfig {:automatic_installation true})
 

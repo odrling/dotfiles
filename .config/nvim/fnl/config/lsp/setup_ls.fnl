@@ -1,4 +1,4 @@
-(import-macros {: reqcall : map! : exec : augroup!} :macros)
+(import-macros {: reqcall : map! : exec : augroup! : set!} :macros)
 
 (fn on_attach [client bufnr]
   (reqcall :lsp_signature :on_attach {:always_trigger true})
@@ -27,6 +27,18 @@
     (augroup! :lsp_document_highlight
               [[CursorHold CursorHoldI] * 'vim.lsp.buf.document_highlight]
               [[CursorMoved] * 'vim.lsp.buf.clear_references])))
+
+(let [signs {:Error :E
+             :Warn :W
+             :Hint :H
+             :Info :I}]
+  (each [type icon (pairs signs)]
+    (let [hl (.. :DiagnosticSign type)]
+      (vim.fn.sign_define hl {:text icon
+                              :texthl hl
+                              :numhl hl}))))
+
+(set! completeopt "menuone,noselect")
 
 ; add additional capabilities supported by nvim-cmp
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
