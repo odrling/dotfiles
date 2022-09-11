@@ -238,9 +238,7 @@
   `((. ,packer :startup)
     {1 (lambda [(unquote (sym :use))]
          (use :wbthomason/packer.nvim)
-         (do ,...)
-         (when (. _G :packer.nvim_bootstrap)
-             (require :packer_bootstrap)))
+         (do ,...))
      :config {:autoremove true}}))
 
 (lambda create-func [val])
