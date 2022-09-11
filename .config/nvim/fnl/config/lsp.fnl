@@ -1,4 +1,4 @@
-(import-macros {: augroup! : exec : set! : setup : reqcall : map!} :macros)
+(import-macros {: set! : setup : reqcall} :macros)
 (import-macros {: merge} :core_macros)
 
 (local setup_ls (require :config.lsp.setup_ls))
