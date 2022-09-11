@@ -61,8 +61,7 @@
   (local ls_options {:on_attach on_attach
                      :capabilities capabilities})
   (when (~= options nil)
-    (each [k (pairs options)]
-      (tset ls_options k (. options k))))
+    (set ls_options.settings options))
 
   (if (. configured_ls lsp)
     (if (not ignore_if_configured)
