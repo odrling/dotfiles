@@ -1,4 +1,4 @@
-(import-macros {: setup : map!} :macros)
+(import-macros {: setup : map! : reqcall} :macros)
 
 (setup :neogit {:disable_signs false
                 :disable_context_highlighting false
@@ -12,4 +12,4 @@
                 :mappings {:status {:<leader>q "Close"}}
                 :integrations {:diffview true}})
 
-(map! [n] :<leader>n :<cmd>Neogit<CR>)
+(map! [n] :<leader>n #(reqcall :neogit :open))
