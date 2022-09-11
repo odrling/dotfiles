@@ -5,7 +5,7 @@ local function bootstrap (url)
 	local path = vim.fn.stdpath [[data]] .. "/site/pack/".. pack .. "/start/" .. name
 
 	if vim.fn.isdirectory(path) == 0 then
-		_G[name .. "_bootstrap"] = true
+		_G["config_bootstraping"] = true
 		print(name .. ": installing in data dir...")
 
 		vim.fn.system {"git", "clone", "--depth", "1", url, path}
@@ -25,7 +25,8 @@ bootstrap "https://github.com/projekt0n/github-nvim-theme"
 require "impatient"
 
 local hooks
-if _G["tangerine.nvim_bootstrap"] then
+
+if _G["config_bootstraping"] then
 	hooks = {"onsave", "oninit"}
 else
 	hooks = {"onsave"}

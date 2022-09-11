@@ -29,7 +29,7 @@
                                        (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]])
                                        (reqcall :packer :compile))])
 
-(when (. _G :tangerine.nvim_bootstrap)
+(when (. _G :config_bootstraping)
   (set _G.bootstraping_packer true)
   (fn load_all_packages_once []
     (when _G.bootstraping_packer
