@@ -123,7 +123,7 @@
 
 
 ; Height of the command bar
-(set! cmdheight 1)
+(set! cmdheight 0)
 
 ; always show sign column
 (set! signcolumn :yes)
