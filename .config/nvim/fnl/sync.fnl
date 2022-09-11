@@ -33,4 +33,5 @@
   (augroup! :packer-bootstrap
             [[User] PackerComplete 'load_all_packages_once])
 
-  (sync))
+  (require :config.packer)
+  (reqcall :packer :sync))
