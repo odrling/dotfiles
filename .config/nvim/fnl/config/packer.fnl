@@ -52,6 +52,7 @@
                    :petertriho/cmp-git
                    :b0o/schemastore.nvim
                    :windwp/nvim-autopairs
+                   :folke/lua-dev.nvim
                    :smjonas/inc-rename.nvim]
         :module :config.lsp)
   (use! :windwp/nvim-autopairs

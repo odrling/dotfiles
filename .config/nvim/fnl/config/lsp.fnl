@@ -113,12 +113,16 @@
   (lsputil.add_hook_before lsputil.on_setup
                            (fn [config] (tset configured_ls config.name true))))
 
-(lambda setup_ls [lsp options]
-  (local settings (vim.tbl_deep_extend :force {:on_attach on_attach
-                                               :capabilities capabilities} options))
-  (if (. configured_ls lsp)
-    (vim.notify (.. lsp " is set up several times") vim.log.levels.WARN)
-    ((. (. (require :lspconfig) lsp) :setup) settings)))
+(macro setup_ls [lsp options]
+  (local ls_options {:on_attach 'on_attach
+                     :capabilities 'capabilities})
+  (when (~= options nil)
+    (each [k (pairs options)]
+      (tset ls_options k (. options k))))
+
+  `(if (. configured_ls ,lsp)
+     (vim.notify (.. ,lsp " is set up several times") vim.log.levels.WARN)
+     ((. (. (require :lspconfig) ,lsp) :setup) ,ls_options)))
 
 ;; init servers with manual configuration
 (let [schemastore (require :schemastore)]
@@ -129,6 +133,9 @@
 
   (setup_ls :taplo {:settings {:toml {:schemas (schemastore.json.schemas)}}}))
 
+
+(setup :lua-dev {})
+
 ;; setup installed ls and a set of ensured servers with default configuration
 (let [servers (vim.tbl_deep_extend
                 :force
@@ -136,7 +143,7 @@
                 (reqcall :mason-lspconfig :get_installed_servers))]
   (each [_ lsp (ipairs servers)]
     (when (not (. configured_ls lsp))
-      (setup_ls lsp {}))))
+      (setup_ls lsp))))
 
 (local null_ls (require :null-ls))
 (let [sources [null_ls.builtins.diagnostics.flake8
