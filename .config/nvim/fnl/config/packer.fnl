@@ -27,35 +27,39 @@
 
   ; lsp
   (use! :neovim/nvim-lspconfig
-        :requires [
-                   :ray-x/lsp_signature.nvim
+        :requires [:ray-x/lsp_signature.nvim
                    :nvim-lua/lsp-status.nvim
                    :jose-elias-alvarez/null-ls.nvim
                    :williamboman/mason.nvim
                    :williamboman/mason-lspconfig.nvim
-                   :L3MON4D3/LuaSnip
-                   :saadparwaiz1/cmp_luasnip
-                   :rafamadriz/friendly-snippets
                    ;; TODO:check :jayp0521/mason-null-ls.nvim
                    :WhoIsSethDaniel/mason-tool-installer.nvim
-                   :hrsh7th/nvim-cmp
-                   :hrsh7th/cmp-nvim-lsp
                    :kkharji/lspsaga.nvim
-                   "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+                   :b0o/schemastore.nvim
+                   :folke/lua-dev.nvim]
+        :module :config.lsp)
+
+  (use! :smjonas/inc-rename.nvim
+        :config #(setup :inc_rename))
+
+  (use! :hrsh7th/nvim-cmp
+        :requires [:hrsh7th/cmp-nvim-lsp
                    :hrsh7th/cmp-path
                    :hrsh7th/cmp-buffer
                    :hrsh7th/cmp-cmdline
-                   :ray-x/cmp-treesitter
                    :kdheepak/cmp-latex-symbols
-                   :hrsh7th/cmp-emoji
                    :petertriho/cmp-git
-                   :b0o/schemastore.nvim
-                   :windwp/nvim-autopairs
-                   :folke/lua-dev.nvim
-                   :smjonas/inc-rename.nvim]
-        :module :config.lsp)
+                   :L3MON4D3/LuaSnip
+                   :saadparwaiz1/cmp_luasnip
+                   :rafamadriz/friendly-snippets
+                   :windwp/nvim-autopairs]
+        :module :config.cmp)
+
   (use! :windwp/nvim-autopairs
         :config #(setup :nvim-autopairs {}))
+
+  (use! "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+        :module :config.lsp_lines)
 
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
@@ -63,12 +67,7 @@
         :requires [
                    :nvim-treesitter/playground
                    :nvim-treesitter/nvim-treesitter-refactor
-                   :p00f/nvim-ts-rainbow
-                   :RRethy/nvim-treesitter-endwise
-                   :windwp/nvim-ts-autotag
-                   :JoosepAlviste/nvim-ts-context-commentstring
-                   :yioneko/nvim-yati
-                   :nvim-treesitter/nvim-treesitter-textobjects]
+                   :RRethy/nvim-treesitter-endwise]
         :module :config.treesitter)
   (use! :nvim-treesitter/nvim-treesitter-refactor
         :after :nvim-treesitter)

@@ -1,0 +1,4 @@
+(import-macros {: setup} :macros)
+
+(setup :lsp_lines {})
+(vim.diagnostic.config {:virtual_text false})
