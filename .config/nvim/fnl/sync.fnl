@@ -23,6 +23,12 @@
                              (set vim.env.GIT_WORK_TREE dotroot)))])
 
 
+(augroup! :packer
+          [[BufWritePost] packer.fnl (fn []
+                                       (reqcall :tangerine.api.compile :buffer)
+                                       (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]])
+                                       (reqcall :packer :compile))])
+
 (when (. _G :tangerine.nvim_bootstrap)
   (set _G.bootstraping_packer true)
   (fn load_all_packages_once []
