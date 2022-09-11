@@ -66,4 +66,4 @@
   (if (. configured_ls lsp)
     (if (not ignore_if_configured)
       (vim.notify (.. lsp " is set up several times") vim.log.levels.WARN))
-    (vim.schedule #((. (. (require :lspconfig) lsp) :setup) ls_options))))
+    ((. (. (require :lspconfig) lsp) :setup) ls_options)))
