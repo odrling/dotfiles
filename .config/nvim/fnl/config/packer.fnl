@@ -34,10 +34,12 @@
                    :williamboman/mason-lspconfig.nvim
                    ;; TODO:check :jayp0521/mason-null-ls.nvim
                    :WhoIsSethDaniel/mason-tool-installer.nvim
-                   :kkharji/lspsaga.nvim
                    :b0o/schemastore.nvim
                    :folke/lua-dev.nvim]
         :module :config.lsp)
+
+  (use! :kkharji/lspsaga.nvim
+        :config #(reqcall :lspsaga :init_lsp_saga))
 
   (use! :smjonas/inc-rename.nvim
         :config #(setup :inc_rename))
