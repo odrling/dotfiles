@@ -72,8 +72,6 @@
         :after :nvim-treesitter)
   (use! :windwp/nvim-ts-autotag
         :after :nvim-treesitter)
-  (use! :yioneko/nvim-yati
-        :after :nvim-treesitter)
   (use! :JoosepAlviste/nvim-ts-context-commentstring
         :after :nvim-treesitter)
   (use! :nvim-treesitter/nvim-treesitter-textobjects

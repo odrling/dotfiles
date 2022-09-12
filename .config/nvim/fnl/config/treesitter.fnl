@@ -26,7 +26,8 @@
                                                            :keymaps {:smart_rename "<leader>r"}}}
                                  :rainbow  {:enable true
                                             :extended_mode true}
-                                 :yati     {:enable true}})
+                                 :indent   {:enable true
+                                            :disable [:python]}})
 
 (fn force_reinstall_parser []
   (local lang (reqcall :nvim-treesitter.parsers :get_buf_lang))
