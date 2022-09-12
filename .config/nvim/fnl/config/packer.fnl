@@ -88,7 +88,8 @@
   (use! :gpanders/nvim-parinfer
         :module :config.parinfer)
 
-  (use! :sheerun/vim-polyglot)
+  (use! :sheerun/vim-polyglot
+        :setup #(g! polyglot_disabled [:autoindent :sensible]))
 
   (use! :mickael-menu/zk-nvim
         :module :config.zk)

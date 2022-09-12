@@ -1,9 +1,5 @@
 (import-macros {: g! : color! : hl!} :macros)
 
-;; polyglot disable modules
-(g! polyglot_disabled [:autoindent :sensible])
-
-(color! github_light)
-
 ;; vim.notify
+(color! github_light)
 (require :config.notify)
