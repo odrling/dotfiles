@@ -1,8 +1,6 @@
 (import-macros {: reqcall : map! : exec : augroup! : set!} :macros)
 
 (fn on_attach [client bufnr]
-  (reqcall :lsp_signature :on_attach {:always_trigger true})
-
   (tset vim.lsp.handlers :textDocument/publishDiagnostics
     (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics {:virtual_text false}))
 
