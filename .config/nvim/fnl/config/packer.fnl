@@ -37,7 +37,7 @@
         :config #(reqcall :lspsaga :init_lsp_saga))
 
   (use! :smjonas/inc-rename.nvim
-        :config #(setup :inc_rename))
+        :config #(setup :inc_rename {:input_buffer_type :dressing}))
 
   (use! :hrsh7th/nvim-cmp
         :requires [:hrsh7th/cmp-nvim-lsp

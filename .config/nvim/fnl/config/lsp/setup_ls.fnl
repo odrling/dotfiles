@@ -14,7 +14,7 @@
   (map! [n (:buffer bufnr)] :K #(reqcall :lspsaga.hover :render_hover_doc))
   (map! [n (:buffer bufnr)] :gi 'vim.lsp.buf.implementation)
   (map! [n (:buffer bufnr)] :<C-k> 'vim.lsp.buf.signature_help)
-  (map! [n (:buffer bufnr)] :<leader>r #(reqcall :inc_rename :rename {:default (vim.fn.expand "<cword>")}))
+  (map! [n (:buffer bufnr) :expr] :<leader>r #(.. ":IncRename " (vim.fn.expand "<cword>")))
   (map! [n (:buffer bufnr)] :<leader>ca 'vim.lsp.buf.code_action)
   (map! [n (:buffer bufnr)] :gr 'vim.lsp.buf.references)
   (map! [n (:buffer bufnr)] :<leader>f '(vim.lsp.buf.format {:async true}))
