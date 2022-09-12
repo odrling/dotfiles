@@ -84,7 +84,7 @@
     [[]              "blame"           :b       gitsigns.blame_line]
     [[]              "blame show full" :B       #(gitsigns.blame_line {:full true})]
     [[]              "show base file"  :/       gitsigns.show]
-    [[:exit :nowait] "Neogit"          :<Enter> "<CMD>Neogit<CR>"]
+    [[:exit :nowait] "Neogit"          :<Enter> #(reqcall :neogit :open)]
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
 
