@@ -84,6 +84,7 @@
         :module :config.parinfer)
 
   (use! :sheerun/vim-polyglot
+        :event :BufReadPost
         :setup #(g! polyglot_disabled [:autoindent :sensible]))
 
   (use! :mickael-menu/zk-nvim
