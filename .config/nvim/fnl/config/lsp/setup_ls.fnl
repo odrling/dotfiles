@@ -30,17 +30,17 @@
     ;close enough
     (augroup! :lsp_document_highlight
               [[CursorHold CursorHoldI] * 'vim.lsp.buf.document_highlight]
-              [[CursorMoved] * 'vim.lsp.buf.clear_references])))
+              [[CursorMoved] * 'vim.lsp.buf.clear_references]))
 
-(let [signs {:Error :E
-             :Warn :W
-             :Hint :H
-             :Info :I}]
-  (each [type icon (pairs signs)]
-    (let [hl (.. :DiagnosticSign type)]
-      (vim.fn.sign_define hl {:text icon
-                              :texthl hl
-                              :numhl hl}))))
+  (let [signs {:Error :E
+               :Warn :W
+               :Hint :H
+               :Info :I}]
+    (each [type icon (pairs signs)]
+      (let [hl (.. :DiagnosticSign type)]
+        (vim.fn.sign_define hl {:text icon
+                                :texthl hl
+                                :numhl hl})))))
 
 (set! completeopt "menuone,noselect")
 
