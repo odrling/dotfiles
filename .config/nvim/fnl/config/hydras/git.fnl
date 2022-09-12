@@ -58,12 +58,13 @@
                             (set vim.bo.modifiable false)
                             (pcall #(exec [[:mkview]
                                            [:silent! :%foldopen!]])))
-              :on_exit (fn []
-                         (gitsigns.toggle_linehl false)
-                         (gitsigns.toggle_word_diff false)
-                         (gitsigns.toggle_deleted false)
-                         (pcall #(exec [[:loadview]
-                                        [:normal :zv]])))}
+
+              :on_exit #(pcall (fn []
+                                   (pcall #(exec [[:loadview]
+                                                  [:normal :zv]]))
+                                   (gitsigns.toggle_linehl false)
+                                   (gitsigns.toggle_word_diff false)
+                                   (gitsigns.toggle_deleted false)))}
      :mode ["n" "x"]}
 
     [[:expr] "next hunk"
@@ -83,7 +84,7 @@
     [[]              "blame"           :b       gitsigns.blame_line]
     [[]              "blame show full" :B       #(gitsigns.blame_line {:full true})]
     [[]              "show base file"  :/       gitsigns.show]
-    [[:exit]         "Neogit"          :<Enter> "<CMD>Neogit<CR>"]
+    [[:exit :nowait] "Neogit"          :<Enter> "<CMD>Neogit<CR>"]
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
 
