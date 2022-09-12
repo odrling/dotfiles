@@ -7,7 +7,8 @@
     (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics {:virtual_text false}))
 
   (tset vim.lsp.handlers :textDocument/hover
-    (vim.lsp.with vim.lsp.handlers.hover {:border :single}))
+    (vim.lsp.with vim.lsp.handlers.hover {:border :single
+                                          :max_width 80}))
 
   (map! [n (:buffer bufnr)] :<leader>l #(: (require :config.hydras.lsp) :activate))
   (map! [n (:buffer bufnr)] :<leader>L #(reqcall :lsp_lines :toggle))
