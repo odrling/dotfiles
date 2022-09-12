@@ -6,12 +6,15 @@
   (tset vim.lsp.handlers :textDocument/publishDiagnostics
     (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics {:virtual_text false}))
 
+  (tset vim.lsp.handlers :textDocument/hover
+    (vim.lsp.with vim.lsp.handlers.hover {:border :single}))
+
   (map! [n (:buffer bufnr)] :<leader>l #(: (require :config.hydras.lsp) :activate))
   (map! [n (:buffer bufnr)] :<leader>L #(reqcall :lsp_lines :toggle))
 
   (map! [n (:buffer bufnr)] :<leader>D "<cmd>Telescope diagnostics<CR>")
   (map! [n (:buffer bufnr)] :gD 'vim.lsp.buf.declaration)
-  (map! [n (:buffer bufnr)] :K #(reqcall :lspsaga.hover :render_hover_doc))
+  (map! [n (:buffer bufnr)] :K 'vim.lsp.buf.hover)
   (map! [n (:buffer bufnr)] :gi 'vim.lsp.buf.implementation)
   (map! [n (:buffer bufnr)] :<C-k> 'vim.lsp.buf.signature_help)
   (map! [n (:buffer bufnr) :expr] :<leader>r #(.. ":IncRename " (vim.fn.expand "<cword>")))

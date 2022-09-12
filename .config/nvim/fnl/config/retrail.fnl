@@ -4,6 +4,7 @@
                         :whitespace false}
                  :filetype {:strict false
                             :exclude [
+                                       ""
                                        :alpha
                                        :diff
                                        :help

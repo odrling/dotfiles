@@ -33,9 +33,6 @@
                    :folke/lua-dev.nvim]
         :module :config.lsp)
 
-  (use! :kkharji/lspsaga.nvim
-        :config #(reqcall :lspsaga :init_lsp_saga))
-
   (use! :smjonas/inc-rename.nvim
         :config #(setup :inc_rename {:input_buffer_type :dressing}))
 
