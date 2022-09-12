@@ -130,7 +130,7 @@
       (values :callback (parse-cmd cmd))
       (values :command  (do cmd))))
 
-(lambda autocmd [id [events pattern cmd]]
+(lambda autocmd [id [events pattern cmd ?bufnr]]
   "defines autocmd for group of 'id'."
   ; parse events
   (local opts {:once false :nested false})
@@ -145,8 +145,13 @@
     (if (sequence? pattern) (parse-list pattern) (parse-sym pattern)))
   ; parse callback
   (local (name val) (parse-callback cmd))
+  (set opts.group id)
+  (tset opts name val)
+  (if (= ?bufnr nil)
+    (set opts.pattern pattern)
+    (set opts.buffer ?bufnr))
   :return
-  `(vim.api.nvim_create_autocmd ,events {:once ,opts.once :nested ,opts.nested :group ,id :pattern ,pattern ,name ,val}))
+  `(vim.api.nvim_create_autocmd ,events ,opts))
 
 (lmd augroup! [name ...]
   "defines augroup with 'name' and {...} containing [[groups] pat cmd] chunks."
