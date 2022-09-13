@@ -1,11 +1,19 @@
 (import-macros {: command! : reqcall : exec : augroup! : g!} :macros)
 
+(fn recompile []
+  (reqcall :tangerine.api.compile :all)
+  (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]]))
+
 (fn sync []
- (reqcall :tangerine.api.compile :all)
- (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]])
- (reqcall :packer :sync))
+  (recompile)
+  (reqcall :packer :sync))
+
+(fn install []
+  (recompile)
+  (reqcall :packer :install))
 
 (command! [] :Sync sync)
+(command! [] :Install install)
 
 (local dotdir (vim.fn.expand "$HOME/.dots"))
 (local dotroot (vim.fn.expand "$HOME"))
