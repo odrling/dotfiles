@@ -16,6 +16,7 @@
   (use! :lewis6991/gitsigns.nvim
         :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
+        :commit "a0cd6ccd73f0cc1d17bfb8be4c39a1dccd5ff757"
         :config #(setup :gitsigns {:current_line_blame true}))
 
   (use! :sindrets/diffview.nvim
