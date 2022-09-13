@@ -86,6 +86,8 @@ alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 alias fd="fd --hidden"
+
+export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
