@@ -22,7 +22,7 @@ zinit light zsh-users/zsh-completions
 zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light z-shell/F-Sy-H
-zinit light jeffreytse/zsh-vi-mode
+[ -z "$NVIM" ] && zinit light jeffreytse/zsh-vi-mode
 
 zinit ice has'ssh-agent' wait silent; zinit snippet OMZP::ssh-agent
 
