@@ -40,6 +40,9 @@ zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src
 
 if command -v starship 2>&1 > /dev/null; then
     source <(starship init zsh --print-full-init)
+else
+    autoload -Uz promptinit
+    promptinit; prompt gentoo
 fi
 
 # completion settings
