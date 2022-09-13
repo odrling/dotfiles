@@ -1,7 +1,6 @@
 (import-macros {: reqcall : setup} :macros)
 
 ; luasnip
-(local luasnip (require :luasnip))
 (reqcall :luasnip.loaders.from_vscode :lazy_load)
 
 ; nvim-cmp setup
@@ -14,17 +13,17 @@
                       :<TAB>   (fn [fallback]
                                  (if (cmp.visible)
                                      (cmp.select_next_item)
-                                     (luasnip.expand_or_jumpable)
-                                     (luasnip.expand_or_jump)
+                                     (reqcall :luasnip :expand_or_jumpable)
+                                     (reqcall :luasnip :expand_or_jump)
                                      (fallback)))
                       :<S-TAB> (fn [fallback]
                                  (if (cmp.visible)
                                    (cmp.select_prev_item)
-                                   (luasnip.jumpable -1)
-                                   (luasnip.jump -1)
+                                   (reqcall :luasnip :jumpable -1)
+                                   (reqcall :luasnip :jump -1)
                                    (fallback)))
                       :<CR>    (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace})}
-            :snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
+            :snippet {:expand (fn [args] (reqcall :luasnip :lsp_expand args.body))}
             :sources [{:name :luasnip}
                       {:name :nvim_lsp_signature_help}
                       {:name :nvim_lsp}
