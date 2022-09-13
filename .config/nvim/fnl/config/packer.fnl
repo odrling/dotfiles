@@ -17,6 +17,7 @@
         :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
         :config #(setup :gitsigns {:current_line_blame true}))
+
   (use! :sindrets/diffview.nvim
         :requires :nvim-lua/plenary.nvim
         :module :config.diffview)
@@ -32,6 +33,7 @@
                    :WhoIsSethDaniel/mason-tool-installer.nvim
                    :b0o/schemastore.nvim
                    :folke/lua-dev.nvim]
+        :event :BufReadPost
         :module :config.lsp)
 
   (use! :smjonas/inc-rename.nvim
@@ -60,8 +62,7 @@
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
         :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
-        :requires [
-                   :nvim-treesitter/playground
+        :requires [:nvim-treesitter/playground
                    :nvim-treesitter/nvim-treesitter-refactor
                    :RRethy/nvim-treesitter-endwise]
         :module :config.treesitter)
