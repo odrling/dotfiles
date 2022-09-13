@@ -10,6 +10,7 @@
 
 (fn install []
   (recompile)
+  (reqcall :packer :clean)
   (reqcall :packer :install))
 
 (command! [] :Sync sync)
