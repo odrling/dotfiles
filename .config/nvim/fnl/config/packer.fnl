@@ -10,9 +10,11 @@
         :module :config.neogit)
 
   (use! :akinsho/git-conflict.nvim
+        :event :BufReadPost
         :config #(setup :git-conflict {}))
 
   (use! :lewis6991/gitsigns.nvim
+        :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
         :config #(setup :gitsigns {:current_line_blame true}))
   (use! :sindrets/diffview.nvim
