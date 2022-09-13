@@ -26,11 +26,6 @@ zinit light z-shell/F-Sy-H
 
 zinit ice has'ssh-agent' wait silent; zinit snippet OMZP::ssh-agent
 
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
-
 zinit as"program" has'go' make'!' atclone'./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh" for \
         direnv/direnv
@@ -42,6 +37,10 @@ zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/j
 zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
+
+if command -v starship 2>&1 > /dev/null; then
+    source <(starship init zsh --print-full-init)
+fi
 
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
