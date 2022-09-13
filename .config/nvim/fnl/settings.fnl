@@ -98,12 +98,9 @@
 ; turn off highlighting
 (map! [n] :<leader>h "<cmd>noh<CR>")
 
-; Toggle paste mode on and off
-(map! [n] :<leader>pp ":setlocal paste!<cr>")
-
 ; copy line to clipboard
-(map! [n] :<C-c> "\"+yy")
-(map! [n] :<C-c> "\"+y")
+(map! [n :noremap] :<C-c> "\"+yy")
+(map! [v :noremap] :<C-c> "\"+y")
 
 ; file completion
 (map! [i] :<C-f> :<C-x><C-f>)
