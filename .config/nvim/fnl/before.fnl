@@ -1,5 +1,8 @@
 (import-macros {: g! : color! : hl!} :macros)
 
-;; vim.notify
+;; colorscheme
 (color! github_light)
+(hl! CursorLine {:bg "#fafafa"})
+
+;; vim.notify
 (require :config.notify)
