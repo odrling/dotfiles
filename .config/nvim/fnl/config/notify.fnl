@@ -42,6 +42,7 @@
     (notify.setup {:max_width 80
                    :stages stages
                    :fps 10
+                   :timeout 1500
                    :level vim.log.levels.INFO})
     (fn notify_fn [msg level opts]
       (vim.schedule #(notify msg level opts)))
