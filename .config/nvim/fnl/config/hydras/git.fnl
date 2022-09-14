@@ -13,7 +13,7 @@
      :mode ["n" "x"]
      :config {:color :pink
               :invoke_on_body true
-              :hint {:border "rounded"}}}
+              :hint {:type :cmdline}}}
 
     [[] "Next conflict"  :J #(reqcall :git-conflict :find_next "ours")]
     [[] "Prev conflict"  :K #(reqcall :git-conflict :find_prev "ours")]
