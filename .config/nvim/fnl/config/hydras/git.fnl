@@ -13,6 +13,7 @@
      :mode ["n" "x"]
      :config {:color :pink
               :invoke_on_body true
+              :on_key #(print conflict_hint)
               :hint {:type :cmdline}}}
 
     [[] "Next conflict"  :J #(reqcall :git-conflict :find_next "ours")]
@@ -57,7 +58,8 @@
               :on_exit #(pcall (fn []
                                    (reqcall :gitsigns :toggle_linehl false)
                                    (reqcall :gitsigns :toggle_word_diff false)
-                                   (reqcall :gitsigns :toggle_deleted false)))}
+                                   (reqcall :gitsigns :toggle_deleted false)))
+              :on_key #(print git_hint)}
      :mode ["n" "x"]}
 
     [[:expr] "next hunk"

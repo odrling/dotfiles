@@ -15,6 +15,7 @@
      :hint wm_hint
      :config {:invoke_on_body true
               :hint {:type :cmdline}
+              :on_key #(print wm_hint)
               :on_enter #(vim.notify "wm hydra activated")
               :on_exit  #(vim.notify "wm hydra activated")}
      :mode ["n"]}
