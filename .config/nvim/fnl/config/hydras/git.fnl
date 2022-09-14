@@ -45,22 +45,16 @@
 
 (defhydra git_hydra
     {:name "Git"
-     :config {
-              :color :pink
+     :hint git_hint
+     :config {:color :pink
               :invoke_on_body true
-              :hint false
+              :hint {:type :cmdline}
               :on_enter (fn []
-                            (vim.notify "Git hydra activated")
                             (reqcall :gitsigns :toggle_linehl true)
                             (reqcall :gitsigns :toggle_word_diff true)
-                            (set vim.bo.modifiable false)
-                            (pcall #(exec [[:mkview]
-                                           [:silent! :%foldopen!]])))
+                            (set vim.bo.modifiable false))
 
               :on_exit #(pcall (fn []
-                                   (pcall #(exec [[:loadview]
-                                                  [:normal :zv]]))
-                                   (vim.notify "Git hydra deactivated")
                                    (reqcall :gitsigns :toggle_linehl false)
                                    (reqcall :gitsigns :toggle_word_diff false)
                                    (reqcall :gitsigns :toggle_deleted false)))}
@@ -68,12 +62,12 @@
 
     [[:expr] "next hunk"
      :J #(if vim.wo.diff "]c"
-                  (do (vim.schedule #(reqcall :gitsigns :next_hunk))
-                      :return "<Ignore>"))]
+           (do (vim.schedule #(reqcall :gitsigns :next_hunk {:navigation_message false}))
+             :return "<Ignore>"))]
     [[:expr] "prev hunk"
      :K #(if vim.wo.diff "[c"
-              (do (vim.schedule #(reqcall :gitsigns :prev_hunk))
-                  :return "<Ignore>"))]
+           (do (vim.schedule #(reqcall :gitsigns :prev_hunk {:navigation_message false}))
+             :return "<Ignore>"))]
 
     [[:silent]       "stage hunk"      :s       "<CMD>Gitsigns stage_hunk<CR>"]
     [[]              "undo last stage" :u       #(reqcall :gitsigns :undo_stage_hunk)]

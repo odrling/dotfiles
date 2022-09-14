@@ -12,8 +12,9 @@
 
 (defhydra wm_hydra
     {:name "Window Manager"
+     :hint wm_hint
      :config {:invoke_on_body true
-              :hint false
+              :hint {:type :cmdline}
               :on_enter #(vim.notify "wm hydra activated")
               :on_exit  #(vim.notify "wm hydra activated")}
      :mode ["n"]}
