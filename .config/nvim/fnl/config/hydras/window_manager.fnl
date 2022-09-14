@@ -12,10 +12,10 @@
 
 (defhydra wm_hydra
     {:name "Window Manager"
-     :hint wm_hint
-     :config {
-              :invoke_on_body true
-              :hint {:border "rounded"}}
+     :config {:invoke_on_body true
+              :hint false
+              :on_enter #(vim.notify "wm hydra activated")
+              :on_exit  #(vim.notify "wm hydra activated")}
      :mode ["n"]}
 
     [[] "focus left" :h "<C-w>h"]

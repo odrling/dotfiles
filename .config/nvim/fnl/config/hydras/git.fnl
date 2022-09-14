@@ -45,12 +45,12 @@
 
 (defhydra git_hydra
     {:name "Git"
-     :hint git_hint
      :config {
               :color :pink
               :invoke_on_body true
-              :hint {:border "rounded"}
+              :hint false
               :on_enter (fn []
+                            (vim.notify "Git hydra activated")
                             (reqcall :gitsigns :toggle_linehl true)
                             (reqcall :gitsigns :toggle_word_diff true)
                             (set vim.bo.modifiable false)
@@ -60,6 +60,7 @@
               :on_exit #(pcall (fn []
                                    (pcall #(exec [[:loadview]
                                                   [:normal :zv]]))
+                                   (vim.notify "Git hydra deactivated")
                                    (reqcall :gitsigns :toggle_linehl false)
                                    (reqcall :gitsigns :toggle_word_diff false)
                                    (reqcall :gitsigns :toggle_deleted false)))}

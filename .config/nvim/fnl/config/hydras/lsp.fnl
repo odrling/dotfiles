@@ -8,11 +8,11 @@
 
 (defhydra lsp_hydra
     {:name "LSP"
-     :hint lsp_hint
-     :config {
-              :color :pink
+     :config {:color :pink
               :invoke_on_body true
-              :hint {:border "rounded"}}
+              :hint false
+              :on_enter #(vim.notify "LSP hydra activated")
+              :on_exit  #(vim.notify "LSP hydra activated")}
      :mode ["n" "x"]}
 
     [[] "next diagnostic"    :J #(vim.diagnostic.goto_next {:float false})]
