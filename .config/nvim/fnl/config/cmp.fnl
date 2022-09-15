@@ -25,7 +25,6 @@
                       :<CR>    (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace})}
             :snippet {:expand (fn [args] (reqcall :luasnip :lsp_expand args.body))}
             :sources [{:name :luasnip}
-                      {:name :nvim_lsp_signature_help}
                       {:name :nvim_lsp}
                       {:name :path}
                       {:name :buffer}

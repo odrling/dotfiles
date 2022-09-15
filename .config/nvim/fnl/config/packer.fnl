@@ -44,7 +44,6 @@
                    :hrsh7th/cmp-path
                    :hrsh7th/cmp-buffer
                    :hrsh7th/cmp-cmdline
-                   :hrsh7th/cmp-nvim-lsp-signature-help
                    :kdheepak/cmp-latex-symbols
                    :petertriho/cmp-git
                    :L3MON4D3/LuaSnip
@@ -52,6 +51,9 @@
                    :rafamadriz/friendly-snippets
                    :windwp/nvim-autopairs]
         :module :config.cmp)
+
+  (use! :ray-x/lsp_signature.nvim
+        :module :config.lsp_signature)
 
   (use! :windwp/nvim-autopairs
         :config #(setup :nvim-autopairs {}))
