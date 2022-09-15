@@ -105,6 +105,9 @@
   (use! :gaoDean/autolist.nvim
         :config #(setup :autolist {}))
 
+  (use! :AckslD/nvim-FeMaco.lua
+        :module :config.femaco)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme)
   (use! :numtostr/FTerm.nvim
