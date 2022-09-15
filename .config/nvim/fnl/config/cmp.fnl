@@ -28,7 +28,10 @@
                       {:name :nvim_lsp}
                       {:name :path}
                       {:name :buffer}
-                      {:name :latex_symbols}]})
+                      {:name :latex_symbols}]
+            :window {:documentation {:border :rounded}
+                     :completion {:border :none}}
+            :experimental {:ghost_text true}})
 
 (cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}
                                                               {:name :buffer}])})
