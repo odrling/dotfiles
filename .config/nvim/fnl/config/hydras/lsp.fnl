@@ -1,6 +1,6 @@
 (import-macros {: exec : map! : defhydra : reqcall} :macros)
 
-(local lsp_hint " _J_: next diagnostic _L_: toggle diagnostics _K_: prev diagnostic _F_: format code  _q_: quit")
+(local lsp_hint " _J_: next diagnostic _K_: prev diagnostic _F_: format code  _q_: quit")
 
 (defhydra lsp_hydra
     {:name "LSP"
