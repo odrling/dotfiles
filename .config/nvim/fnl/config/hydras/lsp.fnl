@@ -14,7 +14,6 @@
     [[] "next diagnostic"    :J #(vim.diagnostic.goto_next {:float false})]
     [[] "prev diagnostic"    :K #(vim.diagnostic.goto_prev {:float false})]
     [[] "format code"        :F #(vim.lsp.buf.format {:async true})]
-    [[] "toggle diagnostics" :L #(reqcall :lsp_lines :toggle)]
 
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
