@@ -11,11 +11,12 @@
 (cmp.setup {:mapping {:<C-p>   (cmp.mapping.select_prev_item)
                       :<C-n>   (cmp.mapping.select_next_item)
                       :<TAB>   (fn [fallback]
-                                 (if (cmp.visible)
-                                     (cmp.select_next_item)
-                                     (reqcall :luasnip :expand_or_jumpable)
-                                     (reqcall :luasnip :expand_or_jump)
-                                     (fallback)))
+                                 (if (not (cmp.complete_common_string))
+                                     (if (cmp.visible)
+                                       (cmp.select_next_item)
+                                       (reqcall :luasnip :expand_or_jumpable)
+                                       (reqcall :luasnip :expand_or_jump)
+                                       (fallback))))
                       :<S-TAB> (fn [fallback]
                                  (if (cmp.visible)
                                    (cmp.select_prev_item)
