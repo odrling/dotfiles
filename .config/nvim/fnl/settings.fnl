@@ -134,6 +134,8 @@
 (set! mousehide)
 (set! nomodeline)
 
+(set! list)
+(set! listchars "tab:│\\x20,nbsp: ,trail:~,extends:>,lead:\x20,space:·")
 (set! showcmd)
 (set! ruler)
 (set! showmode)
