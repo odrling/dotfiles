@@ -2,7 +2,10 @@
 
 (local telescope (require :telescope))
 
-(telescope.setup {:pickers {:find_files {:find_command ["fd" "--type" "f" "--strip-cwd-prefix" "--hidden"]}}})
+(local find_command ["fd" "--type" "f" "--strip-cwd-prefix" "--hidden"])
+(when vim.env.FD_NO_IGNORE_VCS
+                    (table.insert find_command "--no-ignore-vcs"))
+(telescope.setup {:pickers {:find_files {:find_command find_command}}})
 
 (telescope.load_extension :zf-native)
 (telescope.load_extension :notify)
