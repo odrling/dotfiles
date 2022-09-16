@@ -162,8 +162,6 @@
   (use! :tpope/vim-sleuth)
   (use! :tpope/vim-abolish)
   (use! :kenn7/vim-arsync)
-  (use! :zakharykaplan/nvim-retrail
-        :module :config.retrail)
   (use! :glacambre/firenvim
         :run #((. vim.fn :firenvim#install) 0)
         :module :config.firenvim)
