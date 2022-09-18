@@ -11,7 +11,7 @@
         :event :BufReadPost
         :config #(setup :git-conflict {}))
 
-  (use! :lewis6991/gitsigns.nvim
+  (use! :odrling/gitsigns.nvim
         :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
         :config #(setup :gitsigns {:current_line_blame true}))
@@ -133,7 +133,7 @@
   (use! :rcarriga/nvim-notify)
   (use! :anuvyklack/hydra.nvim
         :module :config.hydra
-        :requires [:lewis6991/gitsigns.nvim
+        :requires [:odrling/gitsigns.nvim
                    :akinsho/git-conflict.nvim
                    :tpope/vim-fugitive
                    :mrjones2014/smart-splits.nvim])
