@@ -110,6 +110,8 @@
   (use! :AckslD/nvim-FeMaco.lua
         :module :config.femaco)
 
+  (use! :vim-scripts/ReplaceWithRegister)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme)
   (use! :numtostr/FTerm.nvim
