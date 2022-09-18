@@ -126,7 +126,9 @@
   (use! :nvim-telescope/telescope.nvim
         :requires [:nvim-lua/plenary.nvim
                    :natecraddock/telescope-zf-native.nvim
-                   :rcarriga/nvim-notify]
+                   :rcarriga/nvim-notify
+                   :nvim-telescope/telescope-frecency.nvim
+                   :kkharji/sqlite.lua]
         :module :config.telescope)
   (use! :stevearc/dressing.nvim
         :module :config.dressing)
