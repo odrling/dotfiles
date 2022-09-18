@@ -27,6 +27,7 @@ Cache
 !/.config/mpv/mpv.conf
 !/.config/mpv/input.conf
 !/.config/mpv/scripts
+!/.config/mpv/script-opts
 /.config/mpv/scripts/amoethyst.lua
 /.config/mpv/scripts/japan7.lua
 /.config/mpv/scripts/aniupdate.lua
