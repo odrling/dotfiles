@@ -244,7 +244,8 @@
     {1 (lambda [(unquote (sym :use))]
          (use :wbthomason/packer.nvim)
          (do ,...))
-     :config {:autoremove true}}))
+     :config {:autoremove true
+              :compile_path _G.packer_compile_path}}))
 
 (lambda create-func [val])
 
