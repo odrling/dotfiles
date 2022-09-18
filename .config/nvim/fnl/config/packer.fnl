@@ -167,6 +167,6 @@
         :run #((. vim.fn :firenvim#install) 0)
         :module :config.firenvim)
   (use! :NvChad/nvim-colorizer.lua
-        :config #(setup :colorizer))
+        :config #(setup :colorizer {:user_default_options {:names false}}))
   (use! :vladdoster/remember.nvim
         :module :remember))
