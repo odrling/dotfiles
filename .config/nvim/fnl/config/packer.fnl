@@ -73,11 +73,9 @@
   (use! :nvim-treesitter/nvim-treesitter-textobjects
         :after :nvim-treesitter)
 
-  (use! :narutoxy/dim.lua
-        :requires [
-                    :nvim-treesitter/nvim-treesitter
-                    :neovim/nvim-lspconfig]
-        :config #(setup :dim {}))
+  (use! :zbirenbaum/neodim
+        :event :LspAttach
+        :config #(setup :neodim {}))
 
   ;; Misc
   (use! :gpanders/nvim-parinfer
