@@ -7,6 +7,7 @@
 (local null_ls (require :null-ls))
 (local sources [null_ls.builtins.diagnostics.flake8
                 null_ls.builtins.formatting.isort
+                null_ls.builtins.diagnostics.teal
                 null_ls.builtins.formatting.stylua])
 
 (when vim.env.NVIM_MYPY_DIAGNOSTICS
