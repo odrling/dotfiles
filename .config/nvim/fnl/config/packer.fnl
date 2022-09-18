@@ -114,7 +114,8 @@
 
   ; Interface
   (use! :projekt0n/github-nvim-theme)
-  (use! :joeytwiddle/sexy_scroller.vim)
+  (use! :joeytwiddle/sexy_scroller.vim
+        :module :config.sexy_scroller)
   (use! :numtostr/FTerm.nvim
         :module :config/fterm)
   (use! :folke/which-key.nvim
