@@ -73,9 +73,9 @@
   (use! :nvim-treesitter/nvim-treesitter-textobjects
         :after :nvim-treesitter)
 
-  (use! :zbirenbaum/neodim
+  (use! :Kasama/nvim-custom-diagnostic-highlight
         :event :LspAttach
-        :config #(setup :neodim {}))
+        :config #(setup :nvim-custom-diagnostic-highlight {}))
 
   ;; Misc
   (use! :gpanders/nvim-parinfer
