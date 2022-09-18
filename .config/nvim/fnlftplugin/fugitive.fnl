@@ -1,4 +1,4 @@
 (import-macros {: map!} :macros)
 
-(map! [n] :q "<CMD>q<CR>")
-(map! [n] :c "<CMD>Git commit<CR>")
+(map! [n :buffer] :q "<CMD>q<CR>")
+(map! [n :buffer] :c "<CMD>Git commit<CR>")
