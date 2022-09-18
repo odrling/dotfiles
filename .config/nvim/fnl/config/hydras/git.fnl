@@ -55,10 +55,10 @@
                             (reqcall :gitsigns :toggle_word_diff true)
                             (set vim.bo.modifiable false))
 
-              :on_exit #(pcall (fn []
-                                   (reqcall :gitsigns :toggle_linehl false)
-                                   (reqcall :gitsigns :toggle_word_diff false)
-                                   (reqcall :gitsigns :toggle_deleted false)))
+              :on_exit (fn []
+                           (reqcall :gitsigns :toggle_linehl false)
+                           (reqcall :gitsigns :toggle_word_diff false)
+                           (reqcall :gitsigns :toggle_deleted false))
               :on_key #(print git_hint)}
      :mode ["n" "x"]}
 
@@ -79,8 +79,8 @@
     [[]              "blame"           :b       #(reqcall :gitsigns :blame_line)]
     [[]              "blame show full" :B       #(reqcall :gitsigns :blame_line {:full true})]
     [[]              "show base file"  :/       #(reqcall :gitsigns :show)]
-    [[:exit :nowait] "status"          :<Enter> #(vim.cmd.Git)]
-    [[:exit :nowait] "commit"          :c       #(vim.cmd.Git :commit)]
+    [[:exit]         "status"          :<Enter> #(vim.cmd.Git)]
+    [[:exit]         "commit"          :c       #(vim.cmd.Git :commit)]
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
 
