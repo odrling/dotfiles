@@ -54,6 +54,6 @@
 
     (require :config.packer)
     (reqcall :packer :sync))
-  (do (vim.cmd.luafile _G.packer_compile_path)))
+  (vim.cmd.luafile _G.packer_compile_path))
 
 (vim.schedule #(require :config.packer))
