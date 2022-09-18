@@ -79,6 +79,7 @@
                     :neovim/nvim-lspconfig]
         :config #(setup :dim {}))
 
+  ;; Misc
   (use! :gpanders/nvim-parinfer
         :module :config.parinfer)
 
@@ -105,6 +106,9 @@
         :module :config.femaco)
 
   (use! :vim-scripts/ReplaceWithRegister)
+
+  (use! :mbbill/undotree
+        :module :config.undotree)
 
   ; Interface
   (use! :projekt0n/github-nvim-theme)
