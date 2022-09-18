@@ -33,9 +33,14 @@ else
 	hooks = {"onsave"}
 end
 
+local nvim_dir = vim.fn.stdpath [[config]]
+
 require "tangerine".setup {
 	compiler = {
 		verbose = false,
 		hooks = hooks
+	},
+	custom = {
+		{nvim_dir .. "/fnlftplugin", nvim_dir .. "/ftplugin"}
 	}
 }
