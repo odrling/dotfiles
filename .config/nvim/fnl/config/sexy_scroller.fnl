@@ -1,5 +1,8 @@
 (import-macros {: g! : augroup!} :macros)
 
+(when (vim.fn.exists "g:neovide")
+      (g! SexyScroller_AutocmdsEnable 0))
+
 (g! SexyScroller_MaxTime 200)
 
 (augroup! :sexy_scroller_auto_toggle
