@@ -135,7 +135,7 @@
 (set! nomodeline)
 
 (set! list)
-(set! listchars "tab:│\\x20,nbsp: ,trail:~,extends:>,lead:\x20,space:·")
+(set! listchars "tab:│\\x20,nbsp: ,trail:~,extends:>,space:\x20")
 (set! showcmd)
 (set! ruler)
 (set! showmode)
