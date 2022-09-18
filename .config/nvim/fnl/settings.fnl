@@ -20,6 +20,9 @@
 (set! noswapfile)
 (set! nowritebackup)
 
+;; undofile
+(set! undofile)
+
 ; default tabs/space
 (set! shiftwidth 4)
 (set! tabstop 4)
