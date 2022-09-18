@@ -41,7 +41,7 @@
  _K_: prev hunk   _u_: undo last stage   _p_: preview hunk   _B_: blame show full 
  ^ ^              _S_: stage buffer      ^ ^                 _/_: show base file
  ^
- ^ ^              _<Enter>_: Neogit              _q_: exit
+ ^ ^              _<Enter>_: Status              _q_: exit
 ")
 
 (defhydra git_hydra
@@ -79,7 +79,7 @@
     [[]              "blame"           :b       #(reqcall :gitsigns :blame_line)]
     [[]              "blame show full" :B       #(reqcall :gitsigns :blame_line {:full true})]
     [[]              "show base file"  :/       #(reqcall :gitsigns :show)]
-    [[:exit :nowait] "Neogit"          :<Enter> #(reqcall :neogit :open)]
+    [[:exit :nowait] "Status"          :<Enter> #(vim.cmd.Git)]
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
 

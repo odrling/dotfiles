@@ -5,9 +5,7 @@
   (use! :lewis6991/impatient.nvim)
 
   ; git
-  (use! :TimUntersberger/neogit
-        :requires :nvim-lua/plenary.nvim
-        :module :config.neogit)
+  (use! :tpope/vim-fugitive)
 
   (use! :akinsho/git-conflict.nvim
         :event :BufReadPost
@@ -17,10 +15,6 @@
         :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
         :config #(setup :gitsigns {:current_line_blame true}))
-
-  (use! :sindrets/diffview.nvim
-        :requires :nvim-lua/plenary.nvim
-        :module :config.diffview)
 
   ; lsp
   (use! :neovim/nvim-lspconfig
@@ -135,10 +129,9 @@
   (use! :rcarriga/nvim-notify)
   (use! :anuvyklack/hydra.nvim
         :module :config.hydra
-        :requires [
-                   :lewis6991/gitsigns.nvim
+        :requires [:lewis6991/gitsigns.nvim
                    :akinsho/git-conflict.nvim
-                   :TimUntersberger/neogit
+                   :tpope/vim-fugitive
                    :mrjones2014/smart-splits.nvim])
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
