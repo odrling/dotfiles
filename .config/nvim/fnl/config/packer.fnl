@@ -147,7 +147,6 @@
         :config #(reqcall :leap :set_default_keymaps))
   (use! :jinh0/eyeliner.nvim
         :module :config.eyeliner)
-  (use! :antoinemadec/FixCursorHold.nvim)
   (use! :elihunter173/dirbuf.nvim
         :module :config.dirbuf)
   (use! :luukvbaal/stabilize.nvim
