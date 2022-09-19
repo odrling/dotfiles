@@ -39,7 +39,9 @@
                    {1 :hrsh7th/cmp-buffer :after :nvim-cmp}
                    {1 :hrsh7th/cmp-cmdline :after :nvim-cmp}
                    {1 :kdheepak/cmp-latex-symbols :after :nvim-cmp}
-                   {1 :petertriho/cmp-git :after :nvim-cmp}
+                   {1 :petertriho/cmp-git 
+                    :after :nvim-cmp
+                    :config #(setup :cmp_git)}
                    :L3MON4D3/LuaSnip
                    {1 :saadparwaiz1/cmp_luasnip :after :nvim-cmp}
                    :rafamadriz/friendly-snippets
