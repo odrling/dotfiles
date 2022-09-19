@@ -5,7 +5,8 @@
 
 (augroup! :diagnostics
                     [[CursorHold] * #(vim.diagnostic.open_float {:scope :cursor
-                                                                 :source true})])
+                                                                 :source true
+                                                                 :focus false})])
 
 (vim.diagnostic.config {:float {:border :single
                                 :max_width 80}})
