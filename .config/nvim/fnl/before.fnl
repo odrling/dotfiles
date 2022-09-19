@@ -6,3 +6,6 @@
 
 ;; vim.notify
 (require :config.notify)
+
+;; auto-session
+(require :config.auto-session)

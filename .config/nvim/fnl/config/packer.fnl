@@ -63,18 +63,13 @@
         :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
         :requires [:nvim-treesitter/playground
                    :nvim-treesitter/nvim-treesitter-refactor
-                   :RRethy/nvim-treesitter-endwise]
+                   :RRethy/nvim-treesitter-endwise
+                   {1 :nvim-treesitter/nvim-treesitter-refactor :after :nvim-treesitter}
+                   {1 :p00f/nvim-ts-rainbow :after :nvim-treesitter}
+                   {1 :windwp/nvim-ts-autotag :after :nvim-treesitter}
+                   {1 :JoosepAlviste/nvim-ts-context-commentstring :after :nvim-treesitter}
+                   {1 :nvim-treesitter/nvim-treesitter-textobjects :after :nvim-treesitter}]
         :module :config.treesitter)
-  (use! :nvim-treesitter/nvim-treesitter-refactor
-        :after :nvim-treesitter)
-  (use! :p00f/nvim-ts-rainbow
-        :after :nvim-treesitter)
-  (use! :windwp/nvim-ts-autotag
-        :after :nvim-treesitter)
-  (use! :JoosepAlviste/nvim-ts-context-commentstring
-        :after :nvim-treesitter)
-  (use! :nvim-treesitter/nvim-treesitter-textobjects
-        :after :nvim-treesitter)
 
   (use! :Kasama/nvim-custom-diagnostic-highlight
         :event :LspAttach
@@ -92,10 +87,11 @@
         :module :config.zk)
 
   (use! :rmagatti/auto-session
-        :requires :rmagatti/session-lens
-        :module :config.auto-session)
+        :opt true)
+
   (use! :rmagatti/session-lens
-        :after :telescope.nvim)
+        :after [:telescope.nvim
+                :auto-session])
 
   (use! :folke/todo-comments.nvim
         :module :config.todo-comments)
@@ -127,6 +123,7 @@
         :requires :kyazdani42/nvim-web-devicons
         :module :config.circles)
   (use! :nvim-telescope/telescope.nvim
+        :event :VimEnter
         :requires [:nvim-lua/plenary.nvim
                    :natecraddock/telescope-zf-native.nvim
                    :rcarriga/nvim-notify
@@ -137,6 +134,7 @@
         :module :config.dressing)
   (use! :rcarriga/nvim-notify)
   (use! :anuvyklack/hydra.nvim
+        :event :VimEnter
         :module :config.hydra
         :requires [:lewis6991/gitsigns.nvim
                    :akinsho/git-conflict.nvim
@@ -145,9 +143,6 @@
   (use! :romgrk/barbar.nvim
         :requires :kyazdani42/nvim-web-devicons
         :module :config.barbar)
-  (use! :goolord/alpha-nvim
-        :requires [:kyazdani42/nvim-web-devicons]
-        :config #(setup :alpha (. (require :alpha.themes.startify) :config)))
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))
   (use! :jinh0/eyeliner.nvim
