@@ -53,3 +53,4 @@
 
 (require :config.packer)
 (reqcall :packer :install)
+(pcall vim.cmd.luafile _G.packer_compile_path)
