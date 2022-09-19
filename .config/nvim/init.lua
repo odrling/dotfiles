@@ -26,8 +26,8 @@ require "impatient"
 
 local hooks
 
+vim.o.loadplugins = false
 if _G["config_bootstraping"] then
-	vim.o.loadplugins = false
 	hooks = {"onsave", "oninit"}
 else
 	hooks = {"onsave"}

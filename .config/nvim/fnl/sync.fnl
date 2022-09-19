@@ -41,19 +41,15 @@
 ;; set packer compile path
 (tset _G :packer_compile_path (.. (vim.fn.stdpath :cache) "/packer_compiled.lua"))
 
-(if (. _G :config_bootstraping)
-  (do
-    (set _G.bootstraping_packer true)
-    (fn load_all_packages_once []
-      (when _G.bootstraping_packer
-        (vim.cmd.packloadall)
-        (set _G.bootstraping_packer false)))
+(set _G.bootstraping_packer true)
+(fn load_all_packages_once []
+  (when _G.bootstraping_packer
+    (vim.cmd.packloadall)
+    (set _G.bootstraping_packer false)))
 
-    (augroup! :packer-bootstrap
-              [[User] PackerComplete 'load_all_packages_once])
+(augroup! :packer-bootstrap
+          [[User] PackerComplete #(reqcall :packer :compile)]
+          [[User] PackerCompileDone 'load_all_packages_once])
 
-    (require :config.packer)
-    (reqcall :packer :sync))
-  (vim.cmd.luafile _G.packer_compile_path))
-
-(vim.schedule #(require :config.packer))
+(require :config.packer)
+(reqcall :packer :install)
