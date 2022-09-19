@@ -2,7 +2,7 @@
 
 ;; colorscheme
 (color! github_light)
-(hl! CursorLine {:bg "#fafafa"})
+(hl! CursorLine {:bg "#f8f8f8"})
 
 ;; vim.notify
 (require :config.notifier)
