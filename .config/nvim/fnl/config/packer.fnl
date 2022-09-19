@@ -34,16 +34,17 @@
         :config #(setup :inc_rename {:input_buffer_type :dressing}))
 
   (use! :hrsh7th/nvim-cmp
-        :requires [:hrsh7th/cmp-nvim-lsp
-                   :hrsh7th/cmp-path
-                   :hrsh7th/cmp-buffer
-                   :hrsh7th/cmp-cmdline
-                   :kdheepak/cmp-latex-symbols
-                   :petertriho/cmp-git
+        :requires [{1 :hrsh7th/cmp-nvim-lsp :after :nvim-cmp}
+                   {1 :hrsh7th/cmp-path :after :nvim-cmp}
+                   {1 :hrsh7th/cmp-buffer :after :nvim-cmp}
+                   {1 :hrsh7th/cmp-cmdline :after :nvim-cmp}
+                   {1 :kdheepak/cmp-latex-symbols :after :nvim-cmp}
+                   {1 :petertriho/cmp-git :after :nvim-cmp}
                    :L3MON4D3/LuaSnip
-                   :saadparwaiz1/cmp_luasnip
+                   {1 :saadparwaiz1/cmp_luasnip :after :nvim-cmp}
                    :rafamadriz/friendly-snippets
                    :windwp/nvim-autopairs]
+        :event :InsertEnter
         :module :config.cmp)
 
   (use! :ray-x/lsp_signature.nvim
