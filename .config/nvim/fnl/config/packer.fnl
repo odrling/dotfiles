@@ -46,7 +46,7 @@
                    {1 :saadparwaiz1/cmp_luasnip :after :nvim-cmp}
                    :rafamadriz/friendly-snippets
                    :windwp/nvim-autopairs]
-        :event :InsertEnter
+        :event [:InsertEnter :CmdlineEnter]
         :module :config.cmp)
 
   (use! :ray-x/lsp_signature.nvim
