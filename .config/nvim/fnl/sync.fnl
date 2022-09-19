@@ -44,8 +44,8 @@
 (set _G.bootstraping_packer true)
 (fn load_all_packages_once []
   (when _G.bootstraping_packer
-    (vim.cmd.packloadall {:bang true})
-    (set _G.bootstraping_packer false)))
+    (set _G.bootstraping_packer false)
+    (vim.cmd.packloadall {:bang true})))
 
 (augroup! :packer-bootstrap
           [[User] PackerComplete #(reqcall :packer :compile)]
