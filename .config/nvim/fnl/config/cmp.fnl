@@ -32,8 +32,7 @@
                       {:name :latex_symbols}]
             :window {:documentation {:border :rounded}
                      :completion {:border :none
-                                  :side_padding 1}}
-            :experimental {:ghost_text true}})
+                                  :side_padding 1}}})
 
 (cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}
                                                               {:name :buffer}])})

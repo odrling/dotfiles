@@ -27,14 +27,17 @@
                    :b0o/schemastore.nvim
                    :folke/lua-dev.nvim]
         :event :BufReadPost
+        :after :cmp-nvim-lsp
         :module :config.lsp)
+
+  (use! :hrsh7th/cmp-nvim-lsp
+        :config #(setup :cmp_nvim_lsp))
 
   (use! :smjonas/inc-rename.nvim
         :config #(setup :inc_rename {:input_buffer_type :dressing}))
 
   (use! :hrsh7th/nvim-cmp
-        :requires [{1 :hrsh7th/cmp-nvim-lsp :after :nvim-cmp}
-                   {1 :hrsh7th/cmp-path :after :nvim-cmp}
+        :requires [:hrsh7th/cmp-path
                    {1 :hrsh7th/cmp-buffer :after :nvim-cmp}
                    {1 :hrsh7th/cmp-cmdline :after :nvim-cmp}
                    {1 :kdheepak/cmp-latex-symbols :after :nvim-cmp}
