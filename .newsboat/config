@@ -26,14 +26,14 @@ macro f set browser "firefox" ; open-in-browser ; set browser w3m
 color background         default   default
 color listnormal         default   default
 color listnormal_unread  default   default bold
-color listfocus          white     magenta
-color listfocus_unread   white     magenta bold
-color info               default   black
+color listfocus          default   yellow
+color listfocus_unread   default   yellow bold
+color info               default   default
 color article            default   default
 
 # highlights
 highlight all "---.*---" white magenta
-highlight feedlist ".*(0/0))" black
+highlight feedlist ".*(0/0))" white
 highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
 highlight article "(^Link:.*|^Date:.*)" default default
 highlight article "https?://[^ ]+" green default
