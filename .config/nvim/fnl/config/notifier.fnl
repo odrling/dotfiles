@@ -1,3 +1,3 @@
 (import-macros {: setup} :macros)
 
-(setup :notifier)
+(setup :notifier {:notify {:clear_time 15000}})
