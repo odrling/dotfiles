@@ -6,3 +6,6 @@
 
 ;; vim.notify
 (require :config.notify)
+
+;; telescope bindings
+(require :config.telescope.bindings)
