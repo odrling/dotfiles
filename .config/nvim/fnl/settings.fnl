@@ -121,6 +121,7 @@
 (set! number)
 (set! relativenumber)
 
+(set! nosplitscroll)
 
 ; Height of the command bar
 (set! cmdheight 1)

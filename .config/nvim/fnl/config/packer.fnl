@@ -146,8 +146,6 @@
         :module :config.eyeliner)
   (use! :elihunter173/dirbuf.nvim
         :module :config.dirbuf)
-  (use! :luukvbaal/stabilize.nvim
-        :config #(setup :stabilize {}))
   (use! :ahmedkhalf/project.nvim
         :config #(setup :project_nvim {}))
   (use! :numToStr/Comment.nvim
