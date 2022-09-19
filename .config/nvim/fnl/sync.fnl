@@ -45,14 +45,47 @@
 (fn load_all_packages_once []
   (when _G.bootstraping_packer
     (set _G.bootstraping_packer false)
+    (reqcall :packer :clean)
     (vim.cmd.packloadall {:bang true})))
 
-(augroup! :packer-bootstrap
-          [[User] PackerComplete #(reqcall :packer :compile)]
-          [[User] PackerCompileDone 'load_all_packages_once])
-
 (require :config.packer)
-(reqcall :packer :install)
-(when (not _G.config_bootstraping)
-  (pcall vim.cmd.luafile _G.packer_compile_path)
-  (vim.cmd.packloadall))
+
+(fn get_plugins_path []
+  (icollect [_ plug (pairs (or _G.packer_plugins []))]
+            plug.path))
+
+
+(fn update_packages []
+  (local plugin_utils (require :packer.plugin_utils))
+  (let [(opt_plugins start_plugins) (plugin_utils.list_installed_plugins)
+        plugins                     (get_plugins_path)]
+    (local installed_plugins [])
+    (each [path _ (pairs opt_plugins)]
+      (table.insert installed_plugins path))
+    (each [path _ (pairs start_plugins)]
+      (table.insert installed_plugins path))
+
+    (table.sort plugins)
+    (table.sort installed_plugins)
+
+    (var missing (~= (# plugins) (# installed_plugins)))
+    (when (not missing)
+      (for [i 1 (# plugins)]
+        (when (~= (. plugins i) (. installed_plugins i))
+          (set missing true))))
+
+    (when missing
+      (augroup! :packer-bootstrap
+                [[User] PackerComplete #(reqcall :packer :compile)]
+                [[User] PackerCompileDone 'load_all_packages_once])
+      (reqcall :packer :install))))
+
+
+(if _G.config_bootstraping
+  (update_packages)
+  (do
+    (augroup! :packer-bootstrap
+              [[User] PackerCompileDone 'update_packages])
+    (pcall vim.cmd.luafile _G.packer_compile_path)
+    (vim.cmd.packloadall)
+    (reqcall :packer :compile)))
