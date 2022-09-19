@@ -13,5 +13,4 @@
                   :defaults {:file_sorter frecency_sorter}})
 
 (telescope.load_extension :zf-native)
-(telescope.load_extension :notify)
 (telescope.load_extension :frecency)

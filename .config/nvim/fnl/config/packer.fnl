@@ -128,13 +128,12 @@
   (use! :nvim-telescope/telescope.nvim
         :requires [:nvim-lua/plenary.nvim
                    :natecraddock/telescope-zf-native.nvim
-                   :rcarriga/nvim-notify
                    :nvim-telescope/telescope-frecency.nvim
                    :kkharji/sqlite.lua]
         :module :config.telescope)
   (use! :stevearc/dressing.nvim
         :module :config.dressing)
-  (use! :rcarriga/nvim-notify)
+  (use! :vigoux/notifier.nvim)
   (use! :anuvyklack/hydra.nvim
         :event :VimEnter
         :module :config.hydra

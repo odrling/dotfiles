@@ -20,7 +20,7 @@
 (ghstrap :udayvir-singh/tangerine.nvim)
 (ghstrap :lewis6991/impatient.nvim)
 (ghstrap :wbthomason/packer.nvim)
-(ghstrap :rcarriga/nvim-notify)
+(ghstrap :vigoux/notifier.nvim)
 (ghstrap :projekt0n/github-nvim-theme)
 
 (require :impatient)

@@ -5,7 +5,7 @@
 (hl! CursorLine {:bg "#fafafa"})
 
 ;; vim.notify
-(require :config.notify)
+(require :config.notifier)
 
 ;; telescope bindings
 (require :config.telescope.bindings)
