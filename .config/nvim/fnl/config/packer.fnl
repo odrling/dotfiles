@@ -8,7 +8,6 @@
   (use! :tpope/vim-fugitive)
 
   (use! :akinsho/git-conflict.nvim
-        :event :BufReadPost
         :config #(setup :git-conflict {}))
 
   (use! :lewis6991/gitsigns.nvim
