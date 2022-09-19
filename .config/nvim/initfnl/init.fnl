@@ -31,7 +31,7 @@
           [[BufWritePost] :init.fnl #(reqcall :tangerine.api.compile :dir (.. nvim_dir "/initfnl") nvim_dir)])
 
 (setup :tangerine {:compiler {:verbose false
-                              :hooks [:onsave (if _G.config_bootstraping :oninit nil)]}
+                              :hooks [:onsave :oninit]}
                    :custom [[(.. nvim_dir "/ftplugin") (.. nvim_dir "/ftplugin")]]})
 
 

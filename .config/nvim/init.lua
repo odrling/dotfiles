@@ -1,4 +1,4 @@
--- :fennel:1663564129
+-- :fennel:1663575656
 local pack = "packer"
 local function bootstrap(url)
   _G.assert((nil ~= url), "Missing argument url on initfnl/init.fnl:4")
@@ -45,20 +45,13 @@ end
 do
   local status_40_auto, ret_41_auto = nil, nil
   local function _7_()
-    local function _8_()
-      if _G.config_bootstraping then
-        return "oninit"
-      else
-        return nil
-      end
-    end
-    return (require("tangerine")).setup({compiler = {hooks = {"onsave", _8_()}, verbose = false}, custom = {{(nvim_dir .. "/ftplugin"), (nvim_dir .. "/ftplugin")}}})
+    return (require("tangerine")).setup({compiler = {hooks = {"onsave", "oninit"}, verbose = false}, custom = {{(nvim_dir .. "/ftplugin"), (nvim_dir .. "/ftplugin")}}})
   end
-  local function _9_(e_42_auto)
+  local function _8_(e_42_auto)
     vim.notify(("tangerine" .. ".setup could not be called"), vim.log.levels.ERROR)
     return vim.notify(("tangerine" .. ".setup:\n" .. e_42_auto), vim.log.levels.TRACE)
   end
-  status_40_auto, ret_41_auto = xpcall(_7_, _9_)
+  status_40_auto, ret_41_auto = xpcall(_7_, _8_)
   if status_40_auto then
   else
   end
