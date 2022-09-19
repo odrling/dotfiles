@@ -69,6 +69,7 @@
 
     (if missing
       (do
+        (vim.notify "installing missing deps")
         (augroup! :packer-bootstrap
                   [[User] PackerComplete #(reqcall :packer :compile)]
                   [[User] PackerCompileDone #(set _G.updated_packer_plugins true)])
