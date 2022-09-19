@@ -46,4 +46,3 @@
                           :sources [{:name :path}
                                     {:name :cmdline}]}))
 
-(setup :cmp_git)
