@@ -107,7 +107,8 @@
   (use! :mbbill/undotree
         :module :config.undotree)
 
-  (use! :kevinhwang91/nvim-hlslens)
+  (use! :kevinhwang91/nvim-hlslens
+        :module :config.hlslens)
 
   ; Interface
   (use! :projekt0n/github-nvim-theme)
