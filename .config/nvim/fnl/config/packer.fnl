@@ -87,7 +87,7 @@
         :module :config.zk)
 
   (use! :rmagatti/auto-session
-        :opt true)
+        :module :config.auto-session)
 
   (use! :rmagatti/session-lens
         :after [:telescope.nvim
