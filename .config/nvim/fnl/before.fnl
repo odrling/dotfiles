@@ -8,4 +8,4 @@
 (require :config.notify)
 
 ;; auto-session
-(require :config.auto-session)
+(pcall require :config.auto-session)

@@ -61,9 +61,9 @@
   ; Treesitter
   (use! :nvim-treesitter/nvim-treesitter
         :run #(reqcall :nvim-treesitter.install :update {:with_sync true})
-        :requires [:nvim-treesitter/playground
-                   :nvim-treesitter/nvim-treesitter-refactor
-                   :RRethy/nvim-treesitter-endwise
+        :requires [{1 :nvim-treesitter/playground :after :nvim-treesitter}
+                   {1 :nvim-treesitter/nvim-treesitter-refactor :after :nvim-treesitter}
+                   {1 :RRethy/nvim-treesitter-endwise :after :nvim-treesitter}
                    {1 :nvim-treesitter/nvim-treesitter-refactor :after :nvim-treesitter}
                    {1 :p00f/nvim-ts-rainbow :after :nvim-treesitter}
                    {1 :windwp/nvim-ts-autotag :after :nvim-treesitter}
@@ -123,7 +123,6 @@
         :requires :kyazdani42/nvim-web-devicons
         :module :config.circles)
   (use! :nvim-telescope/telescope.nvim
-        :event :VimEnter
         :requires [:nvim-lua/plenary.nvim
                    :natecraddock/telescope-zf-native.nvim
                    :rcarriga/nvim-notify
