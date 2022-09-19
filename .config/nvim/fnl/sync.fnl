@@ -41,13 +41,6 @@
 ;; set packer compile path
 (tset _G :packer_compile_path (.. (vim.fn.stdpath :cache) "/packer_compiled.lua"))
 
-(set _G.bootstraping_packer true)
-(fn load_all_packages_once []
-  (when _G.bootstraping_packer
-    (set _G.bootstraping_packer false)
-    (reqcall :packer :clean)
-    (vim.cmd.packloadall {:bang true})))
-
 (require :config.packer)
 
 (fn get_plugins_path []
@@ -74,11 +67,14 @@
         (when (~= (. plugins i) (. installed_plugins i))
           (set missing true))))
 
-    (when missing
-      (augroup! :packer-bootstrap
-                [[User] PackerComplete #(reqcall :packer :compile)]
-                [[User] PackerCompileDone 'load_all_packages_once])
-      (reqcall :packer :install))))
+    (if missing
+      (do
+        (augroup! :packer-bootstrap
+                  [[User] PackerComplete #(reqcall :packer :compile)]
+                  [[User] PackerCompileDone #(set _G.updated_packer_plugins true)])
+        (reqcall :packer :install))
+      (do (set _G.updated_packer_plugins true)
+          (vim.cmd.doautocmd {:args [:User :PackerComplete]})))))
 
 
 (if _G.config_bootstraping
@@ -86,6 +82,9 @@
   (do
     (augroup! :packer-bootstrap
               [[User] PackerCompileDone 'update_packages])
-    (pcall vim.cmd.luafile _G.packer_compile_path)
-    (vim.cmd.packloadall)
-    (reqcall :packer :compile)))
+    (if _G.tangerine_recompiled_packer
+      (reqcall :packer :compile)
+      (do (vim.cmd.luafile _G.packer_compile_path)
+          (update_packages)))
+    (vim.fn.wait -1 #(~= _G.updated_packer_plugins nil))
+    (vim.cmd.packloadall)))

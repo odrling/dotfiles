@@ -1,4 +1,4 @@
--- :fennel:1663575656
+-- :fennel:1663618382
 local pack = "packer"
 local function bootstrap(url)
   _G.assert((nil ~= url), "Missing argument url on initfnl/init.fnl:4")
@@ -45,7 +45,7 @@ end
 do
   local status_40_auto, ret_41_auto = nil, nil
   local function _7_()
-    return (require("tangerine")).setup({compiler = {hooks = {"onsave", "oninit"}, verbose = false}, custom = {{(nvim_dir .. "/ftplugin"), (nvim_dir .. "/ftplugin")}}})
+    return (require("tangerine")).setup({compiler = {hooks = {"onsave"}, verbose = false}, custom = {{(nvim_dir .. "/ftplugin"), (nvim_dir .. "/ftplugin")}}})
   end
   local function _8_(e_42_auto)
     vim.notify(("tangerine" .. ".setup could not be called"), vim.log.levels.ERROR)
@@ -56,6 +56,42 @@ do
   else
   end
 end
+local _10_
+do
+  local tbl_15_auto = {}
+  local i_16_auto = #tbl_15_auto
+  local function _13_(...)
+    local status_37_auto, ret_38_auto = nil, nil
+    local function _11_()
+      return (require("tangerine.vim.hooks")).run()
+    end
+    local function _12_(e_39_auto)
+      vim.notify(("tangerine.vim.hooks" .. "." .. "run" .. " could not be called"), vim.log.levels.ERROR)
+      return vim.notify(("tangerine.vim.hooks" .. "." .. "run" .. ":\n" .. e_39_auto), vim.log.levels.TRACE)
+    end
+    status_37_auto, ret_38_auto = xpcall(_11_, _12_)
+    if status_37_auto then
+      return ret_38_auto
+    else
+      return nil
+    end
+  end
+  for _, v in ipairs(_13_(...)) do
+    local val_17_auto
+    if (v == "config/packer.fnl") then
+      val_17_auto = v
+    else
+      val_17_auto = nil
+    end
+    if (nil ~= val_17_auto) then
+      i_16_auto = (i_16_auto + 1)
+      do end (tbl_15_auto)[i_16_auto] = val_17_auto
+    else
+    end
+  end
+  _10_ = tbl_15_auto
+end
+_G.tangerine_recompiled_packer = (#_10_ > 0)
 require("settings")
 require("before")
 return require("sync")

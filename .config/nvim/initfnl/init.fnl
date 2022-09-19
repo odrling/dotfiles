@@ -31,8 +31,12 @@
           [[BufWritePost] :init.fnl #(reqcall :tangerine.api.compile :dir (.. nvim_dir "/initfnl") nvim_dir)])
 
 (setup :tangerine {:compiler {:verbose false
-                              :hooks [:onsave :oninit]}
+                              :hooks [:onsave]}
                    :custom [[(.. nvim_dir "/ftplugin") (.. nvim_dir "/ftplugin")]]})
+
+(set _G.tangerine_recompiled_packer (> (# (icollect [_ v (ipairs (reqcall :tangerine.vim.hooks :run))]
+                                                    (if (= v "config/packer.fnl") v nil)))
+                                       0))
 
 
 (require :settings)
