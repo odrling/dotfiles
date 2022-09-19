@@ -7,9 +7,6 @@
   ; git
   (use! :tpope/vim-fugitive)
 
-  (use! :akinsho/git-conflict.nvim
-        :config #(setup :git-conflict {}))
-
   (use! :lewis6991/gitsigns.nvim
         :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
@@ -138,7 +135,6 @@
         :event :VimEnter
         :module :config.hydra
         :requires [:lewis6991/gitsigns.nvim
-                   :akinsho/git-conflict.nvim
                    :tpope/vim-fugitive
                    :mrjones2014/smart-splits.nvim])
   (use! :romgrk/barbar.nvim
