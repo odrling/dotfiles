@@ -179,3 +179,5 @@
 (set! updatetime 300)
 (set! autoread)
 (augroup! :autoread-hold [[CursorHold] * :checktime])
+
+(set! loadplugins false)

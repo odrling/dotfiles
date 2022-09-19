@@ -1,4 +1,4 @@
-(import-macros {: setup} :macros)
+(import-macros {: setup : augroup! : reqcall} :macros)
 (local pack :packer)
 
 (lambda bootstrap [url]
@@ -25,11 +25,16 @@
 
 (require :impatient)
 
-(set vim.o.loadplugins false)
-
 (local nvim_dir (vim.fn.stdpath :config))
+
+(augroup! :fennel_init_lua
+          [[BufWritePost] :init.fnl #(reqcall :tangerine.api.compile :dir (.. nvim_dir "/initfnl") nvim_dir)])
 
 (setup :tangerine {:compiler {:verbose false
                               :hooks [:onsave (if _G.config_bootstraping :oninit nil)]}
-                   :custom [[(.. nvim_dir "/ftplugin") (.. nvim_dir "/ftplugin")]
-                            [(.. nvim_dir "/initfnl") nvim_dir]]})
+                   :custom [[(.. nvim_dir "/ftplugin") (.. nvim_dir "/ftplugin")]]})
+
+
+(require :settings)
+(require :before)
+(require :sync)
