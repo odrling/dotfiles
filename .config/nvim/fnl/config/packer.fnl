@@ -124,7 +124,6 @@
         :requires :kyazdani42/nvim-web-devicons
         :module :config.circles)
   (use! :nvim-telescope/telescope.nvim
-        :cmd :Telescope
         :requires [:nvim-lua/plenary.nvim
                    :natecraddock/telescope-zf-native.nvim
                    :rcarriga/nvim-notify
