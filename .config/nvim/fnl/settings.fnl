@@ -99,7 +99,7 @@
 (map! [n] :<Leader>m "mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm")
 
 ; turn off highlighting
-(map! [n] :<leader>h "<cmd>noh<CR>")
+(map! [n] :<leader>h ":noh<CR>")
 
 ; copy line to clipboard
 (map! [n :noremap] :<C-c> "\"+yy")
