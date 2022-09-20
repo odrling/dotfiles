@@ -46,13 +46,6 @@
 (map! [n] :<leader>k ":bnext<cr>")
 (map! [n] :<leader>j ":bprevious<cr>")
 
-; Useful mappings for managing tabs
-;map <leader>tn :tabnew<cr>
-;map <leader>to :tabonly<cr>
-;map <leader>tc :tabclose<cr>
-;map <leader>tm :tabmove
-;map <leader>t<leader> :tabnext<cr>
-
 ; Switch CWD to the directory of the open buffer
 (map! [n] :<leader>cd ":cd %:p:h<cr>:pwd<cr>")
 
@@ -62,9 +55,6 @@
 ; => Status line
 ; Always show the status line
 (set! laststatus 3)
-
-; Format the status line
-;set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 ; => Editing mappings
 ; Remap VIM 0 to first non-blank character
@@ -128,8 +118,6 @@
 
 ; always show sign column
 (set! signcolumn :yes)
-; sign column matches background
-(hl! :SignColumn {})
 
 (set! colorcolumn "100,120")
 
