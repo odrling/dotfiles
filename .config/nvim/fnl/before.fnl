@@ -1,8 +1,9 @@
-(import-macros {: g! : color! : hl!} :macros)
+(import-macros {: setup} :macros)
 
 ;; colorscheme
-(color! github_light)
-(hl! CursorLine {:bg "#f8f8f8"})
+(setup :github-theme {:theme_style :light
+                      :overrides (fn [c]
+                                   {:CursorLine {:bg "#f8f8f8"}})})
 
 ;; vim.notify
 (require :config.notifier)
