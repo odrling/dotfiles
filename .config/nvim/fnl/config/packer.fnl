@@ -115,6 +115,10 @@
         :module :config.sexy_scroller)
   (use! :numtostr/FTerm.nvim
         :module :config/fterm)
+  (use! :anuvyklack/windows.nvim
+        :requires [:anuvyklack/middleclass
+                   :anuvyklack/animation.nvim]
+        :module :config.windows)
   (use! :folke/which-key.nvim
         :config #(setup :which-key))
   (use! :nvim-lualine/lualine.nvim
