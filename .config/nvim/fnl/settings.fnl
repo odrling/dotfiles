@@ -131,6 +131,8 @@
 ; sign column matches background
 (hl! :SignColumn {})
 
+(set! colorcolumn "100,120")
+
 ; don't redraw while executing macros
 (set! lazyredraw)
 
