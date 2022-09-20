@@ -12,6 +12,9 @@
         :requires :nvim-lua/plenary.nvim
         :config #(setup :gitsigns {:current_line_blame true}))
 
+  (use! :sindrets/diffview.nvim
+        :requires :nvim-lua/plenary.nvim)
+
   ; lsp
   (use! :neovim/nvim-lspconfig
         :requires [:nvim-lua/lsp-status.nvim
