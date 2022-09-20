@@ -9,11 +9,13 @@
 ;; init servers with manual configuration
 (local schemastore (require :schemastore))
 
-(setup_ls :jsonls {:json {:validate {:enable true}
-                          :schemas (schemastore.json.schemas)}})
+(setup_ls :jsonls {:settings {:json {:validate {:enable true}
+                                     :schemas (schemastore.json.schemas)}}})
 
-(setup_ls :yamlls {:yaml {:schemaStore {:enable true}}})
+(setup_ls :yamlls {:settings {:yaml {:schemaStore {:enable true}}}})
 
-(setup_ls :taplo {:toml {:schemas (schemastore.json.schemas)}})
+(setup_ls :taplo {:settings {:toml {:schemas (schemastore.json.schemas)}}})
 
-(mason_utils.setup_installed_servers :pyright :jdtls :clangd :lemminx :tsserver :vimls :sumneko_lua)
+(setup_ls :jdtls {:init_options {:extendedClientCapabilities {:progressReportProvider false}}})
+
+(mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls :sumneko_lua)
