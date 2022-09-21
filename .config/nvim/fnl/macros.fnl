@@ -245,7 +245,8 @@
          (use :wbthomason/packer.nvim)
          (do ,...))
      :config {:autoremove true
-              :compile_path _G.packer_compile_path}}))
+              :compile_path _G.packer_compile_path
+              :display {:open_fn (. (require :packer.util) :float)}}}))
 
 (lambda create-func [val])
 
