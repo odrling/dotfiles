@@ -43,60 +43,28 @@
 
 (require :config.packer)
 
-(fn get_plugins_path []
-  (vim.cmd.luafile _G.packer_compile_path)
-  (icollect [_ plug (pairs (or _G.packer_plugins []))]
-            plug.path))
+(fn update_packages [compile]
+  (vim.notify "installing deps")
+  (var state 0)
 
+  (augroup! :packer-auto-update-steps
+            [[User] PackerComplete (fn []
+                                      (match state
+                                        0 (reqcall :packer :clean)
+                                        1 (when compile (reqcall :packer :compile)))
+                                      (set state (+ state 1)))])
 
-(var updated_packer_plugins false)
-
-(fn update_packages []
-  (local plugin_utils (require :packer.plugin_utils))
-  (let [(opt_plugins start_plugins) (plugin_utils.list_installed_plugins)
-        plugins                     (get_plugins_path)]
-    (local installed_plugins [])
-    (each [path _ (pairs opt_plugins)]
-      (table.insert installed_plugins path))
-    (each [path _ (pairs start_plugins)]
-      (table.insert installed_plugins path))
-
-    (var missing (~= (# plugins) (# installed_plugins)))
-    (when (not missing)
-      (table.sort plugins)
-      (table.sort installed_plugins)
-
-      (for [i 1 (# plugins)]
-        (when (~= (. plugins i) (. installed_plugins i))
-          (set missing true))))
-
-    (if missing
-      (do
-        (vim.notify "installing missing deps")
-        (var state 0)
-
-        (augroup! :packer-bootstrap
-                  [[User] PackerComplete (fn []
-                                           (match state
-                                             0 (reqcall :packer :clean)
-                                             1 (reqcall :packer :compile))
-                                           (set state (+ state 1)))]
-                  [[User] PackerCompileDone #(set updated_packer_plugins true)])
-
-        (reqcall :packer :install))
-      (do (set updated_packer_plugins true)
-          (vim.cmd.doautocmd {:args [:User :PackerComplete]})))))
+  (reqcall :packer :install))
 
 
 (if _G.config_bootstraping
   (update_packages)
   (do
-    (augroup! :packer-bootstrap
-              [[User] PackerCompileDone 'update_packages])
     (if _G.tangerine_recompiled_packer
-      (reqcall :packer :compile)
-      (update_packages))
-    (vim.fn.wait -1 (fn [] updated_packer_plugins))
-    (when _G.tangerine_recompiled_packer
+      (update_packages true)
       (vim.cmd.luafile _G.packer_compile_path))
+    (vim.fn.wait -1 #(~= _G.packer_plugins nil))
     (vim.cmd.packloadall)))
+
+(augroup! :packer-auto-update
+          [[User] PackerCompileDone #(update_packages false)])
