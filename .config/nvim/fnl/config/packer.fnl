@@ -112,6 +112,8 @@
   (use! :kevinhwang91/nvim-hlslens
         :module :config.hlslens)
 
+  (use! :godlygeek/tabular)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme)
   (use! :joeytwiddle/sexy_scroller.vim
