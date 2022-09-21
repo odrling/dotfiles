@@ -169,7 +169,5 @@
         :module :config.firenvim)
   (use! :NvChad/nvim-colorizer.lua
         :config #(setup :colorizer {:user_default_options {:names false}}))
-  (use! :lukas-reineke/virt-column.nvim
-        :config #(setup :virt-column {:char "│"}))
   (use! :vladdoster/remember.nvim
         :module :remember))
