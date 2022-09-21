@@ -48,6 +48,8 @@
             plug.path))
 
 
+(var updated_packer_plugins false)
+
 (fn update_packages []
   (local plugin_utils (require :packer.plugin_utils))
   (let [(opt_plugins start_plugins) (plugin_utils.list_installed_plugins)
@@ -78,10 +80,10 @@
                                              0 (reqcall :packer :clean)
                                              1 (reqcall :packer :compile))
                                            (set state (+ state 1)))]
-                  [[User] PackerCompileDone #(set _G.updated_packer_plugins true)])
+                  [[User] PackerCompileDone #(set updated_packer_plugins true)])
 
         (reqcall :packer :install))
-      (do (set _G.updated_packer_plugins true)
+      (do (set updated_packer_plugins true)
           (vim.cmd.doautocmd {:args [:User :PackerComplete]})))))
 
 
@@ -94,5 +96,5 @@
       (reqcall :packer :compile)
       (do (vim.cmd.luafile _G.packer_compile_path)
           (update_packages)))
-    (vim.fn.wait -1 #(~= _G.updated_packer_plugins nil))
+    (vim.fn.wait -1 (fn [] updated_packer_plugins))
     (vim.cmd.packloadall)))
