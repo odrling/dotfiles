@@ -70,9 +70,16 @@
     (if missing
       (do
         (vim.notify "installing missing deps")
+        (var state 0)
+
         (augroup! :packer-bootstrap
-                  [[User] PackerComplete #(reqcall :packer :compile)]
+                  [[User] PackerComplete (fn []
+                                           (match state
+                                             0 (reqcall :packer :clean)
+                                             1 (reqcall :packer :compile))
+                                           (set state (+ state 1)))]
                   [[User] PackerCompileDone #(set _G.updated_packer_plugins true)])
+
         (reqcall :packer :install))
       (do (set _G.updated_packer_plugins true)
           (vim.cmd.doautocmd {:args [:User :PackerComplete]})))))
