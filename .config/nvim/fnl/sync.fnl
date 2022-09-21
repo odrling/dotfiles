@@ -44,6 +44,7 @@
 (require :config.packer)
 
 (fn get_plugins_path []
+  (vim.cmd.luafile _G.packer_compile_path)
   (icollect [_ plug (pairs (or _G.packer_plugins []))]
             plug.path))
 
@@ -60,11 +61,11 @@
     (each [path _ (pairs start_plugins)]
       (table.insert installed_plugins path))
 
-    (table.sort plugins)
-    (table.sort installed_plugins)
-
     (var missing (~= (# plugins) (# installed_plugins)))
     (when (not missing)
+      (table.sort plugins)
+      (table.sort installed_plugins)
+
       (for [i 1 (# plugins)]
         (when (~= (. plugins i) (. installed_plugins i))
           (set missing true))))
@@ -94,7 +95,8 @@
               [[User] PackerCompileDone 'update_packages])
     (if _G.tangerine_recompiled_packer
       (reqcall :packer :compile)
-      (do (vim.cmd.luafile _G.packer_compile_path)
-          (update_packages)))
+      (update_packages))
     (vim.fn.wait -1 (fn [] updated_packer_plugins))
+    (when _G.tangerine_recompiled_packer
+      (vim.cmd.luafile _G.packer_compile_path))
     (vim.cmd.packloadall)))
