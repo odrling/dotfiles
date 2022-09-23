@@ -20,6 +20,12 @@ xcape -e 'Control_L=Escape' &
 
 [ -e "$HOME/.xinitrc.local" ] && . "$HOME/.xinitrc.local"
 
+# keyboard layout
+setxkbmap -layout fr -variant oss -option "caps:none,shift:both_capslock"
+
+# disable bell
+xset -b
+
 # set wallpaper
 setoutput
 
