@@ -33,6 +33,7 @@ Cache
 /.config/mpv/scripts/japan7.lua
 /.config/mpv/scripts/aniupdate.lua
 !/.config/mpv/shaders
+!/.config/mpv/.envrc
 
 # picom config file
 !/.config/picom.conf

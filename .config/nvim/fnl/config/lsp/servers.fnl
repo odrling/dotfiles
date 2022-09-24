@@ -4,7 +4,6 @@
 (local setup_ls (require :config.lsp.setup_ls))
 (local mason_utils (require :config.lsp.mason))
 
-(setup :lua-dev {})
 
 ;; init servers with manual configuration
 (local schemastore (require :schemastore))
@@ -19,8 +18,16 @@
 (setup_ls :jdtls {:init_options {:extendedClientCapabilities {:progressReportProvider false}}})
 
 (local globals [])
-(when vim.env.MPV_LUA (table.insert globals :mp))
+(local workspace {})
+(when vim.env.MPV_LUA     (table.insert globals :mp))
 (when vim.env.AEGISUB_LUA (table.insert globals :aegisub))
-(setup_ls :sumneko_lua {:Lua {:diagnostics {:globals globals}}})
+(when vim.env.NVIM_LUA
+  (setup :lua-dev {})
+  (set workspace.library (vim.api.nvim_get_runtime_file "" true)))
 
-(mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls :sumneko_lua)
+(setup_ls :sumneko_lua {:settings {:Lua {:diagnostics {:globals globals}
+                                         :runtime     {:version "LuaJIT"}
+                                         :workspace   workspace
+                                         :telemetry   {:enable false}}}})
+
+(mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls)

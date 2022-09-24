@@ -50,10 +50,6 @@
 ;; lsp helpers
 (local configured_ls [])
 
-(let [lsputil (require :lspconfig.util)]
-  (lsputil.add_hook_before lsputil.on_setup
-                           (fn [config] (tset configured_ls config.name true))))
-
 (fn setup_ls [lsp options ignore_if_configured]
   (local ls_options {:on_attach on_attach
                      :capabilities capabilities})
@@ -64,4 +60,5 @@
   (if (. configured_ls lsp)
     (if (not ignore_if_configured)
       (vim.notify (.. lsp " is set up several times") vim.log.levels.WARN))
-    ((. (. (require :lspconfig) lsp) :setup) ls_options)))
+    (do ((. (. (require :lspconfig) lsp) :setup) ls_options)
+        (tset configured_ls lsp true))))
