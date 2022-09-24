@@ -5,7 +5,8 @@
   (use! :lewis6991/impatient.nvim)
 
   ; git
-  (use! :tpope/vim-fugitive)
+  (use! :tpope/vim-fugitive
+        :module :config.fugitive)
 
   (use! :lewis6991/gitsigns.nvim
         :event :BufReadPost
