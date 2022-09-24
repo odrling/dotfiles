@@ -18,4 +18,9 @@
 
 (setup_ls :jdtls {:init_options {:extendedClientCapabilities {:progressReportProvider false}}})
 
+(local globals [])
+(when vim.env.MPV_LUA (table.insert globals :mp))
+(when vim.env.AEGISUB_LUA (table.insert globals :aegisub))
+(setup_ls :sumneko_lua {:Lua {:diagnostics {:globals globals}}})
+
 (mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls :sumneko_lua)
