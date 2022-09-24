@@ -174,5 +174,11 @@
 (set! loadplugins false)
 
 ;; some ridiculous bindings
-(map! [i] :<C-h> "<")
-(map! [i] :<C-l> ">")
+(map! [i] "<C-;>" "<")
+(map! [i] "<C-:>" ">")
+(map! [i] "<C-j>" "(")
+(map! [i] "<C-k>" ")")
+(map! [i] "<C-S-j>" "{")
+(map! [i] "<C-S-k>" "}")
+(map! [i] "<C-h>" "[")
+(map! [i] "<C-l>" "]")
