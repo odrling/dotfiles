@@ -172,3 +172,7 @@
 (augroup! :autoread-hold [[CursorHold] * :checktime])
 
 (set! loadplugins false)
+
+;; some ridiculous bindings
+(map! [i] :<C-h> "<")
+(map! [i] :<C-l> ">")
