@@ -114,6 +114,9 @@
 
   (use! :godlygeek/tabular)
 
+  (use! :gbprod/yanky.nvim
+        :module :config.yanky)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme)
   (use! :joeytwiddle/sexy_scroller.vim
