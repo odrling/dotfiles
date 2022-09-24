@@ -1,10 +1,8 @@
---[[ uosc 3.1.2 - 2022-Aug-25 | https://github.com/tomasklaen/uosc ]]
-local uosc_version = '3.1.2'
+--[[ uosc 4.0.0 - 2022-Sep-24 | https://github.com/tomasklaen/uosc ]]
+local uosc_version = '4.0.0'
 
 function lock_osc(name, value)
-	if value == true then
-		mp.set_property('osc', 'no')
-	end
+	if value == true then mp.set_property('osc', 'no') end
 end
 mp.observe_property('osc', 'bool', lock_osc)
 
@@ -192,8 +190,6 @@ local defaults = {
 	menu_item_height_fullscreen = 50,
 	menu_min_width = 260,
 	menu_min_width_fullscreen = 360,
-	menu_wasd_navigation = false,
-	menu_hjkl_navigation = false,
 	menu_opacity = 1,
 	menu_parent_opacity = 0.4,
 
@@ -391,7 +387,7 @@ end
 
 --[[ STATE ]]
 
-local display = {width = 1280, height = 720, aspect = 1.77778}
+local display = {width = 1280, height = 720, scale_x = 1, scale_y = 1}
 local cursor = {hidden = true, x = 0, y = 0}
 local state = {
 	os = (function()
@@ -436,12 +432,14 @@ local state = {
 	end),
 	mouse_bindings_enabled = false,
 	uncached_ranges = nil,
+	cache = nil,
 	render_delay = config.render_delay,
 	first_real_mouse_move_received = false,
 	playlist_count = 0,
 	playlist_pos = 0,
 	margin_top = 0,
 	margin_bottom = 0,
+	hidpi_scale = 1,
 }
 local thumbnail = {width = 0, height = 0, disabled = false}
 
@@ -1261,13 +1259,11 @@ mp.set_key_bindings({
 --[[ STATE UPDATES ]]
 
 function update_display_dimensions()
-	local dpi_scale = mp.get_property_native('display-hidpi-scale', 1.0)
-	dpi_scale = dpi_scale * options.ui_scale
-
-	local width, height, aspect = mp.get_osd_size()
-	display.width = width / dpi_scale
-	display.height = height / dpi_scale
-	display.aspect = aspect
+	local scale = (state.hidpi_scale or 1) * options.ui_scale
+	local real_width, real_height = mp.get_osd_size()
+	local scaled_width, scaled_height = round(real_width / scale), round(real_height / scale)
+	display.width, display.height = scaled_width, scaled_height
+	display.scale_x, display.scale_y = real_width / scaled_width, real_height / scaled_height
 
 	-- Tell elements about this
 	Elements:trigger('display')
@@ -2066,23 +2062,6 @@ function Menu:enable_key_bindings()
 	self:add_key_binding('right', 'menu-select1', self:create_action('open_selected_item_preselect'))
 	self:add_key_binding('shift+right', 'menu-select-soft1', self:create_action('open_selected_item_soft'))
 	self:add_key_binding('shift+mbtn_left', 'menu-select-soft', self:create_action('open_selected_item_soft'))
-
-	if options.menu_wasd_navigation then
-		self:add_key_binding('w', 'menu-prev2', self:create_action('prev'), 'repeatable')
-		self:add_key_binding('a', 'menu-back2', self:create_action('back'))
-		self:add_key_binding('s', 'menu-next2', self:create_action('next'), 'repeatable')
-		self:add_key_binding('d', 'menu-select2', self:create_action('open_selected_item_preselect'))
-		self:add_key_binding('shift+d', 'menu-select-soft2', self:create_action('open_selected_item_soft'))
-	end
-
-	if options.menu_hjkl_navigation then
-		self:add_key_binding('h', 'menu-back3', self:create_action('back'))
-		self:add_key_binding('j', 'menu-next3', self:create_action('next'), 'repeatable')
-		self:add_key_binding('k', 'menu-prev3', self:create_action('prev'), 'repeatable')
-		self:add_key_binding('l', 'menu-select3', self:create_action('open_selected_item_preselect'))
-		self:add_key_binding('shift+l', 'menu-select-soft3', self:create_action('open_selected_item_soft'))
-	end
-
 	self:add_key_binding('mbtn_back', 'menu-back-alt3', self:create_action('back'))
 	self:add_key_binding('bs', 'menu-back-alt4', self:create_action('back'))
 	self:add_key_binding('enter', 'menu-select-alt3', self:create_action('open_selected_item_preselect'))
@@ -2618,7 +2597,7 @@ function WindowBorder:render()
 		local ass = assdraw.ass_new()
 		local clip = '\\iclip(' .. self.size .. ',' .. self.size .. ',' ..
 			(display.width - self.size) .. ',' .. (display.height - self.size) .. ')'
-		ass:rect(0, 0, display.width, display.height, {
+		ass:rect(0, 0, display.width + 1, display.height + 1, {
 			color = options.background, clip = clip, opacity = options.window_border_opacity,
 		})
 		return ass
@@ -2971,16 +2950,17 @@ function Timeline:render()
 
 		-- Thumbnail
 		if not thumbnail.disabled and thumbnail.width ~= 0 and thumbnail.height ~= 0 then
-			local scale = options.ui_scale * state.hidpi_scale
-			local border, margin_x, margin_y = 2, 10, 5
-			local thumb_x_margin, thumb_y_margin = (border + margin_x) * scale, (border + margin_y) * scale
+			local scale_x, scale_y = display.scale_x, display.scale_y
+			local border, margin_x, margin_y = math.ceil(2 * scale_x), round(10 * scale_x), round(5 * scale_y)
+			local thumb_x_margin, thumb_y_margin = border + margin_x, border + margin_y
+			local thumb_width, thumb_height = thumbnail.width, thumbnail.height
 			local thumb_x = round(clamp(
-				thumb_x_margin, cursor.x * scale - thumbnail.width / 2,
-				display.width * scale - thumbnail.width - thumb_x_margin
+				thumb_x_margin, cursor.x * scale_x - thumb_width / 2,
+				display.width * scale_x - thumb_width - thumb_x_margin
 			))
-			local thumb_y = round(tooltip_anchor.ay * scale - thumb_y_margin - thumbnail.height)
-			local ax, ay = thumb_x / scale - border, thumb_y / scale - border
-			local bx, by = (thumb_x + thumbnail.width) / scale + border, (thumb_y + thumbnail.height) / scale + border
+			local thumb_y = round(tooltip_anchor.ay * scale_y - thumb_y_margin - thumb_height)
+			local ax, ay = (thumb_x - border) / scale_x, (thumb_y - border) / scale_y
+			local bx, by = (thumb_x + thumb_width + border) / scale_x, (thumb_y + thumb_height + border) / scale_y
 			ass:rect(ax, ay, bx, by, {
 				color = options.foreground, border = 1, border_color = options.background, radius = 3, opacity = 0.8,
 			})
@@ -4081,12 +4061,9 @@ function update_cursor_position()
 		end
 	end
 
-	local dpi_scale = mp.get_property_native('display-hidpi-scale', 1.0)
-	dpi_scale = dpi_scale * options.ui_scale
-
 	-- add 0.5 to be in the middle of the pixel
-	cursor.x = (cursor.x + 0.5) / dpi_scale
-	cursor.y = (cursor.y + 0.5) / dpi_scale
+	cursor.x = (cursor.x + 0.5) / display.scale_x
+	cursor.y = (cursor.y + 0.5) / display.scale_y
 
 	Elements:update_proximities()
 	request_render()
@@ -4301,19 +4278,24 @@ mp.observe_property('osd-dimensions', 'native', function(name, val)
 	request_render()
 end)
 mp.observe_property('display-hidpi-scale', 'native', create_state_setter('hidpi_scale', update_display_dimensions))
+mp.observe_property('cache', 'native', create_state_setter('cache'))
 mp.observe_property('demuxer-via-network', 'native', create_state_setter('is_stream', function()
 	Elements:trigger('dispositions')
 end))
-mp.observe_property('cache-buffering-state', 'native', function(_, buffering_state)
-	if buffering_state and buffering_state == 0 and not state.uncached_ranges and state.duration then
-		set_state('uncached_ranges', {{0, state.duration}})
-	end
-end)
 mp.observe_property('demuxer-cache-state', 'native', function(prop, cache_state)
-	local cached_ranges = cache_state and cache_state['seekable-ranges'] or {}
+	local cached_ranges, bof, eof = nil, nil, nil
+	if cache_state then
+		cached_ranges, bof, eof = cache_state['seekable-ranges'], cache_state['bof-cached'], cache_state['eof-cached']
+	else cached_ranges = {} end
+
+
 	local uncached_ranges = nil
 
-	if not state.duration or #cached_ranges == 0 then return end
+	if not (state.duration and (#cached_ranges > 0 or state.cache == 'yes' or
+	                            (state.cache == 'auto' and state.is_stream))) then
+		if state.uncached_ranges then set_state('uncached_ranges', nil) end
+		return
+	end
 
 	-- Normalize
 	local ranges = {}
@@ -4324,6 +4306,8 @@ mp.observe_property('demuxer-cache-state', 'native', function(prop, cache_state)
 		}
 	end
 	table.sort(ranges, function(a, b) return a[1] < b[1] end)
+	if bof then ranges[1][1] = 0 end
+	if eof then ranges[#ranges][2] = state.duration end
 	-- Invert cached ranges into uncached ranges, as that's what we're rendering
 	local inverted_ranges = {{0, state.duration}}
 	for _, cached in pairs(ranges) do
