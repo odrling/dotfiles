@@ -2,3 +2,5 @@
 git pull --rebase
 echo updating submodules
 git submodule update --recursive --remote
+echo updating nvim
+vi +q
