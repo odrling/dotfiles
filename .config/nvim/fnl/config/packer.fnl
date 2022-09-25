@@ -56,7 +56,7 @@
         :module :config.lsp_signature)
 
   (use! :windwp/nvim-autopairs
-        :config #(setup :nvim-autopairs {}))
+        :module :config.autopairs)
 
   (use! "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
         :module :config.lsp_lines)
