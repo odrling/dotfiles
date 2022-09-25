@@ -1,3 +1,3 @@
 (import-macros {: setup} :macros)
 
-(setup :autopairs {:disable_in_macro true})
+(setup :nvim-autopairs {:disable_in_macro true})
