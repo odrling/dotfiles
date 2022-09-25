@@ -1,5 +1,5 @@
 #!/bin/sh -e
-git pull --rebase
+git pull --ff-only
 
 echo updating submodules
 git submodule update --recursive --remote
