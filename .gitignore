@@ -1,4 +1,8 @@
 /*
 
 !/patches
+!/repos.conf
+/repos.conf/crossdev.conf
 !/.gitignore
+
+*~
