@@ -8,3 +8,6 @@ dots fetch origin master
 [ -f "$HOME/.zshrc" ] && mv -vi "$HOME/.zshrc" "$HOME/.zshrc.local"
 dots checkout -b master --track origin/master
 dots submodule update --init --recursive --remote
+
+pip install --user pipx
+pipx install git+https://git.odrling.xyz/odrling/hikari_uploader
