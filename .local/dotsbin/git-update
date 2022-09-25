@@ -7,5 +7,5 @@ git submodule update --recursive --remote
 echo updating nvim
 vi +q
 
-echo update pipx modules
-pipx upgrade-all
+echo update hikari
+pipx upgrade hikari
