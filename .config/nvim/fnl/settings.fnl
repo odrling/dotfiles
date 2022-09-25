@@ -182,3 +182,12 @@
 (map! [i] "<C-S-k>" "}")
 (map! [i] "<C-h>" "[")
 (map! [i] "<C-l>" "]")
+
+(lambda replace_search [scope]
+    (let [pattern (vim.fn.getreg :/)] 
+         (if pattern
+             (.. ":" scope "s/" pattern "//g<left><left>")
+             nil)))
+
+(map! [n :expr] "<C-r>" #(replace_search "%"))
+(map! [v :expr] "<C-r>" #(replace_search ""))
