@@ -162,3 +162,6 @@ Cache
 # git config
 !.gitignore
 !/.config/git
+
+# Xmodmap
+!/.config/Xmodmap

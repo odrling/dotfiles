@@ -18,6 +18,8 @@ unclutter --ignore-scrolling -b
 # map left control to escape
 xcape -e 'Control_L=Escape' &
 
+xmodmap ~/.config/Xmodmap
+
 [ -e "$HOME/.xinitrc.local" ] && . "$HOME/.xinitrc.local"
 
 # keyboard layout
