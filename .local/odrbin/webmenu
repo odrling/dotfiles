@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dmenu_args="-x $@"
+dmenu_args="$@"
 
 urlencode () {
     python -c "from urllib.parse import quote_plus; print(quote_plus('$1'))"
@@ -21,7 +21,7 @@ handle () {
         if printf "$choice" | grep -e '^[A-Za-z\.]\+\.[A-Za-z]\+$'; then
             $BROWSER "https://$choice"
         else
-            $BROWSER "https://duckduckgo.com/?q=$(urlencode "$choice")"
+            $BROWSER "https://akira.butaishoujo.moe/search?q=$(urlencode "$choice")"
         fi
     fi
 }
