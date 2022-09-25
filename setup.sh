@@ -7,4 +7,4 @@ dots fetch origin master
 [ -f "$HOME/.profile" ] && mv -vi "$HOME/.profile" "$HOME/.profile.local"
 [ -f "$HOME/.zshrc" ] && mv -vi "$HOME/.zshrc" "$HOME/.zshrc.local"
 dots checkout -b master --track origin/master
-dots submodule update --init --recursive
+dots submodule update --init --recursive --remote
