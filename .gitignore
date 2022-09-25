@@ -165,3 +165,6 @@ Cache
 
 # Xmodmap
 !/.config/Xmodmap
+
+# dotsbin
+!/.local/dotsbin
