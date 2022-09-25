@@ -48,3 +48,7 @@
 	defaultBranch = master
 [url "ssh://git@github.com/"]
     pushInsteadOf = https://github.com/
+[url "ssh://git@git.odrling.xyz/"]
+    pushInsteadOf = https://git.odrling.xyz/
+[url "ssh://git@codeberg.org/"]
+    pushInsteadOf = https://codeberg.org/
