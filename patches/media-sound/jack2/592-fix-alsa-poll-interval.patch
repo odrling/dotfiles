@@ -1,0 +1,52 @@
+From 4418493e34d5b00377b0b252f486f0dd58869aa1 Mon Sep 17 00:00:00 2001
+From: Adam Miartus <external.Adam.Miartus@de.bosch.com>
+Date: Tue, 18 Feb 2020 15:14:01 +0100
+Subject: [PATCH] alsa: fix the poll interval
+
+should be set in milliseconds
+
+Signed-off-by: Adam Miartus <external.Adam.Miartus@de.bosch.com>
+(cherry picked from commit 17031895ded6a1d53a3b851059134d11f12c9ce6)
+Signed-off-by: Timo Wischer <twischer@de.adit-jv.com>
+
+Change-Id: I3d32e4602c1bdf15474b14496173727aa130c924
+---
+ linux/alsa/alsa_driver.c | 4 ++--
+ linux/alsa/alsa_driver.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/linux/alsa/alsa_driver.c b/linux/alsa/alsa_driver.c
+index 9573001a..35af5bac 100644
+--- a/linux/alsa/alsa_driver.c
++++ b/linux/alsa/alsa_driver.c
+@@ -900,7 +900,7 @@ alsa_driver_set_parameters (alsa_driver_t *driver,
+ 	driver->period_usecs =
+ 		(jack_time_t) floor ((((float) driver->frames_per_cycle) /
+ 				      driver->frame_rate) * 1000000.0f);
+-	driver->poll_timeout = (int) floor (1.5f * driver->period_usecs);
++	driver->poll_timeout_ms = (int) floor (1.5f * (driver->period_usecs / 1000.0f));
+ 
+ // JACK2
+ /*
+@@ -1362,7 +1362,7 @@ alsa_driver_wait (alsa_driver_t *driver, int extra_fd, int *status, float
+ #ifdef __ANDROID__
+ 		poll_result = poll (driver->pfd, nfds, -1);  //fix for sleep issue
+ #else
+-		poll_result = poll (driver->pfd, nfds, driver->poll_timeout);
++		poll_result = poll (driver->pfd, nfds, driver->poll_timeout_ms);
+ #endif
+ 		if (poll_result < 0) {
+ 
+diff --git a/linux/alsa/alsa_driver.h b/linux/alsa/alsa_driver.h
+index efe93de5..f01c08ea 100644
+--- a/linux/alsa/alsa_driver.h
++++ b/linux/alsa/alsa_driver.h
+@@ -58,7 +58,7 @@ typedef struct _alsa_driver {
+ 
+     JACK_DRIVER_NT_DECL
+ 
+-    int                           poll_timeout;
++    int                           poll_timeout_ms;
+     jack_time_t                   poll_last;
+     jack_time_t                   poll_next;
+     char                        **playback_addr;

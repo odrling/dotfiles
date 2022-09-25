@@ -1,0 +1,18 @@
+ Makefile | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git i/Makefile w/Makefile
+index b0288b4d..0d6ddd2b 100644
+--- i/Makefile
++++ w/Makefile
+@@ -112,7 +112,9 @@ endif
+ 
+ INSTALL_DEP= src/luajit
+ 
+-default all $(INSTALL_DEP):
++default: amalg
++
++all $(INSTALL_DEP):
+ 	@echo "==== Building LuaJIT $(VERSION) ===="
+ 	$(MAKE) -C src
+ 	@echo "==== Successfully built LuaJIT $(VERSION) ===="

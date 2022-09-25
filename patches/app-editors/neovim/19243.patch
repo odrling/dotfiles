@@ -1,0 +1,762 @@
+From 9a455561664e514b03369ba03ab16b8e1766511e Mon Sep 17 00:00:00 2001
+From: Luuk van Baal <luukvbaal@gmail.com>
+Date: Sat, 24 Sep 2022 01:11:24 +0200
+Subject: [PATCH] feat(window/ui): add splitscroll option
+
+---
+ runtime/doc/options.txt                  |  12 ++
+ runtime/doc/quickref.txt                 |   1 +
+ runtime/optwin.vim                       |   2 +
+ src/nvim/buffer_defs.h                   |   2 +
+ src/nvim/ex_getln.c                      |   2 +
+ src/nvim/globals.h                       |   6 +
+ src/nvim/main.c                          |   1 +
+ src/nvim/move.c                          |   4 +-
+ src/nvim/option_defs.h                   |   1 +
+ src/nvim/options.lua                     |   7 +
+ src/nvim/testdir/test_window_cmd.vim     | 210 +++++++++++++++++++++++
+ src/nvim/window.c                        | 142 ++++++++++++++-
+ test/functional/ui/screen_basic_spec.lua |  66 +++++++
+ 13 files changed, 448 insertions(+), 8 deletions(-)
+
+diff --git a/runtime/doc/options.txt b/runtime/doc/options.txt
+index 14b7eb2d7161..d04bb923bd9a 100644
+--- a/runtime/doc/options.txt
++++ b/runtime/doc/options.txt
+@@ -5961,6 +5961,18 @@ A jump table for the options with a short description can be found at |Q_op|.
+ 	When on, splitting a window will put the new window right of the
+ 	current one. |:vsplit|
+ 
++			*'splitscroll'* *'spsc'* *'nosplitscroll'* *'nospsc'*
++'splitscroll' 'spsc'	boolean	(default on)
++			global
++	The value of this option determines the scroll behavior when opening,
++	closing or resizing horizontal splits. When "on", splitting a window
++	horizontally will keep the same relative cursor position in the old and
++	new window, as well windows that are resized. When "off", scrolling
++	will be avoided to stabilize the window content. Instead, the cursor
++	position will be changed when necessary. In this case, the jumplist
++	will be populated with the previous cursor position. Scrolling cannot
++	be guaranteed to be avoided when 'wrap' is enabled.
++
+ 			   *'startofline'* *'sol'* *'nostartofline'* *'nosol'*
+ 'startofline' 'sol'	boolean	(default off)
+ 			global
+diff --git a/runtime/doc/quickref.txt b/runtime/doc/quickref.txt
+index 9f3993506a82..987ac2ff46b0 100644
+--- a/runtime/doc/quickref.txt
++++ b/runtime/doc/quickref.txt
+@@ -877,6 +877,7 @@ Short explanation of each option:		*option-list*
+ 'spellsuggest'	  'sps'     method(s) used to suggest spelling corrections
+ 'splitbelow'	  'sb'	    new window from split is below the current one
+ 'splitright'	  'spr'     new window is put right of the current one
++'splitscroll'	  'spsc'    determines scroll behavior for split windows
+ 'startofline'	  'sol'     commands move cursor to first non-blank in line
+ 'statusline'	  'stl'     custom format for the status line
+ 'suffixes'	  'su'	    suffixes that are ignored with multiple match
+diff --git a/runtime/optwin.vim b/runtime/optwin.vim
+index 9e2a616f8093..b88dc11d3970 100644
+--- a/runtime/optwin.vim
++++ b/runtime/optwin.vim
+@@ -513,6 +513,8 @@ call append("$", "splitbelow\ta new window is put below the current one")
+ call <SID>BinOptionG("sb", &sb)
+ call append("$", "splitright\ta new window is put right of the current one")
+ call <SID>BinOptionG("spr", &spr)
++call append("$", "splitscroll\ta determines scroll behavior for split windows")
++call <SID>BinOptionG("spsc", &spsc)
+ call append("$", "scrollbind\tthis window scrolls together with other bound windows")
+ call append("$", "\t(local to window)")
+ call <SID>BinOptionL("scb")
+diff --git a/src/nvim/buffer_defs.h b/src/nvim/buffer_defs.h
+index 3019a1323c5c..8f7036aab779 100644
+--- a/src/nvim/buffer_defs.h
++++ b/src/nvim/buffer_defs.h
+@@ -1205,6 +1205,8 @@ struct window_S {
+   int w_winrow;                     // first row of window in screen
+   int w_height;                     // number of rows in window, excluding
+                                     // status/command line(s)
++  int w_prev_winrow;                // previous winrow used for 'splitscroll'
++  int w_prev_height;                // previous height used for 'splitscroll'
+   int w_status_height;              // number of status lines (0 or 1)
+   int w_winbar_height;              // number of window bars (0 or 1)
+   int w_wincol;                     // Leftmost column of window in screen.
+diff --git a/src/nvim/ex_getln.c b/src/nvim/ex_getln.c
+index 2a91e9c6721e..8b6e705bcba2 100644
+--- a/src/nvim/ex_getln.c
++++ b/src/nvim/ex_getln.c
+@@ -4346,6 +4346,7 @@ static int open_cmdwin(void)
+     // First go back to the original window.
+     wp = curwin;
+     set_bufref(&bufref, curbuf);
++    skip_win_fix_cursor = true;
+     win_goto(old_curwin);
+ 
+     // win_goto() may trigger an autocommand that already closes the
+@@ -4362,6 +4363,7 @@ static int open_cmdwin(void)
+ 
+     // Restore window sizes.
+     win_size_restore(&winsizes);
++    skip_win_fix_cursor = false;
+   }
+ 
+   ga_clear(&winsizes);
+diff --git a/src/nvim/globals.h b/src/nvim/globals.h
+index 578ed478c6c7..dc2cb9e9034e 100644
+--- a/src/nvim/globals.h
++++ b/src/nvim/globals.h
+@@ -1071,4 +1071,10 @@ EXTERN char windowsVersion[20] INIT(= { 0 });
+ 
+ EXTERN int exit_need_delay INIT(= 0);
+ 
++// Skip win_fix_cursor() call for 'nosplitscroll' when cmdwin is closed.
++EXTERN bool skip_win_fix_cursor INIT(= false);
++// Skip win_fix_scroll() call for 'nosplitscroll' when closing tab page.
++EXTERN bool skip_win_fix_scroll INIT(= false);
++// Skip update_topline() call while executing win_fix_scroll().
++EXTERN bool skip_update_topline INIT(= false);
+ #endif  // NVIM_GLOBALS_H
+diff --git a/src/nvim/main.c b/src/nvim/main.c
+index 1119cee6ad7b..b69b690efba3 100644
+--- a/src/nvim/main.c
++++ b/src/nvim/main.c
+@@ -350,6 +350,7 @@ int main(int argc, char **argv)
+     // prepare screen now, so external UIs can display messages
+     starting = NO_BUFFERS;
+     screenclear();
++    firstwin->w_prev_height = firstwin->w_height;  // may have changed
+     TIME_MSG("init screen for UI");
+   }
+ 
+diff --git a/src/nvim/move.c b/src/nvim/move.c
+index 481746881b6e..01cf9d052a32 100644
+--- a/src/nvim/move.c
++++ b/src/nvim/move.c
+@@ -698,7 +698,9 @@ void curs_columns(win_T *wp, int may_scroll)
+   long siso = get_sidescrolloff_value(wp);
+ 
+   // First make sure that w_topline is valid (after moving the cursor).
+-  update_topline(wp);
++  if (!skip_update_topline) {
++    update_topline(wp);
++  }
+ 
+   // Next make sure that w_cline_row is valid.
+   if (!(wp->w_valid & VALID_CROW)) {
+diff --git a/src/nvim/option_defs.h b/src/nvim/option_defs.h
+index e8cf338cf104..6cf75a02bf89 100644
+--- a/src/nvim/option_defs.h
++++ b/src/nvim/option_defs.h
+@@ -734,6 +734,7 @@ EXTERN char *p_spo;             // 'spelloptions'
+ EXTERN unsigned int spo_flags;
+ EXTERN char *p_sps;             // 'spellsuggest'
+ EXTERN int p_spr;               // 'splitright'
++EXTERN int p_spsc;              // 'splitscroll'
+ EXTERN int p_sol;               // 'startofline'
+ EXTERN char_u *p_su;            // 'suffixes'
+ EXTERN char *p_swb;             // 'switchbuf'
+diff --git a/src/nvim/options.lua b/src/nvim/options.lua
+index aa643eec3687..a5a54ed04e92 100644
+--- a/src/nvim/options.lua
++++ b/src/nvim/options.lua
+@@ -2372,6 +2372,13 @@ return {
+       varname='p_spr',
+       defaults={if_true=false}
+     },
++    {
++      full_name='splitscroll', abbreviation='spsc',
++      short_desc=N_("determines scroll behavior for split windows"),
++      type='bool', scope={'global'},
++      varname='p_spsc',
++      defaults={if_true=true}
++    },
+     {
+       full_name='startofline', abbreviation='sol',
+       short_desc=N_("commands move cursor to first non-blank in line"),
+diff --git a/src/nvim/testdir/test_window_cmd.vim b/src/nvim/testdir/test_window_cmd.vim
+index b64f44360bf2..38dee8eca948 100644
+--- a/src/nvim/testdir/test_window_cmd.vim
++++ b/src/nvim/testdir/test_window_cmd.vim
+@@ -1,4 +1,5 @@
+ " Tests for window cmd (:wincmd, :split, :vsplit, :resize and etc...)
++source check.vim
+ 
+ func Test_window_cmd_ls0_with_split()
+   set ls=0
+@@ -1486,5 +1487,214 @@ func Test_win_equal_last_status()
+   set laststatus&
+ endfunc
+ 
++" Ensure no scrolling happens with 'nosplitscroll' for a sequence of
++" split operations for various options: with and without a winbar,
++" tabline, for each possible value of 'laststatus', 'scrolloff',
++" 'equalalways', and regardless of the cursor position.
++func Test_nosplitscroll_options()
++  set nowrap
++  set nosplitscroll
++  let gui = has("gui_running")
++  inoremap <expr> c "<cmd>copen<bar>wincmd k<CR>"
++  for run in range(0, 10)
++    tabnew | tabonly! | redraw
++    let tabline = (gui ? 0 : ((run % 5) ? 1 : 0))
++    execute 'set scrolloff=' . (!(run % 4) ? 0 : run)
++    execute 'set laststatus=' . (run % 3)
++    execute 'set ' . ((run % 2) ? 'equalalways' : 'noequalalways')
++    execute 'set ' . ((run % 3) ? 'splitbelow' : 'nosplitbelow')
++    execute (run % 5) ? 'tabnew' : ''
++    "execute (run % 2) ? 'nnoremenu 1.10 WinBar.Test :echo' : ''
++    execute 'set winbar=' . (run % 2) ? '%f' : ''
++    let pos = !(run % 3) ? 'H' : ((run % 2) ? 'M' : 'L')
++    call setline(1, range(1, 256))
++    " No scroll for restore_snapshot
++    norm G
++    try
++      copen | close | colder
++    catch /E380/
++    endtry
++    call assert_equal(257 - winheight(0), line("w0"))
++
++    " No scroll for firstwin horizontal split
++    execute 'norm gg' . pos
++    split | redraw | wincmd k
++    call assert_equal(1, line("w0"))
++    call assert_equal(&scroll, winheight(0) / 2)
++    wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++
++    " No scroll when resizing windows
++    wincmd k | resize +2
++    call assert_equal(1, line("w0"))
++    wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++
++    " No scroll when dragging statusline
++    call win_move_statusline(1, -3)
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++    wincmd k
++    call assert_equal(1, line("w0"))
++
++    " No scroll when changing shellsize
++    set lines+=2
++    call assert_equal(1, line("w0"))
++    wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++    set lines-=2
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++    wincmd k
++    call assert_equal(1, line("w0"))
++
++    " No scroll when equalizing windows
++    wincmd =
++    call assert_equal(1, line("w0"))
++    wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++    wincmd k
++    call assert_equal(1, line("w0"))
++
++    " No scroll in windows split multiple times
++    vsplit | split | 4wincmd w
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++    1wincmd w | quit | wincmd l | split
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++    wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++
++    " No scroll in small window
++    2wincmd w | only | 5split | wincmd k
++    call assert_equal(1, line("w0"))
++    wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++
++    " No scroll for vertical split
++    quit | vsplit | wincmd l
++    call assert_equal(1, line("w0"))
++    wincmd h
++    call assert_equal(1, line("w0"))
++
++    " No scroll in windows split and quit multiple times
++    quit | redraw | split | redraw | split | redraw | quit | redraw
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++
++    " No scroll for new buffer
++    1wincmd w | only | copen | wincmd k
++    call assert_equal(1, line("w0"))
++    only
++    call assert_equal(1, line("w0"))
++    above copen | wincmd j
++    call assert_equal(win_screenpos(0)[0] - tabline, line("w0"))
++
++    " No scroll when opening cmdwin, and no cursor move when closing cmdwin.
++    only | norm ggL
++    let curpos = getcurpos()
++    norm q:
++    call assert_equal(1, line("w0"))
++    call assert_equal(curpos, getcurpos())
++
++    " Scroll when cursor becomes invalid in insert mode
++    norm Lic
++    call assert_equal(curpos, getcurpos())
++
++    " No scroll when topline not equal to 1
++    only | execute "norm gg5\<C-e>" | split | wincmd k
++    call assert_equal(6, line("w0"))
++    wincmd j
++    call assert_equal(5 + win_screenpos(0)[0] - tabline, line("w0"))
++  endfor
++
++  tabnew | tabonly! | %bwipeout!
++  iunmap c
++  set wrap&
++  set scrolloff&
++  set splitbelow&
++  set laststatus&
++  set equalalways&
++  set splitscroll&
++endfunc
++
++function Test_nosplitscroll_cmdwin_cursor_position()
++  set nosplitscroll
++  call setline(1, range(&lines))
++
++  " No scroll when cursor is at near bottom of window and cusor position
++  " recompution (done by line('w0') in this test) happens while in cmdwin.
++  normal! G
++  let firstline = line('w0')
++  autocmd CmdwinEnter * ++once autocmd WinEnter * ++once call line('w0')
++  execute "normal! q:\<C-w>q"
++  redraw!
++  call assert_equal(firstline, line('w0'))
++
++  " User script can change cursor position successfully while in cmdwin and it
++  " shouldn't be changed when closing cmdwin.
++  execute "normal! Gq:\<Cmd>call win_execute(winnr('#')->win_getid(), 'call cursor(1, 1)')\<CR>\<C-w>q"
++  call assert_equal(1, line('.'))
++  call assert_equal(1, col('.'))
++
++  execute "normal! Gq:\<Cmd>autocmd WinEnter * ++once call cursor(1, 1)\<CR>\<C-w>q"
++  call assert_equal(1, line('.'))
++  call assert_equal(1, col('.'))
++
++  %bwipeout!
++  set splitscroll&
++endfunction
++
++function Test_nosplitscroll_misc()
++  set nosplitscroll
++  set splitbelow
++
++  call setline(1, range(1, &lines))
++  norm Gzz
++  let top = line('w0')
++  " No scroll when aucmd_win is opened
++  call setbufvar(bufnr("test", 1) , '&buftype', 'nofile')
++  call assert_equal(top, line('w0'))
++  " No scroll when tab is changed/closed
++  tab help | close
++  call assert_equal(top, line('w0'))
++  " No scroll when help is closed and buffer line count < window height
++  norm ggdG
++  call setline(1, range(1, &lines - 10))
++  norm G
++  let top = line('w0')
++  help | quit
++  call assert_equal(top, line('w0'))
++
++  %bwipeout!
++  set splitbelow&
++  set splitscroll&
++endfunc
++
++function Test_nosplitscroll_callback()
++  CheckScreendump
++  let lines =<< trim END
++    set nosplitscroll
++    call setline(1, range(&lines))
++    function WincmdCb(a, b)
++      split | wincmd p
++    endfunction
++    function TermCb(a, b)
++      close | split
++    endfunction
++    nnoremap t <cmd>call popup_create(term_start(&shell, { 'hidden': 1, 'exit_cb': 'TermCb' }), {})<CR>
++    nnoremap j <cmd>call job_start([&shell, &shellcmdflag, "echo"], { 'exit_cb': 'WincmdCb' })<CR>
++  END
++  call writefile(lines, 'XTestNosplitscrollCallback', 'D')
++  let buf = RunVimInTerminal('-S XTestNosplitscrollCallback', #{rows: 8})
++
++  call term_sendkeys(buf, "j")
++  call VerifyScreenDump(buf, 'Test_nosplitscroll_callback_1', {})
++
++  call term_sendkeys(buf, ":quit\<CR>Htexit\<CR>")
++  call VerifyScreenDump(buf, 'Test_nosplitscroll_callback_2', {})
++
++  call term_sendkeys(buf, ":set sb\<CR>:quit\<CR>Gj")
++  call VerifyScreenDump(buf, 'Test_nosplitscroll_callback_3', {})
++
++  call term_sendkeys(buf, ":quit\<CR>Gtexit\<CR>")
++  call VerifyScreenDump(buf, 'Test_nosplitscroll_callback_4', {})
++endfunc
+ 
+ " vim: shiftwidth=2 sts=2 expandtab
+diff --git a/src/nvim/window.c b/src/nvim/window.c
+index cc20a5fcec72..0001733b89c8 100644
+--- a/src/nvim/window.c
++++ b/src/nvim/window.c
+@@ -1487,6 +1487,8 @@ int win_split_ins(int size, int flags, win_T *new_wp, int dir)
+   // equalize the window sizes.
+   if (do_equal || dir != 0) {
+     win_equal(wp, true, (flags & WSP_VERT) ? (dir == 'v' ? 'b' : 'h') : (dir == 'h' ? 'b' : 'v'));
++  } else if (!p_spsc && wp != aucmd_win) {
++    win_fix_scroll(false);
+   }
+ 
+   // Don't change the window height/width to 'winheight' / 'winwidth' if a
+@@ -1558,6 +1560,12 @@ static void win_init(win_T *newp, win_T *oldp, int flags)
+   newp->w_prevdir = (oldp->w_prevdir == NULL)
+                     ? NULL : xstrdup(oldp->w_prevdir);
+ 
++  if (!p_spsc) {
++    newp->w_botline = oldp->w_botline;
++    newp->w_prev_height = oldp->w_height;
++    newp->w_prev_winrow = oldp->w_winrow;
++  }
++
+   // copy tagstack and folds
+   for (i = 0; i < oldp->w_tagstacklen; i++) {
+     taggy_T *tag = &newp->w_tagstack[i];
+@@ -2066,6 +2074,9 @@ void win_equal(win_T *next_curwin, bool current, int dir)
+   win_equal_rec(next_curwin == NULL ? curwin : next_curwin, current,
+                 topframe, dir, 0, tabline_height(),
+                 Columns, topframe->fr_height);
++  if (!p_spsc && next_curwin != aucmd_win) {
++    win_fix_scroll(true);
++  }
+ }
+ 
+ /// Set a frame to a new position and height, spreading the available room
+@@ -2866,6 +2877,9 @@ int win_close(win_T *win, bool free_buf, bool force)
+       win_equal(curwin, curwin->w_frame->fr_parent == win_frame, dir);
+     } else {
+       (void)win_comp_pos();
++      if (!p_spsc) {
++        win_fix_scroll(false);
++      }
+     }
+   }
+ 
+@@ -3949,6 +3963,7 @@ static void new_frame(win_T *wp)
+ void win_init_size(void)
+ {
+   firstwin->w_height = (int)ROWS_AVAIL;
++  firstwin->w_prev_height = (int)ROWS_AVAIL;
+   firstwin->w_height_inner = firstwin->w_height - firstwin->w_winbar_height;
+   firstwin->w_height_outer = firstwin->w_height;
+   firstwin->w_winrow_off = firstwin->w_winbar_height;
+@@ -4055,6 +4070,7 @@ int win_new_tabpage(int after, char_u *filename)
+ 
+     win_init_size();
+     firstwin->w_winrow = tabline_height();
++    firstwin->w_prev_winrow = firstwin->w_winrow;
+     win_comp_scroll(curwin);
+ 
+     newtp->tp_topframe = topframe;
+@@ -4412,6 +4428,7 @@ void goto_tabpage_tp(tabpage_T *tp, bool trigger_enter_autocmds, bool trigger_le
+   // Don't repeat a message in another tab page.
+   set_keep_msg(NULL, 0);
+ 
++  skip_win_fix_scroll = true;
+   if (tp != curtab && leave_tabpage(tp->tp_curwin->w_buffer,
+                                     trigger_leave_autocmds) == OK) {
+     if (valid_tabpage(tp)) {
+@@ -4422,6 +4439,7 @@ void goto_tabpage_tp(tabpage_T *tp, bool trigger_enter_autocmds, bool trigger_le
+                     trigger_leave_autocmds);
+     }
+   }
++  skip_win_fix_scroll = false;
+ }
+ 
+ /// Go to the last accessed tab page, if there is one.
+@@ -4752,7 +4770,9 @@ static void win_enter_ext(win_T *const wp, const int flags)
+ 
+   // Might need to scroll the old window before switching, e.g., when the
+   // cursor was moved.
+-  update_topline(curwin);
++  if (p_spsc) {
++    update_topline(curwin);
++  }
+ 
+   // may have to copy the buffer options when 'cpo' contains 'S'
+   if (wp->w_buffer != curbuf) {
+@@ -4769,7 +4789,11 @@ static void win_enter_ext(win_T *const wp, const int flags)
+   if (!virtual_active()) {
+     curwin->w_cursor.coladd = 0;
+   }
+-  changed_line_abv_curs();      // assume cursor position needs updating
++  if (p_spsc) {
++    changed_line_abv_curs();      // assume cursor position needs updating
++  } else {
++    win_fix_cursor(true);
++  }
+ 
+   fix_current_dir();
+ 
+@@ -5244,6 +5268,10 @@ void win_new_screen_rows(void)
+   win_reconfig_floats();  // The size of floats might change
+   compute_cmdrow();
+   curtab->tp_ch_used = p_ch;
++
++  if (!p_spsc && !skip_win_fix_scroll) {
++    win_fix_scroll(true);
++  }
+ }
+ 
+ /// Called from win_new_screensize() after Columns changed.
+@@ -5441,6 +5469,11 @@ void win_setheight_win(int height, win_T *win)
+     curtab->tp_ch_used = p_ch;
+     msg_row = row;
+     msg_col = 0;
++
++    if (!p_spsc) {
++      win_fix_scroll(true);
++    }
++
+     redraw_all_later(UPD_NOT_VALID);
+     redraw_cmdline = true;
+   }
+@@ -5927,6 +5960,11 @@ void win_drag_status_line(win_T *dragwin, int offset)
+   cmdline_row = row;
+   p_ch = MAX(Rows - cmdline_row, p_ch_was_zero ? 0 : 1);
+   curtab->tp_ch_used = p_ch;
++
++  if (!p_spsc) {
++    win_fix_scroll(true);
++  }
++
+   redraw_all_later(UPD_SOME_VALID);
+   showmode();
+ }
+@@ -6049,6 +6087,91 @@ void set_fraction(win_T *wp)
+   }
+ }
+ 
++// Handle scroll position for 'nosplitscroll'.  Replaces scroll_to_fraction()
++// call from win_set_inner_size().  Instead we iterate over all windows in a
++// tabpage and calculate the new scroll/cursor position.
++// TODO(luukvbaal): Ensure this also works with wrapped lines.
++// Requires topline to be able to be set to a bufferline with some
++// offset(row-wise scrolling/smoothscroll).
++void win_fix_scroll(int resize)
++{
++  linenr_T lnum;
++
++  skip_update_topline = true;  // avoid scrolling in curs_columns()
++  FOR_ALL_WINDOWS_IN_TAB(wp, curtab) {
++    // Skip when window height has not changed or when floating.
++    if (!wp->w_floating && wp->w_height != wp->w_prev_height) {
++      // Determine botline needed to avoid scrolling and set cursor.
++      if (wp->w_winrow != wp->w_prev_winrow) {
++        lnum = wp->w_cursor.lnum;
++        wp->w_cursor.lnum = MIN(wp->w_buffer->b_ml.ml_line_count,
++                                wp->w_botline - 1 + (wp->w_winrow - wp->w_prev_winrow)
++                                + (wp->w_height - wp->w_prev_height));
++        // Bring the new cursor position to the bottom of the screen.
++        wp->w_fraction = FRACTION_MULT;
++        scroll_to_fraction(wp, wp->w_prev_height);
++        wp->w_cursor.lnum = lnum;
++      } else if (wp == curwin) {
++        wp->w_valid &= ~VALID_CROW;
++      }
++      invalidate_botline_win(wp);
++      validate_botline(wp);
++    }
++    win_comp_scroll(wp);
++    wp->w_prev_height = wp->w_height;
++    wp->w_prev_winrow = wp->w_winrow;
++  }
++  skip_update_topline = false;
++  // Ensure cursor is valid when not in normal mode or when resized.
++  if (!(get_real_state() & (MODE_NORMAL|MODE_CMDLINE|MODE_TERMINAL))) {
++    win_fix_cursor(false);
++  } else if (resize) {
++    win_fix_cursor(true);
++  }
++}
++
++// Make sure the cursor position is valid for 'nosplitscroll'.
++// If it is not, put the cursor position in the jumplist and move it.
++// If we are not in normal mode, scroll to make valid instead.
++static void win_fix_cursor(int normal)
++{
++  win_T *wp = curwin;
++  long so = get_scrolloff_value(wp);
++  linenr_T nlnum = 0;
++
++  if (wp->w_buffer->b_ml.ml_line_count < wp->w_height
++      || skip_win_fix_cursor) {
++    return;
++  }
++
++  so = MIN(wp->w_height_inner / 2, so);
++  // Check if cursor position is above topline or below botline.
++  if (wp->w_cursor.lnum < (wp->w_topline + so) && wp->w_topline != 1) {
++    nlnum = MIN((linenr_T)(wp->w_topline + so),
++                wp->w_buffer->b_ml.ml_line_count);
++  } else if (wp->w_cursor.lnum > (wp->w_botline - so - 1)
++             && (wp->w_botline - wp->w_buffer->b_ml.ml_line_count) != 1) {
++    nlnum = MAX((linenr_T)(wp->w_botline - so - 1), 1);
++  }
++  // If cursor was invalid scroll or change cursor.
++  if (nlnum) {
++    if (normal) {  // Make sure cursor is closer to topline than botline.
++      if (so == wp->w_height_inner / 2
++          && nlnum - wp->w_topline > wp->w_botline - 1 - nlnum) {
++        nlnum--;
++      }
++      setmark('\'');              // save cursor position
++      wp->w_cursor.lnum = nlnum;  // change to avoid scrolling
++      curs_columns(wp, true);     // validate w_wrow
++    } else {  // Ensure cursor stays visible if we are not in normal mode.
++      // Make sure cursor is closer to topline than botline.
++      wp->w_fraction = (int)(0.5 * FRACTION_MULT);
++      scroll_to_fraction(wp, wp->w_prev_height);
++      validate_botline(curwin);
++    }
++  }
++}
++
+ // Set the height of a window.
+ // "height" excludes any window toolbar.
+ // This takes care of the things inside the window, not what happens to the
+@@ -6157,7 +6280,7 @@ void scroll_to_fraction(win_T *wp, int prev_height)
+   }
+ 
+   if (wp == curwin) {
+-    if (get_scrolloff_value(wp)) {
++    if (p_spsc && get_scrolloff_value(wp)) {
+       update_topline(wp);
+     }
+     curs_columns(wp, false);        // validate w_wrow
+@@ -6187,7 +6310,7 @@ void win_set_inner_size(win_T *wp, bool valid_cursor)
+ 
+   if (height != prev_height) {
+     if (height > 0 && valid_cursor) {
+-      if (wp == curwin) {
++      if (wp == curwin && p_spsc) {
+         // w_wrow needs to be valid. When setting 'laststatus' this may
+         // call win_new_height() recursively.
+         validate_cursor();
+@@ -6204,7 +6327,7 @@ void win_set_inner_size(win_T *wp, bool valid_cursor)
+ 
+     // There is no point in adjusting the scroll position when exiting.  Some
+     // values might be invalid.
+-    if (!exiting && valid_cursor) {
++    if (!exiting && valid_cursor && p_spsc) {
+       scroll_to_fraction(wp, prev_height);
+     }
+     redraw_later(wp, UPD_SOME_VALID);
+@@ -6213,7 +6336,8 @@ void win_set_inner_size(win_T *wp, bool valid_cursor)
+   if (width != wp->w_width_inner) {
+     wp->w_width_inner = width;
+     wp->w_lines_valid = 0;
+-    if (valid_cursor) {
++    // Handled in win_fix_scroll()
++    if (valid_cursor && p_spsc) {
+       changed_line_abv_curs_win(wp);
+       invalidate_botline_win(wp);
+       if (wp == curwin) {
+@@ -6258,7 +6382,7 @@ void win_comp_scroll(win_T *wp)
+ {
+   const long old_w_p_scr = wp->w_p_scr;
+ 
+-  wp->w_p_scr = wp->w_height / 2;
++  wp->w_p_scr = wp->w_height_inner / 2;
+   if (wp->w_p_scr == 0) {
+     wp->w_p_scr = 1;
+   }
+@@ -6609,6 +6733,10 @@ static void last_status_rec(frame_T *fr, bool statusline, bool is_stl_global)
+         }
+         comp_col();
+       }
++      // Set prev_height when difference is due to 'laststatus'.
++      if (abs(wp->w_height - wp->w_prev_height) == 1) {
++        wp->w_prev_height = wp->w_height;
++      }
+     } else if (wp->w_status_height != 0 && is_stl_global) {
+       // If statusline is global and the window has a statusline, replace it with a horizontal
+       // separator
+diff --git a/test/functional/ui/screen_basic_spec.lua b/test/functional/ui/screen_basic_spec.lua
+index 6c872e52d3b0..75f6bcdcc973 100644
+--- a/test/functional/ui/screen_basic_spec.lua
++++ b/test/functional/ui/screen_basic_spec.lua
+@@ -959,6 +959,72 @@ local function screen_tests(linegrid)
+     end)
+   end)
+ 
++	-- oldtest: Test_nosplitscroll_callback()
++  describe('nosplitscroll', function()
++    it('does not scroll when split in callback', function()
++      command('set nosplitscroll')
++      command('call setline(1, range(&lines))')
++      command([[
++				function WincmdCb(a, b, c)
++					split | wincmd p
++				endfunction
++			]])
++      command([[
++				function TermCb(a, b, c)
++					close | split
++				endfunction
++			]])
++			exec_lua([[
++				vim.api.nvim_set_keymap("n", "j", "", { callback = function()
++					vim.cmd("call jobstart([&shell, &shellcmdflag, 'echo'], { 'on_exit': 'WincmdCb' })")
++				end
++			})]])
++			exec_lua([[
++				vim.api.nvim_set_keymap("n", "t", "", { callback = function()
++					vim.api.nvim_set_current_win(
++						vim.api.nvim_open_win(vim.api.nvim_create_buf(false, {}), false, {
++						width = 10,
++							relative = "cursor",
++							height = 4,
++							row = 0,
++							col = 0,
++						}))
++						vim.cmd("call termopen(&shell, { 'on_exit': 'TermCb' })")
++				end
++			})]])
++      feed('j')
++      screen:expect([[
++        ^                                                     |
++        {0:~                                                    }|
++        {0:~                                                    }|
++        {0:~                                                    }|
++      ]])
++      feed(':quit<CR>Htiexit<CR>')
++      screen:expect([[
++        ^                                                     |
++        {0:~                                                    }|
++        {0:~                                                    }|
++        {0:~                                                    }|
++      ]])
++      command('set nosplitscroll')
++			feed(':set sb<CR>:quit<CR>Gj')
++      screen:expect([[
++        ^                                                     |
++        {0:~                                                    }|
++        {0:~                                                    }|
++        {0:~                                                    }|
++      ]])
++      command('set nosplitscroll')
++			feed(':quit<CR>Gtiexit<CR>')
++      screen:expect([[
++        ^                                                     |
++        {0:~                                                    }|
++        {0:~                                                    }|
++        {0:~                                                    }|
++      ]])
++    end)
++  end)
++
+   -- Regression test for #8357
+   it('does not have artifacts after temporary chars in insert mode', function()
+     command('set timeoutlen=10000')
