@@ -1,6 +1,11 @@
 #!/bin/sh -e
 git pull --rebase
+
 echo updating submodules
 git submodule update --recursive --remote
+
 echo updating nvim
 vi +q
+
+echo update pipx modules
+pipx upgrade-all
