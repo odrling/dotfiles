@@ -1,0 +1,12 @@
+#!/bin/sh
+# usage: omixer [+|-] n
+vol=$(volume | sed 's/%//')
+newvol=$(expr $vol ${1:-+} ${2:-2})
+
+for card in $(aplay -l | grep -o '^card [0-9]*' | cut -d' ' -f2 | uniq); do
+    control=$(amixer -c $card scontrols | head -1 | grep -o "'.*'" | sed "s/^'\|'$//g")
+    echo $control
+    vol=$(amixer set -c "$card" "$control" "${newvol}%" | tail -1 | grep -oE "\[[0-9]+%\]")
+done
+
+pkill -SIGRTMIN+10 dwmblocks

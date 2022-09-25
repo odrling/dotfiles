@@ -1,0 +1,18 @@
+#!/bin/sh
+BAT=${BAT:-BAT1}
+bat_path=/sys/class/power_supply/$BAT
+cap=$(cat $bat_path/capacity)
+bat_status=$(cat $bat_path/status)
+
+battery_icon() {
+    [ $cap -gt 90 ] && echo   && return
+    [ $cap -gt 70 ] && echo   && return
+    [ $cap -gt 40 ] && echo   && return
+    [ $cap -gt 20 ] && echo   && return
+    echo    
+}
+
+icon=$(battery_icon)
+[ Discharging != "$bat_status" ] && icon="⚡ $icon"
+
+echo "$icon $cap%"

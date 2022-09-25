@@ -1,0 +1,2 @@
+#!/bin/sh
+FONTCONFIG_PATH=~/.config/fontconfig/ts exec $*

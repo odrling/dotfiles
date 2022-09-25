@@ -1,0 +1,7 @@
+#!/bin/sh
+jack_output
+
+stdbuf -o L jack_evmon | grep --line-buffered '^Port' | grep --line-buffered ' connected$' | while read line; do 
+    jack_output
+done
+

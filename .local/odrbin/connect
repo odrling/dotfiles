@@ -1,0 +1,6 @@
+#!/bin/sh
+conn=$(nmcli -t connection show | cut -d: -f1)
+vpn=$(nmcli -t connection show | grep :wireguard: | cut -d: -f1)
+avail=$(nmcli -w 0 -t device wifi list | sed 's/\\://g' | cut -d: -f3 | sort | uniq)
+conn=$(printf "$conn\n$avail\n$vpn" | sort | uniq -d | dmenu -p connect)
+nmcli connection up "$conn"

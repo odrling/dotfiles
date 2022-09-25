@@ -1,0 +1,17 @@
+#!/bin/sh
+IFS=$'\n'
+
+cap1=$(jack_lsp -c system:capture_1 | tail +2 | sed 's/^ *//')
+cap2=$(jack_lsp -c system:capture_2 | tail +2 | sed 's/^ *//')
+
+jack_connect system:monitor_1 output:playback_1
+jack_connect system:monitor_2 output:playback_2
+
+for dev in $cap1; do
+    jack_connect "$dev" input:capture_1 &
+    jack_disconnect "$dev" system:capture_1 &
+done
+for dev in $cap2; do
+    jack_connect "$dev" input:capture_2 &
+    jack_disconnect "$dev" system:capture_2 &
+done

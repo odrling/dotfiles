@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "$1" = "area" ]; then
+    grim -g "$(slurp)" - | wl-copy && \
+    notify-send 'Screenshot taken' 'Area in the clipboard'
+else
+    if [ "$1" = "screen" ]; then
+        grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy && \
+        notify-send 'Screenshot taken' 'Current screen in the clipboard'
+    else
+        grim - | wl-copy && \
+        notify-send 'Screenshot taken' 'Full desktop in the clipboard'
+    fi
+fi

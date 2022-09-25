@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# remove disconnected outputs
+outputs=$(xrandr | awk '/disconnected/ { print $1 }')
+[ -z "$outputs" ] && exit 1
+
+for output in $outputs; do
+	xrandr --output "$output" --off
+done
+
+[ -z "$SECONDARY_SCREEN_LOCATION" ] && SECONDARY_SCREEN_LOCATION=right
+
+# use connected outputs
+primary=$(xrandr | awk '/primary/ { print $1 }')
+outputs=$(xrandr | awk '/ connected / && ! /primary/ { print $1 }')
+
+xrandr --output eDP-1 --dpi 96
+for output in $outputs; do
+	xrandr --output "$output" --mode 1920x1080 --dpi 96 "--${SECONDARY_SCREEN_LOCATION}" $primary
+	# support up to 3 outputs
+	[ $SECONDARY_SCREEN_LOCATION = 'left-of' ] && SECONDARY_SCREEN_LOCATION='right-of'
+done
+
+# reset wallpaper
+setwallpaper

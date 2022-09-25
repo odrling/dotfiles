@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case "$1" in
+    https://pbs.twimg.com/media/*.jpg*|https://0x0.st/*)
+        curl "$1" | mpv --pause --no-osc --no-fs - &
+        ;;
+    *.png|*.jpg|*.JPG)
+        mpv --pause --no-osc --no-fs "$1" &
+        ;;
+    *.gif|*.webm|*.mkv|*.mp4|*.MP4)
+        mpv --no-osc --no-fs "$1" &
+        ;;
+    https://youtu.be/*|https://www.youtube.com/watch*)
+        umpv "$1" &
+        ;;
+    *.torrent|magnet:*)
+        addtorrent "$1" &
+        ;;
+    *)
+        browser=$(printf "firefox\nw3m\n" | dmenu)
+        $browser "$1" &
+        ;;
+esac

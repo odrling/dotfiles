@@ -1,0 +1,3 @@
+#!/bin/sh
+nmcli connection show | grep vpn | cut -d' ' -f1 | dmenu | xargs -r nmcli connection up
+pkill -SIGRTMIN+11 i3blocks

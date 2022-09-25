@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if  [ -L "/tmp/redshift.$USER" ]; then
+    if  [ "$1" = enable ]; then
+        pkill -USR1 redshift
+        rm "/tmp/redshift.$USER"
+    fi
+else
+    if  [ "$1" = disable ]; then
+        ln -s "/dev/null" "/tmp/redshift.$USER"
+        pkill -USR1 redshift
+    fi
+fi

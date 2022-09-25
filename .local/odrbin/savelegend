@@ -1,0 +1,5 @@
+#!/bin/sh
+
+title="$(curl -s "$1" | grep -o '<title>.*</title>' | sed 's/<\/\?title>//g' | python3 -c 'import html,sys; print(html.unescape(sys.stdin.read()), end="")' | tr '/' ' ')"
+
+echo "$1" >> "$HOME/.config/webbookmarks/legends/$title"

@@ -1,0 +1,3 @@
+#!/bin/sh
+conn=$(nmcli -t connection show --active | grep -v :bridge: | cut -d: -f1 | dmenu -p disconnect)
+nmcli connection down "$conn"

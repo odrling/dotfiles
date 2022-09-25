@@ -1,0 +1,8 @@
+#!/bin/sh
+dim=$(slop -l -c 0.75,0.5,1.0,0.1)
+size=$(echo $dim | cut -d+ -f1)
+pos=$(echo $dim | cut -d+ -f2-3 | tr + ,)
+out=${1:-$(date -I).mkv}
+
+ffmpeg -video_size $size -framerate 5 -f x11grab -i :0.0+$pos -c:v libx264 -preset ultrafast -crf 20 "$out"
+

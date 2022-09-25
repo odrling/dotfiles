@@ -1,0 +1,6 @@
+#!/bin/sh
+url=https://arutha.info/xdcc/CR-ARUTHA.NEW.xdcc.txt
+bot='CR-ARUTHA|NEW'
+
+pack=$(curl $url | grep '^#' | dmenu -l 30 | cut -d' ' -f1)
+[ -n "$pack" ] && echo "irc.rizon.#news */MSG "$bot" XDCC SEND $pack" > ~/.weechat/weechat_fifo

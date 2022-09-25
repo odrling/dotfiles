@@ -1,0 +1,4 @@
+#!/bin/sh
+#export SHELL=/bin/sh
+#j4-dmenu-desktop --dmenu='$(cat; $(stest -flx "$HOME/.local/bin" | sort -u)) | $HOME/.local/bin/dmenu -p ""' | xargs swaymsg exec
+dmenu_path | $HOME/.local/bin/dmenu -p "" | xargs swaymsg exec

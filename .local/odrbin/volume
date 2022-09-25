@@ -1,0 +1,3 @@
+#!/bin/sh
+OMIXER_CARD="${OMIXER_CARD:-0}"
+amixer get -c "$OMIXER_CARD" Master | awk -F'[][]' 'END{ print $2 }'

@@ -1,0 +1,10 @@
+#!/bin/sh
+SCREEN='eDP-1'
+
+if [ -f "/tmp/screen_off.$USER" ]; then
+    swaymsg "output $SCREEN dpms on"
+    rm "/tmp/screen_off.$USER"
+else
+    swaymsg "output $SCREEN dpms off"
+    touch "/tmp/screen_off.$USER"
+fi

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+fd -e flac -x ffmpeg -i {} -c:a libopus -b:a 128k {.}.ogg

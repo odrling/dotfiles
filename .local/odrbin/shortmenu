@@ -1,0 +1,16 @@
+#!/bin/sh
+
+dmenu_args="$@"
+
+shortmenu () {
+    choice=$(ls "$1" | dmenu $dmenu_args -p 'shortmenu')
+    [ -z "$choice" ] && exit
+    if [ -d "$1/$choice" ]; then
+        shortmenu "$1/$choice"
+    else
+        xclip -r -selection clipboard "$1/$choice"
+        xdotool key ctrl+v
+    fi
+}
+
+shortmenu "$HOME/.config/shortcuts"

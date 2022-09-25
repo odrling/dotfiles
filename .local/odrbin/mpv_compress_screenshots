@@ -1,0 +1,10 @@
+#!/bin/sh
+in="$HOME/Pictures/mpv_temp"
+processing="$HOME/Pictures/mpv_processing"
+out="$HOME/Pictures/mpv"
+
+for i in "$in"/*.png; do
+    mkdir -p "$processing" "$out"
+    mv "$i" "$processing/" || continue
+    zopflipng -m --prefix="$out/" "$processing/$(basename "$i")" && rm "$processing/$(basename "$i")"
+done

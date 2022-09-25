@@ -1,0 +1,3 @@
+#!/bin/sh
+id=$(curl https://kurisu.iiens.net/api | jq -r '.[] | "\(.id) - \(.source_name) - \(.song_type)\(.song_number) - \(.song_name)"' | sort --key=2 | dmenu -l 30 -p bakara | cut -d' ' -f1)
+[ -n "$id" ] && mpv "https://kurisu.iiens.net/api/download/$id"

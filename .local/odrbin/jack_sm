@@ -1,0 +1,22 @@
+#!/bin/sh
+devs=$(jack_lsp | grep system)
+condir=$(mktemp -d)
+
+for dev in $devs; do
+    jack_lsp -c $dev | tail +2 | cut -c4- > $condir/$dev
+done
+
+jack_reconnect() {
+    dev=$1
+    while read conn; do
+        jack_connect $dev "$conn" &
+    done < $condir/$dev
+}
+
+jack_control sm
+
+for dev in $devs; do
+    jack_reconnect $dev
+done
+
+rm -r $condir

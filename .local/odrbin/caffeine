@@ -1,0 +1,16 @@
+#!/bin/sh
+file="/tmp/caffeine.$USER"
+
+if [ -f $file ]; then
+    if [ -z "$1" ] || [ "disable" = "$1" ]; then
+        pkill -CONT swayidle
+        rm $file
+    fi
+else
+    if [ -z $1 ] || [ "enable" = "$1" ]; then
+        pkill -TSTP swayidle
+        ln -s /dev/null $file 2> /dev/null
+    fi
+fi
+
+pkill -SIGRTMIN+13 i3blocks

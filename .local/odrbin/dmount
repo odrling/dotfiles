@@ -1,0 +1,21 @@
+#!/bin/sh
+
+device="$(lsblk -o name,size,label,fstype,type,mountpoint -Jl | \
+    jq -r '.blockdevices |
+           map(select(.type == "part" and .fstype != "swap" and .mountpoint == null)) | 
+           map([
+                .name,
+                if .label != null then .label else "volume" end,
+                "(" + .size + ")"
+               ] | join(" ")) |
+           join("\n")' | \
+    dmenu -p 'dmenumount' | cut -d' ' -f1)"
+
+
+[ -z "$device" ] && exit
+
+doas -n /bin/mount /dev/$device && notify-send "automounted $device" && exit
+
+mountpoint="/mnt"
+doas -n /bin/mount "/dev/$device" "$mountpoint" && notify-send "mounted $device to $mountpoint"
+

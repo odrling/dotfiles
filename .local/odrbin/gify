@@ -1,0 +1,15 @@
+#!/bin/sh
+
+palette="/tmp/palette.png"
+
+#filters="fps=12"
+#filters="fps=12,scale=680:-1:flags=lanczos"
+#filters="fps=12,scale=570:-1:flags=lanczos"
+#filters="fps=9,scale=480:-1:flags=lanczos"
+#filters="fps=9,scale=360:-1:flags=lanczos"
+#filters="fps=9,scale=-1:720:flags=lanczos"
+#filters="fps=18,scale=-1:480:flags=lanczos"
+filters="fps=12,scale=-1:360:flags=lanczos"
+
+ffmpeg -i $1 -vf "$filters,palettegen" -y $palette
+ffmpeg -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $2

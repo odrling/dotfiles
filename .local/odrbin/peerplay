@@ -1,0 +1,13 @@
+#!/bin/sh
+DIR=/tmp/$USER.btfs
+
+mkdir -p $DIR
+btfs "$1" $DIR
+
+while [ -z "$(ls $DIR)" ]; do
+    sleep 1
+done
+
+mpv $DIR/*.mkv
+
+fusermount -u $DIR

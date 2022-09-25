@@ -1,0 +1,2 @@
+#!/bin/sh
+cat ~/.config/legends | dmenu -l 10 | grep -o 'http.*$' | xargs -r xdg-open

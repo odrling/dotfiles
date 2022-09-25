@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "https://www.youtube.com/feeds/videos.xml?channel_id=$(echo "$1" | grep -o 'channel/[A-Za-z0-9_-]*' | cut -d/ -f2)" | tee /dev/stderr | xclip -r -selection clipboard

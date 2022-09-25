@@ -1,0 +1,9 @@
+#!/bin/bash
+mkvmerge --split timestamps:$2 -o split.mkv "$1"
+# reencode the beginning of the video
+ffmpeg -i split-001.mkv -ss $2 -map 0 -c copy -c:v libx264 -crf 19 -preset slow split_reenc.mkv
+# concatenate the 2 video files, cut the end of the video
+printf "file '$PWD/split_reenc.mkv'\nfile '$PWD/split-002.mkv'" > concat.txt
+ffmpeg -f concat -safe 0 -i concat.txt -map 0 -c copy -t $3 $(basename "$1" .mkv)_cut.mkv
+# remove the files created by the script
+rm -iv split-00[12].mkv split_reenc.mkv concat.txt

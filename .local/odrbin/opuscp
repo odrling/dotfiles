@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -d "$1" ]; then
+    files="$1/*.$2"
+else
+    files="$1"
+fi
+
+for i in $files; do
+    out="/tmp/$(echo "$i" | rev | cut -d'.' -f2- | rev).ogg"
+    ffmpeg -i "$i" -map 0:a -c copy -b:a 128k "$out"
+done

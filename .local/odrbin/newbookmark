@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    printf "name: "
+    read name
+else
+    name="$1"
+fi
+
+if [ -z "$2" ]; then
+    printf "url: "
+    read url
+else
+    url="$2"
+fi
+
+echo "$url" >> "$HOME/.config/webbookmarks/$name"

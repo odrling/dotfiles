@@ -1,0 +1,17 @@
+#!/bin/sh
+
+endtime='0:00.00'
+count=1
+
+# not perfect but ig nobody will put double quotes in their filenames ¯\_(ツ)_/¯
+cdfile="$(grep '^FILE' "$1" | grep -o '".*"' | tr -d \")"
+
+for time in $(cuebreakpoints "$1"); do
+    begintime=$endtime
+    endtime=$time
+    ffmpeg -i "$cdfile" -ss $begintime -to $endtime "track_${count}.flac"
+    count=$(($count+1))
+done
+
+begintime=$endtime
+ffmpeg -i "$cdfile" -ss $begintime "track_${count}.flac"

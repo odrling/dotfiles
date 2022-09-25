@@ -1,0 +1,19 @@
+#!/bin/sh
+
+device="$(lsblk -o name,size,label,fstype,type,mountpoint -Jl | \
+    jq -r '.blockdevices |
+           map(select(.type == "part" and .fstype != "swap" and .mountpoint != null)) | 
+           map([
+                .name,
+                .mountpoint,
+                if .label != null then .label else "volume" end,
+                "(" + .size + ")"
+               ] | join(" ")) |
+           join("\n")' | \
+    dmenu -p 'dmenumount' | cut -d' ' -f1)"
+
+
+[ -z "$device" ] && exit
+
+doas -n /bin/umount /dev/$device && notify-send "unmounted $device" && exit
+

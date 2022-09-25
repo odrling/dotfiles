@@ -1,0 +1,12 @@
+#!/bin/sh
+stdin=y
+for i in $@; do
+    [ -e "$i" ] && stdin=
+done
+
+if [ -n "$stdin" ]; then
+    sed 's|www.youtube.com/watch?v=|youtu.be/|g' < /dev/stdin | xclip -r -selection clipboard $@
+else
+    xclip -r -selection clipboard $*
+fi
+

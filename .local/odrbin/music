@@ -1,0 +1,2 @@
+#!/bin/sh
+exec mpv --cache-pause-initial https://michiru.butaishoujo.moe

@@ -1,0 +1,6 @@
+#!/bin/sh
+# clear clipboard to avoid pasting something else before the upload
+xclip -selection clipboard /dev/null
+
+hikari "$1" | xclip -r -selection clipboard
+exit $?

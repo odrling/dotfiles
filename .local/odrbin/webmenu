@@ -1,0 +1,39 @@
+#!/bin/sh
+
+dmenu_args="-x $@"
+
+urlencode () {
+    python -c "from urllib.parse import quote_plus; print(quote_plus('$1'))"
+}
+
+handle () {
+    [ -z "$1" ] && exit
+
+    if [ -f "$1" ]; then
+        url=$(cat "$1")
+        if printf "$url" | grep -e '\{\}$'; then
+            search="$(printf | dmenu $dmenu_args -p "$(basename $1)")"
+            [ -z "$search" ] && exit
+            url="$(printf "$url" | tr -d '{}')$(urlencode "$search")"
+        fi
+        $BROWSER "$url"
+    else
+        if printf "$choice" | grep -e '^[A-Za-z\.]\+\.[A-Za-z]\+$'; then
+            $BROWSER "https://$choice"
+        else
+            $BROWSER "https://duckduckgo.com/?q=$(urlencode "$choice")"
+        fi
+    fi
+}
+
+webmenu () {
+    choice=$(ls "$1" | dmenu $dmenu_args -p 'webmenu')
+    [ -z "$choice" ] && exit
+    if [ -d "$1/$choice" ]; then
+        webmenu "$1/$choice"
+    else
+        handle "$1/$choice"
+    fi
+}
+
+webmenu "$HOME/.config/webbookmarks"

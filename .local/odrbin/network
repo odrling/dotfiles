@@ -1,0 +1,4 @@
+#!/bin/sh
+network=$(nmcli -t device | grep :connected: | cut -d':' -f4)
+[ -n network ] && echo  $network || echo down
+

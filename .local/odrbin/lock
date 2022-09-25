@@ -1,0 +1,13 @@
+#!/bin/sh
+BG="$HOME/.lock"
+
+[ "$1" = "-f" ] && ~/.local/bin/caffeine disable
+[ -f "/tmp/caffeine.$USER" ] && exit
+
+revert() {
+xset dpms 0 0 0
+}
+trap revert HUP INT TERM
+xset +dpms dpms 5 5 5
+i3lock -n -t -c 000000 -i "$BG"
+revert

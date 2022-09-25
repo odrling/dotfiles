@@ -1,0 +1,22 @@
+#!/bin/sh
+# set these environment vars to anything more appropriate
+PREFERED_PLAYBACK_DEVICE="${PREFERED_PLAYBACK_DEVICE:-SDAC}"
+default_capture=$(arecord -L | grep -o 'CARD=\(CODEC\|USB\)' | cut -d= -f2 | sort | uniq)
+PREFERED_CAPTURE_DEVICE="${PREFERED_CAPTURE_DEVICE:-$default_capture}"
+default_device=$(aplay -L | grep -o 'CARD.*' | grep -v Loopback | cut -d',' -f1 | uniq | cut -d'=' -f2 | head -1)
+
+if (aplay -L | grep "CARD=$PREFERED_PLAYBACK_DEVICE" >/dev/null); then 
+    playback_device="hw:$PREFERED_PLAYBACK_DEVICE"
+else
+    playback_device="hw:$default_device"
+fi
+
+if (arecord -L | grep "CARD=$PREFERED_CAPTURE_DEVICE" > /dev/null); then
+    capture_device="hw:$PREFERED_CAPTURE_DEVICE"
+else
+    capture_device=none
+fi
+
+jack_control dps playback "$playback_device"
+jack_control dps capture "$capture_device"
+jack_sm

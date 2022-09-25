@@ -1,0 +1,2 @@
+#!/bin/sh
+xdg-mime default "$2.desktop" $(xdg-mime query filetype "$1")

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+conf=$(ls ~/.alsa | grep '\.' | cut -d. -f2 | dmenu -p alsa)
+
+cat ~/.alsa/asoundrc ~/.alsa/asoundrc.$conf > ~/.asoundrc

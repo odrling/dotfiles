@@ -1,0 +1,3 @@
+#!/bin/sh
+cd $HOME/Pictures/${1:-mpv}
+ls -t -1 | sxiv -

@@ -1,0 +1,14 @@
+#!/bin/sh
+WPDIR="$HOME/Pictures/Wallpapers"
+
+[ -z "$2" ] && TARGET="$HOME/.wallpaper" || TARGET="$2"
+
+if ! [ -z "$1" ]; then
+	mkdir -p "$WPDIR"
+	cp "$1" "$WPDIR" > /dev/null
+	cp -lf "$WPDIR/$(basename "$1")" "$TARGET"
+fi
+
+xwallpaper --zoom "$TARGET"
+
+[ -z "$1" ] || notify-send 'New wallpaper set' "$TARGET"

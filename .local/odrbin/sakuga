@@ -1,0 +1,16 @@
+#!/bin/sh
+base_url="https://www.sakugabooru.com"
+tags=$(echo "$*" | sed 's/ /+/g')
+
+urls=$(curl "$base_url/post.json?limit=100&tags=$tags" | jq -r ".[] | .file_url")
+i=1
+nurls=$urls
+while [ -n "$nurls" ]; do
+	if [ $i -gt 1 ]; then
+		urls="$urls $nurls"
+	fi
+	i=$(expr $i + 1)
+	nurls=$(curl "$base_url/post.json?limit=100&page=$i&tags=$tags" | jq -r ".[] | .file_url")
+done
+
+mpv --prefetch-playlist=yes --loop-playlist=inf --shuffle $urls

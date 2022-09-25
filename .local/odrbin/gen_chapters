@@ -1,0 +1,36 @@
+#!/bin/sh
+
+while [ -n "$1" ]; do
+  out="$(dirname "$1")/$(basename "$1" .ass).xml"
+  awk -F',' '
+  BEGIN {
+    ret = 1
+    srand()
+    print "<?xml version="1.0"?>\n" \
+          "<!-- <!DOCTYPE Chapters SYSTEM \"matroskachapters.dtd\"> -->\n" \
+          "<Chapters>\n" \
+          "  <EditionEntry>\n" \
+          "    <EditionUID>42</EditionUID>\n" \
+          "    <EditionFlagHidden>0</EditionFlagHidden>\n" \
+          "    <EditionFlagDefault>0</EditionFlagDefault>\n" \
+          "    <EditionFlagOrdered>0</EditionFlagOrdered>"
+  }
+  /^Comment:/ {
+  if($5 == "chapter") {
+    ret = 0
+    print "    <ChapterAtom>\n" \
+          "      <ChapterTimeStart>" $2 "</ChapterTimeStart>\n" \
+          "      <ChapterUID>" int(rand()*(2^32)) "</ChapterUID>\n" \
+          "      <ChapterDisplay>\n" \
+          "        <ChapterString>" $10 "</ChapterString>\n" \
+          "        <ChapterLanguage>eng</ChapterLanguage>\n" \
+          "      </ChapterDisplay>\n" \
+          "    </ChapterAtom>"
+    }
+  }
+  END {
+    print "  </EditionEntry>\n</Chapters>"
+    exit ret
+  }' "$1" > "$out" || rm "$out"
+  shift
+done

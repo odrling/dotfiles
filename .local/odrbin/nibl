@@ -1,0 +1,21 @@
+#!/bin/sh
+NIBL_API=https://api.nibl.co.uk
+query=$(dmenu -p query < /dev/null | sed 's/ /+/g')
+[ -z "$query" ] && exit
+
+params="?query=$query"
+episode=$(dmenu -p episode < /dev/null)
+[ -n "$episode" ] && params="${params}&episodeNumber=${episode}"
+
+pack=$(curl "${NIBL_API}/nibl/search$params" |
+       jq -r '.content | .[] | "\(.name) \(.size) \(.botId) \(.number)"' |
+       dmenu -i -p pack -l 30)
+
+[ -z "$pack" ] && exit
+bot_id=$(echo "$pack" | rev | cut -d' ' -f2 | rev)
+bot=$(curl "${NIBL_API}/nibl/bots/${bot_id}" | jq -r '.content.name')
+pack=$(echo "$pack" | rev | cut -d' ' -f1 | rev)
+
+echo "irc.server.rizon */set xfer.file.auto_accept_files on" > ~/.weechat/weechat_fifo
+echo "irc.server.rizon */MSG ${bot} XDCC SEND ${pack}" > ~/.weechat/weechat_fifo
+(sleep 5 && echo "irc.server.rizon */set xfer.file.auto_accept_files off" > ~/.weechat/weechat_fifo) &

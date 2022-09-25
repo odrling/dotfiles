@@ -1,0 +1,3 @@
+#!/bin/sh
+newsboat -x reload && \
+pkill -SIGRTMIN+20 i3blocks

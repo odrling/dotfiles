@@ -1,0 +1,35 @@
+#!/bin/sh
+
+random() {
+  python -c 'from random import randrange; print(randrange(10**16))'
+}
+
+echo "<?xml version=\"1.0\"?>
+<!-- <!DOCTYPE Chapters SYSTEM \"matroskachapters.dtd\"> -->
+<Chapters>
+  <EditionEntry>
+    <EditionUID>$(random)</EditionUID>
+    <EditionFlagDefault>1</EditionFlagDefault>
+    <EditionFlagOrdered>1</EditionFlagOrdered>"
+
+IFS=
+for i in $@; do
+    uid=$(mkvinfo "$i" | grep 'Segment UID' | cut -d: -f2- | sed 's/0x//g'| tr -d ' ')
+    duration=$(mkvinfo "$i" | grep 'Duration' | cut -d: -f2- | tr -d ' ')
+    title=$(mkvinfo "$i" | grep 'Title' | cut -d: -f2- | sed 's|^ ||')
+    [ -z "$title" ] && title="$(basename "$i" .mkv)"
+    echo "    <ChapterAtom>
+      <ChapterTimeStart>00:00:00.000000000</ChapterTimeStart>
+      <ChapterSegmentUID format=\"hex\">$uid</ChapterSegmentUID>
+      <ChapterTimeEnd>$duration</ChapterTimeEnd>
+      <ChapterUID>$(random)</ChapterUID>
+      <ChapterDisplay>
+        <ChapterString>$title</ChapterString>
+        <ChapterLanguage>und</ChapterLanguage>
+      </ChapterDisplay>
+    </ChapterAtom>"
+done
+
+echo "$out  </EditionEntry>
+</Chapters>"
+

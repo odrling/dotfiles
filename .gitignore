@@ -168,3 +168,6 @@ Cache
 
 # dotsbin
 !/.local/dotsbin
+
+# odrbin
+!/.local/odrbin

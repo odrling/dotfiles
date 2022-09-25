@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cd "$1"
+mount -t proc /proc proc
+mount --rbind /sys sys
+mount --rbind /dev dev
+mkdir -p var/db/repos/gentoo var/cache/distfiles
+mount --rbind /var/db/repos/gentoo var/db/repos/gentoo
+mount --rbind /var/cache/distfiles var/cache/distfiles
+cp /etc/resolv.conf etc
+cd "$OLDPWD"
+chroot $*
+
+cd "$1"
+umount proc
+umount sys
+umount dev
+umount var/db/repos/gentoo
+umount var/cache/distfiles
