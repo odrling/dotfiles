@@ -1,7 +1,8 @@
 [submodule ".local/bin"]
 	path = .local/bin
 	url = https://git.odrling.xyz/odrling/localbins.git
-	ignore = dirty
+	ignore = all
 [submodule ".aegisub/automation/0x539"]
 	path = .aegisub/automation/0x539
 	url = https://github.com/The0x539/Aegisub-Scripts.git
+	ignore = all
