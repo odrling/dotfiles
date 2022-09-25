@@ -13,7 +13,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 [ -f ~/.profile.local ] && . ~/.profile.local
 
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
-export PATH="$HOME/.local/odrbin:$HOME/.local/bin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
+export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
 
 if [ "$(tty)" = '/dev/tty1' ]; then
 	pgrep xinit || exec startx
