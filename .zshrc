@@ -78,7 +78,6 @@ export FZF_DEFAULT_OPTS="-m"
 
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
-alias dotmodules="dots submodule update --recursive --remote"
 alias venv="source ~/.venvs/venv/bin/activate"
 alias ytdl="yt-dlp"
 alias ag="ag --nogroup"
