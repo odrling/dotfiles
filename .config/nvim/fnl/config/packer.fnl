@@ -85,7 +85,8 @@
   (use! :sheerun/vim-polyglot
         :event :BufReadPost
         :setup #(g! polyglot_disabled [:autoindent :sensible]))
-  (use! :edgedb/edgedb-vim)
+  (use! :edgedb/edgedb-vim
+        :module :config.edgedb)
 
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
