@@ -1,7 +1,8 @@
 #!/bin/sh
 
 echo updating submodules
-git submodule update --recursive --remote
+cd ~  # seems to break outside of worktree
+git submodule update --init --recursive --remote
 
 echo updating nvim
 vi +q
