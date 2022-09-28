@@ -1,11 +1,6 @@
 #!/bin/sh -e
+start_hash=$(git log -n 1 --pretty=format:"%H")
 git pull --ff-only
+git log --pretty-format:"%H" "${start_hash}^..HEAD" | xargs dots verify-commit
 
-echo updating submodules
-git submodule update --recursive --remote
-
-echo updating nvim
-vi +q
-
-echo update hikari
-pipx upgrade hikari
+dots-postupdate
