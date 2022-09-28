@@ -1,6 +1,12 @@
 #!/bin/sh -e
 start_hash=$(git log -n 1 --pretty=format:"%H")
-git pull --ff-only
-git log --pretty-format:"%H" "${start_hash}^..HEAD" | xargs dots verify-commit
+remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+git fetch "$(echo $remote | sed 's|/.*$||')"
+end_hash=$(git rev-parse '@{u}')
+
+if [ "$start_hash" != "$end_hash" ]; then
+    git log --pretty=format:"%H" "${start_hash}^..${end_hash}" | xargs dots verify-commit
+    git rebase "$remote"
+fi
 
 dots-postupdate
