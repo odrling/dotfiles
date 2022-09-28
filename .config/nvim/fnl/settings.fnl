@@ -142,7 +142,7 @@
 ; How many tenths of a second to blink when matching brackets
 (set! mat 2)
 
-(set! filetype "on")
+(vim.cmd.filetype "on")
 
 ; wrap long lines
 (set! wrap)
