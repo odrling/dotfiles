@@ -122,6 +122,8 @@
 
   ;; profiling
   (use! :stevearc/profile.nvim)
+  (use! :t-troebst/perfanno.nvim
+        :config #(setup :perfanno))
 
   ; Interface
   (use! :projekt0n/github-nvim-theme)
