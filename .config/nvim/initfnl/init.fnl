@@ -39,6 +39,7 @@
                                        0))
 
 
+(require :profiling)
 (require :settings)
 (require :before)
 (require :sync)

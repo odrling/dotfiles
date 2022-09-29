@@ -120,6 +120,9 @@
   (use! :gbprod/yanky.nvim
         :module :config.yanky)
 
+  ;; profiling
+  (use! :stevearc/profile.nvim)
+
   ; Interface
   (use! :projekt0n/github-nvim-theme)
   (use! :joeytwiddle/sexy_scroller.vim

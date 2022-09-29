@@ -1,4 +1,4 @@
--- :fennel:1663627950
+-- :fennel:1664457448
 local pack = "packer"
 local function bootstrap(url)
   _G.assert((nil ~= url), "Missing argument url on initfnl/init.fnl:4")
@@ -92,6 +92,7 @@ do
   _10_ = tbl_15_auto
 end
 _G.tangerine_recompiled_packer = (#_10_ > 0)
+require("profiling")
 require("settings")
 require("before")
 return require("sync")
