@@ -1,7 +1,5 @@
 (import-macros {: reqcall : map! : exec : augroup! : set!} :macros)
 
-(local original_open_float vim.diagnostic.open_float)
-
 (fn on_attach [client bufnr]
   (tset vim.lsp.handlers :textDocument/publishDiagnostics
     (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics {:virtual_text false}))
@@ -11,9 +9,7 @@
                                           :max_width 80}))
 
   (map! [n (:buffer bufnr)] :<leader>l #(: (require :config.hydras.lsp) :activate))
-  (map! [n (:buffer bufnr)] :<leader>L #(set vim.diagnostic.open_float (if (reqcall :lsp_lines :toggle)
-                                                                         (fn [] nil)
-                                                                         original_open_float)))
+  (map! [n (:buffer bufnr)] :<leader>L #(reqcall :config.lsp_lines :toggle))
 
   (map! [n (:buffer bufnr)] :<leader>D "<cmd>Telescope diagnostics<CR>")
   (map! [n (:buffer bufnr)] :gD 'vim.lsp.buf.declaration)
