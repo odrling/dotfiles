@@ -21,6 +21,15 @@
   (map! [n (:buffer bufnr)] :gr 'vim.lsp.buf.references)
   (map! [n (:buffer bufnr)] :<leader>f '(vim.lsp.buf.format {:async true}))
 
+  (when client.server_capabilities.documentHighlightProvider
+    (exec [[:hi! "LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow"]
+           [:hi! "LspReferenceText cterm=bold ctermbg=red guibg=LightYellow"]
+           [:hi! "LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow"]])
+    ;close enough
+    (augroup! :lsp_document_highlight
+              [[CursorHold CursorHoldI] * 'vim.lsp.buf.document_highlight]
+              [[CursorMoved] * 'vim.lsp.buf.clear_references]))
+
   (let [signs {:Error :E
                :Warn :W
                :Hint :H

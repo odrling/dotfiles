@@ -15,8 +15,7 @@
                                  :endwise  {:enable true}
                                  :autotag  {:enable true}
                                  :refactor {:enable true
-                                            :highlight_definitions {:enable true
-                                                                    :clear_on_cursor_move true}
+                                            :highlight_definitions {:enable false}
                                             :highlight_current_scope {:enable false}
                                             :navigation {:enable true
                                                          :keymaps {:goto_definition_lsp_fallback "gd"
