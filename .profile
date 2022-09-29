@@ -15,6 +15,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
 export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
 
+[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
 if [ "$(tty)" = '/dev/tty1' ]; then
 	pgrep xinit || exec startx
 fi
