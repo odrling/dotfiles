@@ -120,6 +120,8 @@
   (use! :gbprod/yanky.nvim
         :module :config.yanky)
 
+  (use! :chaoren/vim-wordmotion)
+
   ;; profiling
   (use! :stevearc/profile.nvim)
   (use! :t-troebst/perfanno.nvim
