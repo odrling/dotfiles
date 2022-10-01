@@ -10,4 +10,5 @@
 (reqcall :telescope :load_extension :persisted)
 
 (augroup! :persisted-autoload
-          [[VimEnter] * #(reqcall :persisted :load)])
+          [[VimEnter] * #(when (= (vim.api.nvim_buf_get_name 0) "")
+                           (reqcall :persisted :load))])
