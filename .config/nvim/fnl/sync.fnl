@@ -19,17 +19,32 @@
 (local dotdir (vim.fn.expand "$HOME/.dots"))
 (local dotroot (vim.fn.expand "$HOME"))
 
-(fn is_dots_file [file]
+(lambda is_dots_file [file]
   (if (and (> (length file) 0) (vim.fn.filereadable file))
       (do (vim.fn.system ["git" "--git-dir" dotdir "--work-tree" dotroot "ls-files" "--error-unmatch" file])
           (= vim.v.shell_error 0))
       false))
 
+(lambda is_dots_dir [dir]
+  (vim.fn.system ["git" "--git-dir" dotdir "--work-tree" dotroot "ls-files" "--error-unmatch" dir]
+      (= vim.v.shell_error 0)))
+
+(fn set_git_dir []
+  (set vim.env.GIT_DIR dotdir)
+  (set vim.env.GIT_WORK_TREE dotroot))
+
+(fn unset_git_dir []
+  (set vim.env.GIT_DIR nil)
+  (set vim.env.GIT_WORK_TREE nil))
+
 (augroup! :dots
+          [[VimEnter] * #(let [cwd (vim.fn.getcwd)]
+                           (when (is_dots_dir cwd)
+                               (set_git_dir)))]
           [[BufEnter] * #(let [file (vim.fn.expand "%:p")]
-                           (when (is_dots_file file)
-                             (set vim.env.GIT_DIR dotdir)
-                             (set vim.env.GIT_WORK_TREE dotroot)))])
+                           (if (is_dots_file file)
+                             (set_git_dir)
+                             (unset_git_dir)))])
 
 
 (augroup! :packer
