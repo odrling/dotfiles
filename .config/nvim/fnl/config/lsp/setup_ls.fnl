@@ -27,8 +27,8 @@
            [:hi! "LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow"]])
     ;close enough
     (augroup! :lsp_document_highlight
-              [[CursorHold CursorHoldI] * 'vim.lsp.buf.document_highlight]
-              [[CursorMoved] * 'vim.lsp.buf.clear_references]))
+              [[CursorHold CursorHoldI] * 'vim.lsp.buf.document_highlight bufnr]
+              [[CursorMoved] * 'vim.lsp.buf.clear_references bufnr]))
 
   (let [signs {:Error :E
                :Warn :W
