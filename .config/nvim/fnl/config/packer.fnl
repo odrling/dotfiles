@@ -91,12 +91,9 @@
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
 
-  (use! :jedrzejboczar/possession.nvim
-        :module :config.possession)
-
-  (use! :rmagatti/session-lens
-        :after [:telescope.nvim
-                :auto-session])
+  (use! :olimorris/persisted.nvim
+        :after :telescope.nvim
+        :module :config.persisted)
 
   (use! :folke/todo-comments.nvim
         :module :config.todo-comments)
