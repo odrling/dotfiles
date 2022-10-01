@@ -37,14 +37,15 @@
   (set vim.env.GIT_DIR nil)
   (set vim.env.GIT_WORK_TREE nil))
 
+(let [cwd (vim.fn.getcwd)]
+  (when (is_dots_dir cwd)
+      (set_git_dir)))
+
 (augroup! :dots
-          [[VimEnter] * #(let [cwd (vim.fn.getcwd)]
-                           (when (is_dots_dir cwd)
-                               (set_git_dir)))]
-          [[BufEnter] * #(let [file (vim.fn.expand "%:p")]
-                           (if (is_dots_file file)
-                             (set_git_dir)
-                             (unset_git_dir)))])
+          [[BufReadPre] * #(let [file (vim.fn.expand "%:p")]
+                             (if (is_dots_file file)
+                               (set_git_dir)
+                               (unset_git_dir)))])
 
 
 (augroup! :packer
