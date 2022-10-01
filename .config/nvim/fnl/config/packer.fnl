@@ -91,8 +91,8 @@
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
 
-  (use! :rmagatti/auto-session
-        :module :config.auto-session)
+  (use! :jedrzejboczar/possession.nvim
+        :module :config.possession)
 
   (use! :rmagatti/session-lens
         :after [:telescope.nvim
