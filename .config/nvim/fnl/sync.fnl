@@ -77,7 +77,6 @@
   (update_packages true)
   (vim.cmd.luafile _G.packer_compile_path))
 (vim.fn.wait -1 #(~= _G.packer_plugins nil))
-(vim.cmd.packloadall)
 
 (augroup! :packer-auto-update
           [[User] PackerCompileDone #(update_packages false)])
