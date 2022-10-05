@@ -171,3 +171,6 @@ Cache
 
 # odrbin
 !/.local/odrbin
+
+# public key
+!/.local/odrling.key

@@ -4,6 +4,9 @@ remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
 git fetch "$(echo $remote | sed 's|/.*$||')"
 end_hash=$(git rev-parse '@{u}')
 
+command -v gpg > /dev/null || echo gpg not found
+gpg --import ~/.local/odrling.key 2> /dev/null
+
 if [ "$start_hash" != "$end_hash" ]; then
     git log --pretty=format:"%H" "${start_hash}^..${end_hash}" | xargs dots verify-commit
     git rebase "$remote"
