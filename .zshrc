@@ -92,6 +92,8 @@ alias neovide="neovide --nofork"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
+fpath+=~/.zfunc
+
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
 
