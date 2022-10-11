@@ -111,7 +111,7 @@
 (set! number)
 (set! relativenumber)
 
-(set! nosplitscroll)
+(set! splitkeep :topline)
 
 ; Height of the command bar
 (set! cmdheight 1)
