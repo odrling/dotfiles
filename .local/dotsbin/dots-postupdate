@@ -8,3 +8,6 @@ vi +q
 
 echo update hikari
 pipx upgrade hikari
+
+echo update zinit plugins
+zsh -i -c "zinit update && zinit cclear"
