@@ -11,4 +11,4 @@
 
 (augroup! :persisted-autoload
           [[VimEnter] * #(when (= (vim.api.nvim_buf_get_name 0) "")
-                           (reqcall :persisted :load))])
+                           (vim.schedule #(reqcall :persisted :load)))])
