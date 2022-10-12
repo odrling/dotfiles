@@ -10,4 +10,4 @@ echo update hikari
 pipx upgrade hikari
 
 echo update zinit plugins
-zsh -i -c "zinit update && zinit cclear"
+zsh -i -c "zinit update --all --quiet && zinit cclear"
