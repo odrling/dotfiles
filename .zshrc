@@ -90,6 +90,8 @@ alias ls="ls --color=auto"
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
 
+export GPG_TTY=$(tty)
+
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 fpath+=~/.zfunc
