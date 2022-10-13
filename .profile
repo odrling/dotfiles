@@ -4,6 +4,7 @@ export EDITOR=vi
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
 export XDG_CONFIG_HOME="$HOME/.config"
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
 export LESS="-R -z-2 -j4"
 
