@@ -91,6 +91,7 @@ export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
 
 export GPG_TTY=$(tty)
+[ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
