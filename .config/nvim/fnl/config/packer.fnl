@@ -94,9 +94,8 @@
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
 
-  (use! :olimorris/persisted.nvim
-        :after :telescope.nvim
-        :module :config.persisted)
+  (use! :rmagatti/auto-session
+        :opt true)
 
   (use! :folke/todo-comments.nvim
         :module :config.todo-comments)

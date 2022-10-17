@@ -11,3 +11,6 @@
 
 ;; telescope bindings
 (require :config.telescope.bindings)
+
+;; auto-session
+(require :config.auto-session)
