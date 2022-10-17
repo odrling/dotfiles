@@ -70,9 +70,12 @@
                    {1 :nvim-treesitter/nvim-treesitter-refactor :after :nvim-treesitter}
                    {1 :p00f/nvim-ts-rainbow :after :nvim-treesitter}
                    {1 :windwp/nvim-ts-autotag :after :nvim-treesitter}
-                   {1 :JoosepAlviste/nvim-ts-context-commentstring :after :nvim-treesitter}
-                   {1 :nvim-treesitter/nvim-treesitter-textobjects :after :nvim-treesitter}]
+                   {1 :JoosepAlviste/nvim-ts-context-commentstring :after :nvim-treesitter}]
         :module :config.treesitter)
+
+  (use! :ziontee113/syntax-tree-surfer
+        :module :config.syntax_tree_surfer
+        :after :nvim-treesitter)
 
   (use! :Kasama/nvim-custom-diagnostic-highlight
         :event :LspAttach
