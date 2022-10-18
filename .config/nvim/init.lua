@@ -1,4 +1,4 @@
--- :fennel:1664457448
+-- :fennel:1666104635
 local pack = "packer"
 local function bootstrap(url)
   _G.assert((nil ~= url), "Missing argument url on initfnl/init.fnl:4")
@@ -20,6 +20,7 @@ bootstrap("https://github.com/lewis6991/impatient.nvim")
 bootstrap("https://github.com/wbthomason/packer.nvim")
 bootstrap("https://github.com/vigoux/notifier.nvim")
 bootstrap("https://github.com/projekt0n/github-nvim-theme")
+bootstrap("https://github.com/rmagatti/auto-session")
 require("impatient")
 local nvim_dir = vim.fn.stdpath("config")
 do

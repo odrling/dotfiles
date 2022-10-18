@@ -22,6 +22,7 @@
 (ghstrap :wbthomason/packer.nvim)
 (ghstrap :vigoux/notifier.nvim)
 (ghstrap :projekt0n/github-nvim-theme)
+(ghstrap :rmagatti/auto-session)
 
 (require :impatient)
 
