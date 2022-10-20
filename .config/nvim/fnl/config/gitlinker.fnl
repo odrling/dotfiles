@@ -4,4 +4,5 @@
 (setup :gitlinker {:mappings "<leader>y"
                    :callbacks {
                                :git.odrling.xyz hosts.get_gitea_type_url
-                               :git.rhiobet.sh hosts.get_gitlab_type_url}})
+                               :git.rhiobet.sh hosts.get_gitlab_type_url
+                               :git.inpt.fr hosts.get_gitlab_type_url}})
