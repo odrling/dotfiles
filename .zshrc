@@ -26,7 +26,7 @@ zinit light z-shell/F-Sy-H
 
 zinit ice has'ssh-agent' wait silent; zinit snippet OMZP::ssh-agent
 
-zinit as"program" has'go' make'!' atclone'./direnv hook zsh > zhook.zsh' \
+zinit as"program" has'go' atclone'make && ./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh" for \
         direnv/direnv
 
