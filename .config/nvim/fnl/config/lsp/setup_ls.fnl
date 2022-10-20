@@ -49,7 +49,7 @@
 ; add additional capabilities supported by nvim-cmp
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
 (let [cmp_nvim_lsp (require :cmp_nvim_lsp)]
-  (set capabilities (cmp_nvim_lsp.update_capabilities capabilities)))
+  (set capabilities (cmp_nvim_lsp.default_capabilities capabilities)))
 
 ; Neovim does not currently include built-in snippets.
 ; vscode-json-language-server only provides completions when snippet support
