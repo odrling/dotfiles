@@ -126,6 +126,10 @@
 
   ; Interface
   (use! :projekt0n/github-nvim-theme)
+  (use! :folke/noice.nvim
+        :module :config.noice
+        :requires [:rcarriga/nvim-notify
+                   :MunifTanjim/nui.nvim])
   (use! :romainl/vim-cool)
   (use! :joeytwiddle/sexy_scroller.vim
         :cond #(= (vim.fn.exists "g:neovide") 0)
@@ -151,7 +155,6 @@
         :module :config.telescope)
   (use! :stevearc/dressing.nvim
         :module :config.dressing)
-  (use! :vigoux/notifier.nvim)
   (use! :anuvyklack/hydra.nvim
         :event :VimEnter
         :module :config.hydra
