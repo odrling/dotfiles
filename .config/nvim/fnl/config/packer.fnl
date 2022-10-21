@@ -128,8 +128,7 @@
   (use! :projekt0n/github-nvim-theme)
   (use! :folke/noice.nvim
         :module :config.noice
-        :requires [:rcarriga/nvim-notify
-                   :MunifTanjim/nui.nvim])
+        :requires [:MunifTanjim/nui.nvim])
   (use! :romainl/vim-cool)
   (use! :joeytwiddle/sexy_scroller.vim
         :cond #(= (vim.fn.exists "g:neovide") 0)
