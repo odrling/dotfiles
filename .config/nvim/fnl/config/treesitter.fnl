@@ -23,6 +23,8 @@
                                                                    :goto_previous_usage "<a-N>"}}
                                             :smart_rename {:enable true
                                                            :keymaps {:smart_rename "<leader>r"}}}
+                                 :context_commentstring {:enable true
+                                                         :enable_autocmd false}
                                  :rainbow  {:enable true
                                             :extended_mode true}
                                  :indent   {:enable true

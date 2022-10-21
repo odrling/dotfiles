@@ -169,7 +169,8 @@
   (use! :ahmedkhalf/project.nvim
         :config #(setup :project_nvim {}))
   (use! :numToStr/Comment.nvim
-        :config #(setup :Comment {}))
+        :requires :nvim-ts-context-commentstring
+        :config #(setup :Comment {:pre_hook (reqcall :ts_context_commentstring.integrations.comment_nvim :create_pre_hook)}))
   (use! :ruifm/gitlinker.nvim
         :module :config.gitlinker)
   (use! :tpope/vim-repeat)
