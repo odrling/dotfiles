@@ -23,8 +23,7 @@
               :on_exit (fn []
                            (reqcall :gitsigns :toggle_linehl false)
                            (reqcall :gitsigns :toggle_word_diff false)
-                           (reqcall :gitsigns :toggle_deleted false))
-              :on_key #(print git_hint)}
+                           (reqcall :gitsigns :toggle_deleted false))}
      :mode ["n" "x"]}
 
     [[:expr] "next hunk"
