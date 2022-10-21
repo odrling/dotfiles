@@ -27,7 +27,6 @@
                    :WhoIsSethDaniel/mason-tool-installer.nvim
                    :b0o/schemastore.nvim
                    :folke/lua-dev.nvim]
-        :event :BufReadPost
         :after :cmp-nvim-lsp
         :module :config.lsp)
 
@@ -49,7 +48,6 @@
                    {1 :saadparwaiz1/cmp_luasnip :after :nvim-cmp}
                    :rafamadriz/friendly-snippets
                    :windwp/nvim-autopairs]
-        :event [:InsertEnter :CmdlineEnter]
         :module :config.cmp)
 
   (use! :ray-x/lsp_signature.nvim
