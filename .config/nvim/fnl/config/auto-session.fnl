@@ -7,7 +7,6 @@
       allowed_dirs (if vim.env.NVIM_AUTOSAVE_SESSION nil ["~/git/*"])]
   (setup :auto-session {:auto_session_allow_dirs allowed_dirs
                         :auto_session_suppress_dirs suppress_dirs
-                        :log_level vim.log.levels.DEBUG
-                        :auto_session_use_git_branch true}))
+                        :log_level vim.log.levels.DEBUG}))
 
 (map! [n] :<leader>S #(reqcall :session-lens :search_session))
