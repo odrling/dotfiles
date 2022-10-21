@@ -126,6 +126,7 @@
 
   ; Interface
   (use! :projekt0n/github-nvim-theme)
+  (use! :romainl/vim-cool)
   (use! :joeytwiddle/sexy_scroller.vim
         :cond #(= (vim.fn.exists "g:neovide") 0)
         :module :config.sexy_scroller)
