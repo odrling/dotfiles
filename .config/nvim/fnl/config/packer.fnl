@@ -92,8 +92,7 @@
   (use! :mickael-menu/zk-nvim
         :module :config.zk)
 
-  (use! :rmagatti/auto-session
-        :opt true)
+  (use! :rmagatti/auto-session)
 
   (use! :folke/todo-comments.nvim
         :module :config.todo-comments)
