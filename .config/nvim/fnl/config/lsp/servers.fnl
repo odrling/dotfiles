@@ -22,7 +22,7 @@
 (when vim.env.MPV_LUA     (table.insert globals :mp))
 (when vim.env.AEGISUB_LUA (table.insert globals :aegisub))
 (when vim.env.NVIM_LUA
-  (setup :lua-dev {})
+  (setup :neodev {})
   (set workspace.library (vim.api.nvim_get_runtime_file "" true)))
 
 (setup_ls :sumneko_lua {:settings {:Lua {:diagnostics {:globals globals}

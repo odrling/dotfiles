@@ -26,7 +26,7 @@
                    ;; TODO:check :jayp0521/mason-null-ls.nvim
                    :WhoIsSethDaniel/mason-tool-installer.nvim
                    :b0o/schemastore.nvim
-                   :folke/lua-dev.nvim]
+                   :folke/neodev.nvim]
         :after :cmp-nvim-lsp
         :module :config.lsp)
 
