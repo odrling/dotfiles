@@ -121,7 +121,7 @@
 
 (set! colorcolumn "100,120")
 
-(set! nolazyredraw)
+(set vim.go.lazyredraw false)
 
 (set! mouse :nv)
 (set! mousehide)
