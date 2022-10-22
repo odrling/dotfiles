@@ -122,7 +122,7 @@
 (set! colorcolumn "100,120")
 
 ; don't redraw while executing macros
-; (set! lazyredraw)
+(set! nolazyredraw)
 
 (set! mouse :nv)
 (set! mousehide)
