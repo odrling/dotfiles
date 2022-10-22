@@ -121,7 +121,6 @@
 
 (set! colorcolumn "100,120")
 
-; don't redraw while executing macros
 (set! nolazyredraw)
 
 (set! mouse :nv)
