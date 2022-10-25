@@ -4,7 +4,8 @@
 
 (macro firenvim_config [...]
   (local entries {".*" {:takeover :never
-                        :priority 0}})
+                        :priority 0
+                        :cmdline :neovim}})
   (local filetypes {})
   (local aucmds [])
   (each [_ entry (pairs [...])]
@@ -13,22 +14,23 @@
             regex (.. "https://[^/]*" (string.gsub domain "[.]" "\\.") "/.*")
             glob (.. domain "_*")]
         (tset entries regex {:takeover takeover
-                             :priority 1})
+                             :priority 1
+                             :cmdline :neovim})
         (when (~= filetype nil)
           (tset filetypes domain filetype)))))
   `(do
      (set ,(sym :vim.g.firenvim_config) {:localSettings ,entries})
-     (augroup! :firenvim
-            [[BufEnter] * (fn []
-                            (if (< vim.o.lines MIN_LINES)
-                              (vim.defer_fn #(set! lines MIN_LINES) 50))
-                            (local expected_domain# (string.gsub (vim.fn.expand "%:t") "_.*" ""))
-                            (local filetype# (. ,filetypes expected_domain#))
-                            (when (~= filetype# nil)
-                              (tset vim.bo :filetype filetype#)))])))
+     (when (~= vim.g.started_by_firenvim nil)
+        (augroup! :firenvim
+               [[BufEnter] * (fn []
+                               (if (< vim.o.lines MIN_LINES)
+                                 (vim.defer_fn #(set! lines MIN_LINES) 50))
+                               (local expected_domain# (string.gsub (vim.fn.expand "%:t") "_.*" ""))
+                               (local filetype# (. ,filetypes expected_domain#))
+                               (when (~= filetype# nil)
+                                 (tset vim.bo :filetype filetype#)))]))))
 
 
-(when (~= vim.g.started_by_firenvim nil)
 
-  (firenvim_config (:github.com :markdown)
-                   (:discord.com :markdown :never)))
+(firenvim_config (:github.com :markdown)
+                 (:discord.com :markdown :never))
