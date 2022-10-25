@@ -188,3 +188,5 @@
 
 (map! [n :expr] "<C-r>" #(replace_search "%"))
 (map! [v :expr] "<C-r>" #(replace_search ""))
+
+(map! [i] "<C-v>" "<C-o>\"+p")
