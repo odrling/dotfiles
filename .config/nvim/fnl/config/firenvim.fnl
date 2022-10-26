@@ -5,7 +5,7 @@
 (macro firenvim_config [...]
   (local entries {".*" {:takeover :never
                         :priority 0
-                        :cmdline :neovim}})
+                        :cmdline :firenvim}})
   (local filetypes {})
   (local aucmds [])
   (each [_ entry (pairs [...])]
@@ -15,12 +15,12 @@
             glob (.. domain "_*")]
         (tset entries regex {:takeover takeover
                              :priority 1
-                             :cmdline :neovim})
+                             :cmdline :firenvim})
         (when (~= filetype nil)
           (tset filetypes domain filetype)))))
   `(do
      (set ,(sym :vim.g.firenvim_config) {:localSettings ,entries})
-     (when (~= vim.g.started_by_firenvim nil)
+     (when vim.g.started_by_firenvim
         (augroup! :firenvim
                [[BufEnter] * (fn []
                                (if (< vim.o.lines MIN_LINES)

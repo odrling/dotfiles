@@ -1,3 +1,4 @@
 (import-macros {: setup} :macros)
 
-(setup :noice)
+(if (not vim.g.started_by_firenvim)
+  (setup :noice))
