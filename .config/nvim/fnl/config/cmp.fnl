@@ -34,7 +34,7 @@
                      :completion {:border :none
                                   :side_padding 1}}})
 
-(cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}
+(cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :git}
                                                               {:name :buffer}])})
 
 (when (= vim.g.started_by_firenvim nil)
