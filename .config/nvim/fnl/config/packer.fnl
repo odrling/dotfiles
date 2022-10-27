@@ -183,5 +183,6 @@
         :module :config.firenvim)
   (use! :NvChad/nvim-colorizer.lua
         :config #(setup :colorizer {:user_default_options {:names false}}))
+  (use! :samjwill/nvim-unception)
   (use! :vladdoster/remember.nvim
         :module :remember))
