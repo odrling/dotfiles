@@ -108,9 +108,6 @@
   (use! :mbbill/undotree
         :module :config.undotree)
 
-  (use! :kevinhwang91/nvim-hlslens
-        :module :config.hlslens)
-
   (use! :godlygeek/tabular)
 
   (use! :gbprod/yanky.nvim
