@@ -34,7 +34,7 @@
         :config #(setup :cmp_nvim_lsp))
 
   (use! :smjonas/inc-rename.nvim
-        :config #(setup :inc_rename {:input_buffer_type :dressing}))
+        :config #(setup :inc_rename))
 
   (use! :hrsh7th/nvim-cmp
         :requires [:hrsh7th/cmp-path

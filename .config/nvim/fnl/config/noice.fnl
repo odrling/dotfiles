@@ -8,7 +8,8 @@
                                   :cmp.entry.get_documentation true}
                        :hover {:opts opts}
                        :signature {:enabled false
-                                   :opts opts}}})
+                                   :opts opts}}
+                 :presets {:inc_rename true}})
 
   (map! [n :expr] :<c-f> #(if (not (reqcall :noice.lsp :scroll 4)) :<c-f>))
   (map! [n :expr] :<c-b> #(if (not (reqcall :noice.lsp :scroll -4)) :<c-b>)))
