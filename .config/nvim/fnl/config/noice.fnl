@@ -2,7 +2,7 @@
 
 (when (not vim.g.started_by_firenvim)
   (local opts {:border :single
-               :max_width 80
+               :size {:width 80}
                :position {:row 2
                           :col 0}})
   (setup :noice {:lsp {:override {:vim.lsp.util.convert_input_to_markdown_lines true
