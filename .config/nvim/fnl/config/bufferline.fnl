@@ -10,7 +10,7 @@
   (let [current (vim.fn.bufnr)]
     (each [_ buf (ipairs (vim.api.nvim_list_bufs))]
       (when (~= buf current)
-        (vim.api.nvim_buf_delete buf {})))))
+        (pcall #(vim.api.nvim_buf_delete buf {}))))))
 
 (map! [n] :<leader>q "<cmd>bdelete<cr>")
 (map! [n] :<leader>Q 'close_buffers_except_current)
