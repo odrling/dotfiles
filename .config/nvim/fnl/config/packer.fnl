@@ -50,9 +50,6 @@
                    :windwp/nvim-autopairs]
         :module :config.cmp)
 
-  (use! :ray-x/lsp_signature.nvim
-        :module :config.lsp_signature)
-
   (use! :windwp/nvim-autopairs
         :module :config.autopairs)
 
