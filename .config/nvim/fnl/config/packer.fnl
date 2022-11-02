@@ -153,9 +153,6 @@
         :requires [:lewis6991/gitsigns.nvim
                    :tpope/vim-fugitive
                    :mrjones2014/smart-splits.nvim])
-  (use! :akinsho/bufferline.nvim
-        :requires :kyazdani42/nvim-web-devicons
-        :module :config.bufferline)
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))
   (use! :elihunter173/dirbuf.nvim

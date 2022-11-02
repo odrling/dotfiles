@@ -190,3 +190,13 @@
 (map! [v :expr] "<C-r>" #(replace_search ""))
 
 (map! [i] "<C-v>" "<C-o>\"+p")
+
+;; buffer mappings
+(fn close_buffers_except_current []
+  (let [current (vim.fn.bufnr)]
+    (each [_ buf (ipairs (vim.api.nvim_list_bufs))]
+      (when (~= buf current)
+        (vim.api.nvim_buf_delete buf {})))))
+
+(map! [n] :<leader>q "<cmd>bdelete<cr>")
+(map! [n] :<leader>Q 'close_buffers_except_current)

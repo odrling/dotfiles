@@ -13,3 +13,6 @@
 
 (reqcall :telescope :load_extension :zf-native)
 (reqcall :telescope :load_extension :frecency)
+
+(map! [n] "<leader>b" #(reqcall :telescope.builtin :buffers {:sort_mru true
+                                                             :ignore_current_buffer true}))
