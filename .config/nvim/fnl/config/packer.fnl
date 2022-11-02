@@ -122,6 +122,8 @@
   (use! :folke/noice.nvim
         :module :config.noice
         :requires [:MunifTanjim/nui.nvim])
+  (use! :lewis6991/satellite.nvim
+        :config #(setup :satellite))
   (use! :romainl/vim-cool)
   (use! :joeytwiddle/sexy_scroller.vim
         :cond #(= (vim.fn.exists "g:neovide") 0)
