@@ -5,9 +5,6 @@
   (use! :lewis6991/impatient.nvim)
 
   ; git
-  (use! :tpope/vim-fugitive
-        :module :config.fugitive)
-
   (use! :lewis6991/gitsigns.nvim
         :event :BufReadPost
         :requires :nvim-lua/plenary.nvim
@@ -153,7 +150,7 @@
         :event :VimEnter
         :module :config.hydra
         :requires [:lewis6991/gitsigns.nvim
-                   :tpope/vim-fugitive
+                   :FTerm.nvim
                    :mrjones2014/smart-splits.nvim])
   (use! :ggandor/leap.nvim
         :config #(reqcall :leap :set_default_keymaps))

@@ -1,5 +1,7 @@
 (import-macros {: exec : map! : defhydra : reqcall : augroup!} :macros)
 
+(local {: gitterm} (require :config.fterm))
+
 ; Git Hydra
 (local git_hint "
  _J_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line
@@ -43,7 +45,7 @@
     [[]              "blame"           :b       #(reqcall :gitsigns :blame_line)]
     [[]              "blame show full" :B       #(reqcall :gitsigns :blame_line {:full true})]
     [[]              "show base file"  :/       #(reqcall :gitsigns :show)]
-    [[:exit]         "status"          :<Enter> #(vim.schedule #(vim.cmd.Git))]
+    [[:exit]         "status"          :<Enter> #(gitterm:toggle)]
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
 
