@@ -5,7 +5,7 @@
 (macro firenvim_config [...]
   (local entries {".*" {:takeover :never
                         :priority 0
-                        :cmdline :firenvim}})
+                        :cmdline :none}})
   (local filetypes {})
   (local aucmds [])
   (each [_ entry (pairs [...])]
@@ -15,7 +15,7 @@
             glob (.. domain "_*")]
         (tset entries regex {:takeover takeover
                              :priority 1
-                             :cmdline :firenvim})
+                             :cmdline :none})
         (when (~= filetype nil)
           (tset filetypes domain filetype)))))
   `(do
