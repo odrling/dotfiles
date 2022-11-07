@@ -242,11 +242,15 @@
   (local packer `(require :packer))
   `((. ,packer :startup)
     {1 (lambda [(unquote (sym :use))]
-         (use :wbthomason/packer.nvim)
+         (use {1 :EdenEast/packer.nvim
+               :branch :feat/lockfile})
          (do ,...))
      :config {:autoremove true
               :compile_path _G.packer_compile_path
-              :display {:open_fn (. (require :packer.util) :float)}}}))
+              :display {:open_fn (. (require :packer.util) :float)}
+              :lockfile {:regen_on_update true
+                         :enable true
+                         :path (.. (vim.fn.stdpath :config) "/lockfile.lua")}}}))
 
 (lambda create-func [val])
 

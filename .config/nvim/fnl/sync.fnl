@@ -8,12 +8,17 @@
   (recompile)
   (reqcall :packer :sync))
 
+(fn upgrade []
+  (recompile)
+  (reqcall :packer :sync {:nolockfile true}))
+
 (fn install []
   (recompile)
   (reqcall :packer :clean)
   (reqcall :packer :install))
 
 (command! [] :Sync sync)
+(command! [] :Upgrade upgrade)
 (command! [] :Install install)
 
 (local dotdir (vim.fn.expand "$HOME/.dots"))
@@ -59,24 +64,6 @@
 
 (require :config.packer)
 
-(fn update_packages [compile]
-  (vim.notify "installing deps")
-  (var state 0)
-
-  (augroup! :packer-auto-update-steps
-            [[User] PackerComplete (fn []
-                                      (match state
-                                        0 (reqcall :packer :clean)
-                                        1 (when compile (reqcall :packer :compile)))
-                                      (set state (+ state 1)))])
-
-  (reqcall :packer :install))
-
-
 (if _G.tangerine_recompiled_packer
-  (update_packages true)
+  (reqcall :packer :sync)
   (vim.cmd.luafile _G.packer_compile_path))
-(vim.fn.wait -1 #(~= _G.packer_plugins nil))
-
-(augroup! :packer-auto-update
-          [[User] PackerCompileDone #(update_packages false)])
