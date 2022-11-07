@@ -17,7 +17,13 @@
   (reqcall :packer :clean)
   (reqcall :packer :install))
 
+(fn sync_quit []
+  (augroup! :packer-auto-update-steps
+            [[User] PackerCompileDone #(vim.cmd :qa)])
+  (sync))
+
 (command! [] :Sync sync)
+(command! [] :SyncQuit sync_quit)
 (command! [] :Upgrade upgrade)
 (command! [] :Install install)
 
