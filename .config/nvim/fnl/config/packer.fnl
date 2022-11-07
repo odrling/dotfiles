@@ -109,6 +109,11 @@
 
   (use! :chaoren/vim-wordmotion)
 
+  (use! :abecodes/tabout.nvim
+        :config #(setup :tabout)
+        :wants :nvim-treesitter
+        :after :nvim-cmp)
+
   ;; profiling
   (use! :stevearc/profile.nvim)
   (use! :t-troebst/perfanno.nvim
