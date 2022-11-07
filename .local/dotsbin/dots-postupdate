@@ -4,7 +4,7 @@ echo updating submodules
 git -C ~ submodule update --init --recursive --remote
 
 echo updating nvim
-vi +SyncQuit
+nvim +SyncQuit
 
 echo update hikari
 pipx upgrade hikari
