@@ -122,6 +122,8 @@
   (use! :lewis6991/satellite.nvim
         :config #(setup :satellite))
   (use! :romainl/vim-cool)
+  (use! :melkster/modicator.nvim
+        :config #(setup :modicator))
   (use! :joeytwiddle/sexy_scroller.vim
         :cond #(= (vim.fn.exists "g:neovide") 0)
         :module :config.sexy_scroller)
