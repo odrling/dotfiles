@@ -10,6 +10,16 @@ local function get_kdata(kid)
     return utils.parse_json(resp.stdout)
 end
 
+local function _get_title(titles)
+    for _, title in pairs(titles) do
+        return title
+    end
+end
+
+local function get_title(titles)
+    return titles.qro or titles.fre or titles.eng or _get_title(titles)
+end
+
 local function on_load()
     local path = mp.get_property("path")
     local kid = path:match("^https://kara.moe/kara/.-([0-9a-z-]+)$")
@@ -22,6 +32,7 @@ local function on_load()
         local subfile = "https://kara.moe/downloads/lyrics/" .. kdata.subfile
         mp.set_property("stream-open-filename", mediafile)
         mp.set_property("replaygain-fallback", kdata.gain)
+        mp.set_property("title", get_title(kdata.titles))
         mp.commandv("sub-add", subfile)
     end
 end
