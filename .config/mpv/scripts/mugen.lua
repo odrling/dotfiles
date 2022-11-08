@@ -10,14 +10,8 @@ local function get_kdata(kid)
     return utils.parse_json(resp.stdout)
 end
 
-local function _get_title(titles)
-    for _, title in pairs(titles) do
-        return title
-    end
-end
-
-local function get_title(titles)
-    return titles.qro or titles.fre or titles.eng or _get_title(titles)
+local function get_title(kdata)
+    return kdata.title[kdata.titles_default_language]
 end
 
 local function on_load()
@@ -32,7 +26,7 @@ local function on_load()
         local subfile = "https://kara.moe/downloads/lyrics/" .. kdata.subfile
         mp.set_property("stream-open-filename", mediafile)
         mp.set_property("replaygain-fallback", kdata.gain)
-        mp.set_property("title", get_title(kdata.titles))
+        mp.set_property("title", get_title(kdata))
         mp.commandv("sub-add", subfile)
     end
 end
