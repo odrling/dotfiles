@@ -1,6 +1,7 @@
 (import-macros {: augroup! : set! : g!} :macros)
 
 (local MIN_LINES 5)
+(local MIN_COLUMNS 66)
 
 (macro firenvim_config [...]
   (local entries {".*" {:takeover :never
@@ -25,6 +26,8 @@
                [[BufEnter] * (fn []
                                (if (< vim.o.lines MIN_LINES)
                                  (vim.defer_fn #(set! lines MIN_LINES) 50))
+                               (if (< vim.o.columns MIN_COLUMNS)
+                                 (vim.defer_fn #(set! columns MIN_COLUMNS) 50))
                                (local expected_domain# (string.gsub (vim.fn.expand "%:t") "_.*" ""))
                                (local filetype# (. ,filetypes expected_domain#))
                                (when (~= filetype# nil)
