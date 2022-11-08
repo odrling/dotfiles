@@ -21,11 +21,5 @@ fi
 kid=$ROFI_INFO
 [ -z "$kid" ] && exit
 
-# find karaoke files
-kara="$(curl "$kara_api/$kid" | jq '{mediafile: .mediafile, subfile: .subfile, gain: .gain}')"
-media="$(echo "$kara" | jq -r '.mediafile' | sed 's/#/%23/g')"
-sub="$(echo "$kara" | jq -r '.subfile' | sed 's/#/%23/g')"
-gain="$(echo "$kara" | jq -r '.gain')"
-
-mpv --replaygain-fallback=$gain --sub-file="$lyrics/$sub" "$medias/$media" > /dev/null 2>&1 &
+umpv "https://kara.moe/kara/$kid" > /dev/null 2>&1 &
 exec 1>&-
