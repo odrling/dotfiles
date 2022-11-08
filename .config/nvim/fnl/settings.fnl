@@ -196,7 +196,8 @@
 (fn close_buffers_except_current []
   (let [current (vim.fn.bufnr)]
     (each [_ buf (ipairs (vim.api.nvim_list_bufs))]
-      (when (~= buf current)
+      (when (and (~= buf current)
+                 (~= (vim.api.nvim_buf_get_option buf :filetype) :noice))
         (vim.api.nvim_buf_delete buf {})))))
 
 (map! [n] :<leader>q "<cmd>bdelete<cr>")
