@@ -11,7 +11,7 @@ local function get_kdata(kid)
 end
 
 local function get_title(kdata)
-    return kdata.title[kdata.titles_default_language]
+    return kdata.titles[kdata.titles_default_language]
 end
 
 local function on_load()
