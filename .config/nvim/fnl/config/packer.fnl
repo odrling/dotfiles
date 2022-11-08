@@ -120,6 +120,9 @@
         :config #(setup :perfanno))
 
   ; Interface
+  (use! :goolord/alpha-nvim
+        :requires :kyazdani42/nvim-web-devicons
+        :config #(setup :alpha (. (require :alpha.themes.startify) :config)))
   (use! :projekt0n/github-nvim-theme)
   (use! :folke/noice.nvim
         :module :config.noice
