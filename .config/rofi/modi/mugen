@@ -7,18 +7,20 @@ karamedia="${MUGEN_KARAOKEMEDIA:-$mugen_host/downloads}"
 medias="$karamedia/medias"
 lyrics="$karamedia/lyrics"
 
+kid=$ROFI_INFO
+
 if [ -z "$@" ]; then
-    # cache results for 30 minutes
-    karas=/tmp/$USER-mugen-karas
-    find "$karas" -mmin 30 > /dev/null 2>&1 || (
-        curl -X POST https://kara.moe/api/karas/medias -H 'content-type: application/json' -H 'accept: application/json, */*;q=0.5' -d '{"collections":["dbcf2c22-524d-4708-99bb-601703633927","c7db86a0-ff64-4044-9be4-66dd1ef1d1c1","2fa2fe3f-bb56-45ee-aa38-eae60e76f224","efe171c0-e8a1-4d03-98c0-60ecf741ad52"]}' | jq -r '.[] | "\(.mediafile)\u0000info\u001f\(.kid)"' > "$karas"
-    )
-    cat "$karas"
+    /usr/bin/printf "\0prompt\x1fkaraoke search\n"
     exit 0
+else
+    if [ -z "$kid" ]; then
+        /usr/bin/printf "\0prompt\x1fmugen\n"
+        query="$(echo "$@" | tr " " "+")"
+        curl "https://kara.moe/api/karas/search?collections=dbcf2c22-524d-4708-99bb-601703633927,c7db86a0-ff64-4044-9be4-66dd1ef1d1c1,2fa2fe3f-bb56-45ee-aa38-eae60e76f224,efe171c0-e8a1-4d03-98c0-60ecf741ad52&filter=$query&size=100" | jq -r '.content | .[] | "\(.mediafile)\u0000info\u001f\(.kid)"'
+    fi
 fi
 
 # choose karaoke
-kid=$ROFI_INFO
 [ -z "$kid" ] && exit
 
 umpv "https://kara.moe/kara/$kid" > /dev/null 2>&1 &
