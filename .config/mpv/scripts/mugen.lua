@@ -12,7 +12,7 @@ end
 
 local function on_load()
     local path = mp.get_property("path")
-    local kid = path:match("^https://kara.moe/kara/.-/([0-9a-z-]+)$")
+    local kid = path:match("^https://kara.moe/kara/.-([0-9a-z-]+)$")
     if kid == nil then
         kid = path:match("^https://live.karaokes.moe/%?video=([0-9a-z-]+)$")
     end
