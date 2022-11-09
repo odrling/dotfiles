@@ -7,7 +7,7 @@ while echo x"$1" | grep '^x-.' > /dev/null; do
     shift
 done
 
-[ "$noname" = 1 ] && params= || params="?filename=$1"
+[ "$noname" = 1 ] && params= || params="?filename=$(basename "$1")"
 
 hash=$(ipfs add "$1" | awk '{print $2}')
 
