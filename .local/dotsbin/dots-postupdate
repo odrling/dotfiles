@@ -6,8 +6,5 @@ git -C ~ submodule update --init --recursive --remote
 echo updating nvim
 nvim --headless +SyncQuit
 
-echo update hikari
-pipx upgrade hikari
-
 echo update zinit plugins
 zsh -i -c "zinit update --all --quiet && zinit cclear"
