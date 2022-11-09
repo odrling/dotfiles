@@ -1,0 +1,16 @@
+#!/bin/sh
+[ -z "$IPFS_HOST" ] && IPFS_HOST=hikari.butaishoujo.moe
+
+while echo x"$1" | grep '^x-.' > /dev/null; do
+    [ "$1" = -o ] && noname=1
+    [ "$1" = -c ] && copy=1
+    shift
+done
+
+[ "$noname" = 1 ] && params= || params="?filename=$1"
+
+hash=$(ipfs add "$1" | awk '{print $2}')
+
+url="https://$IPFS_HOST/ipfs/$hash$params"
+echo -n "$url"
+[ "$copy" = 1 ] && echo -n "$url" | xclip -selection clipboard
