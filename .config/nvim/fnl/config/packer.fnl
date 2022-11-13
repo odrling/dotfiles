@@ -69,9 +69,9 @@
         :module :config.syntax_tree_surfer
         :after :nvim-treesitter)
 
-  (use! :Kasama/nvim-custom-diagnostic-highlight
+  (use! :zbirenbaum/neodim
         :event :LspAttach
-        :config #(setup :nvim-custom-diagnostic-highlight {}))
+        :config #(setup :neodim {}))
 
   ;; Misc
   (use! :gpanders/nvim-parinfer
