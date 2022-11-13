@@ -69,10 +69,6 @@
         :module :config.syntax_tree_surfer
         :after :nvim-treesitter)
 
-  (use! :zbirenbaum/neodim
-        :event :LspAttach
-        :config #(setup :neodim {}))
-
   ;; Misc
   (use! :gpanders/nvim-parinfer
         :module :config.parinfer)

@@ -45,7 +45,6 @@ return {
   ["nvim-autopairs"] = { commit = "6b6e35f", date = "1666867571" },
   ["nvim-cmp"] = { commit = "aee4011", date = "1668315481" },
   ["nvim-colorizer.lua"] = { commit = "760e27d", date = "1667038244" },
-  ["nvim-custom-diagnostic-highlight"] = { commit = "9f23b30", date = "1663855722" },
   ["nvim-lspconfig"] = { commit = "2b802ab", date = "1668340304" },
   ["nvim-parinfer"] = { commit = "82bce57", date = "1648059699" },
   ["nvim-treesitter"] = { commit = "2072692a", date = "1668340275" },
