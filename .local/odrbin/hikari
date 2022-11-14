@@ -11,8 +11,6 @@ filename="$(basename "$1")"
 [ "$noname" = 1 ] && params= || params="?filename=$(printf "$filename" | jq -sRr @uri)"
 
 hash=$(ipfs add "$1" | awk '{print $2}')
-# pin file on hikari
-ipfs --api=/ip4/127.0.0.1/tcp/5002 pin "$hash"
 
 url="https://$HIKARI_IPFS_GATEWAY/ipfs/$hash$params"
 echo -n "$url"
