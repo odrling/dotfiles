@@ -12,7 +12,7 @@ filename="$(basename "$1")"
 
 hash=$(ipfs add "$1" | awk '{print $2}')
 # pin file on hikari
-ipfs --api=/ip4/127.0.0.1/tcp/5002 pin "$hash"
+ipfs --api=/ip4/127.0.0.1/tcp/5002 pin add "$hash"
 
 url="https://$HIKARI_IPFS_GATEWAY/ipfs/$hash$params"
 echo -n "$url"
