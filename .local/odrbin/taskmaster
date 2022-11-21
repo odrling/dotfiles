@@ -1,0 +1,33 @@
+#!/bin/sh
+[ -z "$TASKMASTER_DIR" ] && TASKMASTER_DIR=~/.local/taskmaster
+
+TASKMASTER_CURRENT="$TASKMASTER_DIR/current"
+TASKMASTER_DISMISSED="$TASKMASTER_DIR/dismissed"
+TASKMASTER_DONE="$TASKMASTER_DIR/done"
+
+mkdir -p "$TASKMASTER_CURRENT" "$TASKMASTER_DISMISSED" "$TASKMASTER_DONE"
+
+task_name="$(ls "$TASKMASTER_CURRENT" | dmenu -p taskmaster)"
+task_file="$TASKMASTER_CURRENT/$task_name"
+
+timestamp () {
+    date -u +%s
+}
+
+if [ -f "$task_file" ]; then
+    task_details="$(cat "$task_file")"
+    action=$(printf "complete\ndismiss\n" | dmenu -p "taskmaster: $task_name")
+    case "$action" in
+        complete)
+            printf "$task_details\t$(timestamp)\n" >> $TASKMASTER_DONE/done
+            rm "$task_file"
+        ;;
+        dismiss)
+            rm "$task_file"
+        ;;
+        *) echo unknown action
+        ;;
+    esac
+else
+    printf "$task_name\t$(timestamp)" > "$task_file"
+fi
