@@ -10,6 +10,8 @@ mkdir -p "$TASKMASTER_CURRENT" "$TASKMASTER_DISMISSED" "$TASKMASTER_DONE"
 task_name="$(ls "$TASKMASTER_CURRENT" | dmenu -p taskmaster)"
 task_file="$TASKMASTER_CURRENT/$task_name"
 
+[ -z "$task_name" ] && exit
+
 timestamp () {
     date -u +%s
 }
