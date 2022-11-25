@@ -481,6 +481,7 @@ local function download_formats(url)
     end
 
     if (json == nil) then
+        mp.osd_message("", 0)
         msg.verbose("fetching formats failed...", 2)
         msg.verbose("status:", es)
         msg.verbose("reason:", result.error_string)
