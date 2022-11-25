@@ -11,6 +11,8 @@ export LESS="-R -z-2 -j4"
 # fix java swing applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export SFEED_URL_FILE=$HOME/.sfeed/urls
+
 [ -f ~/.profile.local ] && . ~/.profile.local
 
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
