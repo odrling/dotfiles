@@ -179,5 +179,6 @@
         :module :config.firenvim)
   (use! :NvChad/nvim-colorizer.lua
         :config #(setup :colorizer {:user_default_options {:names false}}))
+  (use! :LunarVim/bigfile.nvim)
   (use! :vladdoster/remember.nvim
         :module :remember))
