@@ -86,6 +86,7 @@ alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 alias fd="fd --hidden"
 alias ls="ls --color=auto"
+alias dns="dig +short"
 
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
