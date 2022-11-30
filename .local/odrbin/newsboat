@@ -1,0 +1,4 @@
+#!/bin/sh
+# transparently replace newsboat because I'm too lazy to change my keymap
+# config for that
+sfeed_curses ~/.sfeed/feeds/*
