@@ -87,6 +87,7 @@ alias ffprobe="ffprobe -hide_banner"
 alias fd="fd --hidden"
 alias ls="ls --color=auto"
 alias dns="dig +short"
+alias mpvp="mpv_playlists"
 
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
