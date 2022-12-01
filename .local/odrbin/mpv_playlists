@@ -1,4 +1,4 @@
 #!/bin/sh
-playlist_file="$(ls ~/.cache/playlists/* | fzf --preview='cat {}')"
+playlist_file="$(ls -r ~/.cache/playlists | fzf --preview='cat {}')"
 
 [ -n "$playlist_file" ] && mpv --profile=mpv_queue "$playlist_file"
