@@ -5,3 +5,15 @@
 [submodule ".config/mpv/submodules/uosc"]
 	path = .config/mpv/submodules/uosc
 	url = https://github.com/tomasklaen/uosc.git
+[submodule ".config/mpv/submodules/thumbfast"]
+	path = .config/mpv/submodules/thumbfast
+	url = https://github.com/po5/thumbfast.git
+[submodule ".config/mpv/submodules/mpv-playlistmanager"]
+	path = .config/mpv/submodules/mpv-playlistmanager
+	url = https://github.com/jonniek/mpv-playlistmanager.git
+[submodule ".config/mpv/submodules/mpv-reload"]
+	path = .config/mpv/submodules/mpv-reload
+	url = https://github.com/4e6/mpv-reload.git
+[submodule ".config/mpv/submodules/groupwatch_sync"]
+	path = .config/mpv/submodules/groupwatch_sync
+	url = https://github.com/po5/groupwatch_sync.git
