@@ -2,3 +2,6 @@
 	path = .aegisub/automation/0x539
 	url = https://github.com/The0x539/Aegisub-Scripts.git
 	ignore = all
+[submodule ".config/mpv/submodules/uosc"]
+	path = .config/mpv/submodules/uosc
+	url = https://github.com/tomasklaen/uosc.git

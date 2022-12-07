@@ -34,6 +34,7 @@ Cache
 /.config/mpv/scripts/aniupdate.lua
 !/.config/mpv/shaders
 !/.config/mpv/.envrc
+!/.config/mpv/submodules
 
 # picom config file
 !/.config/picom.conf
