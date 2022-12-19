@@ -9,7 +9,7 @@ gpg --import ~/.local/odrling.key 2> /dev/null
 
 if [ "$start_hash" != "$end_hash" ]; then
     git log --pretty=format:"%H" "${start_hash}^..${end_hash}" | xargs dots verify-commit
-    git rebase "$remote"
+    git rebase --autostash "$remote"
 fi
 
 dots-postupdate
