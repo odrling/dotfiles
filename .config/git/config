@@ -16,6 +16,7 @@
 	cmd = difft "$LOCAL" "$REMOTE"
 [merge]
 	conflictStyle = "zdiff3"
+	branchdesc = true
 [fetch]
 	recurseSubmodules = on-demand
 [core]
