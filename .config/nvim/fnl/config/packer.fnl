@@ -46,6 +46,9 @@
                    :rafamadriz/friendly-snippets]
         :module :config.cmp)
 
+  (use! :m4xshen/autoclose.nvim
+        :config #(setup :autoclose {}))
+
   (use! "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
         :module :config.lsp_lines)
 
