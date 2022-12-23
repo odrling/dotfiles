@@ -43,12 +43,8 @@
                     :config #(setup :cmp_git)}
                    :L3MON4D3/LuaSnip
                    {1 :saadparwaiz1/cmp_luasnip :after :nvim-cmp}
-                   :rafamadriz/friendly-snippets
-                   :windwp/nvim-autopairs]
+                   :rafamadriz/friendly-snippets]
         :module :config.cmp)
-
-  (use! :windwp/nvim-autopairs
-        :module :config.autopairs)
 
   (use! "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
         :module :config.lsp_lines)

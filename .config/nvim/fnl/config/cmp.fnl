@@ -5,8 +5,6 @@
 
 ; nvim-cmp setup
 (local cmp (require :cmp))
-(let [cmp_autopairs (require :nvim-autopairs.completion.cmp)]
-  (cmp.event:on :confirm_done (cmp_autopairs.on_confirm_done {:map_char {:tex ""}})))
 
 (cmp.setup {:mapping {:<C-p>   (cmp.mapping.select_prev_item)
                       :<C-n>   (cmp.mapping.select_next_item)
