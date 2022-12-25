@@ -397,7 +397,7 @@ local function process_json_string(url, json)
     local json, err = utils.parse_json(json)
 
     if (json == nil) then
-        mp.osd_message("fetching formats failed...", 2)
+        -- mp.osd_message("fetching formats failed...", 2)
         if err == nil then err = "unexpected error occurred" end
         msg.error("failed to parse JSON data: " .. err)
         return
@@ -418,7 +418,7 @@ end
 
 local function download_formats(url)
 
-    mp.osd_message("fetching available formats with youtube-dl...", 60)
+    -- mp.osd_message("fetching available formats with youtube-dl...", 60)
 
     if not (ytdl.searched) then
         local ytdl_mcd = mp.find_config_file(opts.ytdl_ver)
@@ -481,7 +481,7 @@ local function download_formats(url)
     end
 
     if (json == nil) then
-        mp.osd_message("", 0)
+        -- mp.osd_message("", 0)
         msg.verbose("fetching formats failed...", 2)
         msg.verbose("status:", es)
         msg.verbose("reason:", result.error_string)
@@ -507,7 +507,7 @@ local function download_formats(url)
     end
 
     msg.verbose("youtube-dl succeeded!")
-    mp.osd_message("", 0)
+    -- mp.osd_message("", 0)
 
     local vres, ares, vfmt, afmt = process_json_string(url, json)
     return vres, ares, vfmt, afmt
