@@ -1,0 +1,4 @@
+#!/bin/sh
+file="$(xclip -selection clipboard -o)"
+notify-send "mpvclip" "queueing $file"
+umpv "$file"
