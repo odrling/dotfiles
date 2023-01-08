@@ -2,7 +2,7 @@
 base_url="https://www.sakugabooru.com"
 tags=$(echo "$*" | sed 's/ /+/g')
 
-urls=$(curl "$base_url/post.json?limit=100&tags=$tags" | jq -r ".[] | .file_url")
+urls=$(curl "$base_url/post.json?limit=100&tags=$tags" | jq -r ".[] | \"\(.file_url)?id=\(.id)\"")
 i=1
 nurls=$urls
 while [ -n "$nurls" ]; do
