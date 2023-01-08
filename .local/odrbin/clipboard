@@ -5,7 +5,7 @@ for i in $@; do
 done
 
 if [ -n "$stdin" ]; then
-    sed 's|www.youtube.com/watch?v=|youtu.be/|g' < /dev/stdin | xclip -r -selection clipboard $@
+    sed 's|www.youtube.com/watch?v=|youtu.be/|g ; s|www.sakugabooru.com/data/.*\?id=|www.sakugabooru.com/post/show/|' < /dev/stdin | xclip -r -selection clipboard $@
 else
     xclip -r -selection clipboard $*
 fi
