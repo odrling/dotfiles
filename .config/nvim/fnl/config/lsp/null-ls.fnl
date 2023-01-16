@@ -1,11 +1,12 @@
 (import-macros {: setup} :macros)
 (local mason_utils (require :config.lsp.mason))
 
-(mason_utils.ensure_tools :flake8 :isort :stylua :mypy)
+(mason_utils.ensure_tools :ruff :isort :stylua :mypy)
 
 ;; linter/formatter setup
 (local null_ls (require :null-ls))
-(local sources [null_ls.builtins.diagnostics.flake8
+(local sources [null_ls.builtins.diagnostics.ruff
+                null_ls.builtins.formatting.ruff
                 null_ls.builtins.formatting.isort
                 null_ls.builtins.diagnostics.teal
                 null_ls.builtins.formatting.stylua])
