@@ -5,4 +5,4 @@ done
 
 url=$(catbox upload "$1")
 echo $url
-echo $url | xclip -selection clipboard
+printf $url | xclip -selection clipboard
