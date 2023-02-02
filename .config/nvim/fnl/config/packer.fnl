@@ -47,7 +47,7 @@
         :module :config.cmp)
 
   (use! :m4xshen/autoclose.nvim
-        :config #(setup :autoclose {}))
+        :config #(setup :autoclose {:disable_when_touch true}))
 
   (use! "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
         :module :config.lsp_lines)
