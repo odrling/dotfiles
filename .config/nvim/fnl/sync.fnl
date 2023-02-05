@@ -4,29 +4,6 @@
   (reqcall :tangerine.api.compile :all)
   (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]]))
 
-(fn sync []
-  (recompile)
-  (reqcall :packer :sync))
-
-(fn upgrade []
-  (recompile)
-  (reqcall :packer :sync {:nolockfile true}))
-
-(fn install []
-  (recompile)
-  (reqcall :packer :clean)
-  (reqcall :packer :install))
-
-(fn sync_quit []
-  (augroup! :packer-auto-update-steps
-            [[User] PackerCompileDone #(vim.cmd :qa)])
-  (sync))
-
-(command! [] :Sync sync)
-(command! [] :SyncQuit sync_quit)
-(command! [] :Upgrade upgrade)
-(command! [] :Install install)
-
 (local dotdir (vim.fn.expand "$HOME/.dots"))
 (local dotroot (vim.fn.expand "$HOME"))
 
@@ -58,18 +35,4 @@
                                (set_git_dir)
                                (unset_git_dir)))])
 
-
-(augroup! :packer
-          [[BufWritePost] packer.fnl (fn []
-                                       (reqcall :tangerine.api.compile :buffer)
-                                       (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]])
-                                       (reqcall :packer :compile))])
-
-;; set packer compile path
-(tset _G :packer_compile_path (.. (vim.fn.stdpath :cache) "/packer_compiled.lua"))
-
-(require :config.packer)
-
-(if _G.tangerine_recompiled_packer
-  (reqcall :packer :sync)
-  (vim.cmd.luafile _G.packer_compile_path))
+(require :config.lazy)

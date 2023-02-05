@@ -1,5 +1,5 @@
 (import-macros {: setup : augroup! : reqcall} :macros)
-(local pack :packer)
+(local pack :tangerine)
 
 (lambda bootstrap [url]
   (local name (url:gsub ".*/" ""))
@@ -17,13 +17,17 @@
   (local url (.. "https://github.com/" repo))
   `(bootstrap ,url))
 
-(ghstrap :udayvir-singh/tangerine.nvim)
-(ghstrap :lewis6991/impatient.nvim)
-(ghstrap :wbthomason/packer.nvim)
-(ghstrap :projekt0n/github-nvim-theme)
-(ghstrap :rmagatti/auto-session)
+(let [lazypath (.. (vim.fn.stdpath :data) "/lazy/lazy.nvim")]
+  (when (not (vim.loop.fs_stat lazypath))
+    (vim.fn.system ["git" "clone"
+                    "--filter=blob:none"
+                    "https://github.com/folke/lazy.nvim.git"
+                    "--branch=stable"
+                    lazypath]))
 
-(require :impatient)
+  (vim.opt.rtp:prepend lazypath))
+
+(ghstrap :udayvir-singh/tangerine.nvim)
 
 (local nvim_dir (vim.fn.stdpath :config))
 
