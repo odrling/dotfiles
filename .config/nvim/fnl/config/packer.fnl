@@ -170,7 +170,8 @@
         :module :config.gitlinker)
   (use! :tpope/vim-repeat)
   (use! :tpope/vim-surround)
-  (use! :tpope/vim-sleuth)
+  (use! :NMAC427/guess-indent.nvim
+        :config #(setup :guess-indent))
   (use! :tpope/vim-abolish)
   (use! :kenn7/vim-arsync)
   (use! :glacambre/firenvim
