@@ -107,11 +107,6 @@
 
    :chaoren/vim-wordmotion
 
-   {1 :abecodes/tabout.nvim
-    :opts {}
-    :dependencies [:nvim-treesitter/nvim-treesitter
-                   :hrsh7th/nvim-cmp]}
-
    :stevearc/profile.nvim
 
    {1 :t-troebst/perfanno.nvim
