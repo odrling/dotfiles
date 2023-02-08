@@ -6,8 +6,10 @@
 
 (setup :lazy 
   [
-   :udayvir-singh/tangerine.nvim
-   :lewis6991/impatient.nvim
+   {1 :udayvir-singh/tangerine.nvim
+    :lazy false
+    :priority 200
+    :config #(config :tangerine)}
 
    ;; git
    {1 :lewis6991/gitsigns.nvim
@@ -165,6 +167,7 @@
     :dependencies [:lewis6991/gitsigns.nvim
                    :numtostr/FTerm.nvim
                    :mrjones2014/smart-splits.nvim]
+    :event :VeryLazy
     :config #(config :hydra)}
 
    {1 :ggandor/leap.nvim

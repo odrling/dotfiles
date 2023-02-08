@@ -1,4 +1,4 @@
--- :fennel:1675624874
+-- :fennel:1675817331
 local pack = "tangerine"
 local function bootstrap(url)
   _G.assert((nil ~= url), "Missing argument url on initfnl/init.fnl:4")
@@ -10,92 +10,55 @@ local function bootstrap(url)
     vim.fn.system({"git", "clone", "--depth", "1", url, path})
     vim.cmd.redraw()
     print((name .. ": finished installing"))
-    return vim.cmd.packadd(name)
+    vim.cmd.packadd(name)
+    return true
   else
-    return nil
+    return false
   end
 end
+local BOOTSTRAP = (vim.env.BOOTSTRAP_NEOVIM ~= nil)
 do
   local lazypath = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
   if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath})
+    BOOTSTRAP = true
   else
   end
   do end (vim.opt.rtp):prepend(lazypath)
 end
-bootstrap("https://github.com/udayvir-singh/tangerine.nvim")
-local nvim_dir = vim.fn.stdpath("config")
-do
-  local augid_3_ = vim.api.nvim_create_augroup("fennel_init_lua", {clear = true})
-  local function _4_()
-    local status_37_auto, ret_38_auto = nil, nil
-    local function _5_()
-      return (require("tangerine.api.compile")).dir((nvim_dir .. "/initfnl"), nvim_dir)
-    end
-    local function _6_(e_39_auto)
-      vim.notify(("tangerine.api.compile" .. "." .. "dir" .. " could not be called"), vim.log.levels.ERROR)
-      return vim.notify(("tangerine.api.compile" .. "." .. "dir" .. ":\n" .. e_39_auto), vim.log.levels.TRACE)
-    end
-    status_37_auto, ret_38_auto = xpcall(_5_, _6_)
-    if status_37_auto then
-      return ret_38_auto
-    else
-      return nil
-    end
-  end
-  vim.api.nvim_create_autocmd({"BufWritePost"}, {callback = _4_, group = augid_3_, nested = false, once = false, pattern = "init.fnl"})
-end
-do
+if BOOTSTRAP then
   local status_40_auto, ret_41_auto = nil, nil
-  local function _8_()
-    return (require("tangerine")).setup({compiler = {hooks = {"onsave"}, verbose = false}, custom = {{(nvim_dir .. "/ftplugin"), (nvim_dir .. "/ftplugin")}}})
+  local function _3_()
+    local function _4_()
+      do
+        local status_40_auto0, ret_41_auto0 = nil, nil
+        local function _5_()
+          return (require("tangerine")).setup({compiler = {hooks = {"onsave", "oninit"}, verbose = false}})
+        end
+        local function _6_(e_42_auto)
+          vim.notify(("tangerine" .. ".setup could not be called"), vim.log.levels.ERROR)
+          return vim.notify(("tangerine" .. ".setup:\n" .. e_42_auto), vim.log.levels.TRACE)
+        end
+        status_40_auto0, ret_41_auto0 = xpcall(_5_, _6_)
+        if status_40_auto0 then
+        else
+        end
+      end
+      return vim.cmd.quitall({bang = true})
+    end
+    return (require("lazy")).setup({{priority = 200, config = _4_, lazy = false, "udayvir-singh/tangerine.nvim"}})
   end
-  local function _9_(e_42_auto)
-    vim.notify(("tangerine" .. ".setup could not be called"), vim.log.levels.ERROR)
-    return vim.notify(("tangerine" .. ".setup:\n" .. e_42_auto), vim.log.levels.TRACE)
+  local function _8_(e_42_auto)
+    vim.notify(("lazy" .. ".setup could not be called"), vim.log.levels.ERROR)
+    return vim.notify(("lazy" .. ".setup:\n" .. e_42_auto), vim.log.levels.TRACE)
   end
-  status_40_auto, ret_41_auto = xpcall(_8_, _9_)
+  status_40_auto, ret_41_auto = xpcall(_3_, _8_)
   if status_40_auto then
   else
   end
+else
 end
-local _11_
-do
-  local tbl_17_auto = {}
-  local i_18_auto = #tbl_17_auto
-  local function _14_(...)
-    local status_37_auto, ret_38_auto = nil, nil
-    local function _12_()
-      return (require("tangerine.vim.hooks")).run()
-    end
-    local function _13_(e_39_auto)
-      vim.notify(("tangerine.vim.hooks" .. "." .. "run" .. " could not be called"), vim.log.levels.ERROR)
-      return vim.notify(("tangerine.vim.hooks" .. "." .. "run" .. ":\n" .. e_39_auto), vim.log.levels.TRACE)
-    end
-    status_37_auto, ret_38_auto = xpcall(_12_, _13_)
-    if status_37_auto then
-      return ret_38_auto
-    else
-      return nil
-    end
-  end
-  for _, v in ipairs(_14_(...)) do
-    local val_19_auto
-    if (v == "config/packer.fnl") then
-      val_19_auto = v
-    else
-      val_19_auto = nil
-    end
-    if (nil ~= val_19_auto) then
-      i_18_auto = (i_18_auto + 1)
-      do end (tbl_17_auto)[i_18_auto] = val_19_auto
-    else
-    end
-  end
-  _11_ = tbl_17_auto
-end
-_G.tangerine_recompiled_packer = (#_11_ > 0)
-require("profiling")
 require("settings")
 require("before")
-return require("sync")
+require("sync")
+return require("profiling")
