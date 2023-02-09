@@ -204,4 +204,6 @@
 
    :LunarVim/bigfile.nvim
    {1 :vladdoster/remember.nvim
-    :config #(require :remember)}])
+    :config #(require :remember)}]
+ {:install {:colorscheme [:github_light]}})
+
