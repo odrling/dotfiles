@@ -33,6 +33,8 @@
 	p = push
 	pf = push --force-with-lease
 	pushall = !git remote | xargs -L1 git push --all
+	tlc = clone --filter tree:0
+	blc = clone --filter blob:none
 
 [pager]
 	diff = delta
