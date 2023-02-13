@@ -51,7 +51,7 @@
     :config #(config :cmp)}
 
    {1 :m4xshen/autoclose.nvim
-    :opts {:disable_when_touch true}}
+    :opts {:options {:disable_when_touch true}}}
 
    {1 "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     :config #(config :lsp_lines)}
