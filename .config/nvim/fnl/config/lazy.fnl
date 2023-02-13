@@ -51,7 +51,9 @@
     :config #(config :cmp)}
 
    {1 :m4xshen/autoclose.nvim
-    :opts {:options {:disable_when_touch true}}}
+    :opts {:options {:disable_when_touch true
+                     :disabled_filetypes [:clojure :scheme :lisp :racket :hy
+                                          :fennel :janet :carp :wast :yuck]}}}
 
    {1 "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     :config #(config :lsp_lines)}
