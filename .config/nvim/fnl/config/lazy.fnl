@@ -194,6 +194,7 @@
    :tpope/vim-repeat
    :tpope/vim-surround
    :tpope/vim-abolish
+   :tpope/vim-rsi
 
    :kenn7/vim-arsync
 
