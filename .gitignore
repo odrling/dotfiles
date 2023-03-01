@@ -178,3 +178,6 @@ Cache
 
 # yt-dlp
 !/.config/yt-dlp
+
+# htop
+!/.config/htop
