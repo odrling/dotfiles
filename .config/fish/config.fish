@@ -7,3 +7,5 @@ alias dots="git --git-dir=$HOME/.dots --work-tree=$HOME"
 for init in ~/.config/fish/modules/*/init.fish
     source "$init"
 end
+
+starship init fish | source
