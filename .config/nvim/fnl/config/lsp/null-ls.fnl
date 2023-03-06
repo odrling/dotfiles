@@ -1,7 +1,7 @@
 (import-macros {: setup} :macros)
 (local mason_utils (require :config.lsp.mason))
 
-(mason_utils.ensure_tools :ruff :isort :stylua :mypy)
+(mason_utils.ensure_tools :stylua :mypy)
 
 ;; linter/formatter setup
 (local null_ls (require :null-ls))
