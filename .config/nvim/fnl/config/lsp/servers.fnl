@@ -30,4 +30,4 @@
                                     :workspace   workspace
                                     :telemetry   {:enable false}}}})
 
-(mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls)
+(mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls :ruff_lsp)
