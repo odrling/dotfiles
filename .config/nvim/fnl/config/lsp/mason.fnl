@@ -1,7 +1,9 @@
 (import-macros {: setup : reqcall} :macros)
 (import-macros {: merge} :core_macros)
 
-(setup :mason {:ui {:border :rounded}})
+(setup :mason {:ui {:border :rounded}
+               :PATH :append
+               :pip {:upgrade_pip true}})
 (setup :mason-lspconfig {:automatic_installation true})
 
 (local M {})
