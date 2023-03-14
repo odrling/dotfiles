@@ -142,9 +142,6 @@
    :romainl/vim-cool
    {1 :melkster/modicator.nvim
     :opts {}}
-   {1 :joeytwiddle/sexy_scroller.vim
-    :cond #(= (vim.fn.exists "g:neovide") 0)
-    :config #(config :sexy_scroller)}
    {1 :numtostr/FTerm.nvim
     :config #(config :fterm)}
 
