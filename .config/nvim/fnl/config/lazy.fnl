@@ -162,6 +162,10 @@
    {1 :stevearc/dressing.nvim
     :config #(config :dressing)}
 
+   {1 :levouh/tint.nvim
+    :opts {:tint 45
+           :tint_background_colors false}}
+
    {1 :anuvyklack/hydra.nvim
     :dependencies [:lewis6991/gitsigns.nvim
                    :numtostr/FTerm.nvim
