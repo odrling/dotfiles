@@ -63,7 +63,6 @@
   "remember.nvim": { "branch": "master", "commit": "6b4176330a25c42597ac3dba0cdce9aa8b22d60e" },
   "satellite.nvim": { "branch": "main", "commit": "d522369aa50cf8c0116c952ddc55253c505e8bf7" },
   "schemastore.nvim": { "branch": "main", "commit": "a4798a9fb5fd3ac8e132065597b397cab347d3ca" },
-  "sexy_scroller.vim": { "branch": "master", "commit": "4f6780102ac74e3473e9f6f3d48b6041975e4300" },
   "smart-splits.nvim": { "branch": "master", "commit": "b38431f1f68bc43d6bf9d1edb21c2bcb06b1197c" },
   "sqlite.lua": { "branch": "master", "commit": "93ff5824682ecc874200e338fd8ca9ccd08508f8" },
   "tabular": { "branch": "master", "commit": "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
