@@ -14,3 +14,6 @@
 [submodule ".config/mpv/submodules/groupwatch_sync"]
 	path = .config/mpv/submodules/groupwatch_sync
 	url = https://github.com/po5/groupwatch_sync.git
+[submodule ".config/mpv/submodules/mpv-youtube-upnext"]
+	path = .config/mpv/submodules/mpv-youtube-upnext
+	url = https://github.com/cvzi/mpv-youtube-upnext.git
