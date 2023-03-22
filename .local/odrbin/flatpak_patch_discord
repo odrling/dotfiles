@@ -1,0 +1,3 @@
+#!/bin/sh
+wget https://github.com/GooseMod/OpenAsar/releases/latest/download/app.asar -O /tmp/app.asar
+doas mv /tmp/app.asar $(flatpak info -l com.discordapp.Discord)/files/discord/resources/app.asar
