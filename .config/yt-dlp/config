@@ -1,2 +1,3 @@
 --mark-watched
 --sponsorblock-mark all
+--extractor-args "youtube:player_client=all"
