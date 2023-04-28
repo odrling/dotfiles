@@ -12,3 +12,7 @@ pipx upgrade hikari
 
 echo update zinit plugins
 zsh -i -c "zinit update --all --quiet && zinit cclear"
+
+for i in ~/.mozilla/firefox/*/; do
+    cp -v ~/.mozilla/Betterfox/user.js "$i"
+done
