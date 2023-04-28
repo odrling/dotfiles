@@ -17,3 +17,6 @@
 [submodule ".config/mpv/submodules/mpv-youtube-upnext"]
 	path = .config/mpv/submodules/mpv-youtube-upnext
 	url = https://github.com/cvzi/mpv-youtube-upnext.git
+[submodule ".mozilla/Betterfox"]
+	path = .mozilla/Betterfox
+	url = https://github.com/yokoffing/Betterfox.git

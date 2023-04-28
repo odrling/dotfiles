@@ -181,3 +181,9 @@ Cache
 
 # htop
 !/.config/htop
+
+# mozilla conf
+!/.mozilla
+/.mozilla/*
+!/.mozilla/Betterfox
+
