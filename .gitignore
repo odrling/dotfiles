@@ -189,3 +189,4 @@ Cache
 
 # applications
 !/.local/share/applications
+!/.config/mimeapps.list
