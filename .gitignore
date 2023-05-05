@@ -187,3 +187,5 @@ Cache
 /.mozilla/*
 !/.mozilla/Betterfox
 
+# applications
+!/.local/share/applications
