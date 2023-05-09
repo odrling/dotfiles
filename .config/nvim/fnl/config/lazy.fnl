@@ -125,10 +125,10 @@
     :lazy false
     :priority 1000
     :name :github-theme
-    :opts {:theme_style :light
-           :overrides (fn [c]
-                         {:CursorLine {:bg "#f8f8f8"}
-                          :ColorColumn {:bg "#f8f8f8"}})}}
+    :config (fn []
+              (setup :github-theme {:groups {:all {:CursorLine  {:bg "#f8f8f8"}
+                                                   :ColorColumn {:bg "#f8f8f8"}}}})
+              (vim.cmd.colorscheme :github_light))}
 
    {1 :folke/noice.nvim
     :dependencies [:MunifTanjim/nui.nvim]
@@ -208,6 +208,5 @@
 
    :LunarVim/bigfile.nvim
    {1 :vladdoster/remember.nvim
-    :config #(require :remember)}]
- {:install {:colorscheme [:github_light]}})
+    :config #(require :remember)}])
 

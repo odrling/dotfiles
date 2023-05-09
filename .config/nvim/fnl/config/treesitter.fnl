@@ -3,7 +3,7 @@
 (setup :nvim-treesitter.configs {:highlight {:enable true
                                              :additional_vim_regex_highlighting false}
                                  :auto_install true
-                                 :ensure_installed [:fennel :lua :python :java :c :cpp :rust :markdown :markdown_inline :vim :regex :help]
+                                 :ensure_installed [:fennel :lua :python :java :c :cpp :rust :markdown :markdown_inline :vim :regex]
                                  :incremental_selection {:enable true}
                                  :textobjects {:select {:enable true
                                                         ; Automatically jump forward to textobj

@@ -25,9 +25,9 @@
   (setup :neodev {})
   (set workspace.library (vim.api.nvim_get_runtime_file "" true)))
 
-(setup_ls :lua_ls {:settings {:Lua {:diagnostics {:globals globals}
-                                    :runtime     {:version "LuaJIT"}
-                                    :workspace   workspace
-                                    :telemetry   {:enable false}}}})
+; (setup_ls :lua_ls {:settings {:Lua {:diagnostics {:globals globals}
+;                                     :runtime     {:version "LuaJIT"}
+;                                     :workspace   workspace
+;                                     :telemetry   {:enable false}}}})
 
-(mason_utils.setup_installed_servers :pyright :clangd :lemminx :tsserver :vimls :ruff_lsp)
+(mason_utils.setup_installed_servers :pyright :tsserver :vimls :ruff_lsp)
