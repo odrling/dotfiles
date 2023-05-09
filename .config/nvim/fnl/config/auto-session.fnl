@@ -7,7 +7,7 @@
   (setup :auto-session {:auto_session_allow_dirs allowed_dirs
                         :auto_session_suppress_dirs suppress_dirs
                         :auto_restore_enabled false
-                        :log_level vim.log.levels.DEBUG}))
+                        :log_level vim.log.levels.ERROR}))
 
 (map! [n] :<leader>sl "<cmd>RestoreSession<cr>")
 (map! [n] :<leader>S #(reqcall :session-lens :search_session))
