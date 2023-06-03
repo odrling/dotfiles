@@ -8,7 +8,7 @@ for output in $outputs; do
 	xrandr --output "$output" --off
 done
 
-[ -z "$SECONDARY_SCREEN_LOCATION" ] && SECONDARY_SCREEN_LOCATION=right
+[ -z "$SECONDARY_SCREEN_LOCATION" ] && SECONDARY_SCREEN_LOCATION=right-of
 
 # use connected outputs
 primary=$(xrandr | awk '/primary/ { print $1 }')
