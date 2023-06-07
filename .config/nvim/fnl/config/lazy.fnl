@@ -154,10 +154,13 @@
     :config #(config :circles)}
    {1 :nvim-telescope/telescope.nvim
     :dependencies [:nvim-lua/plenary.nvim
-                   :natecraddock/telescope-zf-native.nvim
+                   :nvim-telescope/telescope-fzf-native.nvim
                    :nvim-telescope/telescope-frecency.nvim
                    :kkharji/sqlite.lua]
     :config #(config :telescope)}
+
+   {1 :nvim-telescope/telescope-fzf-native.nvim
+    :build "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"}
 
    {1 :stevearc/dressing.nvim
     :config #(config :dressing)}
