@@ -1,4 +1,4 @@
 #!/bin/sh
 
 name="$HOME/Pictures/Screenshot $(date '+%Y-%m-%d %H:%M:%S').png"
-maim -u $* "$name" && hikari -c "$name" && notify-send "Took screenshot" "$name"
+maim -d 0.1 -u $* "$name" && hikari -c "$name" && notify-send "Took screenshot" "$name"
