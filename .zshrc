@@ -88,6 +88,7 @@ alias fd="fd --hidden"
 alias ls="ls --color=auto"
 alias dns="dig +short"
 alias mpvp="mpv_playlists"
+alias fm=clifm
 
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
