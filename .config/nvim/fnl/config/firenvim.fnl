@@ -11,7 +11,7 @@
   (local aucmds [])
   (each [_ entry (pairs [...])]
     (let [(domain filetype takeover) (unpack entry)]
-      (let [takeover (if (= takeover nil) :always takeover)
+      (let [takeover (if (= takeover nil) :never takeover)
             regex (.. "https://[^/]*" (string.gsub domain "[.]" "\\.") "/.*")
             glob (.. domain "_*")]
         (tset entries regex {:takeover takeover
@@ -36,4 +36,4 @@
 
 
 (firenvim_config (:github.com :markdown)
-                 (:discord.com :markdown :never))
+                 (:discord.com :markdown))
