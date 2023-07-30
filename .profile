@@ -20,6 +20,15 @@ export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luaroc
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
-if [ "$(tty)" = '/dev/tty1' ]; then
+if test -z "${XDG_RUNTIME_DIR}"; then
+  export XDG_RUNTIME_DIR=/tmp/$(id -u)-runtime-dir
+  if ! test -d "${XDG_RUNTIME_DIR}"; then
+    mkdir "${XDG_RUNTIME_DIR}"
+    chmod 0700 "${XDG_RUNTIME_DIR}"
+  fi
+fi
+
+ulimit -c unlimited
+if command -v startx > /dev/null && [ "$(tty)" = '/dev/tty1' ]; then
 	pgrep xinit || exec startx
 fi
