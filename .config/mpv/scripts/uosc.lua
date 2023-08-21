@@ -1,1 +1,0 @@
-../submodules/uosc/scripts/uosc.lua
