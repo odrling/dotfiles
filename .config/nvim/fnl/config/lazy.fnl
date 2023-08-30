@@ -109,7 +109,8 @@
    {1 :gbprod/yanky.nvim
     :config #(config :yanky)}
 
-   :chrisgrieser/nvim-spider
+   {1 :chrisgrieser/nvim-spider
+    :config #(config :spider)}
 
    :stevearc/profile.nvim
 
