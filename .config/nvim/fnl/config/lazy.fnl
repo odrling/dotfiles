@@ -109,7 +109,7 @@
    {1 :gbprod/yanky.nvim
     :config #(config :yanky)}
 
-   :chaoren/vim-wordmotion
+   :chrisgrieser/nvim-spider
 
    :stevearc/profile.nvim
 
