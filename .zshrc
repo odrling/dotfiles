@@ -87,6 +87,7 @@ alias ls="ls --color=auto"
 alias dns="dig +short"
 alias mpvp="mpv_playlists"
 alias fm=clifm
+alias tb="nc termbin.com 9999"
 
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
