@@ -25,7 +25,7 @@ local function on_load()
         local mediafile = "https://kara.moe/downloads/medias/" .. kdata.mediafile
         local subfile = "https://kara.moe/downloads/lyrics/" .. kdata.subfile
         mp.set_property("stream-open-filename", mediafile)
-        mp.set_property("replaygain-fallback", kdata.gain)
+        -- mp.set_property("replaygain-fallback", kdata.gain)
         mp.set_property("title", get_title(kdata))
         mp.commandv("sub-add", subfile)
     end
