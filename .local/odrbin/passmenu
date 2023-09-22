@@ -1,10 +1,2 @@
 #!/bin/sh
-
-password_store="$HOME/.password-store"
-timeout=45
-
-password=$(find "$password_store" -type f -name '*.gpg' | sed "s|$password_store/||" | sed 's/\.gpg$//' | sort | dmenu -p passmenu)
-
-[ -n "$password" ] || exit
-
-pass -c "$password" && notify-send 'Password copied to clipboard' "$password"
+exec rofi-rbw -t password --clear-after 45
