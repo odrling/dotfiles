@@ -1,14 +1,13 @@
 #!/bin/sh
 
-basedir=/media/data
+basedir=/media/data/torrents
 dir="$(printf 'Anime\nRaws\nApron\nAnime/Seasonals Hell\nLive\nMovies\nShows\nMusic\nBooks\nBooks/artbooks\nBooks/manga\nBooks/LN\nBooks/novel\nImages\nPictures/cosplay\ndata_dumps\nnosync\n' | dmenu -p "addtorrent")"
 
 
 [ -z "$dir" ] && exit
 
-host=http://korone:9091
+host=https://karen.butaishoujo.moe
 rpc_url="$host/transmission/rpc"
-basedir=/media/data
 session_id=$(curl "$rpc_url" -H "$TRANSMISSION_AUTH" | grep -o 'X-Transmission-Session-Id: [0-9a-zA-Z]*')
 
 if [ -e "$1" ]; then
