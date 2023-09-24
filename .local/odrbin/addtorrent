@@ -29,4 +29,4 @@ else
     "filename": "$1"
 }}
 EOF
-fi | grep success && notify-send 'Torrent added' 'Starting a new torrent on korone' || notify-send 'ALED' 'Failed to add torrent'
+fi | grep success && notify-send 'Torrent added' 'Starting a new torrent' || notify-send 'ALED' 'Failed to add torrent'
