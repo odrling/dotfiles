@@ -22,6 +22,8 @@ xmodmap ~/.config/Xmodmap
 
 [ -e "$HOME/.xinitrc.local" ] && . "$HOME/.xinitrc.local"
 
+command -v gentoo-pipewire-launcher && gentoo-pipewire-launcher &
+
 # keyboard layout
 setxkbmap -layout fr -variant oss -option "caps:none,shift:both_capslock"
 
