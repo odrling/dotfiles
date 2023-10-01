@@ -18,14 +18,12 @@ unclutter --ignore-scrolling -b
 # map left control to escape
 xcape -e 'Control_L=Escape' &
 
-xmodmap ~/.config/Xmodmap
-
 [ -e "$HOME/.xinitrc.local" ] && . "$HOME/.xinitrc.local"
 
 command -v gentoo-pipewire-launcher && gentoo-pipewire-launcher &
 
 # keyboard layout
-setxkbmap -layout fr -variant oss -option "caps:none,shift:both_capslock"
+setxkbmap -layout fr -variant oss -option "caps:escape,shift:both_capslock"
 
 # disable bell
 xset -b
