@@ -20,3 +20,6 @@
 [submodule ".mozilla/Betterfox"]
 	path = .mozilla/Betterfox
 	url = https://github.com/yokoffing/Betterfox.git
+[submodule ".config/mpv/submodules/mpv-quality-menu"]
+	path = .config/mpv/submodules/mpv-quality-menu
+	url = https://github.com/christoph-heinrich/mpv-quality-menu.git
