@@ -196,3 +196,8 @@ Cache
 
 # foot
 !/.config/foot
+
+# s6
+!/.s6
+/.s6/*/*
+!/.s6/*/run
