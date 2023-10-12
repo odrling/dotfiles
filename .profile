@@ -29,6 +29,10 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 fi
 
 ulimit -c unlimited
-if command -v startx > /dev/null && [ "$(tty)" = '/dev/tty1' ]; then
-	pgrep xinit || exec startx
+if [ "$(tty)" = '/dev/tty1' ]; then
+  if command -v dwl > /dev/null; then
+    pgrep dwl || exec dbus-launch --exit-with-session dwl -s "s6-svscan ~/.s6"
+  elif command -v startx > /dev/null; then
+    pgrep xinit || exec startx
+  fi
 fi
