@@ -193,3 +193,6 @@ Cache
 
 # direnv
 !/.direnvrc
+
+# foot
+!/.config/foot
