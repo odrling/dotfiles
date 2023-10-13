@@ -188,7 +188,7 @@ Cache
 !/.mozilla/Betterfox
 
 # applications
-!/.local/share/applications
+#!/.local/share/applications
 !/.config/mimeapps.list
 
 # direnv
