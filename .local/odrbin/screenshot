@@ -1,4 +1,16 @@
 #!/bin/sh
 
+mkdir -p "$HOME/Pictures"
 name="$HOME/Pictures/Screenshot $(date '+%Y-%m-%d %H:%M:%S').png"
-maim -d 0.1 -u $* "$name" && hikari -c "$name" && notify-send "Took screenshot" "$name"
+
+if [ -z "$WAYLAND_DISPLAY" ]; then
+    maim -d 0.1 -u $* "$name" || exit 1
+else
+    if [ "$1" = "-a" ]; then
+        grim -g "$(slurp)" "$name" || exit 1
+    else
+        grim "$name" || exit 1
+    fi
+fi
+
+hikari -c "$name" && notify-send "Took screenshot" "$name"
