@@ -33,7 +33,7 @@ fi
 ulimit -c unlimited
 if [ "$(tty)" = '/dev/tty1' ]; then
   if command -v dwl > /dev/null; then
-    pgrep dwl || exec dbus-launch --exit-with-session dwl -s "s6-svscan ~/.s6 <&-"
+    pgrep dwl || exec dbus-launch --exit-with-session dwl -s "s6-svscan ~/.s6"
   elif command -v startx > /dev/null; then
     pgrep xinit || exec startx
   fi
