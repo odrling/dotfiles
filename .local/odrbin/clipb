@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ -z "$WAYLAND_DISPLAY" ] && xclip -r -selection clipboard < /dev/stdin || wl-copy -n < /dev/stdin
