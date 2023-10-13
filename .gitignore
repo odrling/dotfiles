@@ -201,3 +201,6 @@ Cache
 !/.s6
 /.s6/*/*
 !/.s6/*/run
+
+# cursor themes
+!/.icons
