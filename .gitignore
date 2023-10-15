@@ -204,3 +204,6 @@ Cache
 
 # cursor themes
 !/.icons
+
+# xdpw
+!/.config/xdg-desktop-portal-wlr
