@@ -381,6 +381,7 @@ key_bindings:
   - { key: C,        mods: Alt,           action: Copy             }
   - { key: K,        mods: Alt,           action: ScrollLineUp     }
   - { key: J,        mods: Alt,           action: ScrollLineDown   }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
   # - { key: Insert,   mods: Shift,         action: PasteSelection   }
   # - { key: Key0,     mods: Alt,           action: ResetFontSize    }
   # - { key: I,        mods: Alt,           action: IncreaseFontSize }
