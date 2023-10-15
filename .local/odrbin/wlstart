@@ -1,11 +1,9 @@
 #!/bin/sh
 
-s6-svscanctl -t ~/.s6
-s6-svwait -d ~/.s6/*
+mkfifo "$XDG_RUNTIME_DIR/dwl_status"
+
+s6-svscanctl -t ~/.s6 && s6-svwait -D ~/.s6/*
 s6-svscan ~/.s6 &
 
-trap "s6-svscanctl -t ~/.s6" INT QUIT EXIT
-
-mkfifo "$XDG_RUNTIME_DIR/dwl_status"
 cat /dev/stdin > "$XDG_RUNTIME_DIR/dwl_status"
 
