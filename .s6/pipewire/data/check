@@ -1,2 +1,2 @@
 #!/bin/sh
-exec pw-cli i all
+exec pw-cli i all > /dev/null 2>&1
