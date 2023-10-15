@@ -1,2 +1,2 @@
 #!/bin/sh
-exec pw-cli i all > /dev/null 2>&1
+exec timeout 2 pw-cli i all > /dev/null 2>&1
