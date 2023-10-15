@@ -1,0 +1,2 @@
+#!/bin/sh
+exec pw-cli i all

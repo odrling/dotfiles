@@ -1,2 +1,2 @@
 #!/bin/sh
-exec gentoo-pipewire-launcher restart
+exec s6-notifyoncheck gentoo-pipewire-launcher restart
