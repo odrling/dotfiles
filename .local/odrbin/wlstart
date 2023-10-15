@@ -1,7 +1,8 @@
 #!/bin/sh
 
-s6-svscanctl -t ~/.s6
-s6-svscan ~/.s6 &
+s6-svscan ~/.s6 <&- &
+
+trap "s6-svscanctl -t ~/.s6" int quit
 
 mkfifo /tmp/dwl_status
 cat /dev/stdin > /tmp/dwl_status
