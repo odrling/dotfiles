@@ -1,2 +1,2 @@
 #!/bin/sh
-exec somebar < /tmp/dwl_status
+exec somebar < "$XDG_RUNTIME_DIR/dwl_status"
