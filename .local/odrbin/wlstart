@@ -6,6 +6,6 @@ s6-svscan ~/.s6 &
 
 trap "s6-svscanctl -t ~/.s6" INT QUIT EXIT
 
-mkfifo /tmp/dwl_status
-cat /dev/stdin > /tmp/dwl_status
+mkfifo "$XDG_RUNTIME_DIR/dwl_status"
+cat /dev/stdin > "$XDG_RUNTIME_DIR/dwl_status"
 
