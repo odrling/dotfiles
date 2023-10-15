@@ -1,0 +1,3 @@
+#!/bin/sh
+s6-svwait ~/.s6/somebar
+exec someblocks
