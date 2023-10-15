@@ -33,7 +33,9 @@ fi
 ulimit -c unlimited
 if [ "$(tty)" = '/dev/tty1' ]; then
   if command -v dwl > /dev/null; then
+    export XDG_CURRENT_DESKTOP=dwl
     pgrep dwl || exec dbus-launch --exit-with-session dwl -s "wlstart"
+    s6-svscanctl -t ~/.s6
   elif command -v startx > /dev/null; then
     pgrep xinit || exec startx
   fi
