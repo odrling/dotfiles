@@ -1,2 +1,2 @@
 #!/bin/sh
-exec somebar
+exec somebar < /tmp/dwl_status
