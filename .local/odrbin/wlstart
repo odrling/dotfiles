@@ -5,5 +5,7 @@ mkfifo "$XDG_RUNTIME_DIR/dwl_status"
 s6-svscanctl -t ~/.s6 && s6-svwait -D ~/.s6/*
 s6-svscan ~/.s6 &
 
-cat /dev/stdin > "$XDG_RUNTIME_DIR/dwl_status"
+while :; do
+    cat /dev/stdin > "$XDG_RUNTIME_DIR/dwl_status"
+done
 
