@@ -199,7 +199,7 @@ Cache
 
 # s6
 !/.s6
-/.s6/scandir/.s6-svscan
+/.s6/scandir
 /.s6/services/*/*
 !/.s6/services/*/run
 !/.s6/services/*/data
