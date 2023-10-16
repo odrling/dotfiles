@@ -1,2 +1,2 @@
-#!/bin/sh
-exec mako
+#!/bin/execlineb -P
+mako

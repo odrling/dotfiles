@@ -1,2 +1,0 @@
-#!/bin/sh
-s6-svok $S6_SCANDIR/carla && s6-svc -t $S6_SCANDIR/carla

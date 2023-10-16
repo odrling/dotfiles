@@ -1,2 +1,2 @@
-#!/bin/sh
-exec otd
+#!/bin/execlineb -P
+otd
