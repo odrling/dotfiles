@@ -204,6 +204,7 @@ Cache
 !/.s6/services/*/run
 !/.s6/services/*/data
 !/.s6/services/*/notification-fd
+!/.s6/services/*/finish
 
 # cursor themes
 !/.icons

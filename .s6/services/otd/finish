@@ -1,0 +1,3 @@
+#!/bin/sh
+# some processes seem to stay under PID 1
+pkill -f OpenTablet
