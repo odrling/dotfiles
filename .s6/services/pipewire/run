@@ -1,2 +1,2 @@
-#!/bin/execlineb
+#!/bin/execlineb -P
 s6-notifyoncheck gentoo-pipewire-launcher restart
