@@ -1,4 +1,4 @@
 #!/bin/sh
-s6-svwait -U ~/.s6/pipewire
+s6-svwait -U "$S6_SCANDIR/pipewire" || exit 1
 pw-cli create-node adapter '{ factory.name=support.null-audio-sink node.name=carla-focusrite media.class=Audio/Source/Virtual object.linger=true audio.position=[FL FR] }'
 exec carla-rack "$CARLA_SERVICE_CONFIG"
