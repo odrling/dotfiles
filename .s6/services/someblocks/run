@@ -1,0 +1,3 @@
+#!/bin/sh
+s6-svwait "$S6_SCANDIR/somebar" || exit 1
+exec someblocks
