@@ -1,11 +1,7 @@
-#!/bin/sh
+#!/bin/execlineb -P
+importas XDG_RUNTIME_DIR XDG_RUNTIME_DIR
+importas S6_SCANDIR S6_SCANDIR
 
-mkfifo "$XDG_RUNTIME_DIR/dwl_status"
-
-s6-svscanctl -t "$S6_SCANDIR" && s6-svwait -D "$S6_SCANDIR/"*
-s6-svscan "$S6_SCANDIR" &
-
-while :; do
-    cat /dev/stdin > "$XDG_RUNTIME_DIR/dwl_status"
-done
-
+foreground { mkfifo ${XDG_RUNTIME_DIR}/dwl_status }
+background { s6-svscan ${S6_SCANDIR} }
+redirfd -w 1 ${XDG_RUNTIME_DIR}/dwl_status cat /dev/stdin
