@@ -31,12 +31,4 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 fi
 
 ulimit -c unlimited
-if [ "$(tty)" = '/dev/tty1' ]; then
-  if command -v dwl > /dev/null; then
-    export XDG_CURRENT_DESKTOP=dwl
-    pgrep dwl || dbus-launch --exit-with-session dwl -s "wlstart"
-    exec s6-svscanctl -t ~/.s6
-  elif command -v startx > /dev/null; then
-    pgrep xinit || exec startx
-  fi
-fi
+[ "$(tty)" = '/dev/tty1' ] && exec startsession
