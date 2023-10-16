@@ -1,2 +1,3 @@
-#!/bin/sh
-exec somebar < "$XDG_RUNTIME_DIR/dwl_status"
+#!/bin/execlineb -P
+importas XDG_RUNTIME_DIR XDG_RUNTIME_DIR
+redirfd -r 0 ${XDG_RUNTIME_DIR}/dwl_status somebar
