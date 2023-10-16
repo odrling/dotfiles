@@ -13,6 +13,6 @@ battery_icon() {
 }
 
 icon=$(battery_icon)
-[ Discharging != "$bat_status" ] && icon="⚡ $icon"
+[ Discharging != "$bat_status" ] && icon=" $icon"
 
 echo "$icon $cap%"
