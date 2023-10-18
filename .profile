@@ -29,6 +29,8 @@ if test -z "${XDG_RUNTIME_DIR}"; then
   fi
 fi
 
+export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
+
 ulimit -c unlimited
 
 [ -f ~/.profile.local ] && . ~/.profile.local

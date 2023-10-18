@@ -1,3 +1,3 @@
 #!/bin/execlineb -P
-importas XDG_RUNTIME_DIR XDG_RUNTIME_DIR
-redirfd -r 0 ${XDG_RUNTIME_DIR}/dwl_status somebar
+importas DWL_STATUS_PIPE DWL_STATUS_PIPE
+redirfd -r 0 ${DWL_STATUS_PIPE} somebar
