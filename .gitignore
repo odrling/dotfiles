@@ -211,3 +211,6 @@ Cache
 
 # xdpw
 !/.config/xdg-desktop-portal-wlr
+
+# wgetpaste
+!/.wgetpaste.conf
