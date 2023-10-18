@@ -2,7 +2,7 @@
 importas S6_SCANDIR S6_SCANDIR
 importas CARLA_SERVICE_CONFIG CARLA_SERVICE_CONFIG
 foreground { s6-svwait -U ${S6_SCANDIR}/pipewire }
-foreground { pw-cli create-node adapter "{ factory.name=support.null-audio-sink node.name=carla-focusrite media.class=Audio/Source/Virtual object.linger=true audio.position=[FL FR] }" }
+foreground { pw-cli create-node adapter "{ factory.name=support.null-audio-sink node.name=carla media.class=Audio/Source/Virtual object.linger=true audio.position=[FL FR] }" }
 background { carla-rack ${CARLA_SERVICE_CONFIG} }
 importas CARLA_PID !
 background { s6-svwait -D ${S6_SCANDIR}/pipewire }
