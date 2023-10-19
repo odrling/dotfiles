@@ -1,3 +1,3 @@
 profile {
-    output "Samsung Electric Company S24F350 H4ZM505564" mode 1920x1080@71.91
+    output "Samsung Electric Company S24F350 H4ZM505564" enable mode 1920x1080@71.91
 }
