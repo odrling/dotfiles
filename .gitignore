@@ -214,3 +214,6 @@ Cache
 
 # wgetpaste
 !/.wgetpaste.conf
+
+# swaylock
+!/.config/swaylock
