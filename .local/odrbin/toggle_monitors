@@ -6,5 +6,5 @@ if [ "$1" = off ]; then
         wlr-randr --output "${o}" --$1
     done
 else
-    s6-svc -1 $S6_SCANDIR/kanshi
+    s6-svc -h $S6_SCANDIR/kanshi
 fi
