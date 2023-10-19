@@ -1,6 +1,10 @@
 #!/bin/sh
 # usage: toggle_monitors <on|off>"
 [ "$1" = on ] || [ "$1" = off ] || exit 1
-for o in $(wlr-randr | awk '/^[^[:space:]]+/ {printf $1}'); do
-    wlr-randr --output "${o}" --$1
-done
+if [ "$1" = off ]; then
+    for o in $(wlr-randr | awk '/^[^[:space:]]+/ {printf $1}'); do
+        wlr-randr --output "${o}" --$1
+    done
+else
+    s6-svc -1 $S6_SCANDIR/kanshi
+fi
