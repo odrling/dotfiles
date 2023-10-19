@@ -2,6 +2,7 @@
 swayidle -w
 timeout 300 "swaylock -f"
 timeout 600 "toggle_monitors off"
+resume "toggle_monitors on"
 after-resume "toggle_monitors on"
 before-sleep "swaylock -f"
 lock "swaylock -f"
