@@ -9,4 +9,4 @@ for card in $(aplay -l | grep -o '^card [0-9]*' | cut -d' ' -f2 | uniq); do
     vol=$(amixer set -c "$card" "$control" "${newvol}%" | tail -1 | grep -oE "\[[0-9]+%\]")
 done
 
-pkill -SIGRTMIN+10 dwmblocks
+pkill -SIGRTMIN+10 someblocks

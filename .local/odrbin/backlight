@@ -49,6 +49,4 @@ case "$BACKLIGHT_BACKEND" in
         ;;
 esac
 
-if [ -n "$1" ]; then
-    pkill -SIGRTMIN+11 dwmblocks
-fi
+[ -n "$1" ] && pkill -SIGRTMIN+11 someblocks
