@@ -1,4 +1,4 @@
 #!/bin/sh
-file="$(xclip -selection clipboard -o)"
+file="$(wl-paste)"
 notify-send "mpvclip" "queueing $file"
 umpv "$file"
