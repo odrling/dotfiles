@@ -53,11 +53,11 @@
 	defaultBranch = master
 [url "ssh://git@github.com/"]
     pushInsteadOf = https://github.com/
-[url "ssh://git@git.odrling.xyz/"]
-    pushInsteadOf = https://git.odrling.xyz/
 [url "ssh://git@codeberg.org/"]
     pushInsteadOf = https://codeberg.org/
 [url "https://git.japan7.bde.enseeiht.fr"]
     insteadOf = ssh://git@git.japan7.bde.enseeiht.fr:8022
+[url "git@git.odrling.xyz:repos"]
+    pushInsteadOf = https://git.odrling.xyz
 [credential]
 	helper = rbw
