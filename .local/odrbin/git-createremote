@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+git remote add origin git@git.odrling.xyz:$1
+ssh git@git.odrling.xyz "git init --bare $1
+echo '$2' > $1/description"
