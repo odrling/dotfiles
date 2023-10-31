@@ -7,6 +7,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 export S6_SCANDIR="$HOME/.s6/scandir"
 
+export SWAYIDLE_LOCK=300
+export SWAYIDLE_TURN_OFF=600
+
 export GTK_THEME=Arc
 
 export LESS="-R -z-2 -j4"
