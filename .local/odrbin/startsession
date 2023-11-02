@@ -3,6 +3,7 @@ importas S6_SCANDIR S6_SCANDIR
 ifelse { redirfd -w 1 /dev/null which dwl }
   {
     export XDG_CURRENT_DESKTOP dwl
+    export GDK_BACKEND wayland
     if -n { pgrep dwl }
     foreground { dbus-launch --exit-with-session dwl -s "wlstart" }
     s6-svscanctl -t ${S6_SCANDIR}
