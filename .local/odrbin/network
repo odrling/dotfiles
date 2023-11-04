@@ -1,4 +1,4 @@
 #!/bin/sh
-network=$(nmcli -t device | grep :connected: | cut -d':' -f4)
+[ -z "$IFACE" ] && IFACE=wlan0
+network=$(iwctl station $IFACE show | sed -n 's/\s*Connected network\s*//p')
 [ -n network ] && echo  $network || echo down
-
