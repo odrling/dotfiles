@@ -5,6 +5,12 @@ export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+# fcitx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+
 export S6_SCANDIR="$HOME/.s6/scandir"
 
 export SWAYIDLE_LOCK=300
