@@ -16,3 +16,6 @@ zsh -i -c "zinit update --all --quiet && zinit cclear"
 for i in ~/.mozilla/firefox/*/; do
     cp -v ~/.mozilla/Betterfox/user.js "$i"
 done
+
+echo update uosc ziggy
+command -v go > /dev/null && go build -C "$HOME/.config/mpv/submodules/uosc" -ldflags "-s -w" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy"
