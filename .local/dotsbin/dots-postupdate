@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo updating submodules
-git -C ~ submodule update --init --recursive --remote
-
 echo updating nvim
 BOOTSTRAP_NEOVIM=1 nvim --headless
 nvim --headless "+Lazy! restore" +qa
