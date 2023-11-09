@@ -30,4 +30,4 @@
 ;                                     :workspace   workspace
 ;                                     :telemetry   {:enable false}}}})
 
-(mason_utils.setup_installed_servers :pyright :tsserver :vimls :ruff_lsp :shellcheck)
+(mason_utils.setup_installed_servers :pyright :tsserver :vimls :ruff_lsp)
