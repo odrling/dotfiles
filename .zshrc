@@ -104,7 +104,7 @@ alias tb="nc termbin.com 9999"
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
 
-export PIPX_DEFAULT_PYTHON=/usr/bin/python3.11
+export PIPX_DEFAULT_PYTHON=/usr/bin/python3.12
 
 export GPG_TTY=$(tty)
 [ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
