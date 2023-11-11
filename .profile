@@ -38,6 +38,8 @@ if test -z "${XDG_RUNTIME_DIR}"; then
   fi
 fi
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.default"
+
 export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
 
 ulimit -c unlimited
