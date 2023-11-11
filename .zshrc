@@ -14,17 +14,12 @@ ZVM_VI_INS_LEGACY_UNDO=1
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent quiet yes
-
 # load modules
 zinit light zsh-users/zsh-completions
 zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light z-shell/F-Sy-H
 [ -z "$NVIM" ] && (zinit ice wait ""; zinit light jeffreytse/zsh-vi-mode)
-
-zinit ice has'ssh-agent' wait silent; zinit snippet OMZP::ssh-agent
 
 command -v direnv 2>&1 > /dev/null && source <(direnv hook zsh)
 
