@@ -1,0 +1,3 @@
+#!/bin/execlineb -P
+importas XDG_RUNTIME_DIR XDG_RUNTIME_DIR
+ssh-agent -a ${XDG_RUNTIME_DIR}/ssh-agent.default -t 7200 -D
