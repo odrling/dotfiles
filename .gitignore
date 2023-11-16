@@ -226,4 +226,6 @@ Cache
 !/.config/fcitx5
 
 # fonts
+!/.local/share/fonts
+/.local/share/fonts/*
 !/.local/share/fonts/dots
