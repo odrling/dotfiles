@@ -1,6 +1,7 @@
 #!/bin/sh
-host="$1"
-port_out="$2"
-port_in="${3:-$port_out}"
+[ -z "$HOST" ] && echo HOST environment variable is not set > /dev/stderr && exit 1
+[ -z "$PORT_OUT" ] && echo PORT_OUT environment variable is not set > /dev/stderr && exit 1
+[ -z "$PORT_IN" ] && PORT_IN=$PORT_OUT
+[ -z "$ADDR_OUT" ] && ADDR_OUT=127.0.0.1
 
-exec ssh -n "$host" -L "$port_in:127.0.0.1:$port_out" -N -T
+exec ssh -n "$HOST" -L "$PORT_IN:127.0.0.1:$PORT_OUT" -N -T
