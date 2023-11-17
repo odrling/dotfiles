@@ -3,4 +3,4 @@ host="$1"
 port_out="$2"
 port_in="${3:-$port_out}"
 
-exec ssh -n $host -L $port_in:127.0.0.1:$port_out -N -T
+exec ssh -n "$host" -L "$port_in:127.0.0.1:$port_out" -N -T
