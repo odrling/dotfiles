@@ -95,6 +95,7 @@ alias dns="dig +short"
 alias mpvp="mpv_playlists"
 alias fm=clifm
 alias tb="nc termbin.com 9999"
+command -v direnv > /dev/null && alias emerge="direnv exec ~ emerge"
 
 export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
