@@ -4,4 +4,9 @@ profile {
 
 profile {
     output eDP-1 enable
+    output "LG Electronics LG UltraFine 205NTVS32135" enable scale 2.0
+}
+
+profile {
+    output eDP-1 enable
 }
