@@ -1,0 +1,4 @@
+#!/bin/execlineb
+importas HOME HOME
+elgetpositionals
+direnv exec $HOME $@
