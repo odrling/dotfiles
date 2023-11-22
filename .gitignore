@@ -229,3 +229,6 @@ Cache
 !/.local/share/fonts
 /.local/share/fonts/*
 !/.local/share/fonts/dots
+
+# snooze jobs
+!/.snooze
