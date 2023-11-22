@@ -1,0 +1,7 @@
+#!/bin/execlineb -P
+importas TIMEFILE TIMEFILE
+importas PARTS_DIR PARTS_DIR
+importas TIMEWAIT TIMEWAIT
+
+snooze -H* -M* -S* -t $TIMEFILE -T $TIMEWAIT
+execlineb -Pc "foreground { run-parts ${PARTS_DIR} } touch $TIMEFILE"
