@@ -26,4 +26,3 @@
 [submodule ".local/share/fonts/dots"]
 	path = .local/share/fonts/dots
 	url = https://git.odrling.xyz/fonts
-	shallow = true
