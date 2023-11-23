@@ -23,9 +23,6 @@
 [submodule ".config/mpv/submodules/mpv-quality-menu"]
 	path = .config/mpv/submodules/mpv-quality-menu
 	url = https://github.com/christoph-heinrich/mpv-quality-menu.git
-[submodule "/home/odrling/.local/submodules/monaspace"]
-	path = /home/odrling/.local/submodules/monaspace
-	url = https://github.com/githubnext/monaspace.git
 [submodule ".local/share/fonts/dots"]
 	path = .local/share/fonts/dots
 	url = https://git.odrling.xyz/fonts
