@@ -1,0 +1,23 @@
+#!/bin/sh
+url="$1"
+name="$(basename "$url" .git)"
+worktree="$2"
+[ -z "$worktree" ] && worktree="$name"
+[ -z "$GITDIRS" ] && GITDIRS="$HOME/gitdirs"
+
+if [ -d "$GITDIRS/$name.git" ]; then 
+    GIT_DIR="$GITDIRS/$name.git"
+else
+    GIT_DIR="$GITDIRS/$name"
+fi
+
+[ -z "$worktree" ] && echo "usage: $0 NAME WORKTREE" && exit 1
+
+GIT_WORK_TREE="$(realpath "$worktree")"
+
+if ! git clone --separate-git-dir "$GIT_DIR" "$url" "$GIT_WORK_TREE"; then
+    export GIT_DIR
+    git remote set-url origin "$url" 
+    git fetch origin
+    git worktree add -f "$GIT_WORK_TREE"
+fi
