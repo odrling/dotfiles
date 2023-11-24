@@ -3,7 +3,8 @@ url="$1"
 name="$(basename "$url" .git)"
 worktree="$2"
 [ -z "$worktree" ] && worktree="$name"
-[ -z "$GITDIRS" ] && GITDIRS="$HOME/gitdirs"
+[ -z "$GITDIRS" ] && GITDIRS="$HOME/git/.gitdirs"
+mkdir -p $GITDIRS
 
 if [ -d "$GITDIRS/$name.git" ]; then 
     GIT_DIR="$GITDIRS/$name.git"
