@@ -12,7 +12,7 @@ else
     GIT_DIR="$GITDIRS/$name"
 fi
 
-[ -z "$worktree" ] && echo "usage: $0 NAME WORKTREE" && exit 1
+[ -z "$worktree" ] && echo "usage: $0 URL WORKTREE" && exit 1
 
 GIT_WORK_TREE="$(realpath "$worktree")"
 
