@@ -17,8 +17,10 @@ fi
 GIT_WORK_TREE="$(realpath "$worktree")"
 
 if ! git clone --separate-git-dir "$GIT_DIR" "$url" "$GIT_WORK_TREE"; then
+    export GIT_DIR
+    export GIT_WORK_TREE
     mkdir -p "$GIT_WORK_TREE"
     echo "gitdir: $GIT_DIR" > "$GIT_WORK_TREE/.git"
-    git -C "GIT_WORK_TREE" fetch
-    git -C "$GIT_WORK_TREE" checkout "$GIT_WORK_TREE"
+    git fetch
+    git checkout "$GIT_WORK_TREE"
 fi
