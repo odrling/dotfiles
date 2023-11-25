@@ -4,7 +4,7 @@ name="$(basename "$url" .git)"
 worktree="$2"
 [ -z "$worktree" ] && worktree="$name"
 [ -z "$GITDIRS" ] && GITDIRS="$HOME/git/.gitdirs"
-mkdir -p $GITDIRS
+mkdir -p "$GITDIRS"
 
 if [ -d "$GITDIRS/$name.git" ]; then 
     GIT_DIR="$GITDIRS/$name.git"
@@ -17,8 +17,8 @@ fi
 GIT_WORK_TREE="$(realpath "$worktree")"
 
 if ! git clone --separate-git-dir "$GIT_DIR" "$url" "$GIT_WORK_TREE"; then
-    export GIT_DIR
-    git remote set-url origin "$url" 
-    git fetch origin
-    git worktree add -f "$GIT_WORK_TREE"
+    mkdir -p "$GIT_WORK_TREE"
+    echo "gitdir: $GIT_DIR" > "$GIT_WORK_TREE/.git"
+    git -C "GIT_WORK_TREE" fetch
+    git -C "$GIT_WORK_TREE" checkout "$GIT_WORK_TREE"
 fi
