@@ -32,6 +32,7 @@ export PNPM_HOME="/home/odrling/.local/share/pnpm"
 export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
 
 export FZF_DEFAULT_OPTS="-m"
+command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 

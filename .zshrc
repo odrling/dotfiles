@@ -78,11 +78,6 @@ setopt appendhistory notify histexpiredupsfirst histsavenodups \
 
 unsetopt beep
 
-export FZF_DEFAULT_OPTS="-m"
-
-
-command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
-
 alias venv="source ~/.venvs/venv/bin/activate"
 alias ytdl="yt-dlp"
 alias ag="ag --nogroup"
