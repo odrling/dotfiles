@@ -32,7 +32,6 @@ complete -cf doas
 
 # fzf
 if command -v fzf 2>&1 > /dev/null; then
-    source ~/.bash/fzf/shell/completion.bash
     source ~/.bash/fzf/shell/key-bindings.bash
     if [ -n "$FZF_COMPLETION" ]; then
         source ~/.bash/fzf/shell/completion.bash
