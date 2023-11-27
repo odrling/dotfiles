@@ -4,7 +4,6 @@
 [[ $- != *i* ]] && return
 
 ## options
-shopt -s autocd       # automatically cd into directories
 shopt -s cdspell      # correct minor spelling errors in cd
 shopt -s checkhash    # try the hashtable first
 shopt -s checkjobs    # show jobs status before exiting
