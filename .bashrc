@@ -26,7 +26,6 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ## Completions
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-bind '"\t":menu-complete'       # nice menu completion on tab
 
 # doas/sudo command completion
 complete -cf sudo
