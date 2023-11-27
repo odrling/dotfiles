@@ -18,7 +18,7 @@ export SWAYIDLE_TURN_OFF=600
 
 export GTK_THEME=Arc
 
-export LESS="-R -z-2 -j4"
+export LESS="-R -z-2 -j4 -F"
 
 # fix java swing applications
 export _JAVA_AWT_WM_NONREPARENTING=1
