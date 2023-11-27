@@ -8,6 +8,12 @@ Cache
 # ignore log files
 *log
 
+# aliases
+!/.shaliases
+
+# bash config
+!/.bashrc
+
 # zsh config files
 !/.zshrc
 !/.zprofile

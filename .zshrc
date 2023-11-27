@@ -78,22 +78,7 @@ setopt appendhistory notify histexpiredupsfirst histsavenodups \
 
 unsetopt beep
 
-alias venv="source ~/.venvs/venv/bin/activate"
-alias ytdl="yt-dlp"
-alias ag="ag --nogroup"
-alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
-alias ffmpeg="ffmpeg -hide_banner"
-alias ffprobe="ffprobe -hide_banner"
-alias fd="fd --hidden"
-alias ls="ls --color=auto"
-alias dns="dig +short"
-alias fm=clifm
-alias tb="nc termbin.com 9999"
-alias neovide="neovide --nofork"
-command -v direnv > /dev/null && alias doas="direnv exec ~ doas"
-
-export GPG_TTY=$(tty)
-[ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
+. ~/.shaliases
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 

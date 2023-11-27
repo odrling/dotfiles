@@ -34,6 +34,9 @@ export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luaroc
 export FZF_DEFAULT_OPTS="-m"
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
+export GPG_TTY=$(tty)
+[ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
+
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 if test -z "${XDG_RUNTIME_DIR}"; then

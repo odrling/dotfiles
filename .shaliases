@@ -1,0 +1,14 @@
+
+alias venv="source ~/.venvs/venv/bin/activate"
+alias ytdl="yt-dlp"
+alias ag="ag --nogroup"
+alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
+alias ffmpeg="ffmpeg -hide_banner"
+alias ffprobe="ffprobe -hide_banner"
+alias fd="fd --hidden"
+alias ls="ls --color=auto"
+alias dns="dig +short"
+alias fm=clifm
+alias tb="nc termbin.com 9999"
+alias neovide="neovide --nofork"
+command -v direnv > /dev/null && alias doas="direnv exec ~ doas"
