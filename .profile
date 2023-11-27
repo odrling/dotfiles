@@ -31,6 +31,8 @@ export PIPX_DEFAULT_PYTHON=/usr/bin/python3.12
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
 export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
 
+export FZF_DEFAULT_OPTS="-m"
+
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 if test -z "${XDG_RUNTIME_DIR}"; then
