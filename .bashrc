@@ -26,10 +26,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ## Completions
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-
-# doas/sudo command completion
-complete -cf sudo
-complete -cf doas
+. ~/.bash/completions
 
 # fzf
 if command -v fzf 2>&1 > /dev/null; then

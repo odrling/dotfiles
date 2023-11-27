@@ -1,0 +1,4 @@
+
+for i in ~/.bash/completions.d/*; do
+    . "$i"
+done
