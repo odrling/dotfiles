@@ -13,6 +13,7 @@ Cache
 
 # bash config
 !/.bashrc
+!/.bash_profile
 
 # zsh config files
 !/.zshrc
