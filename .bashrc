@@ -31,6 +31,14 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 complete -cf sudo
 complete -cf doas
 
+# fzf
+if command -v fzf 2>&1 > /dev/null; then
+    source ~/.bash/fzf/shell/completion.bash
+    source ~/.bash/fzf/shell/key-bindings.bash
+    source ~/.bash/fzf-tab-completion/bash/fzf-bash-completion.sh
+    bind -x '"\t": fzf_bash_completion'
+fi
+
 # prompt
 if command -v starship 2>&1 > /dev/null; then
     source <(starship init bash --print-full-init)
@@ -52,6 +60,8 @@ osc7_cwd() {
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
+
+command -v direnv 2>&1 > /dev/null && source <(direnv hook bash)
 
 . ~/.shaliases
 
