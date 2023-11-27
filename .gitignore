@@ -15,6 +15,9 @@ Cache
 !/.bashrc
 !/.bash_profile
 
+# readline inputrc
+!/.inputrc
+
 # zsh config files
 !/.zshrc
 !/.zprofile
