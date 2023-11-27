@@ -27,7 +27,7 @@ zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/j
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
 
-source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 command -v direnv 2>&1 > /dev/null && source <(direnv hook zsh)
 
 if command -v starship 2>&1 > /dev/null; then
