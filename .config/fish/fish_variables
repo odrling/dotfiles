@@ -11,13 +11,6 @@ SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3400
-SETUVAR _fish_abbr_cat:bat
-SETUVAR _fish_abbr_pass:gopass
-SETUVAR _fish_abbr_top:htop
-SETUVAR _fish_abbr_venv:source\x20\x7e/\x2evenv/bin/activate\x2efish
-SETUVAR _fish_abbr_vi:nvim
-SETUVAR _fish_abbr_vim:nvim
-SETUVAR _fish_abbr_ytdl:youtube\x2ddl
 SETUVAR fish_color_at:888888
 SETUVAR fish_color_autosuggestion:8e908c
 SETUVAR fish_color_cancel:\x2d\x2dreverse
