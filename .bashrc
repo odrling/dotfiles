@@ -40,6 +40,8 @@ if command -v fzf 2>&1 > /dev/null; then
     fi
 fi
 
+source ~/.bash/bash-preexec/bash-preexec.sh
+
 # prompt
 if command -v starship 2>&1 > /dev/null; then
     source <(starship init bash --print-full-init)

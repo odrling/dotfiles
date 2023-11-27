@@ -32,3 +32,6 @@
 [submodule ".bash/fzf"]
 	path = .bash/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule ".bash/bash-preexec"]
+	path = .bash/bash-preexec
+	url = https://github.com/rcaloras/bash-preexec.git
