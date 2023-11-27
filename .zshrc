@@ -16,12 +16,8 @@ autoload -Uz _zinit
 
 # load modules
 zinit light zsh-users/zsh-completions
-zinit ice has'fzf'; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
-zinit light z-shell/F-Sy-H
 [ -z "$NVIM" ] && (zinit ice wait ""; zinit light jeffreytse/zsh-vi-mode)
-
-command -v direnv 2>&1 > /dev/null && source <(direnv hook zsh)
 
 zinit ice wait"1" lucid
 zinit light chisui/zsh-nix-shell
@@ -30,6 +26,9 @@ zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/j
 zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
+
+source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+command -v direnv 2>&1 > /dev/null && source <(direnv hook zsh)
 
 if command -v starship 2>&1 > /dev/null; then
     source <(starship init zsh --print-full-init)
