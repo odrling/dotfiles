@@ -22,8 +22,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait"1" lucid
 zinit light chisui/zsh-nix-shell
 
-zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-zinit ice has'fzf' wait lucid; zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
+zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf/shell/completion.zsh
+zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf/shell/key-bindings.zsh
 zinit ice wait"1" lucid
 zinit snippet https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
 
