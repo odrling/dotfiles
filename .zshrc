@@ -19,8 +19,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 [ -z "$NVIM" ] && (zinit ice wait ""; zinit light jeffreytse/zsh-vi-mode)
 
-zinit ice wait"1" lucid
-zinit light chisui/zsh-nix-shell
+zinit ice has'nix-shell' wait"1" lucid; zinit light chisui/zsh-nix-shell
 
 zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf/shell/completion.zsh
 zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf/shell/key-bindings.zsh
