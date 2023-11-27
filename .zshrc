@@ -95,12 +95,8 @@ alias dns="dig +short"
 alias mpvp="mpv_playlists"
 alias fm=clifm
 alias tb="nc termbin.com 9999"
-command -v direnv > /dev/null && alias doas="direnv exec ~ doas"
-
-export NEOVIDE_MULTIGRID=1
 alias neovide="neovide --nofork"
-
-export PIPX_DEFAULT_PYTHON=/usr/bin/python3.12
+command -v direnv > /dev/null && alias doas="direnv exec ~ doas"
 
 export GPG_TTY=$(tty)
 [ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
