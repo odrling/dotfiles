@@ -1,3 +1,20 @@
+# don't use sound
+set bell-style none
+# blink on matchin parens
+set blink-matching-paren on
+set colored-completion-prefix on
+set colored-stats on
+# ignore case when completing
+set completion-ignore-case on
+# treat - and _ the same
+set completion-map-case on
+
+set history-size 1048576
+
+set menu-complete-display-prefix on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
 set editing-mode vi
 set show-mode-in-prompt on
 # SET THE MODE STRING AND CURSOR TO INDICATE THE VIM MODE
@@ -17,19 +34,3 @@ Control-l: clear-screen
 TAB: menu-complete
 "\e[Z": menu-complete-backward
 
-# don't use sound
-set bell-style none
-# blink on matchin parens
-set blink-matching-paren on
-set colored-completion-prefix on
-set colored-stats on
-# ignore case when completing
-set completion-ignore-case on
-# treat - and _ the same
-set completion-map-case on
-
-set history-size 1048576
-
-set menu-complete-display-prefix on
-set show-all-if-ambiguous on
-set show-all-if-unmodified on
