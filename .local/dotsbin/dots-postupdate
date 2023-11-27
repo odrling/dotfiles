@@ -1,18 +1,24 @@
 #!/bin/sh
 
-echo updating nvim
-BOOTSTRAP_NEOVIM=1 nvim --headless
-nvim --headless "+Lazy! restore" +qa
+if command -v nvim > /dev/null 2>&1; then
+    echo updating nvim
+    BOOTSTRAP_NEOVIM=1 nvim --headless
+    nvim --headless "+Lazy! restore" +qa
+fi
 
-echo update hikari
-pipx upgrade hikari
+if command -v pipx > /dev/null 2>&1; then
+    echo update hikari
+    pipx upgrade hikari
+fi
 
-echo update zinit plugins
-zsh -i -c "zinit update --all --quiet && zinit cclear"
+if command -v zsh > /dev/null 2>&1; then
+    echo update zinit plugins
+    zsh -i -c "zinit update --all --quiet && zinit cclear"
+fi
 
 for i in ~/.mozilla/firefox/*/; do
     cp -v ~/.mozilla/Betterfox/user.js "$i"
 done
 
 echo update uosc ziggy
-command -v go > /dev/null && go build -C "$HOME/.config/mpv/submodules/uosc" -ldflags "-s -w" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy"
+command -v go > /dev/null 2>&1 && go build -C "$HOME/.config/mpv/submodules/uosc" -ldflags "-s -w" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy"
