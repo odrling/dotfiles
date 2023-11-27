@@ -34,8 +34,13 @@ complete -cf doas
 if command -v fzf 2>&1 > /dev/null; then
     source ~/.bash/fzf/shell/completion.bash
     source ~/.bash/fzf/shell/key-bindings.bash
-    source ~/.bash/fzf-tab-completion/bash/fzf-bash-completion.sh
-    bind -x '"\t": fzf_bash_completion'
+    if [ -n "$FZF_COMPLETION" ]; then
+        source ~/.bash/fzf/shell/completion.bash
+        source ~/.bash/fzf-tab-completion/bash/fzf-bash-completion.sh
+        bind -x '"\t": fzf_bash_completion'
+
+        _fzf_bash_completion_loading_msg() { echo "${PS1@P}${READLINE_LINE}" | tail -n1; }
+    fi
 fi
 
 # prompt
