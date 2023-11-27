@@ -4,16 +4,6 @@
 [[ $- != *i* ]] && return
 
 ## options
-bind "set bell-style visible"        # don't use sound
-bind "set blink-matching-paren on"   # blink on matchin parens
-bind "set colored-completion-prefix on"  # colourz!
-bind "set colored-stats on"          # colors
-bind "set completion-ignore-case on" # ignore case when completing
-bind "set completion-map-case on"    # treat - and _ the same
-bind "set history-size 1048576"      # big history
-bind "set menu-complete-display-prefix on"
-bind "set show-all-if-ambiguous on"  # show everything
-bind "set show-all-if-unmodified on" # show it!
 shopt -s autocd       # automatically cd into directories
 shopt -s cdspell      # correct minor spelling errors in cd
 shopt -s checkhash    # try the hashtable first
