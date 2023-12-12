@@ -16,4 +16,5 @@ end
 
 update_cwd_osc # Run once since we might have inherited PWD from a parent shell
 
-starship init fish | source
+command -v starship >/dev/null && starship init fish | source
+command -v direnv >/dev/null && direnv hook fish | source
