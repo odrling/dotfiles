@@ -1,12 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export BEMENU_BACKEND:wayland
-SETUVAR --export FZF_DEFAULT_COMMAND:fd\x1e\x2d\x2dtype\x1ef
-SETUVAR --export FZF_DEFAULT_OPTS:\x2dm\x1e\x2d\x2dno\x2dmouse
-SETUVAR --export NNN_BMS:h\x3a\x7e\x3ba\x3a\x3bd\x3a\x7e/Downloads\x3bp\x3a\x7e/Pictures
-SETUVAR --export NNN_OPENER:/home/odrling/\x2elocal/bin/nnnopen
-SETUVAR --export --path PATH:/home/odrling/\x2elocal/bin\x20/home/odrling/\x2elocal/bin\x20/home/odrling/\x2elocal/bin\x20/home/odrling/\x2elocal/bin\x20/home/odrling/\x2elocal/bin\x1e/bin\x1e/usr/bin
-SETUVAR --export _JAVA_AWT_WM_NONREPARENTING:1
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
