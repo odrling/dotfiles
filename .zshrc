@@ -2,6 +2,9 @@ stty -ixon # Disable ctrl-s and ctrl-q.
 
 # load modules
 source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+# fixes conflict with fzf key-bindings
+# Do the initialization when the script is sourced (i.e. Initialize instantly)
+ZVM_INIT_MODE=sourcing
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 if command -v fzf >/dev/null; then
