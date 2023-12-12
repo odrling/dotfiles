@@ -11,6 +11,9 @@ if command -v fzf >/dev/null; then
     source ~/.bash/fzf/shell/completion.zsh
     source ~/.bash/fzf/shell/key-bindings.zsh
     source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+    export FZF_COMPLETION_TRIGGER=''
+    bindkey '^T' fzf-completion
+    bindkey '^I' $fzf_default_completion
 fi
 
 command -v direnv 2>&1 > /dev/null && source <(direnv hook zsh)
