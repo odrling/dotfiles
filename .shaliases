@@ -11,4 +11,5 @@ alias dns="dig +short"
 alias fm=clifm
 alias tb="nc termbin.com 9999"
 alias neovide="neovide --nofork"
+command -v doas > /dev/null && alias sudo=doas
 command -v direnv > /dev/null && alias doas="direnv exec ~ doas"
