@@ -21,8 +21,7 @@ if status is-interactive
 
     update_cwd_osc # Run once since we might have inherited PWD from a parent shell
 
-    source ~/.bash/fzf/shell/key-bindings.fish
-
+    command -v fzf >/dev/null && source ~/.bash/fzf/shell/key-bindings.fish
     command -v starship >/dev/null && starship init fish | source
     command -v direnv >/dev/null && direnv hook fish | source
 
