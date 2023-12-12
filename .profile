@@ -39,14 +39,6 @@ export GPG_TTY=$(tty)
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
-if test -z "${XDG_RUNTIME_DIR}"; then
-  export XDG_RUNTIME_DIR=/tmp/$(id -u)-runtime-dir
-  if ! test -d "${XDG_RUNTIME_DIR}"; then
-    mkdir "${XDG_RUNTIME_DIR}"
-    chmod 0700 "${XDG_RUNTIME_DIR}"
-  fi
-fi
-
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.default"
 
 export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
