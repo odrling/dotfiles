@@ -32,3 +32,12 @@
 [submodule ".bash/bash-preexec"]
 	path = .bash/bash-preexec
 	url = https://github.com/rcaloras/bash-preexec.git
+[submodule ".config/mpv/submodules/VR-reversal"]
+	path = .config/mpv/submodules/VR-reversal
+	url = https://github.com/dfaker/VR-reversal.git
+[submodule ".zsh/zsh-completions"]
+	path = .zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule ".zsh/zsh-vi-mode"]
+	path = .zsh/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode

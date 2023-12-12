@@ -21,6 +21,7 @@ Cache
 
 # zsh config files
 !/.zshrc
+!/.zsh
 !/.zprofile
 !/.bash.command-not-found
 

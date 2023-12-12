@@ -1,30 +1,15 @@
 stty -ixon # Disable ctrl-s and ctrl-q.
 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-mkdir -p "$(dirname $ZINIT_HOME)"
-[ -f "$ZINIT_HOME/zinit.zsh" ] || git clone --depth 1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-# fixes conflict with zsh-autosuggestions
-# Do the initialization when the script is sourced (i.e. Initialize instantly)
-ZVM_INIT_MODE=sourcing
-# avoid showing a syntax highlighting mess
-ZVM_VI_INS_LEGACY_UNDO=1
-
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
 # load modules
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-[ -z "$NVIM" ] && (zinit ice wait ""; zinit light jeffreytse/zsh-vi-mode)
+source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+[ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-zinit ice has'nix-shell' wait"1" lucid; zinit light chisui/zsh-nix-shell
+if command -v fzf >/dev/null; then
+    source ~/.bash/fzf/shell/completion.zsh
+    source ~/.bash/fzf/shell/key-bindings.zsh
+    source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+fi
 
-zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf/shell/completion.zsh
-zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf/shell/key-bindings.zsh
-
-zinit ice has'fzf' wait lucid; zinit snippet ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 command -v direnv 2>&1 > /dev/null && source <(direnv hook zsh)
 
 if command -v starship 2>&1 > /dev/null; then
@@ -82,5 +67,3 @@ fpath+=~/.zfunc
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
-
-zinit cdreplay -q
