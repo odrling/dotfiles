@@ -7,10 +7,6 @@ end
 if status is-interactive
     fish_vi_key_bindings 2> /dev/null # bind: Key with name “btab” does not have any mapping
 
-    for init in ~/.config/fish/modules/*/init.fish
-        source "$init"
-    end
-
     # OSC-7
     function update_cwd_osc --on-variable PWD --description 'Notify terminals when $PWD changes'
         if status --is-command-substitution || set -q INSIDE_EMACS
