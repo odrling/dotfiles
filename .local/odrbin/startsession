@@ -1,12 +1,11 @@
-#!/bin/execlineb -P
-importas S6_SCANDIR S6_SCANDIR
-ifelse { redirfd -w 1 /dev/null which dwl }
-  {
-    export XDG_CURRENT_DESKTOP dwl
-    export GDK_BACKEND wayland
-    if -n { pgrep dwl }
-    foreground { dbus-launch --exit-with-session dwl -s "wlstart" }
-    s6-svscanctl -t ${S6_SCANDIR}
-  }
-if { redirfd -w 1 /dev/null which startx }
-  if -n { pgrep xinit } startx
+#!/bin/sh
+if command -v dwl > /dev/null; then
+  export XDG_CURRENT_DESKTOP=dwl
+  export GDK_BACKEND=wayland
+  pgrep dwl || exec execlineb -Pc "
+    importas S6_SCANDIR S6_SCANDIR
+    foreground { dbus-launch --exit-with-session dwl -s wlstart }
+    s6-svscanctl -t \${S6_SCANDIR}"
+elif command -v startx > /dev/null; then
+  pgrep xinit || exec startx
+fi
