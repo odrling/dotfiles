@@ -53,3 +53,4 @@ ulimit -c unlimited
 export CDPATH="$ODRCDPATH"
 
 [ "$(tty)" = '/dev/tty1' ] && exec startsession
+exec $SHELL
