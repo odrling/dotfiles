@@ -41,3 +41,6 @@
 [submodule ".zsh/zsh-vi-mode"]
 	path = .zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule ".config/mpv/submodules/mpv-skipsilence"]
+	path = .config/mpv/submodules/mpv-skipsilence
+	url = https://github.com/ferreum/mpv-skipsilence.git
