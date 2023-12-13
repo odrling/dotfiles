@@ -35,6 +35,9 @@ export FZF_DEFAULT_OPTS="-m"
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
 export GPG_TTY=$(tty)
+
+export ODRCDPATH=".:$HOME/git"
+
 [ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
@@ -46,5 +49,7 @@ export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
 ulimit -c unlimited
 
 [ -f ~/.profile.local ] && . ~/.profile.local
+
+export CDPATH="$ODRCDPATH"
 
 [ "$(tty)" = '/dev/tty1' ] && exec startsession
