@@ -5,7 +5,7 @@ if status is-login
 end
 
 if status is-interactive
-    fish_vi_key_bindings 2> /dev/null # bind: Key with name “btab” does not have any mapping
+    fish_vi_key_bindings 2> /dev/null
 
     # OSC-7
     function update_cwd_osc --on-variable PWD --description 'Notify terminals when $PWD changes'
