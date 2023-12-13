@@ -44,8 +44,6 @@ export ODRCDPATH=".:$HOME/git"
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.default"
 
-export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
-
 ulimit -c unlimited
 
 [ -f ~/.profile.local ] && . ~/.profile.local

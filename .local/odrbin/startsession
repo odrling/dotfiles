@@ -2,6 +2,7 @@
 if command -v dwl > /dev/null; then
   export XDG_CURRENT_DESKTOP=dwl
   export GDK_BACKEND=wayland
+  export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
   pgrep dwl || exec execlineb -Pc "
     importas S6_SCANDIR S6_SCANDIR
     foreground { dbus-launch --exit-with-session dwl -s wlstart }
