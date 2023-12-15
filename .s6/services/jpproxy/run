@@ -1,0 +1,8 @@
+#!/bin/sh
+cat > "$XDG_RUNTIME_DIR/jpproxy.conf" << EOF
+WGConfig = $JP_PROXY_WG_CONFIG
+
+[Socks5]
+BindAddress = 127.0.0.1:9059
+EOF
+exec wireproxy -c "$XDG_RUNTIME_DIR/jpproxy.conf"
