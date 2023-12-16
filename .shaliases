@@ -1,5 +1,5 @@
 
-alias venv="source ~/.venvs/venv/bin/activate"
+alias venv="source ~/.venvs/venv/bin/activate$VENV_SUFFIX"
 alias ytdl="yt-dlp"
 alias ag="ag --nogroup"
 alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"

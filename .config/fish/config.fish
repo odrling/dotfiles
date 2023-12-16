@@ -23,6 +23,8 @@ if status is-interactive
 
     # fish overrides it at some point when used as a login shell (?)
     export CDPATH="$ODRCDPATH"
+
+    export VENV_SUFFIX=".fish"
     source ~/.shaliases
 end
 
