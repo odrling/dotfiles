@@ -10,6 +10,7 @@
 [diff]
 	mnemonicprefix = true
 	tool = difftastic
+	algorithm = histogram
 [difftool]
 	prompt = false
 [difftool "difftastic"]
@@ -19,8 +20,10 @@
 	branchdesc = true
 [fetch]
 	recurseSubmodules = on-demand
+	writeCommitGraph = true
 [core]
 	longpaths = true
+	logallrefupdates = true
 [pull]
 	rebase = false
 [alias]
