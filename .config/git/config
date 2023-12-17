@@ -24,6 +24,7 @@
 [core]
 	longpaths = true
 	logallrefupdates = true
+	hooksPath = "~/.config/git/hooks"
 [pull]
 	rebase = false
 [alias]
@@ -64,3 +65,17 @@
     pushInsteadOf = https://git.odrling.xyz
 [credential]
 	helper = rbw
+[gc]
+	reflogexpire = 90
+	writeCommitGraph = true
+[user]
+	name = Gitea
+	email = gitea@fake.local
+[receive]
+	advertisePushOptions = true
+	procReceiveRefs = refs/for
+[safe]
+	directory = *
+[uploadpack]
+	allowfilter = true
+	allowAnySHA1InWant = true

@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+runif() {
+    if [ -n "$1" ]; then
+        shift
+        # shellcheck disable=SC2068
+        $@
+        return $?
+    fi
+    return 0
+}
+
+runif "$GIT_HOOK_ISORT" isort . --check
+runif "$GIT_HOOK_BLACK" black . --check
+runif "$GIT_HOOK_RUFF" ruff
+runif "$GIT_HOOK_PYRIGHT" pyright .
