@@ -21,6 +21,8 @@ export GTK_THEME=Arc
 export LESSCOLORIZER="highlight -O ansi"
 export LESS="-R -z-2 -j4 -F"
 
+command -v delta >/dev/null 2>&1 && export GIT_PAGER=delta
+
 # fix java swing applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
