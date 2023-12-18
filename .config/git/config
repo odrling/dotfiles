@@ -11,6 +11,7 @@
 	mnemonicprefix = true
 	tool = difftastic
 	algorithm = histogram
+	colorMoved = default
 [difftool]
 	prompt = false
 [difftool "difftastic"]
@@ -41,10 +42,6 @@
 	blc = clone --filter blob:none
 
 [pager]
-	diff = delta
-	log = delta
-	reflog = delta
-	show = delta
 	difftool = true
 
 [delta]
