@@ -13,5 +13,5 @@ runif() {
 
 runif "$GIT_HOOK_ISORT" isort . --check
 runif "$GIT_HOOK_BLACK" black . --check
-runif "$GIT_HOOK_RUFF" ruff
+runif "$GIT_HOOK_RUFF" ruff .
 runif "$GIT_HOOK_PYRIGHT" pyright .
