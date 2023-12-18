@@ -28,9 +28,9 @@
 [pull]
 	rebase = false
 [alias]
-	l = log --date=short --graph --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\"
+	l = "log --date=short --graph --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\""
 	ll = log --stat
-	lf = log --date=short --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\"
+	lf = "log --date=short --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\""
 	rh = reset --hard
 	d = diff --patch-with-stat
 	s = status
