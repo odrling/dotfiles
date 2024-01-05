@@ -1,4 +1,4 @@
 --mark-watched
 --sponsorblock-mark all
 --extractor-args "youtube:player_client=all"
---format-sort "codec,filesize,fs_approx,height"
+--format-sort "height,vcodec,acodec,filesize,fs_approx"
