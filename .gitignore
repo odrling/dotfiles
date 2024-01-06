@@ -187,7 +187,7 @@ Cache
 !/.local/odrbin
 
 # public key
-!/.local/odrling.key
+!/.local/odrling.pub
 
 # yt-dlp
 !/.config/yt-dlp
