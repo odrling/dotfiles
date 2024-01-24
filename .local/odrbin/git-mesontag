@@ -1,0 +1,5 @@
+#!/bin/sh -e
+builddir="$1"
+meson compile -C "$builddir"
+version=$(meson introspect --projectinfo "$builddir" | jq -r .version)
+git tag -a "$version" -m ""
