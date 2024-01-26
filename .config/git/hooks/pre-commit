@@ -5,7 +5,7 @@ runif() {
     if [ -n "$1" ]; then
         shift
         # shellcheck disable=SC2068
-        $@
+        sh -c "$@"
         return $?
     fi
     return 0
@@ -15,4 +15,4 @@ runif "$GIT_HOOK_ISORT" isort . --check
 runif "$GIT_HOOK_BLACK" black . --check
 runif "$GIT_HOOK_RUFF" ruff .
 runif "$GIT_HOOK_PYRIGHT" pyright .
-runif "$GIT_HOOK_CLANG_FORMAT" sh -c 'fd .\*\\.c | xargs clang-format -Werror -n'
+runif "$GIT_HOOK_CLANG_FORMAT" 'fd --glob \*.c | xargs clang-format -Werror -n'
