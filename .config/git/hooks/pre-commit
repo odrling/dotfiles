@@ -16,3 +16,4 @@ runif "$GIT_HOOK_BLACK" black . --check
 runif "$GIT_HOOK_RUFF" ruff .
 runif "$GIT_HOOK_PYRIGHT" pyright .
 runif "$GIT_HOOK_CLANG_FORMAT" 'fd --glob \*.c | xargs clang-format -Werror -n'
+runif "$GIT_HOOK_GOFMT" '[ "$(gofmt -l . | wc -l)" -eq 0 ] || (gofmt -l -d .; exit 1)'
