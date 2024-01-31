@@ -1,0 +1,2 @@
+#!/bin/sh
+exec odrfootclient -D "$(realpath "$1")"

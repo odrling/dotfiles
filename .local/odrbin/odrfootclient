@@ -1,0 +1,2 @@
+#!/bin/sh
+exec footclient --server="$XDG_RUNTIME_DIR/foot.sock" "$@"

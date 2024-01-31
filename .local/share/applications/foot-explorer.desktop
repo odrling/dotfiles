@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=footclient -D %f
+Exec=foot-explorer %f
 Icon=foot
 Terminal=false
 Categories=System;TerminalEmulator;
