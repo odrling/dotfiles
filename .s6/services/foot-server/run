@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
-foot --server
+#!/bin/sh
+exec foot --server="${XDG_RUNTIME_DIR}/foot.sock"
