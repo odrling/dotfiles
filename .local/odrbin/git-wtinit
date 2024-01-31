@@ -1,7 +1,7 @@
 #!/bin/sh
 worktree="$1"
 
-[ -z "$REPONAME" ] && REPONAME="$(basename "$worktree" .git)"
+[ -z "$REPONAME" ] && REPONAME="$(basename "$(realpath "$worktree")" .git)"
 [ -z "$GITDIRS" ] && GITDIRS="$HOME/git/.gitdirs"
 
 gitdir="$GITDIRS/$REPONAME"
