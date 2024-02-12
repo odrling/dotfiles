@@ -44,3 +44,6 @@
 [submodule ".config/mpv/submodules/mpv-skipsilence"]
 	path = .config/mpv/submodules/mpv-skipsilence
 	url = https://github.com/ferreum/mpv-skipsilence.git
+[submodule ".config/mpv/submodules/mfcc64-scripts"]
+	path = .config/mpv/submodules/mfcc64-scripts
+	url = https://github.com/mfcc64/mpv-scripts.git
