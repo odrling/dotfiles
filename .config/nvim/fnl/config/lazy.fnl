@@ -74,11 +74,6 @@
     :dependencies :nvim-treesitter/nvim-treesitter
     :config #(setup :ts_context_commentstring {:enable_autocmd false})}
 
-   ;; syntax plugins
-   :sheerun/vim-polyglot
-   {1 :edgedb/edgedb-vim
-    :config #(config :edgedb)}
-
    ;; Misc
    {1 :gpanders/nvim-parinfer
     :config #(config :parinfer)}
