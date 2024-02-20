@@ -71,7 +71,8 @@
    {1 :windwp/nvim-ts-autotag
     :dependencies :nvim-treesitter/nvim-treesitter}
    {1 :JoosepAlviste/nvim-ts-context-commentstring
-    :dependencies :nvim-treesitter/nvim-treesitter}
+    :dependencies :nvim-treesitter/nvim-treesitter
+    :config #(setup :ts_context_commentstring {:enable_autocmd false})}
 
    ;; syntax plugins
    :sheerun/vim-polyglot
