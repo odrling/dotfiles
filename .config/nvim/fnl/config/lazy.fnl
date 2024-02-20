@@ -134,8 +134,9 @@
    {1 :nvim-lualine/lualine.nvim
     :config #(config :lualine)}
 
-   {1 :lewis6991/satellite.nvim
-    :opts {}}
+   ; {1 :lewis6991/satellite.nvim
+   ;  :opts {}}
+
    :romainl/vim-cool
    {1 :melkster/modicator.nvim
     :opts {}}
