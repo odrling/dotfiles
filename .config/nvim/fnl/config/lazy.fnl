@@ -134,7 +134,7 @@
 
    :romainl/vim-cool
    {1 :melkster/modicator.nvim
-    :opts {}}
+    :config #(config :modicator)}
    {1 :numtostr/FTerm.nvim
     :config #(config :fterm)}
 
