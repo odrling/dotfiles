@@ -202,3 +202,6 @@
 
 (map! [n] :<leader>q "<cmd>bdelete<cr>")
 (map! [n] :<leader>Q 'close_buffers_except_current)
+
+;; temporary fix (should not be necessary with neovim 0.10
+(vim.filetype.add {:extension {:typ :typst}})
