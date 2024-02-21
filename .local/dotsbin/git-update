@@ -1,15 +1,11 @@
 #!/bin/sh -e
-start_hash=$(git log -n 1 --pretty=format:"%H")
-remote=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
-git fetch "$(echo $remote | sed 's|/.*$||')"
-end_hash=$(git rev-parse '@{u}')
+remote=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}')
+git fetch "$(echo "$remote" | sed 's|/.*$||')"
 
 command -v gpg > /dev/null || echo gpg not found
 gpg --import ~/.local/odrling.pub 2> /dev/null
 
-if [ "$start_hash" != "$end_hash" ]; then
-    git log --pretty=format:"%H" "${start_hash}^..${end_hash}" | xargs dots verify-commit
-    git rebase --autostash "$remote"
-fi
+dots verify-commit "$remote"
+git rebase --autostash "$remote"
 
 dots-postupdate
