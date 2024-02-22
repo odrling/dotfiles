@@ -1,20 +1,34 @@
-#!/bin/sh
+#!/bin/bash
+
+die() {
+	echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
+	exit 1
+}
+
+einfo() {
+	echo -e " ${NOCOLOR-\e[1;32m*\e[0m }${*}" >&2
+}
+
+ewarn() {
+	echo -e " ${NOCOLOR-\e[1;33m*\e[0m }${*}" >&2
+}
 
 if command -v nvim > /dev/null 2>&1; then
-    echo updating nvim
+    einfo "updating nvim"
     BOOTSTRAP_NEOVIM=1 nvim --headless
-    nvim --headless "+Lazy! restore" +qa
+    nvim --headless "+Lazy! restore" +qa || ewarn "nvim ended with status $?"
 fi
 
 if command -v pipx > /dev/null 2>&1; then
-    echo update hikari
-    pipx upgrade hikari
+    einfo "updating hikari"
+    pipx upgrade hikari || ewarn "hikari update failed"
 fi
 
 for i in ~/.mozilla/firefox/*/; do
+    einfo "installing Betterfox in $i"
     cp -v ~/.mozilla/Betterfox/user.js "$i"
 done
 
-echo update uosc ziggy
+einfo "updating uosc ziggy"
 export GOFLAGS="-buildmode=pie -trimpath '-ldflags=-linkmode=external -s'"
-command -v go > /dev/null 2>&1 && go build -C "$HOME/.config/mpv/submodules/uosc" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy"
+command -v go > /dev/null 2>&1 && go build -C "$HOME/.config/mpv/submodules/uosc" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy" || ewarn "ziggy build failed"
