@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 die() {
 	echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
