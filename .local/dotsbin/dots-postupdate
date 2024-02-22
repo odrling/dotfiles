@@ -29,6 +29,10 @@ for i in ~/.mozilla/firefox/*/; do
     cp -v ~/.mozilla/Betterfox/user.js "$i"
 done
 
-einfo "updating uosc ziggy"
 export GOFLAGS="-buildmode=pie -trimpath '-ldflags=-linkmode=external -s'"
-command -v go > /dev/null 2>&1 && go build -C "$HOME/.config/mpv/submodules/uosc" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy" || ewarn "ziggy build failed"
+if command -v go > /dev/null 2>&1; then
+    einfo "updating uosc ziggy"
+    go build -C "$HOME/.config/mpv/submodules/uosc" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy" || die "ziggy build failed"
+else
+    einfo "not building ziggy because go is not installed"
+fi
