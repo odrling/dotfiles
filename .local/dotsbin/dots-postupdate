@@ -21,7 +21,7 @@ fi
 
 if command -v pipx > /dev/null 2>&1; then
     einfo "updating hikari"
-    pipx upgrade hikari || ewarn "hikari update failed"
+    pipx upgrade hikari || die "hikari update failed"
 fi
 
 if [ -d ~/.mozilla/firefox ]; then
@@ -38,5 +38,5 @@ if command -v go > /dev/null 2>&1; then
     einfo "updating uosc ziggy"
     go build -C "$HOME/.config/mpv/submodules/uosc" -o "$HOME/.config/mpv/scripts/uosc/bin/ziggy-linux" "$HOME/.config/mpv/submodules/uosc/src/ziggy" || die "ziggy build failed"
 else
-    einfo "not building ziggy because go is not installed"
+    ewarn "not building ziggy because go is not installed"
 fi
