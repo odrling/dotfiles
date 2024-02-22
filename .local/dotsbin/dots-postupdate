@@ -24,10 +24,14 @@ if command -v pipx > /dev/null 2>&1; then
     pipx upgrade hikari || ewarn "hikari update failed"
 fi
 
-for i in ~/.mozilla/firefox/*/; do
-    einfo "installing Betterfox in $i"
-    cp -v ~/.mozilla/Betterfox/user.js "$i"
-done
+if [ -d ~/.mozilla/firefox ]; then
+    for i in ~/.mozilla/firefox/*/; do
+        einfo "installing Betterfox in $i"
+        cp -v ~/.mozilla/Betterfox/user.js "$i"
+    done
+else
+    ewarn "not installing Betterfox because firefox config directory wasn't found"
+fi
 
 export GOFLAGS="-buildmode=pie -trimpath '-ldflags=-linkmode=external -s'"
 if command -v go > /dev/null 2>&1; then
