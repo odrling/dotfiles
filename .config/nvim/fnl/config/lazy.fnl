@@ -115,6 +115,7 @@
     :lazy false
     :priority 1000
     :name :github-theme
+    :cond #(= vim.env.GRAPHICAL_TTY :1)
     :config (fn []
               (setup :github-theme {:groups {:all {:CursorLine  {:bg "#f8f8f8"}
                                                    :ColorColumn {:bg "#f8f8f8"}}}})

@@ -205,3 +205,7 @@
 
 ;; temporary fix (should not be necessary with neovim 0.10
 (vim.filetype.add {:extension {:typ :typst}})
+
+;; default colorscheme when we can't be too fancy
+(if (not (= vim.env.GRAPHICAL_TTY :1))
+    (vim.cmd.colorscheme :desert))
