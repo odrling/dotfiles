@@ -1,3 +1,4 @@
+# shellcheck shell=sh
 export BROWSER=firefox
 export EDITOR=vi
 
@@ -41,7 +42,8 @@ export GPG_TTY=$(tty)
 
 export ODRCDPATH=".:$HOME/git"
 
-[ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA="USE_CURSES=1"
+export GRAPHICAL_TTY
+GRAPHICAL_TTY=1
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
@@ -54,4 +56,11 @@ ulimit -c unlimited
 export CDPATH="$ODRCDPATH"
 
 [ "$(tty)" = '/dev/tty1' ] && exec startsession
+
+if [ -n "$SSH_CONNECTION" ]; then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+else
+    GRAPHICAL_TTY=0
+fi
+
 exec $SHELL
