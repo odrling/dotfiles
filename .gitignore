@@ -24,6 +24,7 @@ Cache
 !/.zsh
 !/.zprofile
 !/.bash.command-not-found
+!/.p10k.zsh
 
 # .profile
 !/.profile
