@@ -29,7 +29,7 @@ if command -v fzf >/dev/null; then
     bindkey '^I' $fzf_default_completion
 fi
 
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
 function osc7-pwd() {
     emulate -L zsh # also sets localoptions for us
