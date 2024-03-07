@@ -45,6 +45,8 @@
                    :hrsh7th/cmp-cmdline
                    :kdheepak/cmp-latex-symbols
                    :petertriho/cmp-git 
+                   :L3MON4D3/LuaSnip
+                   :saadparwaiz1/cmp_luasnip
                    :rafamadriz/friendly-snippets]
     :config #(config :cmp)}
 
