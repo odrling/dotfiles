@@ -39,7 +39,7 @@
         "format": " {used}G/{total}G",
         "states": {
             "warning": 80,
-            "critical": 99,
+            "critical": 90,
         },
     },
     "network": {
