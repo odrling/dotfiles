@@ -1,7 +1,7 @@
 (import-macros {: reqcall : setup} :macros)
 
 ; luasnip
-(reqcall :luasnip.loaders.from_vscode :lazy_load)
+; (reqcall :luasnip.loaders.from_vscode :lazy_load)
 
 ; nvim-cmp setup
 (local cmp (require :cmp))
