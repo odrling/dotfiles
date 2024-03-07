@@ -1,7 +1,2 @@
-#!/bin/execlineb -P
-importas DWL_STATUS_PIPE DWL_STATUS_PIPE
-importas S6_SCANDIR S6_SCANDIR
-
-foreground { mkfifo ${DWL_STATUS_PIPE} }
-background { s6-svscan ${S6_SCANDIR} }
-redirfd -w 1 ${DWL_STATUS_PIPE} cat /dev/stdin
+#!/bin/sh
+exec s6-svscan ${S6_SCANDIR}
