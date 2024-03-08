@@ -245,3 +245,6 @@ Cache
 
 # snooze jobs
 !/.snooze
+
+# waybar
+!/.config/waybar
