@@ -248,3 +248,6 @@ Cache
 
 # waybar
 !/.config/waybar
+
+# direnv
+!/.config/direnv
