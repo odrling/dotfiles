@@ -27,7 +27,8 @@
 	logallrefupdates = true
 	hooksPath = "~/.config/git/hooks"
 [pull]
-	rebase = false
+	ff = "only"
+	rebase = "merges"
 [alias]
 	l = "log --date=short --graph --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\""
 	ll = log --stat
