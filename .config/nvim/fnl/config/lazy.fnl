@@ -26,7 +26,6 @@
                    :williamboman/mason.nvim
                    :williamboman/mason-lspconfig.nvim
                    :hrsh7th/cmp-nvim-lsp
-                   ;; TODO:check :jayp0521/mason-null-ls.nvim
                    :WhoIsSethDaniel/mason-tool-installer.nvim
                    :b0o/schemastore.nvim
                    :folke/neodev.nvim
