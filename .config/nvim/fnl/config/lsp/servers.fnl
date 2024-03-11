@@ -30,7 +30,7 @@
 ;                                     :workspace   workspace
 ;                                     :telemetry   {:enable false}}}})
 
-(local servers [:clangd :pyright :tsserver :gopls])
+(local servers [:clangd :pyright :tsserver :gopls :bashls])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 

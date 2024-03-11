@@ -4,7 +4,6 @@
 ;; linter/formatter setup
 (local null_ls (require :null-ls))
 (local sources [null_ls.builtins.diagnostics.teal
-                null_ls.builtins.diagnostics.shellcheck
                 null_ls.builtins.diagnostics.ruff
                 null_ls.builtins.formatting.stylua
                 null_ls.builtins.formatting.ruff])
