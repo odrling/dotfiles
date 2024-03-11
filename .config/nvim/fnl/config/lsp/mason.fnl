@@ -4,7 +4,6 @@
 (setup :mason {:ui {:border :rounded}
                :PATH :append
                :pip {:upgrade_pip true}})
-(setup :mason-lspconfig {:automatic_installation true})
 
 (local M {})
 

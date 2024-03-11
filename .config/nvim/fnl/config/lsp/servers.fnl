@@ -30,4 +30,8 @@
 ;                                     :workspace   workspace
 ;                                     :telemetry   {:enable false}}}})
 
-(mason_utils.setup_installed_servers :pyright :tsserver :vimls :ruff_lsp)
+(local servers [:clangd :pyright :tsserver :ruff_lsp])
+(each [_ server (ipairs servers)]
+  (setup_ls server))
+
+(mason_utils.setup_installed_servers)
