@@ -1,8 +1,0 @@
-#!/bin/sh
-while [ ! -f "$1" ]; do
-    shift
-done
-
-url=$(catbox upload "$1")
-echo $url
-printf $url | xclip -selection clipboard
