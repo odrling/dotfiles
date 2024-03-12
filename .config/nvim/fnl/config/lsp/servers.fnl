@@ -17,6 +17,8 @@
 
 (setup_ls :jdtls {:init_options {:extendedClientCapabilities {:progressReportProvider false}}})
 
+(setup_ls :bashls {:filetypes [:sh :zsh]})
+
 (local globals [])
 (local workspace {})
 (when vim.env.MPV_LUA     (table.insert globals :mp))
@@ -30,7 +32,7 @@
 ;                                     :workspace   workspace
 ;                                     :telemetry   {:enable false}}}})
 
-(local servers [:clangd :pyright :tsserver :gopls :bashls :ruff_lsp])
+(local servers [:clangd :pyright :tsserver :gopls :ruff_lsp])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 
