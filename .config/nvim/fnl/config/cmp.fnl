@@ -23,8 +23,7 @@
                                    (fallback)))
                       :<CR>    (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Replace})}
             :snippet {:expand (fn [args] (reqcall :luasnip :lsp_expand args.body))}
-            :sources [{:name :luasnip}
-                      {:name :nvim_lsp}
+            :sources [{:name :nvim_lsp}
                       {:name :path}
                       {:name :buffer}
                       {:name :latex_symbols}]
