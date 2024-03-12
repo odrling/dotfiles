@@ -87,7 +87,7 @@ function odr-debug() {
 
 function allow-envrc() {
     git config --local odr.loadenvrc 1
-    loadenvrc
+    loadenvrc $PWD
 }
 
 local function loadenvrc() {
