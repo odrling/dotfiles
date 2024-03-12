@@ -24,7 +24,7 @@ function odr-load-venv() {
     [ -d "$VENV" ] || die "$VENV does not exist"
 
     export VIRTUAL_ENV=$VENV
-    odr-PATH_add "$VENV/bin"
+    odr-PATH_prepend "$VENV/bin"
     einfo "loaded venv $VENV"
 }
 
@@ -43,7 +43,11 @@ local function layout() {
     esac
 }
 
-function odr-PATH_add() {
+function odr-PATH_prepend() {
+    export PATH="$1:$PATH"
+}
+
+function odr-PATH_append() {
     export PATH="$PATH:$1"
 }
 
