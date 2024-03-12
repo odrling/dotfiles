@@ -2,16 +2,16 @@
 
 emulate -L zsh
 
-die() {
+local die() {
     echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
     return 1
 }
 
-einfo() {
+local einfo() {
     echo -e " ${NOCOLOR-\e[1;32m*\e[0m }${*}" >&2
 }
 
-ewarn() {
+local ewarn() {
     echo -e " ${NOCOLOR-\e[1;33m*\e[0m }${*}" >&2
 }
 
@@ -35,7 +35,7 @@ local function python-minor-version() {
     echo $(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 }
 
-function layout() {
+local function layout() {
     case $1 in
         python3)
             odr-load-venv "$PWD/.direnv/python-$(python-minor-version)"
@@ -83,10 +83,18 @@ function odr-debug() {
     odr-debug-load $arg
 }
 
+local loadenvrc() {
+    if [ -f "$1/.envrc" ]; then
+        einfo "loading $1/.envrc"
+        source "$1/.envrc"
+    fi
+
+    [ "$1" = "/" ] && return
+    loadenvrc "$(dirname "$1")"
+}
+
 function odr-loadenvrc() {
-    [ -f "$PWD/.envrc" ] || return
-    einfo "loading .envrc"
-    source "$PWD/.envrc"
+    loadenvrc "$PWD"
 }
 
 function odr-load-poetry() {
@@ -102,17 +110,15 @@ function odr-load-poetry() {
     export POETRY_ACTIVE=1
 }
 
-function odr-defaultenv() {
+local function odr-defaultenv() {
     odr-load-poetry
+    odr-loadenvrc
 }
 
 function odr-envs() {
     case "$PWD" in
         "$HOME/git/misc")
             odr-debug auto
-            ;;
-        "$HOME/git/odr/"*)
-            odr-debug auto && odr-loadenvrc
             ;;
         "$HOME/git/"*)
             odr-debug auto && odr-defaultenv 
