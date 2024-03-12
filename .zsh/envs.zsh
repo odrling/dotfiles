@@ -1,7 +1,5 @@
 # shellcheck shell=zsh
 
-emulate -L zsh
-
 local die() {
     echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
     return 1
