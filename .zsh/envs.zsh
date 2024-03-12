@@ -86,6 +86,7 @@ function odr-debug() {
 local loadenvrc() {
     if [ -f "$1/.envrc" ]; then
         einfo "loading $1/.envrc"
+        cat "$1/.envrc" >&2
         source "$1/.envrc"
     fi
 
