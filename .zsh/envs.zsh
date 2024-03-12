@@ -140,7 +140,7 @@ function odr-envs() {
         "$HOME/git/"*)
             odr-debug auto && odr-defaultenv 
             ;;
-        *) return
+        *) odr-defaultenv
     esac
 }
 
