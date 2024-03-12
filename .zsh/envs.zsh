@@ -130,3 +130,5 @@ function odr-envs() {
 
 
 chpwd_functions+=(odr-envs)
+
+odr-envs
