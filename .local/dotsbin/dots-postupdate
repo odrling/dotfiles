@@ -21,7 +21,7 @@ fi
 
 if command -v pipx > /dev/null 2>&1; then
     einfo "updating hikari"
-    pipx upgrade hikari || die "hikari update failed"
+    pipx upgrade-all || die "pipx update failed"
 fi
 
 if [ -d ~/.mozilla/firefox ]; then
