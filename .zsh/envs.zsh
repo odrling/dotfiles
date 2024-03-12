@@ -93,9 +93,6 @@ local loadenvrc() {
         cat "$1/.envrc" >&2
         source "$1/.envrc"
     fi
-
-    [ "$1" = "/" ] && return
-    loadenvrc "$(dirname "$1")"
 }
 
 function odr-loadenvrc() {
