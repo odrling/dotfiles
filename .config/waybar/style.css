@@ -32,6 +32,10 @@
     background-color: #96c;
 }
 
+#tags button.urgent {
+    background-color: #d33;
+}
+
 #clock {
     font-weight: bold;
 }
