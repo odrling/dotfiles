@@ -1,5 +1,7 @@
 stty -ixon # Disable ctrl-s and ctrl-q.
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+source ~/.zsh/envs.zsh
+
+# (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -29,7 +31,7 @@ if command -v fzf >/dev/null; then
     bindkey '^I' $fzf_default_completion
 fi
 
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+# (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
 function osc7-pwd() {
     emulate -L zsh # also sets localoptions for us
