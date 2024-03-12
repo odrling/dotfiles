@@ -92,7 +92,7 @@ function allow-envrc() {
 
 local function loadenvrc() {
     if [ "$(git config odr.loadenvrc)" != 1 ]; then
-        [ -f "$1/.envrc" ] && ewarn "$1.envrc exists but won't be loaded. use allow-envrc to load it"
+        [ -f "$1/.envrc" ] && ewarn "$1/.envrc exists but won't be loaded. use allow-envrc to load it"
         return
     fi
 
