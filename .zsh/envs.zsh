@@ -97,7 +97,7 @@ function warn-envrc() {
 
 local function loadenvrc() {
     if [ "$(git config odr.loadenvrc)" != 1 ]; then
-        warn-envrc "$PWD"
+        git rev-parse --is-inside-work-tree &>/dev/null && warn-envrc "$PWD"
         return
     fi
 
