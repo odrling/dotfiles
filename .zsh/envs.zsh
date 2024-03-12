@@ -85,7 +85,17 @@ function odr-debug() {
     odr-debug-load $arg
 }
 
-local loadenvrc() {
+function allow-envrc() {
+    git config --local odr.loadenvrc 1
+    loadenvrc
+}
+
+local function loadenvrc() {
+    if [ "$(git config odr.loadenvrc)" != 1 ]; then
+        [ -f "$1/.envrc" ] && ewarn "$1.envrc exists but won't be loaded. use allow-envrc to load it"
+        return
+    fi
+
     [ "$1" != "/" ] && loadenvrc "$(dirname "$1")"
 
     if [ -f "$1/.envrc" ]; then
