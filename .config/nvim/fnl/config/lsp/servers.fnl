@@ -32,7 +32,7 @@
 ;                                     :workspace   workspace
 ;                                     :telemetry   {:enable false}}}})
 
-(local servers [:clangd :pyright :tsserver :gopls :ruff_lsp])
+(local servers [:clangd :pyright :tsserver :typst_lsp :gopls :ruff_lsp])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 
