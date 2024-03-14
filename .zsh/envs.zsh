@@ -94,6 +94,7 @@ function odr-debug() {
 
 function allow-envrc() {
     git config --local odr.loadenvrc 1
+    [ "$1" = --git ] && git config --local odr.loadgitenvrc 1
     loadenvrc "$PWD"
 }
 
@@ -102,19 +103,30 @@ function warn-envrc() {
     [ "$1" != "/" ] && warn-envrc "$(dirname "$1")"
 }
 
+odr-check-source() {
+    if ! [ "$(git ls-files "$1" | wc -l)" -eq 0 ]; then
+        if [ "$(git config --local odr.loadgitenvrc)" != 1 ]; then
+            die "$1 is in a git repository."
+            die "This could be dangerous, anyone else could update this file in a PR."
+            die "If this is fine you can allow this file to be loaded with allow-envrc --git"
+            return $?
+        fi
+    fi
+
+    einfo "loading $1"
+    cat "$1" >&2
+    source "$1"
+}
+
 local function loadenvrc() {
     if [ "$(git config odr.loadenvrc)" != 1 ]; then
         git rev-parse --is-inside-work-tree &>/dev/null && warn-envrc "$PWD"
         return
     fi
 
-    [ "$1" != "/" ] && loadenvrc "$(dirname "$1")"
-
-    if [ -f "$1/.envrc" ]; then
-        einfo "loading $1/.envrc"
-        cat "$1/.envrc" >&2
-        source "$1/.envrc"
-    fi
+    parentdir="$(dirname "$1")"
+    [ "$1" != "${parentdir}" ] && loadenvrc "${parentdir}"
+    [ -f "$1/.envrc" ] && odr-check-source "$1/.envrc"
 }
 
 function odr-loadenvrc() {
