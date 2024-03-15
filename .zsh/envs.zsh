@@ -47,16 +47,19 @@ ODRDEBUG=0
 odr-debug-load() {
     [ "$ODRDEBUG" = "1" ] && return
 
-    # export CC=clang
-    export CC_LD=mold
-    export PYTHONASYNCDEBUG=1
-    export PYTHONWARNINGS=default
-
     case "$1" in
         less) $VENV
-            export CFLAGS="-O2 -pipe"
+            unset CC
+            unset CC_LD
+            unset PYTHONASYNCDEBUG
+            unset PYTHONWARNINGS
+            unset CFLAGS
             ;;
         *)
+            # export CC=clang
+            export CC_LD=mold
+            export PYTHONASYNCDEBUG=1
+            export PYTHONWARNINGS=default
             export CFLAGS="-O2 -pipe -ggdb3 -fsanitize=undefined,address -Wall -Wextra -D_FORTIFY_SOURCE=3"
     esac
 
