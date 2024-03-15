@@ -7,26 +7,26 @@
 
 # shellcheck shell=zsh
 
-local die() {
+die() {
     echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
     return 1
 }
 
-local einfo() {
+einfo() {
     echo -e " ${NOCOLOR-\e[1;32m*\e[0m }${*}" >&2
 }
 
-local ewarn() {
+ewarn() {
     echo -e " ${NOCOLOR-\e[1;33m*\e[0m }${*}" >&2
 }
 
-function source_up() {
+source_up() {
     # no-op for compatibility
     ewarn "source_up was called, should be removed in .envrc"
 }
 
 
-function odr-load-venv() {
+odr-load-venv() {
     local VENV="$1"
     [ -d "$VENV" ] || die "$VENV does not exist"
 
@@ -36,31 +36,31 @@ function odr-load-venv() {
 }
 
 
-local function python-minor-version() {
+odr-python-minor-version() {
     echo $(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 }
 
-local function layout() {
+odr-layout() {
     case $1 in
         python3)
-            odr-load-venv "$PWD/.direnv/python-$(python-minor-version)"
+            odr-load-venv "$PWD/.direnv/python-$(odr-python-minor-version)"
             ;;
         *)
             ewarn "unsupported layout $1"
     esac
 }
 
-function odr-PATH_prepend() {
+odr-PATH_prepend() {
     export PATH="$1:$PATH"
 }
 
-function odr-PATH_append() {
+odr-PATH_append() {
     export PATH="$PATH:$1"
 }
 
-local ODRDEBUG=0
+ODRDEBUG=0
 
-function odr-debug-load() {
+odr-debug-load() {
     [ "$ODRDEBUG" = "1" ] && return
 
     # export CC=clang
@@ -80,7 +80,7 @@ function odr-debug-load() {
     einfo "loaded debug environment"
 }
 
-function odr-debug() {
+odr-debug() {
     local arg
     if [ "$1" = auto ]; then
         arg=""
@@ -92,15 +92,15 @@ function odr-debug() {
     odr-debug-load $arg
 }
 
-function allow-envrc() {
+odr-allow-envrc() {
     git config --local odr.loadenvrc 1
     [ "$1" = --git ] && git config --local odr.loadgitenvrc 1
-    loadenvrc "$PWD"
+    odr-loadenvrc "$PWD"
 }
 
-function warn-envrc() {
+odr-warn-envrc() {
     [ -f "$1/.envrc" ] && ewarn "$1/.envrc exists but won't be loaded. Use allow-envrc to load it."
-    [ "$1" != "/" ] && warn-envrc "$(dirname "$1")"
+    [ "$1" != "/" ] && odr-warn-envrc "$(dirname "$1")"
 }
 
 odr-check-source() {
@@ -118,22 +118,18 @@ odr-check-source() {
     source "$1"
 }
 
-local function loadenvrc() {
+odr-loadenvrc() {
     if [ "$(git config odr.loadenvrc)" != 1 ]; then
-        git rev-parse --is-inside-work-tree &>/dev/null && warn-envrc "$PWD"
+        git rev-parse --is-inside-work-tree &>/dev/null && odr-warn-envrc "$PWD"
         return
     fi
 
     parentdir="$(dirname "$1")"
-    [ "$1" != "${parentdir}" ] && loadenvrc "${parentdir}"
+    [ "$1" != "${parentdir}" ] && odr-loadenvrc "${parentdir}"
     [ -f "$1/.envrc" ] && odr-check-source "$1/.envrc"
 }
 
-function odr-loadenvrc() {
-    loadenvrc "$PWD"
-}
-
-function odr-load-poetry() {
+odr-load-poetry() {
     [ -f poetry.lock ] || return
     local VENV=$(poetry env info --path)
 
@@ -146,12 +142,12 @@ function odr-load-poetry() {
     export POETRY_ACTIVE=1
 }
 
-local function odr-defaultenv() {
+odr-defaultenv() {
     odr-load-poetry
     odr-loadenvrc
 }
 
-function odr-envs() {
+odr-envs() {
     case "$PWD" in
         "$HOME/git/misc")
             odr-debug auto
@@ -165,5 +161,8 @@ function odr-envs() {
 
 
 chpwd_functions+=(odr-envs)
+
+alias layout=odr-layout
+alias allow-envrc=odr-allow-envrc
 
 odr-envs
