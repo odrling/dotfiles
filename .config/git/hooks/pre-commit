@@ -15,7 +15,7 @@ ewarn() {
 
 
 runif() {
-    if [ -n "$1" ]; then
+    if [ "$(git config "odrhooks.$1")" = 1 ]; then
         shift
         einfo "$*"
         sh -c "$*" || die "$*: failed"
@@ -23,9 +23,9 @@ runif() {
     return 0
 }
 
-runif "$GIT_HOOK_ISORT" isort . --check
-runif "$GIT_HOOK_BLACK" black . --check
-runif "$GIT_HOOK_RUFF" ruff check .
-runif "$GIT_HOOK_PYRIGHT" pyright .
-runif "$GIT_HOOK_CLANG_FORMAT" 'fd --glob \*.c | xargs clang-format -Werror -n'
-runif "$GIT_HOOK_GOFMT" '[ "$(gofmt -l . | wc -l)" -eq 0 ] || (gofmt -l -d .; exit 1)'
+runif "isort" isort . --check
+runif "black" black . --check
+runif "ruff" ruff check .
+runif "pyright" pyright .
+runif "clang_format" 'fd --glob \*.c | xargs clang-format -Werror -n'
+runif "gofmt" '[ "$(gofmt -l . | wc -l)" -eq 0 ] || (gofmt -l -d .; exit 1)'

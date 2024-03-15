@@ -129,21 +129,31 @@ odr-load-poetry() {
 odr-load-python-venv() {
     if [ -f poetry.lock ]; then
         odr-load-poetry
-        return
-    fi
-    if [ -f pyproject.toml ]; then
+    elif [ -f pyproject.toml ]; then
         VENVDIR="${PWD}/.direnv/python-$(odr-python-minor-version)"
         if [ -d "$VENVDIR" ]; then
             odr-load-venv "$VENVDIR"
         else
             ewarn "found pyproject.toml file but no local venv"
         fi
+    else
+        return 1
     fi
+
+    [ -f ~/.zsh/envs/python ] && source ~/.zsh/envs/python
+}
+
+odr-display-hooks() {
+    [ -n "${DETECTED_HOOKS}" ] && 
+        einfo "Detected hooks: ${DETECTED_HOOKS}. Enable them with enable-detected-hooks"
+    git config --get-regexp odrhooks\. 2>/dev/null
 }
 
 odr-defaultenv() {
+    export DETECTED_HOOKS=
     odr-load-python-venv
     odr-loadenvrc
+    odr-display-hooks
 }
 
 odr-envs() {
@@ -156,6 +166,18 @@ odr-envs() {
             ;;
         *) odr-defaultenv
     esac
+}
+
+enable-hook() {
+    for hook in $@; do
+        einfo "Enabling $hook hook"
+        git config --local "odrhooks.$hook" 1
+    done
+}
+
+enable-detected-hooks() {
+    hooks=(${(s/ /)DETECTED_HOOKS})
+    enable-hook $hooks
 }
 
 source_up() {

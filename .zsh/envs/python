@@ -1,0 +1,15 @@
+
+# shellcheck shell=zsh
+
+function () {
+    local possible_hooks=(ruff isort black pyright)
+    local hooks=()
+
+    for hook in ${possible_hooks[@]}; do
+        [ "$(git config odrhooks.$hook)" != 1 ] &&
+            grep $hook pyproject.toml &>/dev/null && hooks+=($hook)
+    done
+
+    export DETECTED_HOOKS="$hooks"
+
+}
