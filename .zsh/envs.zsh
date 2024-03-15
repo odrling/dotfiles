@@ -45,10 +45,12 @@ odr-PATH_append() {
 ODRDEBUG=0
 
 odr-debug-load() {
-    [ "$ODRDEBUG" = "1" ] && return
+    dbgval="$1"
+    [ -z "$dbgval" ] && dbgval=1
+    [ "$ODRDEBUG" = "$dbgval" ] && einfo "already in debug mode $1" && return
 
     case "$1" in
-        less) $VENV
+        less)
             unset CC
             unset CC_LD
             unset PYTHONASYNCDEBUG
@@ -64,7 +66,7 @@ odr-debug-load() {
     esac
 
     ODRDEBUG=1
-    einfo "loaded debug environment"
+    einfo "loaded debug environment $1"
 }
 
 odr-debug() {
