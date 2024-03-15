@@ -20,12 +20,6 @@ ewarn() {
     echo -e " ${NOCOLOR-\e[1;33m*\e[0m }${*}" >&2
 }
 
-source_up() {
-    # no-op for compatibility
-    ewarn "source_up was called, should be removed in .envrc"
-}
-
-
 odr-load-venv() {
     local VENV="$1"
     [ -d "$VENV" ] || die "$VENV does not exist"
@@ -38,16 +32,6 @@ odr-load-venv() {
 
 odr-python-minor-version() {
     echo $(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
-}
-
-odr-layout() {
-    case $1 in
-        python3)
-            odr-load-venv "$PWD/.direnv/python-$(odr-python-minor-version)"
-            ;;
-        *)
-            ewarn "unsupported layout $1"
-    esac
 }
 
 odr-PATH_prepend() {
@@ -130,11 +114,11 @@ odr-loadenvrc() {
 }
 
 odr-load-poetry() {
-    [ -f poetry.lock ] || return
+    [ -f poetry.lock ] || return 1
     local VENV=$(poetry env info --path)
 
     if [[ -z $VENV || ! -d $VENV/bin ]]; then
-        echo 'No poetry virtual environment found. Use `poetry install` to create one first.'
+        ewarn 'No poetry virtual environment found. Use `poetry install` to create one first.'
         return 2
     fi
 
@@ -142,8 +126,23 @@ odr-load-poetry() {
     export POETRY_ACTIVE=1
 }
 
+odr-load-python-venv() {
+    if [ -f poetry.lock ]; then
+        odr-load-poetry
+        return
+    fi
+    if [ -f pyproject.toml ]; then
+        VENVDIR="${PWD}/.direnv/python-$(odr-python-minor-version)"
+        if [ -d "$VENVDIR" ]; then
+            odr-load-venv "$VENVDIR"
+        else
+            ewarn "found pyproject.toml file but no local venv"
+        fi
+    fi
+}
+
 odr-defaultenv() {
-    odr-load-poetry
+    odr-load-python-venv
     odr-loadenvrc
 }
 
@@ -159,10 +158,16 @@ odr-envs() {
     esac
 }
 
+source_up() {
+    ewarn "source_up was called and is a no-op, should be removed in .envrc"
+}
+
+layout() {
+    ewarn "layout was called and is a no-op, should be removed in .envrc"
+}
 
 chpwd_functions+=(odr-envs)
 
-alias layout=odr-layout
 alias allow-envrc=odr-allow-envrc
 
 odr-envs
