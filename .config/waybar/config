@@ -5,7 +5,7 @@
     "modules-right": ["wireplumber", "memory", "cpu", "network", "privacy", "battery", "clock"],
     "clock": {
         "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "format": "{:%Y-%m-%d %H:%M:%S}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "month",
