@@ -42,45 +42,6 @@ odr-PATH_append() {
     export PATH="$PATH:$1"
 }
 
-ODRDEBUG=0
-
-odr-debug-load() {
-    dbgval="$1"
-    [ -z "$dbgval" ] && dbgval=1
-    [ "$ODRDEBUG" = "$dbgval" ] && einfo "already in debug mode $1" && return
-
-    case "$1" in
-        less)
-            unset CC
-            unset CC_LD
-            unset PYTHONASYNCDEBUG
-            unset PYTHONWARNINGS
-            unset CFLAGS
-            ;;
-        *)
-            # export CC=clang
-            export CC_LD=mold
-            export PYTHONASYNCDEBUG=1
-            export PYTHONWARNINGS=default
-            export CFLAGS="-O2 -pipe -ggdb3 -fsanitize=undefined,address -Wall -Wextra -D_FORTIFY_SOURCE=3"
-    esac
-
-    ODRDEBUG=1
-    einfo "loaded debug environment $1"
-}
-
-odr-debug() {
-    local arg
-    if [ "$1" = auto ]; then
-        arg=""
-        [ -f .odrdebugless ] && arg=less
-    else
-        arg="$1"
-    fi
-
-    odr-debug-load $arg
-}
-
 odr-allow-envrc() {
     git config --local odr.loadenvrc 1
     [ "$1" = --git ] && git config --local odr.loadgitenvrc 1
@@ -162,15 +123,7 @@ odr-defaultenv() {
 }
 
 odr-envs() {
-    case "$PWD" in
-        "$HOME/git/misc")
-            odr-debug auto
-            ;;
-        "$HOME/git/"*)
-            odr-debug auto && odr-defaultenv 
-            ;;
-        *) odr-defaultenv
-    esac
+    odr-defaultenv
 }
 
 enable-hook() {
