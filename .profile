@@ -42,8 +42,9 @@ export GPG_TTY=$(tty)
 
 export ODRCDPATH=".:$HOME/git"
 
-export GRAPHICAL_TTY
-GRAPHICAL_TTY=1
+export GRAPHICAL_TTY=1
+
+export GITSTATUS_AUTO_INSTALL=0
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
