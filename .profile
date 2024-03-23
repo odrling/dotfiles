@@ -40,7 +40,7 @@ command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
 export GPG_TTY=$(tty)
 
-export ODRCDPATH=".:$HOME/git"
+ODRCDPATH=".:$HOME/git"
 
 export GRAPHICAL_TTY=1
 
