@@ -1,2 +1,3 @@
-#!/bin/execlineb -P
-mqtteer
+#!/bin/sh
+. "$HOME/.mqtteer_env"
+exec mqtteer
