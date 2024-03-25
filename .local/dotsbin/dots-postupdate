@@ -16,7 +16,7 @@ ewarn() {
 if command -v nvim > /dev/null 2>&1; then
     einfo "updating nvim"
     BOOTSTRAP_NEOVIM=1 nvim --headless
-    nvim --headless "+Lazy! restore" +qa || ewarn "nvim ended with status $?"
+    nvim --headless "+Lazy! restore" +TSUpdateSync +qa || ewarn "nvim ended with status $?"
 fi
 
 if command -v pipx > /dev/null 2>&1; then
