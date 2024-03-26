@@ -1,5 +1,6 @@
 stty -ixon # Disable ctrl-s and ctrl-q.
 source ~/.zsh/envs.zsh
+export GPG_TTY="$(tty)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -19,6 +20,11 @@ ZVM_INIT_MODE=sourcing
 # Disable the cursor style feature
 ZVM_CURSOR_STYLE_ENABLED=false
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+odr-update-gpg-agent() {
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+}
+precmd_functions+=(odr-update-gpg-agent)
 
 if command -v fzf >/dev/null; then
     source ~/.bash/fzf/shell/completion.zsh
