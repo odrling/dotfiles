@@ -22,7 +22,7 @@ ZVM_CURSOR_STYLE_ENABLED=false
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 odr-update-gpg-agent() {
-    gpg-connect-agent updatestartuptty /bye >/dev/null
+    gpg-connect-agent updatestartuptty /bye &>/dev/null
 }
 precmd_functions+=(odr-update-gpg-agent)
 
