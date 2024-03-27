@@ -119,7 +119,7 @@ odr_previous_dir=''
 
 odr-defaultenv() {
     [ "$PWD" = "${odr_previous_dir}" ] && return
-    export DETECTED_HOOKS=
+    DETECTED_HOOKS=()
     odr_previous_dir="$PWD"
     odr-load-python-venv
     odr-loadenvrc
@@ -138,8 +138,7 @@ enable-hook() {
 }
 
 enable-detected-hooks() {
-    hooks=(${(s/ /)DETECTED_HOOKS})
-    enable-hook $hooks
+    enable-hook "${DETECTED_HOOKS[@]}"
 }
 
 source_up() {

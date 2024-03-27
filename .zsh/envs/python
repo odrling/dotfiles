@@ -5,9 +5,9 @@
 # think this stuff is worth it, you can buy me a beer in return.   odrling
 # -----------------------------------------------------------------------------
 
-# shellcheck shell=zsh
+# shellcheck shell=bash
 
-function () {
+{
     local possible_hooks=(ruff isort black pyright)
     local hooks=()
 
@@ -16,6 +16,5 @@ function () {
             grep $hook pyproject.toml &>/dev/null && hooks+=($hook)
     done
 
-    export DETECTED_HOOKS="$hooks"
-
+    DETECTED_HOOKS+="${hooks[@]}"
 }
