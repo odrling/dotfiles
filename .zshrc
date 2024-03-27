@@ -2,16 +2,6 @@ stty -ixon # Disable ctrl-s and ctrl-q.
 source ~/.zsh/envs.zsh
 export GPG_TTY="$(tty)"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-source ~/.p10k.zsh
-source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-
 # load modules
 source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 # fixes conflict with fzf key-bindings
@@ -79,7 +69,29 @@ unsetopt beep
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
-fpath+=~/.zfunc
+[ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
+autoload -Uz vcs_info
+
+vcs_info_format() {
+    [ -n "${vcs_info_msg_0_}" ] && vcs_info_formatted=" ${vcs_info_msg_0_}" || vcs_info_formatted=""
+}
+
+precmd_functions+=(vcs_info vcs_info_format)
+
+[ -n "$SSH_CONNECTION" ] && prompt_host='%B%F{red}%n@%m%f '
+
+setopt prompt_subst
+PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${shell_char}%f '
+
+zstyle ':vcs_info:*' check-for-staged-changes true
+# zstyle ':vcs_info:*' check-for-changes true
+
+# Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
+zstyle ':vcs_info:*' unstagedstr ' *'
+zstyle ':vcs_info:*' stagedstr ' +'
+# Set the format of the Git information for vcs_info
+zstyle ':vcs_info:git:*' formats       '(%b%u%c)'
+zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf

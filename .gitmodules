@@ -47,6 +47,3 @@
 [submodule ".config/mpv/submodules/mfcc64-scripts"]
 	path = .config/mpv/submodules/mfcc64-scripts
 	url = https://github.com/mfcc64/mpv-scripts.git
-[submodule ".zsh/powerlevel10k"]
-	path = .zsh/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
