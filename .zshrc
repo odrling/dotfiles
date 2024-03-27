@@ -77,6 +77,7 @@ TIMEFMT="%J  %mU user %mS system %P  cpu  %*E total"
 
 # set tty for gpg-agent
 export GPG_TTY="$(tty)"
+export PINENTRY_USER_DATA="USE_CURSES=1"
 odr-update-gpg-agent() {
     gpg-connect-agent updatestartuptty /bye &>/dev/null
 }

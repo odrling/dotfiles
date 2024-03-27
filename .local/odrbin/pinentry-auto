@@ -1,0 +1,11 @@
+#!/bin/sh
+# By defaulting to this alternative, we could place this script
+# at /usr/bin/pinentry to avoid extra configuration elsewhere,
+# however, it might be overwritten by upgrades.
+bin=/usr/bin
+pe=$bin/pinentry
+case "$PINENTRY_USER_DATA" in
+*USE_TTY*)  pe=$bin/pinentry-tty  ;;
+*USE_CURSES*)   pe=$bin/pinentry-curses ;;
+esac
+exec $pe "$@"
