@@ -115,8 +115,12 @@ odr-display-hooks() {
     git config --get-regexp odrhooks\. 2>/dev/null
 }
 
+odr_previous_dir=''
+
 odr-defaultenv() {
+    [ "$PWD" = "${odr_previous_dir}" ] && return
     export DETECTED_HOOKS=
+    odr_previous_dir="$PWD"
     odr-load-python-venv
     odr-loadenvrc
     odr-display-hooks
@@ -146,7 +150,12 @@ layout() {
     ewarn "layout was called and is a no-op, should be removed in .envrc"
 }
 
-chpwd_functions+=(odr-envs)
+case "$0" in
+    *bash)
+        precmd_functions+=(odr-envs) ;;
+    *zsh)
+        chpwd_functions+=(odr-envs) ;;
+esac
 
 alias allow-envrc=odr-allow-envrc
 
