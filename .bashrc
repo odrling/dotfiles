@@ -8,6 +8,7 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 [[ $- != *i* ]] && return
+stty -ixon
 
 ## options
 shopt -s cdspell      # correct minor spelling errors in cd
