@@ -90,6 +90,8 @@ set_prompt() {
 }
 precmd_functions+=(set_prompt)
 
+source ~/.zsh/envs.zsh
+
 . ~/.shaliases
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
