@@ -12,6 +12,8 @@ if command -v fzf >/dev/null; then
     source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 fi
 
+source ~/.zsh/envs.zsh
+
 # osc-7 support for foot
 function osc7-pwd() {
     emulate -L zsh # also sets localoptions for us
@@ -79,9 +81,6 @@ odr-update-gpg-agent() {
     gpg-connect-agent updatestartuptty /bye &>/dev/null
 }
 preexec_functions+=(odr-update-gpg-agent)
-
-
-source ~/.zsh/envs.zsh
 
 # local config
 . ~/.shaliases
