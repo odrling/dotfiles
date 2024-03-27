@@ -1,3 +1,9 @@
+# -----------------------------------------------------------------------------
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <florianbadie@odrling.xyz> wrote this file. As long as you retain this notice
+# you can do whatever you want with this stuff. If we meet some day, and you
+# think this stuff is worth it, you can buy me a beer in return.   odrling
+# -----------------------------------------------------------------------------
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
