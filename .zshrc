@@ -10,8 +10,6 @@ stty -ixon # Disable ctrl-s and ctrl-q.
 source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 # source zvm immediately
 ZVM_INIT_MODE=sourcing
-# Disable the cursor style feature
-ZVM_CURSOR_STYLE_ENABLED=false
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 if command -v fzf >/dev/null; then
