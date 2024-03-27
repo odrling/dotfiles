@@ -1,0 +1,4 @@
+#!/bin/sh
+swaylock -f
+gpg-connect-agent reloadagent /bye
+pkill rbw-agent
