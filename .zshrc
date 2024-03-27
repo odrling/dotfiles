@@ -24,7 +24,7 @@ ZVM_CURSOR_STYLE_ENABLED=false
 odr-update-gpg-agent() {
     gpg-connect-agent updatestartuptty /bye &>/dev/null
 }
-precmd_functions+=(odr-update-gpg-agent)
+preexec_functions+=(odr-update-gpg-agent)
 
 if command -v fzf >/dev/null; then
     source ~/.bash/fzf/shell/completion.zsh
