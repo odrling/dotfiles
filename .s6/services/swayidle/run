@@ -4,7 +4,7 @@ importas SWAYIDLE_TURN_OFF SWAYIDLE_TURN_OFF
 
 swayidle -w
 timeout ${SWAYIDLE_LOCK} "swaylock -f"
-timeout ${SWAYIDLE_LOCK} "gpgconf --kill gpg-agent"
+timeout ${SWAYIDLE_LOCK} "gpg-connect-agent reloadagent /bye"
 timeout ${SWAYIDLE_LOCK} "pkill rbw-agent"
 timeout ${SWAYIDLE_TURN_OFF} "toggle_monitors off"
 resume "toggle_monitors on"
