@@ -76,7 +76,7 @@ reset='\[\033[00m\]'
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
-    PS1="${prompt_host}${blue}\w$(__git_ps1) ${prompt_color}${shell_char}${reset} "
+    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${shell_char}${reset} "
 }
 precmd_functions+=(set_prompt)
 
