@@ -88,3 +88,5 @@ preexec_functions+=(odr-update-gpg-agent)
 # local config
 . ~/.shaliases
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
+
+true # always succeed
