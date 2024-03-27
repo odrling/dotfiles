@@ -84,7 +84,7 @@ setopt prompt_subst
 PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${shell_char}%f '
 
 zstyle ':vcs_info:*' check-for-staged-changes true
-# zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' check-for-changes true
 
 # Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
 zstyle ':vcs_info:*' unstagedstr ' *'
