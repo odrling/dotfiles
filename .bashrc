@@ -41,6 +41,10 @@ if command -v fzf 2>&1 > /dev/null; then
 fi
 
 source ~/.bash/bash-preexec/bash-preexec.sh
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM=auto
 source ~/.bash/git-prompt.sh
 
 # OSC-7
