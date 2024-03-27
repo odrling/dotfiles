@@ -30,7 +30,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export SFEED_URL_FILE=$HOME/.sfeed/urls
 
 export NEOVIDE_MULTIGRID=1
-export PIPX_DEFAULT_PYTHON=/usr/bin/python3.12
 
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
 export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
