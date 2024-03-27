@@ -36,11 +36,6 @@ fi
 
 source ~/.bash/bash-preexec/bash-preexec.sh
 
-# prompt
-if command -v starship 2>&1 > /dev/null; then
-    source <(starship init bash --print-full-init)
-fi
-
 # OSC-7
 osc7_cwd() {
     local strlen=${#PWD}
@@ -56,12 +51,20 @@ osc7_cwd() {
     done
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
+precmd_functions+=(osc7_cwd)
 
-command -v direnv 2>&1 > /dev/null && source <(direnv hook bash)
+# set tty for gpg-agent
+
+GPG_TTY="$(tty)"
+export GPG_TTY
+export PINENTRY_USER_DATA="USE_CURSES=1"
+
+odr-update-gpg-agent() {
+    gpg-connect-agent updatestartuptty /bye &>/dev/null
+}
+preexec_functions+=(odr-update-gpg-agent)
 
 . ~/.shaliases
-
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
 true  # always succeed
