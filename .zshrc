@@ -45,17 +45,6 @@ zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s zstyle :compinstall filename "${HOME}/.zshrc" zstyle ':completion:*' rehash true
 zstyle ':completion::complete:*' use-cache 1
 
-# root commands completion for sudo/doas
-[[ $UID -eq 0 ]] || () {
-    local i
-    local -T SUDO_PATH sudo_path
-    local -U sudo_path
-    sudo_path=($path {,/usr{,/local}}/sbin(N-/))
-    for i in sudo{,x} su{,x} doas{,x}
-    do   zstyle ":completion:*:$i:*" environ PATH="$SUDO_PATH"
-    done
-}
-
 # history file settings
 export HISTFILE=~/.histfile
 export HISTSIZE=100000
