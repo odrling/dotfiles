@@ -7,9 +7,15 @@ ZVM_CURSOR_STYLE_ENABLED=false
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 if command -v fzf >/dev/null; then
-    source ~/.bash/fzf/shell/completion.zsh
-    source ~/.bash/fzf/shell/key-bindings.zsh
-    source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+    load-fzf() {
+        [ "${__fzf_bindings_loaded}" = 1 ] && return 0
+        __fzf_bindings_loaded=1
+        source ~/.bash/fzf/shell/completion.zsh
+        source ~/.bash/fzf/shell/key-bindings.zsh
+        source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+    }
+
+    precmd_functions+=(load-fzf)
 fi
 
 source ~/.zsh/envs.zsh
