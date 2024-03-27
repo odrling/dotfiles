@@ -45,7 +45,7 @@ function osc7-pwd() {
 function chpwd-osc7-pwd() {
     (( ZSH_SUBSHELL )) || osc7-pwd
 }
-add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+chpwd_functions+=(chpwd-osc7-pwd)
 
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
