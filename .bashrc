@@ -35,6 +35,7 @@ if command -v fzf 2>&1 > /dev/null; then
 fi
 
 source ~/.bash/bash-preexec/bash-preexec.sh
+source ~/.bash/git-prompt.sh
 
 # OSC-7
 osc7_cwd() {
@@ -75,7 +76,7 @@ reset='\[\033[00m\]'
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
-    PS1="${prompt_host}${blue}\w ${prompt_color}${shell_char}${reset} "
+    PS1="${prompt_host}${blue}\w$(__git_ps1) ${prompt_color}${shell_char}${reset} "
 }
 precmd_functions+=(set_prompt)
 
