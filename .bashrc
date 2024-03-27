@@ -64,6 +64,21 @@ odr-update-gpg-agent() {
 }
 preexec_functions+=(odr-update-gpg-agent)
 
+# prompt
+[ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
+[ -n "$SSH_CONNECTION" ] && prompt_host='\u@\h '
+
+blue='\[\033[01;34m\]'
+green='\[\033[01;32m\]'
+red='\[\033[01;31m\]'
+reset='\[\033[00m\]'
+
+set_prompt() {
+    [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
+    PS1="${prompt_host}${blue}\w ${prompt_color}${shell_char}${reset} "
+}
+precmd_functions+=(set_prompt)
+
 . ~/.shaliases
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
