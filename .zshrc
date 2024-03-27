@@ -69,6 +69,8 @@ precmd_functions+=(vcs_info vcs_info_format)
 
 [ -n "$SSH_CONNECTION" ] && prompt_host='%B%F{red}%n@%m%f '
 
+TIMEFMT="%J  %mU user %mS system %P  cpu  %*E total"
+
 setopt prompt_subst
 PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${shell_char}%f '
 
