@@ -257,3 +257,6 @@ Cache
 /.gnupg/*
 !/.gnupg/gpg.conf
 !/.gnupg/gpg-agent.conf
+
+# swayimg
+!/.config/swayimg

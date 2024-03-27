@@ -1,0 +1,10 @@
+[general]
+transparency=grid
+background=555555
+antialiasing=yes
+
+[keys]
+y = exec hikari -c "%"
+Shift+Space = prev_file
+Left = prev_file
+Right = next_file
