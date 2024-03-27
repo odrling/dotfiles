@@ -65,9 +65,7 @@ osc7_cwd() {
 precmd_functions+=(osc7_cwd)
 
 # set tty for gpg-agent
-
-GPG_TTY="$(tty)"
-export GPG_TTY
+export GPG_TTY="$(tty)"
 export PINENTRY_USER_DATA="USE_CURSES=1"
 
 odr-update-gpg-agent() {
