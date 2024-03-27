@@ -67,12 +67,13 @@ preexec_functions+=(odr-update-gpg-agent)
 
 # prompt
 [ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
-[ -n "$SSH_CONNECTION" ] && prompt_host='\u@\h '
 
 blue='\[\033[01;34m\]'
 green='\[\033[01;32m\]'
 red='\[\033[01;31m\]'
 reset='\[\033[00m\]'
+
+[ -n "$SSH_CONNECTION" ] && prompt_host="${red}\u@\h "
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
