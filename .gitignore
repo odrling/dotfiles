@@ -260,3 +260,8 @@ Cache
 
 # swayimg
 !/.config/swayimg
+
+# ssh
+!/.ssh
+/.ssh/*
+!/.ssh/config
