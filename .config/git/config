@@ -42,6 +42,13 @@
 	tlc = clone --filter tree:0
 	blc = clone --filter blob:none
 
+[commit]
+	gpgsign = true
+[push]
+	gpgsign = if-asked
+[tag]
+	gpgsign = true
+
 [pager]
 	difftool = true
 
