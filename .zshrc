@@ -42,7 +42,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion::complete:*' use-cache 1
 
 autoload -U compinit && compinit
-autoload -U +X bashcompinit && bashcompinit && complete -o bashdefault -o default -o nospace -C qpdf qpdf
 
 # history file settings
 export HISTFILE=~/.histfile
