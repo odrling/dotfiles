@@ -31,7 +31,7 @@
 	rebase = "merges"
 [alias]
 	l = "log --date=short --graph --pretty=format:\"%C(green)%h%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\""
-	ll = log --stat
+	ll = log --stat --date=human
 	lf = "log --date=short --pretty=format:\"%C(green)%H%Creset%C(cyan)%C(bold)%d%Creset %s %C(magenta)%cd%Creset %C(blue)%an%Creset\""
 	rh = reset --hard
 	d = diff --patch-with-stat
