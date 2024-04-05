@@ -19,7 +19,10 @@
 [merge]
 	conflictStyle = "diff3"
 	branchdesc = true
+[transfer]
+	fsckObjects = true
 [fetch]
+	fsckObjects = true
 	recurseSubmodules = on-demand
 	writeCommitGraph = true
 [core]
@@ -69,6 +72,7 @@
 	name = Gitea
 	email = gitea@fake.local
 [receive]
+	fsckObjects = true
 	advertisePushOptions = true
 	procReceiveRefs = refs/for
 [safe]
