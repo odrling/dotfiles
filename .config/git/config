@@ -73,9 +73,6 @@
 [gc]
 	reflogexpire = 90
 	writeCommitGraph = true
-[user]
-	name = Gitea
-	email = gitea@fake.local
 [receive]
 	fsckObjects = true
 	advertisePushOptions = true
