@@ -12,6 +12,7 @@
 	tool = difftastic
 	algorithm = histogram
 	colorMoved = default
+	submodule = log
 [difftool]
 	prompt = false
 [difftool "difftastic"]
