@@ -83,6 +83,6 @@
 [url "https://git.japan7.bde.enseeiht.fr"]
     insteadOf = ssh://git@git.japan7.bde.enseeiht.fr:8022
 [url "git@git.odrling.xyz:repos"]
-    InsteadOf = https://git.odrling.xyz
+    pushInsteadOf = https://git.odrling.xyz
 [url "ssh://git@gitlab.alpinelinux.org"]
 	pushInsteadOf = https://gitlab.alpinelinux.org
