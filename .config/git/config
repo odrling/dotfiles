@@ -23,6 +23,7 @@
 [transfer]
 	fsckObjects = true
 [fetch]
+	prune = true
 	fsckObjects = true
 	recurseSubmodules = on-demand
 	writeCommitGraph = true
