@@ -23,8 +23,9 @@
 [transfer]
 	fsckObjects = true
 [fetch]
-	prune = true
 	fsckObjects = true
+	parallel = 0
+	prune = true
 	recurseSubmodules = on-demand
 	writeCommitGraph = true
 [core]
