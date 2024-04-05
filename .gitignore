@@ -176,7 +176,6 @@ Cache
 
 # git config
 !/.gitignore
-!/.gitconfig
 !/.config/git
 
 # Xmodmap

@@ -1,3 +1,7 @@
+[user]
+	email = florianbadie@odrling.xyz
+	name = odrling
+	signingkey = 16E8C31588B334262922E721D6ECD016B66F01BF
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
