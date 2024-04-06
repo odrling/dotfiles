@@ -6,5 +6,6 @@ export PYTHONASYNCDEBUG=1
 export PYTHONWARNINGS=default
 export CFLAGS="-O2 -pipe -ggdb3 -fsanitize=undefined,address,cfi -flto -fvisibility=default -Wall -Wextra -Werror -D_FORTIFY_SOURCE=3"
 export CXXFLAGS="${CFLAGS}"
+export LDFLAGS="-fsanitize=undefined,address,cfi"
 
 exec "$@"
