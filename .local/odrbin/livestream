@@ -1,0 +1,5 @@
+#!/bin/sh
+url="$1"
+while ! yt-dlp -j "${url}"; do sleep 10; done
+
+exec mpv --no-resume-playback "${url}"
