@@ -115,6 +115,10 @@ odr-display-hooks() {
     git config --get-regexp odrhooks\. 2>/dev/null
 }
 
+odr-detect-hooks() {
+    [ -f "meson.build" ] && DETECTED_HOOKS+=(muon muonfmt)
+}
+
 odr_previous_dir=''
 
 odr-defaultenv() {
@@ -123,6 +127,7 @@ odr-defaultenv() {
     odr_previous_dir="$PWD"
     odr-load-python-venv
     odr-loadenvrc
+    odr-detect-hooks
     odr-display-hooks
 }
 
