@@ -12,8 +12,7 @@
     local hooks=()
 
     for hook in ${possible_hooks[@]}; do
-        [ "$(git config odrhooks.$hook)" != 1 ] &&
-            grep $hook pyproject.toml &>/dev/null && hooks+=($hook)
+        grep $hook pyproject.toml &>/dev/null && odr-add-detected-hooks $hook
     done
 
     DETECTED_HOOKS+="${hooks[@]}"

@@ -115,8 +115,14 @@ odr-display-hooks() {
     git config --get-regexp odrhooks\. 2>/dev/null
 }
 
+odr-add-detected-hooks() {
+    for name in "${@}"; do
+        [ "$(git config odrhooks.${name})" != 1 ] && DETECTED_HOOKS+=("${name}")
+    done
+}
+
 odr-detect-hooks() {
-    [ -f "meson.build" ] && DETECTED_HOOKS+=(muon muonfmt)
+    [ -f "meson.build" ] && odr-add-detected-hooks muon muonfmt
 }
 
 odr_previous_dir=''
