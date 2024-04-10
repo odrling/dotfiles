@@ -106,13 +106,22 @@ odr-load-python-venv() {
         return 1
     fi
 
-    [ -f ~/.zsh/envs/python ] && source ~/.zsh/envs/python
+    odr-detect-python-hooks
 }
 
 odr-display-hooks() {
     [ -n "${DETECTED_HOOKS}" ] && 
         einfo "Detected hooks: ${DETECTED_HOOKS}. Enable them with enable-detected-hooks"
     git config --get-regexp odrhooks\. 2>/dev/null
+}
+
+odr-detect-python-hooks() {
+    local possible_hooks=(ruff isort black pyright)
+    local hooks=()
+
+    for hook in ${possible_hooks[@]}; do
+        grep $hook pyproject.toml &>/dev/null && odr-add-detected-hooks $hook
+    done
 }
 
 odr-add-detected-hooks() {
