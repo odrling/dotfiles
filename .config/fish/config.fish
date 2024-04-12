@@ -17,10 +17,6 @@ if status is-interactive
 
     update_cwd_osc # Run once since we might have inherited PWD from a parent shell
 
-    command -v fzf >/dev/null && source ~/.bash/fzf/shell/key-bindings.fish && fzf_key_bindings
-    command -v starship >/dev/null && starship init fish | source
-    command -v direnv >/dev/null && direnv hook fish | source
-
     # fish overrides it at some point when used as a login shell (?)
     export CDPATH="$ODRCDPATH"
 
