@@ -12,10 +12,12 @@ source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 ZVM_INIT_MODE=sourcing
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-if command -v fzf >/dev/null; then
-    source ~/.bash/fzf/shell/completion.zsh
-    source ~/.bash/fzf/shell/key-bindings.zsh
-    source ~/.bash/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+if command -v fzy >/dev/null; then
+    source ~/.zsh/zsh-fzy/zsh-fzy.plugin.zsh
+    bindkey '\ec' fzy-cd-widget
+    bindkey '^T'  fzy-file-widget
+    bindkey '^R'  fzy-history-widget
+    bindkey '^P'  fzy-proc-widget
 fi
 
 source ~/.zsh/envs.zsh

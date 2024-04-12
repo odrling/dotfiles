@@ -47,3 +47,6 @@
 [submodule ".config/mpv/submodules/mfcc64-scripts"]
 	path = .config/mpv/submodules/mfcc64-scripts
 	url = https://github.com/mfcc64/mpv-scripts.git
+[submodule ".zsh/zsh-fzy"]
+	path = .zsh/zsh-fzy
+	url = https://github.com/aperezdc/zsh-fzy.git
