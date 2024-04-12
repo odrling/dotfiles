@@ -36,10 +36,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 . ~/.bash/completions
 
 # fzf
-if command -v fzf 2>&1 > /dev/null; then
-    source ~/.bash/fzf/shell/key-bindings.bash
-    source ~/.bash/fzf/shell/completion.bash
-fi
+command -v fzy 2>&1 > /dev/null && source ~/.bash/fzy.bash
 
 source ~/.bash/bash-preexec/bash-preexec.sh
 
