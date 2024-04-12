@@ -61,7 +61,8 @@
 [tag]
 	gpgsign = true
 	sort = -taggerdate
-
+[column]
+	ui = auto
 [pager]
 	difftool = true
 
