@@ -51,7 +51,8 @@
 	pushall = !git remote | xargs -n 1 git push --all
 	tlc = clone --filter tree:0
 	blc = clone --filter blob:none
-
+[rerere]
+	enabled = true
 [commit]
 	cleanup = scissors
 	gpgsign = true
