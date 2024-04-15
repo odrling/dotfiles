@@ -13,6 +13,14 @@
 
 [[ $- =~ i ]] || return 0
 
+if command -v fzf > /dev/null 2>&1; then
+  __fzfcmd=fzf
+elif command -v fzy > /dev/null 2>&1; then
+  __fzfcmd=fzy
+else
+  return 1
+fi
+
 
 # Key bindings
 # ------------
@@ -24,14 +32,10 @@ __fzf_select__() {
     -o -type l -print 2> /dev/null | command cut -b3-"}"
   opts="--height ${FZF_TMUX_HEIGHT:-40%} --bind=ctrl-z:ignore --reverse --scheme=path ${FZF_DEFAULT_OPTS-} ${FZF_CTRL_T_OPTS-} -m"
   eval "$cmd" |
-    FZF_DEFAULT_OPTS="$opts" $(__fzfcmd) "$@" |
+    FZF_DEFAULT_OPTS="$opts" ${__fzfcmd} "$@" |
     while read -r item; do
       printf '%q ' "$item"  # escape special chars
     done
-}
-
-__fzfcmd() {
-  echo fzy
 }
 
 fzf-file-widget() {
@@ -45,13 +49,13 @@ __fzf_cd__() {
   cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
     -o -type d -print 2> /dev/null | command cut -b3-"}"
   opts="--height ${FZF_TMUX_HEIGHT:-40%} --bind=ctrl-z:ignore --reverse --scheme=path ${FZF_DEFAULT_OPTS-} ${FZF_ALT_C_OPTS-} +m"
-  dir=$(set +o pipefail; eval "$cmd" | FZF_DEFAULT_OPTS="$opts" $(__fzfcmd)) && printf 'builtin cd -- %q' "$dir"
+  dir=$(set +o pipefail; eval "$cmd" | FZF_DEFAULT_OPTS="$opts" ${__fzfcmd}) && printf 'builtin cd -- %q' "$dir"
 }
 
 
 __fzf_history__() {
   local output
-  output=$(command fc -l -n -r 1 | sed 's/^[\t ]*//' | $(__fzfcmd) --query="$READLINE_LINE")
+  output=$(command fc -l -n -r 1 | sed 's/^[\t ]*//' | ${__fzfcmd} --query="$READLINE_LINE")
   READLINE_LINE=${output#*$'\t'}
   if [[ -z "$READLINE_POINT" ]]; then
     echo "$READLINE_LINE"

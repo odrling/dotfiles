@@ -35,8 +35,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 . ~/.bash/completions
 
-# fzf
-command -v fzy 2>&1 > /dev/null && source ~/.bash/fzy.bash
+# fzf/fzy
+source ~/.bash/fzy.bash
 
 source ~/.bash/bash-preexec/bash-preexec.sh
 
