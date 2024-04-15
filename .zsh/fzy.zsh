@@ -49,9 +49,9 @@ function __fzy_cmd
 	local -a args=( )
 	local value
 	if zstyle -s ":fzy:${widget}" prompt value ; then
-		args+=( -p "${value}" )
+		args+=( "--prompt=${value}" )
 	else
-		args+=( -p "${widget} >> " )
+		args+=( "--prompt=${widget} >> " )
 	fi
 	if zstyle -s ":fzy:${widget}" lines value ; then
 		if [[ ${value} = min:* ]]; then
