@@ -12,7 +12,7 @@ source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 ZVM_INIT_MODE=sourcing
 [ -z "$NVIM" ] && source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-source ~/.zsh/zsh-fzy/zsh-fzy.plugin.zsh
+source ~/.zsh/fzy.zsh
 
 source ~/.zsh/envs.zsh
 
