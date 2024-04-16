@@ -265,3 +265,6 @@ Cache
 !/.ssh
 /.ssh/*
 !/.ssh/config
+
+# senpai
+!/.config/senpai
