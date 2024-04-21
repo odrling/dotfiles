@@ -1,5 +1,5 @@
 local settings = {
-
+	catch_up = false,
 	speed_up = 1.05,
 	catchup_until = 4,
 }
@@ -7,7 +7,6 @@ local settings = {
 local opts = require("mp.options")
 opts.read_options(settings, "catch_up")
 
-local catch_up = false
 local paused_for_cache = false
 local catch_up_timeout = 0.5
 local catchup_until = settings.catchup_until
@@ -28,7 +27,7 @@ local function catchup_loop()
 		end
 	end
 
-	if catch_up then
+	if settings.catch_up then
 		mp.add_timeout(catch_up_timeout, catchup_loop)
 	else
 		mp.set_property("speed", 1.00)
@@ -36,9 +35,9 @@ local function catchup_loop()
 end
 
 local function catchup()
-	catch_up = not catch_up
+	settings.catch_up = not settings.catch_up
 
-	if catch_up then
+	if settings.catch_up then
 		mp.set_property("pause", "no")
 		mp.osd_message("catch up enabled")
 		catchup_loop()
@@ -62,15 +61,13 @@ local function decrease_catch_up()
 end
 
 local function on_load()
-	catch_up = not mp.get_property_bool("seekable") and mp.get_property_bool("demuxer-via-network")
-
-	if catch_up then
+	if settings.catch_up then
 		catchup_loop()
 	end
 end
 
 local function on_pause_for_cache(name, value)
-	if value and catch_up then
+	if value and settings.catch_up then
 		paused_for_cache = true
 	end
 end
