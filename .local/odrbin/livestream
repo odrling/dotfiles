@@ -1,5 +1,5 @@
 #!/bin/sh
 url="$(echo "$1" | sed '\|^https://|q ; s|^|https://twitch.tv/|')"
-while ! yt-dlp -j "${url}"; do sleep 10; done
+yt-dlp --wait-for-video 10 -j "${url}"
 
-exec mpv --no-resume-playback "${url}"
+exec mpv --no-resume-playback --script-opts=catch_up-catch_up=yes "${url}"
