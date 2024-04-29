@@ -60,7 +60,6 @@
 	gpgsign = true
 [push]
 	gpgsign = if-asked
-	followtags = true
 [tag]
 	gpgsign = true
 	sort = -taggerdate
