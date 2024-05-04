@@ -78,6 +78,7 @@ function __fzy_cmd
 		cmd=("fzy-${widget}-default-command")
 	fi
 
+	[ "${ZSH_FZY}" = fzf ] && [ "${widget}" = history ] && args+=( --scheme=history )
 	if zstyle -t :fzy:tmux enabled && [[ -n ${TMUX} ]] ; then
 		"${cmd[@]}" | "${ZSH_FZY_TMUX}" -- "${args[@]}" "$@"
 	else
