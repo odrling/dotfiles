@@ -54,7 +54,8 @@ __fzf_cd__() {
 
 
 __fzf_history__() {
-  local output
+  local output args
+  [ "${__fzfcmd}" = fzf ] && args=--scheme=history
   output=$(command fc -l -n -r 1 | sed 's/^[\t ]*//' | ${__fzfcmd} --query="$READLINE_LINE")
   READLINE_LINE=${output#*$'\t'}
   if [[ -z "$READLINE_POINT" ]]; then
