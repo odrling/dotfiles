@@ -1,2 +1,4 @@
 player=mpv
 player-args=--no-resume-playback --script-opts=catch_up-catch_up=yes
+twitch-low-latency
+twitch-disable-ads
