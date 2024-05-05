@@ -268,3 +268,6 @@ Cache
 
 # senpai
 !/.config/senpai
+
+# streamlink
+!/.config/streamlink
