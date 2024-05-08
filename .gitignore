@@ -271,3 +271,6 @@ Cache
 
 # streamlink
 !/.config/streamlink
+
+# clangd
+!/.config/clangd
