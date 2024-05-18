@@ -274,3 +274,6 @@ Cache
 
 # clangd
 !/.config/clangd
+
+# pkgdev
+!/.config/pkgdev
