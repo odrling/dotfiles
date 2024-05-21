@@ -9,6 +9,4 @@ if ! [ -z "$1" ]; then
 	cp -lf "$WPDIR/$(basename "$1")" "$TARGET"
 fi
 
-xwallpaper --zoom "$TARGET"
-
 [ -z "$1" ] || notify-send 'New wallpaper set' "$TARGET"
