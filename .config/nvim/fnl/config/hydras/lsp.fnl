@@ -10,8 +10,8 @@
               :hint {:type :cmdline}}
      :mode ["n" "x"]}
 
-    [[] "next diagnostic"    :J #(vim.diagnostic.goto_next {:float false})]
-    [[] "prev diagnostic"    :K #(vim.diagnostic.goto_prev {:float false})]
+    [[] "next diagnostic"    :J #(vim.diagnostic.goto_next {:float true})]
+    [[] "prev diagnostic"    :K #(vim.diagnostic.goto_prev {:float true})]
     [[] "format code"        :F #(vim.lsp.buf.format {:async true})]
 
     [[:exit :nowait] "exit"            :q       nil]
