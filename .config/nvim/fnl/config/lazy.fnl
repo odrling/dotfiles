@@ -64,8 +64,6 @@
     :dependencies :nvim-treesitter/nvim-treesitter}
    {1 :RRethy/nvim-treesitter-endwise
     :dependencies :nvim-treesitter/nvim-treesitter}
-   {1 :p00f/nvim-ts-rainbow
-    :dependencies :nvim-treesitter/nvim-treesitter}
    {1 :windwp/nvim-ts-autotag
     :dependencies :nvim-treesitter/nvim-treesitter}
    {1 :JoosepAlviste/nvim-ts-context-commentstring
