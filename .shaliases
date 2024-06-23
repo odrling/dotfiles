@@ -11,3 +11,4 @@ alias dns="dig +short"
 alias fm=clifm
 alias tb="nc termbin.com 9999"
 alias neovide="neovide --nofork"
+alias mcomp="meson compile -C build"
