@@ -92,11 +92,16 @@ odr-load-poetry() {
     export POETRY_ACTIVE=1
 }
 
+create-python-venv() {
+    VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
+    python -m venv "${VENVDIR}"
+}
+
 odr-load-python-venv() {
     if [ -f poetry.lock ]; then
         odr-load-poetry
     elif [ -f pyproject.toml ]; then
-        VENVDIR="${PWD}/.direnv/python-$(odr-python-minor-version)"
+        VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
         if [ -d "$VENVDIR" ]; then
             odr-load-venv "$VENVDIR"
         else
