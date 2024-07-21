@@ -38,3 +38,4 @@ runif "clangformat" 'fd --glob \*.c | xargs clang-format -Werror -n'
 runif "gofmt" '[ "$(gofmt -l . | wc -l)" -eq 0 ] || (gofmt -l -d .; exit 1)'
 runif "muonfmt" "fd meson.build | xargs muon fmt -q"
 runif "muon" "muon analyze"
+runif "mesonfmt" "meson format -r -q"

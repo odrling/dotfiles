@@ -136,7 +136,7 @@ odr-add-detected-hooks() {
 }
 
 odr-detect-hooks() {
-    [ -f "meson.build" ] && odr-add-detected-hooks muon muonfmt
+    [ -f "meson.build" ] && odr-add-detected-hooks muon mesonfmt
     [ -f "go.mod" ] && odr-add-detected-hooks gofmt
 }
 
