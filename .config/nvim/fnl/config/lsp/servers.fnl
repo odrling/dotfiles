@@ -36,7 +36,7 @@
                                                                 ""
                                                                 vim.env.GOPLS_PKG_CONFIG_PATH)}}}})
 
-(local servers [:clangd :pyright :tsserver :typst_lsp :ruff_lsp])
+(local servers [:clangd :pyright :tsserver :typst_lsp :ruff])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 
