@@ -32,7 +32,9 @@
 ;                                     :workspace   workspace
 ;                                     :telemetry   {:enable false}}}})
 
-(setup_ls :gopls {:settings {:gopls {:env {:PKG_CONFIG_PATH vim.env.GOPLS_PKG_CONFIG_PATH}}}})
+(setup_ls :gopls {:settings {:gopls {:env {:PKG_CONFIG_PATH (if (= vim.env.GOPLS_PKG_CONFIG_PATH nil)
+                                                                ""
+                                                                vim.env.GOPLS_PKG_CONFIG_PATH)}}}})
 
 (local servers [:clangd :pyright :tsserver :typst_lsp :ruff_lsp])
 (each [_ server (ipairs servers)]
