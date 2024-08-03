@@ -22,9 +22,10 @@ ewarn() {
 
 runif() {
     if [ "$(git config "odrhooks.$1")" = 1 ]; then
+        name="${NOCOLOR-\e[1;31m}${1}${NOCOLOR-\e[0m}"
         shift
-        einfo "$*"
-        sh -c "$*" || die "$*: failed"
+        einfo "${name}\n${*}"
+        sh -c "$*" || die "${name}: failed"
     fi
     return 0
 }
