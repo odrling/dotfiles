@@ -163,6 +163,13 @@ enable-hook() {
     done
 }
 
+disable-hook() {
+    for hook in $@; do
+        einfo "Disabling $hook hook"
+        git config --local "odrhooks.$hook" 0
+    done
+}
+
 enable-detected-hooks() {
     enable-hook "${DETECTED_HOOKS[@]}"
 }
