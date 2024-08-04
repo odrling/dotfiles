@@ -97,6 +97,16 @@ create-python-venv() {
     python -m venv "${VENVDIR}"
 }
 
+odr-enable-python-venv() {
+    git config odr.pythonvenv 1
+    odr-load-python-venv
+}
+
+odr-disable-python-venv() {
+    git config odr.pythonvenv 0
+    deactivate
+}
+
 odr-load-python-venv() {
     if [ -f poetry.lock ]; then
         odr-load-poetry
@@ -106,6 +116,13 @@ odr-load-python-venv() {
             odr-load-venv "$VENVDIR"
         else
             ewarn "found pyproject.toml file but no local venv"
+        fi
+    elif [ "$(git config odr.pythonvenv)" = 1 ]; then
+        VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
+        if [ -d "$VENVDIR" ]; then
+            odr-load-venv "$VENVDIR"
+        else
+            ewarn "found git config odr.pythonvenv but no local venv"
         fi
     else
         return 1
