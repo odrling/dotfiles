@@ -41,6 +41,12 @@ Cache
 !/.config/mpv/input.conf
 !/.config/mpv/scripts
 !/.config/mpv/script-opts
+/.config/mpv/script-opts/*
+!/.config/mpv/script-opts/groupwatch_sync.conf
+!/.config/mpv/script-opts/playlistmanager.conf
+!/.config/mpv/script-opts/thumbfast.conf
+!/.config/mpv/script-opts/uosc.conf
+!/.config/mpv/script-opts/youtube-upnext.conf
 !/.config/mpv/fonts
 /.config/mpv/scripts/amoethyst.lua
 /.config/mpv/scripts/japan7.lua
