@@ -23,6 +23,7 @@ shopt -s histverify   # don't execute history, show line before
 shopt -s nocaseglob   # no case on pathname expansion
 shopt -s nocasematch  # no case on matching
 shopt -s progcomp_alias # completion for aliases
+set -o noclobber
 export HISTCONTROL=ignoredups:ignorespace:erasedups
 export HISTFILESIZE=
 export HISTIGNORE="&:bg:fg:ls:history:exit:clear:pwd:vi:jobs"
