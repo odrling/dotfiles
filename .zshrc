@@ -46,6 +46,7 @@ export SAVEHIST=100000
 setopt appendhistory notify histexpiredupsfirst histsavenodups \
        incappendhistorytime histnostore histignorespace share_history
 
+setopt noclobber
 unsetopt beep
 
 # vcs prompt info
