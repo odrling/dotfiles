@@ -1,5 +1,6 @@
 #!/bin/sh
-read -p 'expected keyword: ' expected
+printf 'expected keyword: '
+read -r expected
 
 for i in $(iconv -l); do
     iconv -f $i -t UTF-8 "$1" > /tmp/brute_iconv 2> /dev/null
@@ -7,7 +8,7 @@ for i in $(iconv -l); do
     if grep "$expected" /tmp/brute_iconv > /dev/null; then
         cat /tmp/brute_iconv
         printf "\nOK ? [y/N]\n"
-        read confirmation
+        read -r confirmation
         [ "$confirmation" = 'y' ] && mv /tmp/brute_iconv "$2" && exit
     fi
 done
