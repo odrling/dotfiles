@@ -283,3 +283,6 @@ Cache
 
 # pkgdev
 !/.config/pkgdev
+
+# xkb layout
+!/.config/xkb

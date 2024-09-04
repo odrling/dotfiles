@@ -1,0 +1,5 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "fr(oss)"
+    include "nbsp(level4)"
+};
