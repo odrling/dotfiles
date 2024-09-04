@@ -1,0 +1,23 @@
+#!/bin/sh
+KARABERUS_HOST="$(sed -n 's/^host=//p' "${XDG_CONFIG_HOME}/mpv/script-opts/karaberus.conf")"
+[ -z "$KARABERUS_HOST" ] && KARABERUS_HOST="https://karaberus.japan7.bde.enseeiht.fr"
+KARABERUS_TOKEN="$(sed -n 's/^token=//p' "${XDG_CONFIG_HOME}/mpv/script-opts/karaberus.conf")"
+
+kid=${ROFI_INFO}
+
+jqreq='.Karas.[] | "\(.Title) - \(.SourceMedia // {"name":""} | .name) \(.Artists.[]? // {"Name":""} | .Name // "") \(.Medias.[]? // {"name":""} | .name // "")\u0000info\u001f\(.ID)"'
+
+if [ -z "${1}" ]; then
+    /usr/bin/printf "\0prompt\x1fkaraberus\n"
+    curl --compressed -H "Authorization: Bearer ${KARABERUS_TOKEN}" "${KARABERUS_HOST}/api/kara/" | jq -r "${jqreq}" | sed 's/^ *//; s/  */ /g'
+    exit 0
+elif [ "${1}" = "test" ]; then
+    curl --compressed -H "Authorization: Bearer ${KARABERUS_TOKEN}" "${KARABERUS_HOST}/api/kara/" | jq -r "${jqreq}" | sed 's/^ *//; s/  */ /g'
+    exit 0
+fi
+
+# choose karaoke
+[ -z "${kid}" ] && exit
+
+umpv "${KARABERUS_HOST}/karaoke/browse/${kid}" > /dev/null 2>&1 &
+exec 1>&-

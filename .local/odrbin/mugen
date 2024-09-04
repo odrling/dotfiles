@@ -1,2 +1,2 @@
 #!/bin/sh
-rofi -show mugen
+exec rofi -modi mugen:~/.config/rofi/modi/mugen -show mugen

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec rofi -modi karaberus:~/.config/rofi/modi/karaberus -show karaberus

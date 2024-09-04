@@ -1,5 +1,5 @@
 configuration {
-  modi: "ssh,run,mugen:~/.config/rofi/modi/mugen,combi";
+  modi: "ssh,run,combi";
   font: "sans 12";
   terminal: "st";
   parse-known-hosts: false;
