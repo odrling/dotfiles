@@ -33,3 +33,4 @@
   (exec [[:TSInstall! lang]]))
 
 (command! [] :TSReload 'force_reinstall_parser)
+(vim.cmd.TSUpdateSync)
