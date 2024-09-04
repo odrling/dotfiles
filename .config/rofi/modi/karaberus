@@ -7,11 +7,11 @@ kid=${ROFI_INFO}
 
 jqreq='.Karas.[] | "\(.Title) - \(.SourceMedia // {"name":""} | .name) \(.Artists.[]? // {"Name":""} | .Name // "") \(.Medias.[]? // {"name":""} | .name // "")\u0000info\u001f\(.ID)"'
 
-if [ -z "${1}" ]; then
-    /usr/bin/printf "\0prompt\x1fkaraberus\n"
+if [ -z "${ROFI_RETV}" ]; then
     curl --compressed -H "Authorization: Bearer ${KARABERUS_TOKEN}" "${KARABERUS_HOST}/api/kara/" | jq -r "${jqreq}" | sed 's/^ *//; s/  */ /g'
     exit 0
-elif [ "${1}" = "test" ]; then
+elif [ "${ROFI_RETV}" -eq 0 ]; then
+    /usr/bin/printf "\0prompt\x1fkaraberus\n"
     curl --compressed -H "Authorization: Bearer ${KARABERUS_TOKEN}" "${KARABERUS_HOST}/api/kara/" | jq -r "${jqreq}" | sed 's/^ *//; s/  */ /g'
     exit 0
 fi
