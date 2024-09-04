@@ -8,7 +8,7 @@
                 null_ls.builtins.formatting.prettier])
 
 (when (not vim.env.NVIM_NO_MYPY_DIAGNOSTICS)
-                (table.insert sources null_ls.builtins.diagnostics.mypy))
+      (table.insert sources null_ls.builtins.diagnostics.mypy))
 
 (null_ls.setup {:sources sources
                 :diagnostics_format "[#{s}] #{c}: #{m}"})
