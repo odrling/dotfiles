@@ -1,7 +1,7 @@
 configuration {
   modi: "ssh,run,combi";
   font: "sans 12";
-  terminal: "st";
+  terminal: "foot";
   parse-known-hosts: false;
   matching: "fuzzy";
   normalize-match: true;
