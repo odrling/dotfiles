@@ -1,9 +1,5 @@
 (import-macros {: command! : reqcall : exec : augroup! : g!} :macros)
 
-(fn recompile []
-  (reqcall :tangerine.api.compile :all)
-  (exec [[:source (.. (vim.fn.stdpath :config) "/lua/config/packer.lua")]]))
-
 (local dotdir (vim.fn.expand "$HOME/.dots"))
 (local dotroot (vim.fn.expand "$HOME"))
 
