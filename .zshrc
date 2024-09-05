@@ -65,14 +65,25 @@ zstyle ':vcs_info:*' stagedstr ' +'
 zstyle ':vcs_info:git:*' formats       '(%b%u%c)'
 zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
-precmd_functions+=(vcs_info vcs_info_format)
+odr-set-begin-cmd-time() {
+    begin_cmd_time=${SECONDS}
+}
+
+odr-set-end-cmd-time() {
+    if [ -n "${begin_cmd_time}" ]; then
+        cmd_run_time=$(( SECONDS - begin_cmd_time ))s
+        unset begin_cmd_time
+    fi
+}
+
+precmd_functions+=(vcs_info vcs_info_format odr-set-end-cmd-time)
 
 # prompt
 [ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
 [ -n "$SSH_CONNECTION" ] && prompt_host='%B%F{red}%n@%m%f '
 
 setopt prompt_subst
-PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${shell_char}%f '
+PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})[${cmd_run_time}]${shell_char}%f '
 
 # set format for the time command
 TIMEFMT="%J  %mU user %mS system %P  cpu  %*E total"
@@ -83,7 +94,7 @@ export PINENTRY_USER_DATA="USE_CURSES=1"
 odr-update-gpg-agent() {
     gpg-connect-agent updatestartuptty /bye &>/dev/null
 }
-preexec_functions+=(odr-update-gpg-agent)
+preexec_functions+=(odr-update-gpg-agent odr-set-begin-cmd-time)
 
 # local config
 . ~/.shaliases
