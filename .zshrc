@@ -73,7 +73,7 @@ odr-set-end-cmd-time() {
     cmd_run_time=""
     if [ -n "${begin_cmd_time}" ]; then
         local cmd_time_spent=$(( SECONDS - begin_cmd_time ))
-        [ ${begin_cmd_time} -gt 2 ] && cmd_run_time=[${cmd_time_spent}s]
+        [ "${cmd_time_spent}" -gt 2 ] && cmd_run_time=[${cmd_time_spent}s]
         unset begin_cmd_time
     fi
 }
