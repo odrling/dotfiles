@@ -70,8 +70,10 @@ odr-set-begin-cmd-time() {
 }
 
 odr-set-end-cmd-time() {
+    cmd_run_time=""
     if [ -n "${begin_cmd_time}" ]; then
-        cmd_run_time=$(( SECONDS - begin_cmd_time ))s
+        local cmd_time_spent=$(( SECONDS - begin_cmd_time ))
+        [ ${begin_cmd_time} -gt 2 ] && cmd_run_time=[${cmd_time_spent}s]
         unset begin_cmd_time
     fi
 }
@@ -83,7 +85,7 @@ precmd_functions+=(odr-set-end-cmd-time vcs_info vcs_info_format)
 [ -n "$SSH_CONNECTION" ] && prompt_host='%B%F{red}%n@%m%f '
 
 setopt prompt_subst
-PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})[${cmd_run_time}]${shell_char}%f '
+PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${cmd_run_time}${shell_char}%f '
 
 # set format for the time command
 TIMEFMT="%J  %mU user %mS system %P  cpu  %*E total"
