@@ -46,6 +46,19 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=auto
 source ~/.bash/git-prompt.sh
 
+odr-set-begin-cmd-time() {
+    begin_cmd_time=${SECONDS}
+}
+
+odr-set-end-cmd-time() {
+    cmd_run_time=""
+    if [ -n "${begin_cmd_time}" ]; then
+        local cmd_time_spent=$(( SECONDS - begin_cmd_time ))
+        [ "${cmd_time_spent}" -gt 2 ] && cmd_run_time=[${cmd_time_spent}s]
+        unset begin_cmd_time
+    fi
+}
+
 # OSC-7
 osc7_cwd() {
     local strlen=${#PWD}
@@ -61,7 +74,6 @@ osc7_cwd() {
     done
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
-precmd_functions+=(osc7_cwd)
 
 # set tty for gpg-agent
 export GPG_TTY="$(tty)"
@@ -70,7 +82,7 @@ export PINENTRY_USER_DATA="USE_CURSES=1"
 odr-update-gpg-agent() {
     gpg-connect-agent updatestartuptty /bye &>/dev/null
 }
-preexec_functions+=(odr-update-gpg-agent)
+preexec_functions+=(odr-update-gpg-agent odr-set-begin-cmd-time)
 
 # prompt
 [ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
@@ -84,9 +96,9 @@ reset='\[\033[00m\]'
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
-    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${shell_char}${reset} "
+    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} "
 }
-precmd_functions+=(set_prompt)
+precmd_functions+=(odr-set-end-cmd-time osc7_cwd set_prompt)
 
 source ~/.zsh/envs.zsh
 
