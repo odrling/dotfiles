@@ -59,7 +59,7 @@ xkb_symbols "basic" {
 
     // Third row
     key <AC01>	{ [                q,                Q,           adiaeresis,            Adiaeresis ] }; // q Q ä Ä
-    key <AC02>	{ [                s,                S,          Greek_SIGMA,           Greek_SIGMA ] }; // s S Σ Σ
+    key <AC02>	{ [                s,                S,           numbersign,           Greek_SIGMA ] }; // s S # Σ
     key <AC03>	{ [                d,                D,           ediaeresis,            Ediaeresis ] }; // d D ë Ë
     key <AC04>	{ [                f,                F,  leftsinglequotemark,   leftdoublequotemark ] }; // f F ‘ “
     key <AC05>	{ [                g,                G, rightsinglequotemark,  rightdoublequotemark ] }; // g G ’ ”
