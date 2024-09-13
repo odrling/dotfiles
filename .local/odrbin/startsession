@@ -1,6 +1,6 @@
 #!/bin/sh
 if command -v dwl > /dev/null; then
-  export XDG_CURRENT_DESKTOP=dwl
+  export XDG_CURRENT_DESKTOP=wlroots
   export GDK_BACKEND=wayland
   export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
   pgrep dwl || exec execlineb -Pc "
