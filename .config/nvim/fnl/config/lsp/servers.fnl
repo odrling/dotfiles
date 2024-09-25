@@ -37,7 +37,7 @@
                                                                 vim.env.GOPLS_PKG_CONFIG_PATH)}
                                      :staticcheck true}}})
 
-(local servers [:clangd :pyright :tsserver :typst_lsp :ruff :rust_analyzer :glsl_analyzer :zls])
+(local servers [:clangd :basedpyright :tsserver :typst_lsp :ruff :rust_analyzer :glsl_analyzer :zls])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 
