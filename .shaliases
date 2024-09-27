@@ -15,3 +15,4 @@ alias mcomp="meson compile -C build"
 alias mtest="meson test -C build --verbose"
 alias mdev="meson devenv -C build"
 alias eix="COLORSCHEME1=4 eix"
+alias httpserve='python -m http.server -d'
