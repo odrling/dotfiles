@@ -11,3 +11,9 @@ y = exec hikari -c "%"
 Shift+Space = prev_file
 Left = prev_file
 Right = next_file
+
+[keys.gallery]
+j = step_down
+k = step_up
+h = step_left
+l = step_right
