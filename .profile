@@ -15,7 +15,7 @@ export QT_IM_MODULE=fcitx
 export S6_SCANDIR="$HOME/.s6/scandir"
 
 export SWAYIDLE_LOCK=300
-export SWAYIDLE_TURN_OFF=600
+export SWAYIDLE_TURN_OFF=270
 
 export GTK_THEME=Arc
 
