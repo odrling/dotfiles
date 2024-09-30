@@ -1,3 +1,2 @@
 #!/bin/sh
-cd "$HOME/Pictures/${1:-mpv}"
-ls -t -1 | mpv --pause --no-resume-playback --playlist=-
+exec swayimg --order=none "$HOME/Pictures/${1:-mpv}"
