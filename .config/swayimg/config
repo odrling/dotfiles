@@ -1,9 +1,12 @@
-[general]
+[viewer]
 transparency=grid
-background=555555
+window=555555
 antialiasing=yes
 
-[keys]
+[gallery]
+window=#555555ff
+
+[keys.viewer]
 y = exec hikari -c "%"
 Shift+Space = prev_file
 Left = prev_file
