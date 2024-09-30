@@ -5,15 +5,23 @@ antialiasing=yes
 
 [gallery]
 window=#555555ff
+antialiasing=yes
 
 [keys.viewer]
 y = exec hikari -c "%"
 Shift+Space = prev_file
 Left = prev_file
+k = prev_file
 Right = next_file
+j = next_file
+g = first_file
+Shift+g = last_file
 
 [keys.gallery]
+y = exec hikari -c "%"
 j = step_down
 k = step_up
 h = step_left
 l = step_right
+g = first_file
+Shift+g = last_file
