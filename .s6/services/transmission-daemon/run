@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
-transmission-daemon -f
+#!/bin/sh
+exec chrt --idle 0 ionice -c 3 transmission-daemon -f
