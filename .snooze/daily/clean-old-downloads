@@ -1,3 +1,0 @@
-#!/bin/execlineb -P
-importas HOME HOME
-find ${HOME}/Downloads -atime +30 -delete

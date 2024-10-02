@@ -286,3 +286,6 @@ Cache
 
 # xkb layout
 !/.config/xkb
+
+# systemd-tmpfiles
+!/.config/user-tmpfiles.d
