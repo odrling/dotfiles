@@ -46,7 +46,7 @@ export GRAPHICAL_TTY=1
 export GITSTATUS_AUTO_INSTALL=0
 export GITSTATUS_DAEMON=/usr/libexec/gitstatus/gitstatusd
 
-export UV_PYTHON_PREFERENCE=only-system
+export UV_PYTHON_PREFERENCE=system
 export UV_PYTHON_DOWNLOADS=never
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
