@@ -110,6 +110,8 @@ odr-disable-python-venv() {
 odr-load-python-venv() {
     if [ -f poetry.lock ]; then
         odr-load-poetry
+    elif [ -f uv.lock]; then
+        odr-load-venv "${PWD}/.venv"
     elif [ -f pyproject.toml ]; then
         VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
         if [ -d "$VENVDIR" ]; then
