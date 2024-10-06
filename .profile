@@ -46,6 +46,8 @@ export GRAPHICAL_TTY=1
 export GITSTATUS_AUTO_INSTALL=0
 export GITSTATUS_DAEMON=/usr/libexec/gitstatus/gitstatusd
 
+export UV_PYTHON_PREFERENCE=only-system
+
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
