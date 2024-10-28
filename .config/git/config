@@ -54,6 +54,7 @@
 	tlc = clone --filter tree:0
 	blc = clone --filter blob:none
 	ff = merge --ff-only
+	authors = shortlog -sne
 [rerere]
 	enabled = true
 [commit]
