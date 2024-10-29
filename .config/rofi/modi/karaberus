@@ -23,12 +23,12 @@ def get_config():
     host = "https://karaberus.japan7.bde.enseeiht.fr"
     token = ""
 
-    with mpv_karaberus_conf.open("rb") as f:
+    with mpv_karaberus_conf.open() as f:
         for line in f:
-            if line.startswith(b"host="):
-                host = line[len(b"host=") :].decode().strip()
-            if line.startswith(b"token="):
-                token = line[len(b"token=") :].decode().strip()
+            if line.startswith("host="):
+                host = line[len("host=") :].strip()
+            if line.startswith("token="):
+                token = line[len("token=") :].strip()
 
     assert token
     return KaraberusConfig(host=host, token=token)
