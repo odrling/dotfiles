@@ -109,7 +109,6 @@ def play_kara():
     _ = subprocess.Popen(
         cmd, start_new_session=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE
     )
-    sys.exit()
 
 
 def main():
