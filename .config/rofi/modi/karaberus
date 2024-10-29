@@ -1,23 +1,125 @@
-#!/bin/sh
-KARABERUS_HOST="$(sed -n 's/^host=//p' "${XDG_CONFIG_HOME}/mpv/script-opts/karaberus.conf")"
-[ -z "$KARABERUS_HOST" ] && KARABERUS_HOST="https://karaberus.japan7.bde.enseeiht.fr"
-KARABERUS_TOKEN="$(sed -n 's/^token=//p' "${XDG_CONFIG_HOME}/mpv/script-opts/karaberus.conf")"
+#!/usr/bin/env python
+import gzip
+import json
+import os
+import subprocess
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from typing import TypedDict
+from urllib.request import Request, urlopen
 
-kid=${ROFI_INFO}
 
-jqreq='.Karas.[] | "\(.Title) - \(.SourceMedia // {"name":""} | .name) \(.Artists.[]? // {"Name":""} | .Name // "") \(.Medias.[]? // {"name":""} | .name // "")\u0000info\u001f\(.ID)"'
+@dataclass
+class KaraberusConfig:
+    host: str
+    token: str
 
-if [ -z "${ROFI_RETV}" ]; then
-    curl --compressed -H "Authorization: Bearer ${KARABERUS_TOKEN}" "${KARABERUS_HOST}/api/kara/" | jq -r "${jqreq}" | sed 's/^ *//; s/  */ /g'
-    exit 0
-elif [ "${ROFI_RETV}" -eq 0 ]; then
-    /usr/bin/printf "\0prompt\x1fkaraberus\n"
-    curl --compressed -H "Authorization: Bearer ${KARABERUS_TOKEN}" "${KARABERUS_HOST}/api/kara/" | jq -r "${jqreq}" | sed 's/^ *//; s/  */ /g'
-    exit 0
-fi
 
-# choose karaoke
-[ -z "${kid}" ] && exit
+def get_config():
+    config_dir = Path(os.environ["XDG_CONFIG_HOME"])
+    mpv_karaberus_conf = config_dir / "mpv" / "script-opts" / "karaberus.conf"
 
-umpv "${KARABERUS_HOST}/karaoke/browse/${kid}" > /dev/null 2>&1 &
-exec 1>&-
+    host = "https://karaberus.japan7.bde.enseeiht.fr"
+    token = ""
+
+    with mpv_karaberus_conf.open("rb") as f:
+        for line in f:
+            if line.startswith(b"host="):
+                host = line[len(b"host=") :].decode().strip()
+            if line.startswith(b"token="):
+                token = line[len(b"token=") :].decode().strip()
+
+    assert token
+    return KaraberusConfig(host=host, token=token)
+
+
+def get_kid():
+    return int(os.environ["ROFI_INFO"])
+
+
+def get_rofi_retv():
+    return int(os.environ["ROFI_RETV"])
+
+
+class KaraberusObject(TypedDict):
+    ID: int
+
+
+class KaraberusMedia(KaraberusObject):
+    name: str
+
+
+class KaraberusArtist(KaraberusObject):
+    Name: str
+
+
+class KaraberusKara(TypedDict):
+    ID: int
+    Title: str
+    SourceMedia: KaraberusMedia | None
+    Artists: list[KaraberusArtist]
+    Medias: list[KaraberusMedia]
+
+
+class KaraberusKaras(TypedDict):
+    Karas: list[KaraberusKara]
+
+
+def get_karas() -> KaraberusKaras:
+    conf = get_config()
+    headers = {"Authorization": f"Bearer {conf.token}", "Accept-Encoding": "gzip"}
+    url = f"{conf.host}/api/kara"
+    req = Request(url, headers=headers)
+    resp = urlopen(req)
+
+    if resp.headers.get("Content-Encoding", "") == "gzip":
+        return json.loads(gzip.decompress(resp.read()))
+
+    return json.load(resp)
+
+
+def set_prompt():
+    print("\0prompt\x1fkaraberus")
+
+
+def send_kara_entries():
+    karas = get_karas()["Karas"]
+    for kara in karas:
+        parts = [kara["Title"]]
+
+        if kara["SourceMedia"]:
+            parts.append(kara["SourceMedia"]["name"])
+
+        artist_names = [a["Name"] for a in kara["Artists"]]
+        if artist_names:
+            parts.append(", ".join(artist_names))
+
+        media_names = [m["name"] for m in kara["Medias"]]
+        if media_names:
+            parts.append(", ".join(media_names))
+
+        print(f"{" - ".join(parts)}\0info\x1f{kara["ID"]}")
+
+
+def play_kara():
+    kid = get_kid()
+    conf = get_config()
+    cmd = "umpv", f"{conf.host}/karaoke/browse/{kid}"
+    _ = subprocess.Popen(
+        cmd, start_new_session=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE
+    )
+    sys.exit()
+
+
+def main():
+    retv = get_rofi_retv()
+    if retv == 0:
+        set_prompt()
+        send_kara_entries()
+    else:
+        play_kara()
+
+
+if __name__ == "__main__":
+    main()
