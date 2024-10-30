@@ -37,7 +37,11 @@
                                                                 vim.env.GOPLS_PKG_CONFIG_PATH)}
                                      :staticcheck true}}})
 
-(local servers [:clangd :basedpyright :tsserver :tinymist :ruff :rust_analyzer :glsl_analyzer :zls])
+(setup_ls :tinymist {:settings {:exportPdf :onType
+                                :outputPath "$root/target/$dir/$name"}
+                     :offset_encoding "utf-8"})
+
+(local servers [:clangd :basedpyright :tsserver :ruff :rust_analyzer :glsl_analyzer :zls])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 
