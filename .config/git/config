@@ -100,6 +100,8 @@
     pushInsteadOf = https://codeberg.org/
 [url "https://git.japan7.bde.enseeiht.fr"]
     insteadOf = ssh://git@git.japan7.bde.enseeiht.fr:8022
+[url "ssh://git@git.inpt.fr:"]
+    insteadOf = https://git.inpt.fr/
 [url "git@git.odrling.xyz:repos"]
     pushInsteadOf = https://git.odrling.xyz
 [url "ssh://git@gitlab.alpinelinux.org"]
