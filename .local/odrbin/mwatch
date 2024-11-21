@@ -1,5 +1,7 @@
 #!/bin/sh
 builddir="${1}"
 shift
+cmd="${1}"
+shift
 
-meson introspect "${builddir}" --targets | jq -r '.[] | .target_sources.[] | select(.sources != null) | .sources.[]' | entr -r meson compile -C "${builddir}" "${@}"
+meson introspect "${builddir}" --targets | jq -r '.[] | .target_sources.[] | select(.sources != null) | .sources.[]' | entr -r meson "${cmd}" -C "${builddir}" "${@}"
