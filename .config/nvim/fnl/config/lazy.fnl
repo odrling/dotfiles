@@ -172,9 +172,6 @@
    {1 :elihunter173/dirbuf.nvim
     :config #(config :dirbuf)}
 
-   {1 :ahmedkhalf/project.nvim
-    :name :project_nvim
-    :opts {}}
    {1 :numToStr/Comment.nvim
     :config #(setup :Comment {:pre_hook (reqcall :ts_context_commentstring.integrations.comment_nvim :create_pre_hook)})
     :dependencies [:JoosepAlviste/nvim-ts-context-commentstring]}
