@@ -41,6 +41,11 @@
                                 :outputPath "$root/target/$dir/$name"}
                      :offset_encoding "utf-8"})
 
+(setup_ls :zls {:settings {:zls {:enable_argument_placeholders false
+                                 :enable_build_on_save false
+                                 :semantic_tokens :partial
+                                 :force_autofix false}}})
+
 (local servers [:clangd :basedpyright :tsserver :ruff :rust_analyzer :glsl_analyzer :zls])
 (each [_ server (ipairs servers)]
   (setup_ls server))
