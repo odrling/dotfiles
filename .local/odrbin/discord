@@ -1,2 +1,2 @@
 #!/bin/sh
-exec flatpak run dev.vencord.Vesktop
+exec /usr/bin/vesktop-bin
