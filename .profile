@@ -59,7 +59,8 @@ ulimit -c unlimited
 
 export CDPATH="$ODRCDPATH"
 
-systemd-tmpfiles --user --create
+command -v systemd-tmpfiles > /dev/null && systemd-tmpfiles --user --create
+command -v sd-tmpfiles > /dev/null && sd-tmpfiles --user --create
 
 [ "$(tty)" = '/dev/tty1' ] && exec startsession
 
