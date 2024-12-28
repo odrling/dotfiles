@@ -1,2 +1,7 @@
 #!/bin/sh
-exec systemd-tmpfiles --user --clean
+command -v sd-tmpfiles > /dev/null && sdtmp=sd-tmpfiles
+command -v systemd-tmpfiles > /dev/null && sdtmp=systemd-tmpfiles
+
+[ -z "${sdtmp}" ] && exit 127
+
+exec ${sdtmp} --user --clean
