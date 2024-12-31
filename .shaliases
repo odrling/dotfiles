@@ -1,6 +1,6 @@
 
 alias venv="source ~/.venvs/venv/bin/activate$VENV_SUFFIX"
-alias ytdl="yt-dlp"
+alias ytdl='yt-dlp --extractor-args "youtube:player_client=all"'
 alias ag="ag --nogroup"
 alias s="vi ~/.local/bin/\$(stest -lx ~/.local/bin | fzf --tac -e)"
 alias ffmpeg="ffmpeg -hide_banner"
