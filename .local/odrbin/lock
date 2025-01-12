@@ -1,2 +1,3 @@
 #!/bin/sh
-sleep 1 && exec s6-svc -1 ${S6_SCANDIR}/swayidle
+toggle_monitors off
+sleep 1 && exec s6-svc -1 "${S6_SCANDIR}/swayidle"
