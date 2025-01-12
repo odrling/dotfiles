@@ -1,5 +1,3 @@
 #!/bin/sh
 [ "$1" = on ] || [ "$1" = off ] || exit 1
-for o in $(wlopm | awk '/^[^[:space:]]+/ {printf $1 " "}'); do
-    wlopm --"${1}" "${o}"
-done
+exec wlopm --"$1" '*'
