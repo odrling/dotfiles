@@ -11,15 +11,9 @@
 [submodule ".config/mpv/submodules/groupwatch_sync"]
 	path = .config/mpv/submodules/groupwatch_sync
 	url = https://github.com/po5/groupwatch_sync.git
-[submodule ".config/mpv/submodules/mpv-youtube-upnext"]
-	path = .config/mpv/submodules/mpv-youtube-upnext
-	url = https://github.com/cvzi/mpv-youtube-upnext.git
 [submodule ".mozilla/Betterfox"]
 	path = .mozilla/Betterfox
 	url = https://github.com/yokoffing/Betterfox.git
-[submodule ".config/mpv/submodules/mpv-quality-menu"]
-	path = .config/mpv/submodules/mpv-quality-menu
-	url = https://github.com/christoph-heinrich/mpv-quality-menu.git
 [submodule ".local/share/fonts/dots"]
 	path = .local/share/fonts/dots
 	url = https://git.odrling.xyz/fonts
@@ -41,3 +35,6 @@
 [submodule ".config/mpv/submodules/mfcc64-scripts"]
 	path = .config/mpv/submodules/mfcc64-scripts
 	url = https://github.com/mfcc64/mpv-scripts.git
+[submodule ".config/mpv/submodules/mpv-reload"]
+	path = .config/mpv/submodules/mpv-reload
+	url = https://github.com/4e6/mpv-reload.git
