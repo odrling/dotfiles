@@ -151,6 +151,7 @@ odr-detect-python-hooks() {
 odr-add-detected-hooks() {
     for name in "${@}"; do
         [ "$(git config odrhooks.${name})" != 1 ] && DETECTED_HOOKS+=("${name}")
+        [ "${name}" = "ruff" ] && DETECTED_HOOKS+=("${name}-format")
     done
 }
 
