@@ -1,11 +1,9 @@
 [viewer]
 transparency=grid
 window=555555
-antialiasing=yes
 
 [gallery]
 window=#555555ff
-antialiasing=yes
 
 [keys.viewer]
 y = exec hikari -c "%"
