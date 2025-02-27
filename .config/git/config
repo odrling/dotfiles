@@ -82,6 +82,7 @@
 	sort = -committerdate
 [credential]
 	helper = rbw
+	interactive = false
 [gc]
 	reflogexpire = 90
 	writeCommitGraph = true
