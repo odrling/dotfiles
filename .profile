@@ -27,6 +27,9 @@ command -v delta >/dev/null 2>&1 && export GIT_PAGER=delta
 # fix java swing applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# don’t download another go toolchain
+export GOTOOLCHAIN=local
+
 export SFEED_URL_FILE=$HOME/.sfeed/urls
 
 export NEOVIDE_MULTIGRID=1
