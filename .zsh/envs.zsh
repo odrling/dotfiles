@@ -121,11 +121,11 @@ odr-load-python-venv() {
         fi
     elif [ "$(git config odr.pythonvenv)" = 1 ]; then
         VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
-        if [ -d "$VENVDIR" ]; then
-            odr-load-venv "$VENVDIR"
-        else
+        if [ ! -d "$VENVDIR" ]; then
             ewarn "found git config odr.pythonvenv but no local venv"
+            python -m venv "${VENVDIR}"
         fi
+        odr-load-venv "$VENVDIR"
     else
         return 1
     fi
