@@ -78,7 +78,11 @@ odr-set-end-cmd-time() {
     fi
 }
 
-precmd_functions+=(odr-set-end-cmd-time vcs_info vcs_info_format)
+precmd_bell() {
+    echo -en '\a'
+}
+
+precmd_functions+=(odr-set-end-cmd-time vcs_info vcs_info_format precmd_bell)
 
 # prompt
 [ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
