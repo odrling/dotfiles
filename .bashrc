@@ -91,12 +91,13 @@ blue='\[\033[01;34m\]'
 green='\[\033[01;32m\]'
 red='\[\033[01;31m\]'
 reset='\[\033[00m\]'
+bell=$(echo -en '\a')
 
 [ -n "$SSH_CONNECTION" ] && prompt_host="${red}\u@\h "
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
-    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} $(echo -en \\a)"
+    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} ${bell}"
 }
 
 precmd_functions+=(odr-set-end-cmd-time osc7_cwd set_prompt)
