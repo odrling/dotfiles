@@ -96,14 +96,10 @@ reset='\[\033[00m\]'
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
-    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} "
+    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} $(echo -en \\a)"
 }
 
-precmd_bell() {
-    echo -en '\a'
-}
-
-precmd_functions+=(odr-set-end-cmd-time osc7_cwd set_prompt precmd_bell)
+precmd_functions+=(odr-set-end-cmd-time osc7_cwd set_prompt)
 
 source ~/.zsh/envs.zsh
 

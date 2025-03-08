@@ -78,18 +78,14 @@ odr-set-end-cmd-time() {
     fi
 }
 
-precmd_bell() {
-    echo -en '\a'
-}
-
-precmd_functions+=(odr-set-end-cmd-time vcs_info vcs_info_format precmd_bell)
+precmd_functions+=(odr-set-end-cmd-time vcs_info vcs_info_format)
 
 # prompt
 [ "$GRAPHICAL_TTY" = 1 ] && shell_char=❯ || shell_char=$
 [ -n "$SSH_CONNECTION" ] && prompt_host='%B%F{red}%n@%m%f '
 
 setopt prompt_subst
-PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${cmd_run_time}${shell_char}%f '
+PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${cmd_run_time}${shell_char}%f $(echo -e \\a)'
 
 # set format for the time command
 TIMEFMT="%J  %mU user %mS system %P  cpu  %*E total"
