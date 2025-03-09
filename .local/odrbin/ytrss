@@ -1,2 +1,4 @@
 #!/bin/sh
-echo "https://www.youtube.com/feeds/videos.xml?channel_id=$(echo "$1" | grep -o 'channel/[A-Za-z0-9_-]*' | cut -d/ -f2)" | tee /dev/stderr | xclip -r -selection clipboard
+channel_id=$(echo "$1" | grep -o 'channel/[A-Za-z0-9_-]*' | cut -d/ -f2)
+[ -z "${channel_id}" ] && channel_id="${1}"
+echo "https://www.youtube.com/feeds/videos.xml?channel_id=${channel_id}" | tee /dev/stderr | xclip -r -selection clipboard
