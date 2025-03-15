@@ -189,6 +189,8 @@
 
    :kenn7/vim-arsync
 
+   :geldata/edgedb-vim
+
    {1 :glacambre/firenvim
     :build #((. vim.fn :firenvim#install) 0)
     :config #(config :firenvim)}
