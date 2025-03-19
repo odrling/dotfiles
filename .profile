@@ -52,6 +52,8 @@ export GITSTATUS_DAEMON=/usr/libexec/gitstatus/gitstatusd
 export UV_PYTHON_PREFERENCE=system
 export UV_PYTHON_DOWNLOADS=never
 
+export FREETYPE_PROPERTIES="cff:no-stem-darkening=0"
+
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
