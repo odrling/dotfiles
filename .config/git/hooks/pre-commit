@@ -34,6 +34,7 @@ runif "isort" isort . --check
 runif "black" black . --check --diff
 runif "ruff" ruff check .
 runif "ruff-format" ruff format --check --diff .
+runif "fawltydeps" fawltydeps
 runif "pyright" pyright .
 runif "clangformat" 'fd --glob \*.c | xargs clang-format -Werror -n'
 runif "gofmt" '[ "$(gofmt -l . | wc -l)" -eq 0 ] || (gofmt -l -d .; exit 1)'
