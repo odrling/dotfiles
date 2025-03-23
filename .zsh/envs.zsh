@@ -140,7 +140,7 @@ odr-display-hooks() {
 }
 
 odr-detect-python-hooks() {
-    local possible_hooks=(ruff isort black pyright)
+    local possible_hooks=(ruff isort black pyright fawltydeps)
     local hooks=()
 
     for hook in ${possible_hooks[@]}; do
