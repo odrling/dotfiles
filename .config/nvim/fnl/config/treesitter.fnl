@@ -33,4 +33,4 @@
   (exec [[:TSInstall! lang]]))
 
 (command! [] :TSReload 'force_reinstall_parser)
-(vim.cmd.TSUpdateSync)
+(reqcall :nvim-treesitter.install :update {:with_sync true})
