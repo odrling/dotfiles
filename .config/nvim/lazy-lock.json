@@ -54,7 +54,6 @@
   "perfanno.nvim": { "branch": "master", "commit": "8640d6655f17a79af8de3153af2ce90c03f65e86" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
-  "profile.nvim": { "branch": "master", "commit": "30433d7513f0d14665c1cfcea501c90f8a63e003" },
   "schemastore.nvim": { "branch": "main", "commit": "e659e0c6ca06727ed898aaaeea3850f528898684" },
   "smart-splits.nvim": { "branch": "master", "commit": "987b1a29087d38072f86177ccf18bbdcef8660d8" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
