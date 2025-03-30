@@ -159,7 +159,7 @@
     :opts {:tint 45
            :tint_background_colors false}}
 
-   {1 :anuvyklack/hydra.nvim
+   {1 :nvimtools/hydra.nvim
     :dependencies [:lewis6991/gitsigns.nvim
                    :numtostr/FTerm.nvim
                    :mrjones2014/smart-splits.nvim]
