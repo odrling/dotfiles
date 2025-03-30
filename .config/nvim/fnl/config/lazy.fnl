@@ -74,9 +74,6 @@
    {1 :gpanders/nvim-parinfer
     :config #(config :parinfer)}
 
-   {1 :rmagatti/auto-session
-    :config #(config :auto-session)}
-
    {1 :folke/todo-comments.nvim
     :config #(config :todo-comments)}
 
