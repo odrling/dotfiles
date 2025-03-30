@@ -116,7 +116,7 @@
 
 (fun list? [tbl]
   "checks if 'tbl' is a valid list."
-  `(vim.tbl_islist ,tbl))
+  `(vim.islist ,tbl))
 
 (fun empty? [tbl]
   "checks if 'tbl' is empty."
