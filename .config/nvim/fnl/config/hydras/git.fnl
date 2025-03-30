@@ -16,7 +16,7 @@
      :hint git_hint
      :config {:color :pink
               :invoke_on_body true
-              :hint {:type :cmdline}
+              :hint {:type :window}
               :on_enter (fn []
                             (reqcall :gitsigns :toggle_linehl true)
                             (reqcall :gitsigns :toggle_word_diff true)

@@ -7,7 +7,7 @@
      :hint lsp_hint
      :config {:color :pink
               :invoke_on_body true
-              :hint {:type :cmdline}}
+              :hint {:type :window}}
      :mode ["n" "x"]}
 
     [[] "next diagnostic"    :J #(vim.diagnostic.goto_next {:float true})]
