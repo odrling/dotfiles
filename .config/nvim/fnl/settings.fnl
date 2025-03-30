@@ -155,7 +155,7 @@
 (set! guifont "monospace:h12")
 
 ; short messages
-(set! shortmess :filnxtToOFcS)
+(set! shortmess :filnxtToOFc)
 
 ; use true colors
 (set! termguicolors)
