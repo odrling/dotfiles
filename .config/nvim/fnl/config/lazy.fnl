@@ -149,9 +149,6 @@
    {1 :nvim-telescope/telescope-fzf-native.nvim
     :build "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"}
 
-   {1 :stevearc/dressing.nvim
-    :config #(config :dressing)}
-
    {1 :levouh/tint.nvim
     :opts {:tint 45
            :tint_background_colors false}}
@@ -195,10 +192,14 @@
    {1 :NvChad/nvim-colorizer.lua
     :opts {:user_default_options {:names false}}}
 
-   {1 :nacro90/numb.nvim
-    :config #(setup :numb)}
 
-   :LunarVim/bigfile.nvim
-   {1 :vladdoster/remember.nvim
-    :config #(require :remember)}])
+   {1 :folke/snacks.nvim
+    :priority 1000
+    :lazy false
+    :opts {:bigfile {:enabled true}
+           :input {:enabled true}}}
+
+   {1 :nacro90/numb.nvim
+    :config #(setup :numb)}])
+
 
