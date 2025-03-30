@@ -46,7 +46,7 @@
                                  :semantic_tokens :partial
                                  :force_autofix false}}})
 
-(local servers [:clangd :basedpyright :tsserver :ruff :rust_analyzer :glsl_analyzer :zls])
+(local servers [:clangd :basedpyright :ts_ls :ruff :rust_analyzer :glsl_analyzer])
 (each [_ server (ipairs servers)]
   (setup_ls server))
 
