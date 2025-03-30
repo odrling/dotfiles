@@ -165,9 +165,6 @@
     :event :VeryLazy
     :config #(config :hydra)}
 
-   {1 :ggandor/leap.nvim
-    :config #(reqcall :leap :set_default_keymaps)}
-
    {1 :elihunter173/dirbuf.nvim
     :config #(config :dirbuf)}
 
