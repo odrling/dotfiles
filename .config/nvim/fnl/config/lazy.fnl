@@ -197,5 +197,8 @@
    {1 :NvChad/nvim-colorizer.lua
     :opts {:user_default_options {:names false}}}
 
+   {1 :vladdoster/remember.nvim
+    :config #(require :remember)}
+
    {1 :nacro90/numb.nvim
     :config #(setup :numb)}])
