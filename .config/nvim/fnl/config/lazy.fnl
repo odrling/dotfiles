@@ -96,8 +96,6 @@
    {1 :chrisgrieser/nvim-spider
     :config #(config :spider)}
 
-   :stevearc/profile.nvim
-
    {1 :t-troebst/perfanno.nvim
     :opts {}}
 
