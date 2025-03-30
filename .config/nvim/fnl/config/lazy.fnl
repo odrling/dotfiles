@@ -115,7 +115,7 @@
               (vim.cmd.colorscheme :github_light))}
 
    {1 :folke/noice.nvim
-    :dependencies [:MunifTanjim/nui.nvim]
+    :dependencies [:folke/snacks.nvim]
     :config #(config :noice)}
 
    {1 :nvim-lualine/lualine.nvim
