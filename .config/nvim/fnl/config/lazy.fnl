@@ -165,8 +165,10 @@
     :event :VeryLazy
     :config #(config :hydra)}
 
-   {1 :elihunter173/dirbuf.nvim
-    :config #(config :dirbuf)}
+   {1 :stevearc/oil.nvim
+    :dependencies [:echasnovski/mini.icons]
+    :lazy false
+    :config #(config :oil)} 
 
    {1 :numToStr/Comment.nvim
     :config #(setup :Comment {:pre_hook (reqcall :ts_context_commentstring.integrations.comment_nvim :create_pre_hook)})
