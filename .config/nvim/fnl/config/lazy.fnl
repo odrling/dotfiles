@@ -137,6 +137,13 @@
    {1 :projekt0n/circles.nvim
     :dependencies [:kyazdani42/nvim-web-devicons]
     :config #(config :circles)}
+
+   {1 :folke/snacks.nvim
+    :priority 1000
+    :lazy false
+    :opts {:bigfile {:enabled true}
+           :input {:enabled true}}}
+
    {1 :nvim-telescope/telescope.nvim
     :dependencies [:nvim-lua/plenary.nvim
                    :nvim-telescope/telescope-fzf-native.nvim
@@ -190,14 +197,5 @@
    {1 :NvChad/nvim-colorizer.lua
     :opts {:user_default_options {:names false}}}
 
-
-   {1 :folke/snacks.nvim
-    :priority 1000
-    :lazy false
-    :opts {:bigfile {:enabled true}
-           :input {:enabled true}}}
-
    {1 :nacro90/numb.nvim
     :config #(setup :numb)}])
-
-
