@@ -166,7 +166,6 @@
     :config #(config :hydra)}
 
    {1 :stevearc/oil.nvim
-    :dependencies [:echasnovski/mini.icons]
     :lazy false
     :config #(config :oil)} 
 
