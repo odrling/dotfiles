@@ -4,6 +4,8 @@ importas CARLA_SERVICE_CONFIG CARLA_SERVICE_CONFIG
 foreground { s6-svwait -U ${S6_SCANDIR}/pipewire }
 foreground { pw-cli create-node adapter "{ factory.name=support.null-audio-sink node.name=carla-out media.class=Audio/Source/Virtual object.linger=true audio.position=[FL FR] }" }
 foreground { pw-cli create-node adapter "{ factory.name=support.null-audio-sink node.name=capture media.class=Audio/Sink object.linger=true audio.position=[FL FR] }" }
+importas TAILSCALE_IP TAILSCALE_IP
+foreground { pactl load-module module-simple-protocol-tcp rate=48000 format=s16le channels=2 source=capture.monitor record=true port=39394 listen=${TAILSCALE_IP} }
 background { carla-rack ${CARLA_SERVICE_CONFIG} }
 importas CARLA_PID !
 background { s6-svwait -D ${S6_SCANDIR}/pipewire }
