@@ -18,4 +18,4 @@
     [[:exit :nowait] false             :<ESC>   nil])
 
 
-(map! [n] "<leader>l" #(lsp_hydra:activate))
+:return lsp_hydra

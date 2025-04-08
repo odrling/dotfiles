@@ -1,7 +1,8 @@
 (import-macros {: setup : reqcall} :macros)
 (import-macros {: merge} :core_macros)
 
-(local setup_ls (require :config.lsp.setup_ls))
+(local setup_ls_mod (require :config.lsp.setup_ls))
+(local setup_ls setup_ls_mod.setup_ls)
 (local mason_utils (require :config.lsp.mason))
 
 

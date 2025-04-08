@@ -67,3 +67,5 @@
       (vim.notify (.. lsp " is set up several times") vim.log.levels.WARN))
     (do ((. (. (require :lspconfig) lsp) :setup) ls_options)
         (tset configured_ls lsp true))))
+
+:return {: setup_ls : on_attach}
