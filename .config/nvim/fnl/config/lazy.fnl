@@ -32,6 +32,9 @@
                    :hrsh7th/cmp-nvim-lsp]
     :config #(config :lsp)}
 
+   {1 :nvimtools/none-ls.nvim
+    :dependencies [:gbprod/none-ls-luacheck.nvim]}
+
    {1 :hrsh7th/cmp-nvim-lsp
     :opts {}}
 

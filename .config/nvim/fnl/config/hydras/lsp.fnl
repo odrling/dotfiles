@@ -17,4 +17,5 @@
     [[:exit :nowait] "exit"            :q       nil]
     [[:exit :nowait] false             :<ESC>   nil])
 
-:return lsp_hydra
+
+(map! [n] "<leader>l" #(lsp_hydra:activate))
