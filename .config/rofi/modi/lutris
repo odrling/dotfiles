@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+from datetime import datetime
+import json
+import os
+import subprocess
+from typing import TypedDict, cast
+
+LUTRIS_EXE = "lutris"
+
+
+def get_rofi_retv() -> int:
+    return int(os.environ["ROFI_RETV"])
+
+
+def rofi_print(entry: str, info: str) -> None:
+    print(f"{entry}\0info\x1f{info}")
+
+
+def get_game_id() -> int:
+    return int(os.environ["ROFI_INFO"])
+
+
+class Game(TypedDict):
+    id: int
+    slug: str
+    name: str
+    runner: str
+    lastplayed: str | None
+
+
+def last_played_time(last_played: str | None) -> float:
+    if last_played is None:
+        return 0
+    # needs python 3.11 I believe to parse the format correctly (?)
+    return datetime.fromisoformat(last_played).timestamp()
+
+
+def get_games() -> list[Game]:
+    proc = subprocess.run([LUTRIS_EXE, "-lj"], capture_output=True)
+    games = cast(list[Game], json.loads(proc.stdout))
+    # most recently played games first
+    games.sort(key=lambda g: last_played_time(g["lastplayed"]), reverse=True)
+    return games
+
+
+def send_games() -> None:
+    for game in get_games():
+        rofi_print(game["name"], str(game["id"]))
+
+
+def run_game() -> None:
+    cmd = LUTRIS_EXE, f"lutris:rungameid/{get_game_id()}"
+    _ = subprocess.Popen(
+        cmd, start_new_session=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE
+    )
+
+
+def main():
+    retv = get_rofi_retv()
+    if retv == 0:
+        send_games()
+    else:
+        run_game()
+
+
+if __name__ == "__main__":
+    main()
