@@ -1,30 +1,66 @@
 bar:
-  height: 26
+  height: 32
   location: top
-  background: 000000ff
+  background: 222222ff
+  font-shaping: none
 
   left:
     - dwl:
-       number-of-tags: 9
-       dwl-info-filename: "/run/user/1000/dwl_status"
-       name-of-tags: [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
-       content:
-         list:
-           items:
-             - map:
-                 conditions:
-                   # default tag
-                   id == 0: {string: {text: "{layout} {title}"}}
+        number-of-tags: 9
+        dwl-info-filename: "/run/user/1000/dwl_status"
+        name-of-tags: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        content:
+          list:
+            items:
+              - map:
+                  conditions:
+                    # default tag
+                    id == 0:
+                      string:
+                        text: "{layout} {title}"
+                        margin: 10
+                        font-shaping: full
 
-                   selected: {string: {text: "-> {name}"}}
-                   "~empty": {string: {text: "{name}"}}
-                   urgent: {string: {text: "=> {name} <="}}
-
+                    selected:
+                      string:
+                        text: "{name}"
+                        margin: 10
+                        deco:
+                          background:
+                            color: 9966ccff
+                    "~empty":
+                      string:
+                        text: "{name}"
+                        margin: 10
+                    urgent:
+                      string:
+                        text: "{name}"
+                        margin: 10
+                        deco:
+                          background:
+                            color: ffffffff
 
   right:
-    - clock:
+    - script:
+        path: /usr/bin/odrsysinfo
+        args: ["--yambar"]
         content:
-          - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
-          - string: {text: "{date}", right-margin: 5}
-          - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
-          - string: {text: "{time}"}
+          - string:
+              text: "cpu {psi_cpu_avg60}% | io {psi_io_full_avg60}% | mem {psi_mem_full_avg60}%"
+              margin: 5
+          - string:
+              text: "MEM {mem}"
+              margin: 5
+          - string:
+              text: "{batteries}"
+              margin: 5
+    - clock:
+        time-format: "%H:%M:%S"
+        date-format: "%F"
+        content:
+          - string:
+              text: "{date} {time}"
+              margin: 5
+              deco:
+                background:
+                  color: 9966ccff
