@@ -22,6 +22,14 @@ bar:
                         margin: 10
                         font-shaping: full
 
+                    urgent:
+                      string:
+                        text: "{name}"
+                        margin: 10
+                        foreground: 000000ff
+                        deco:
+                          background:
+                            color: ffffffff
                     selected:
                       string:
                         text: "{name}"
@@ -33,13 +41,6 @@ bar:
                       string:
                         text: "{name}"
                         margin: 10
-                    urgent:
-                      string:
-                        text: "{name}"
-                        margin: 10
-                        deco:
-                          background:
-                            color: ffffffff
 
   right:
     - script:
