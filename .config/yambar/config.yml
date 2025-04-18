@@ -2,6 +2,7 @@ bar:
   height: 26
   location: top
   background: 222222ff
+  font: sans:size=14
   font-shaping: none
 
   left:
