@@ -290,3 +290,8 @@ Cache
 
 # systemd-tmpfiles
 !/.config/user-tmpfiles.d
+
+# yambar
+!/.config/yambar
+/.config/yambar/*
+!/.config/yambar/config.yml

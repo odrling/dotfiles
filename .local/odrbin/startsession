@@ -2,14 +2,9 @@
 if command -v dwl > /dev/null; then
   export XDG_CURRENT_DESKTOP=wlroots
   export GDK_BACKEND=wayland
-  export DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
-  pgrep dwl || exec execlineb -Pc "
-    importas S6_SCANDIR S6_SCANDIR
-    foreground {
-      pipeline { stdbuf --output=L odrsysinfo }
-      dbus-run-session -- dwl -s wlstart
-    }
-    s6-svscanctl -t \${S6_SCANDIR}"
+  DWL_STATUS_PIPE="$XDG_RUNTIME_DIR/dwl_status"
+  pgrep dwl || exec dbus-run-session -- dwl > ${DWL_STATUS_PIPE}
+  s6-svscanctl -t \${S6_SCANDIR}
 elif command -v startx > /dev/null; then
   pgrep xinit || exec startx
 fi

@@ -1,0 +1,30 @@
+bar:
+  height: 26
+  location: top
+  background: 000000ff
+
+  left:
+    - dwl:
+       number-of-tags: 9
+       dwl-info-filename: "/run/user/1000/dwl_status"
+       name-of-tags: [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+       content:
+         list:
+           items:
+             - map:
+                 conditions:
+                   # default tag
+                   id == 0: {string: {text: "{layout} {title}"}}
+
+                   selected: {string: {text: "-> {name}"}}
+                   "~empty": {string: {text: "{name}"}}
+                   urgent: {string: {text: "=> {name} <="}}
+
+
+  right:
+    - clock:
+        content:
+          - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
+          - string: {text: "{date}", right-margin: 5}
+          - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
+          - string: {text: "{time}"}
