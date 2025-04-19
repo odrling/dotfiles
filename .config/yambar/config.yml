@@ -99,6 +99,7 @@ bar:
                         color: *red
 
     - mem:
+        poll-interval: 1000
         content:
           map:
             default:
