@@ -1,9 +1,43 @@
+red: &red db3e4dff
+orange: &orange da4708ff
+green: &green 209a15ff
+purple: &purple 9c59daff
+blue: &blue 227cf0ff
+
+battery_content: &battery_content
+  poll-interval: 30000
+  content:
+    map:
+      default:
+        string:
+          text: "{name} {capacity}% {estimate}"
+          margin: 5
+      conditions:
+        manufacturer == "":
+          string:
+            text: ""
+        state == "charging":
+          string:
+            text: "{name} {capacity}% {estimate}"
+            margin: 5
+            deco:
+              background:
+                color: *green
+        capacity < 20:
+          string:
+            text: "{name} {capacity}% {estimate}"
+            margin: 5
+            deco:
+              background:
+                color: *red
+
 bar:
   height: 26
   location: top
-  background: 222222ff
+  background: 333333ff
   font: sans:size=14
   font-shaping: none
+  right-spacing: 2
 
   left:
     - dwl:
@@ -36,7 +70,7 @@ bar:
                         margin: 10
                         deco:
                           background:
-                            color: 9966ccff
+                            color: *purple
                     "~empty":
                       string:
                         text: "{name}"
@@ -65,7 +99,7 @@ bar:
                   margin: 5
                   deco:
                     background:
-                      color: ff3333ff
+                      color: *red
 
     - network:
         content:
@@ -75,44 +109,17 @@ bar:
                 string:
                   text: "{name} ({ipv4})"
                   margin: 5
+                  deco:
+                    background:
+                      color: *blue
 
     - battery:
         name: BAT0
-        content:
-          map:
-            default:
-              string:
-                text: "{name} {capacity}% {estimate}"
-            conditions:
-              manufacturer == "":
-                string:
-                  text: ""
-              capacity < 20:
-                string:
-                  text: "{name} {capacity}% {estimate}"
-                  margin: 5
-                  deco:
-                    background:
-                      color: ff3333ff
+        <<: *battery_content
 
     - battery:
         name: BAT1
-        content:
-          map:
-            default:
-              string:
-                text: "{name} {capacity}% {estimate}"
-            conditions:
-              manufacturer == "":
-                string:
-                  text: ""
-              capacity < 20:
-                string:
-                  text: "{name} {capacity}% {estimate}"
-                  margin: 5
-                  deco:
-                    background:
-                      color: ff3333ff
+        <<: *battery_content
 
     - clock:
         time-format: "%H:%M:%S"
@@ -123,4 +130,4 @@ bar:
               margin: 5
               deco:
                 background:
-                  color: 9966ccff
+                  color: *purple
