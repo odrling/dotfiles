@@ -1,9 +1,8 @@
-red: &red db3e4dff
-orange: &orange da4708ff
-green: &green 209a15ff
-purple: &purple 9c59daff
-blue: &blue 227cf0ff
-gray: &gray 747ea7ff
+red: &red b23f45ff
+green: &green 198130ff
+purple: &purple 8d4ba4ff
+blue: &blue 4e62c1ff
+neutral: &neutral 6f6685ff
 
 battery_content: &battery_content
   poll-interval: 30000
@@ -11,25 +10,25 @@ battery_content: &battery_content
     map:
       default:
         string:
-          text: "{name} {capacity}% {estimate}"
+          text: &bat_text "{name} {capacity}% {estimate}"
           margin: 5
           deco:
             background:
-              color: *gray
+              color: *neutral
       conditions:
         manufacturer == "":
           string:
             text: ""
         state == "charging":
           string:
-            text: "{name} {capacity}% {estimate}"
+            text: *bat_text
             margin: 5
             deco:
               background:
                 color: *green
         capacity < 20:
           string:
-            text: "{name} {capacity}% {estimate}"
+            text: *bat_text
             margin: 5
             deco:
               background:
@@ -85,28 +84,31 @@ bar:
         path: /usr/bin/odrsysinfo
         args: ["--yambar"]
         content:
-          - string:
-              text: "cpu {psi_cpu_avg60}% | io {psi_io_full_avg60}% | mem {psi_mem_full_avg60}%"
-              margin: 5
+          - map:
+              default:
+                string:
+                  text: &psi_text "cpu {psi_cpu_avg10}% | io {psi_io_full_avg10}% | mem {psi_mem_full_avg10}%"
+                  margin: 5
+              conditions:
+                psi_cpu_avg10 > 10 || psi_io_full_avg10 > 1 || psi_mem_full_avg10 > 1:
+                  string:
+                    text: *psi_text
+                    margin: 5
+                    deco:
+                      background:
+                        color: *red
 
     - mem:
         content:
           map:
             default:
               string:
-                text: "MEM {used:mb}M/{total:mb}M"
+                text: &mem_text "MEM {used:mb}M/{total:mb}M"
                 margin: 5
             conditions:
-              percent_used > 60:
+              percent_used > 70:
                 string:
-                  text: "MEM {used:mb}M/{total:mb}M"
-                  margin: 5
-                  deco:
-                    background:
-                      color: *orange
-              percent_used > 80:
-                string:
-                  text: "MEM {used:mb}M/{total:mb}M"
+                  text: *mem_text
                   margin: 5
                   deco:
                     background:
@@ -122,7 +124,7 @@ bar:
                   margin: 5
                   deco:
                     background:
-                      color: *gray
+                      color: *blue
 
     - battery:
         name: BAT0
@@ -141,4 +143,4 @@ bar:
               margin: 5
               deco:
                 background:
-                  color: *purple
+                  color: *neutral
