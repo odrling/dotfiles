@@ -53,9 +53,12 @@ bar:
           - string:
               text: "MEM {mem}"
               margin: 5
-          - string:
-              text: "{batteries}"
-              margin: 5
+          - map:
+              conditions:
+                'batteries != ""':
+                  string:
+                    text: "{batteries}"
+                    margin: 5
     - clock:
         time-format: "%H:%M:%S"
         date-format: "%F"
