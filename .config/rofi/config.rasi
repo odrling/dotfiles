@@ -1,5 +1,5 @@
 configuration {
-  modi: "ssh,run,combi";
+  modi: "run,ssh,combi";
   font: "sans 12";
   terminal: "foot";
   parse-known-hosts: false;
