@@ -59,6 +59,16 @@ bar:
                   string:
                     text: "{batteries}"
                     margin: 5
+
+    - network:
+        content:
+          map:
+            conditions:
+              state == "up":
+                string:
+                  text: "{name} ({ipv4})"
+                  margin: 5
+
     - clock:
         time-format: "%H:%M:%S"
         date-format: "%F"
