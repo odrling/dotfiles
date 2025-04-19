@@ -50,15 +50,22 @@ bar:
           - string:
               text: "cpu {psi_cpu_avg60}% | io {psi_io_full_avg60}% | mem {psi_mem_full_avg60}%"
               margin: 5
-          - string:
-              text: "MEM {mem}"
-              margin: 5
-          - map:
-              conditions:
-                'batteries != ""':
-                  string:
-                    text: "{batteries}"
-                    margin: 5
+
+    - mem:
+        content:
+          map:
+            default:
+              string:
+                text: "MEM {used:mb}M/{total:mb}M"
+                margin: 5
+            conditions:
+              percent_used > 80:
+                string:
+                  text: "MEM {used:mb}M/{total:mb}M"
+                  margin: 5
+                  deco:
+                    background:
+                      color: ff3333ff
 
     - network:
         content:
@@ -68,6 +75,44 @@ bar:
                 string:
                   text: "{name} ({ipv4})"
                   margin: 5
+
+    - battery:
+        name: BAT0
+        content:
+          map:
+            default:
+              string:
+                text: "{name} {capacity}% {estimate}"
+            conditions:
+              manufacturer == "":
+                string:
+                  text: ""
+              capacity < 20:
+                string:
+                  text: "{name} {capacity}% {estimate}"
+                  margin: 5
+                  deco:
+                    background:
+                      color: ff3333ff
+
+    - battery:
+        name: BAT1
+        content:
+          map:
+            default:
+              string:
+                text: "{name} {capacity}% {estimate}"
+            conditions:
+              manufacturer == "":
+                string:
+                  text: ""
+              capacity < 20:
+                string:
+                  text: "{name} {capacity}% {estimate}"
+                  margin: 5
+                  deco:
+                    background:
+                      color: ff3333ff
 
     - clock:
         time-format: "%H:%M:%S"
