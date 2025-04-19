@@ -3,6 +3,7 @@ orange: &orange da4708ff
 green: &green 209a15ff
 purple: &purple 9c59daff
 blue: &blue 227cf0ff
+gray: &gray 747ea7ff
 
 battery_content: &battery_content
   poll-interval: 30000
@@ -12,6 +13,9 @@ battery_content: &battery_content
         string:
           text: "{name} {capacity}% {estimate}"
           margin: 5
+          deco:
+            background:
+              color: *gray
       conditions:
         manufacturer == "":
           string:
@@ -93,6 +97,13 @@ bar:
                 text: "MEM {used:mb}M/{total:mb}M"
                 margin: 5
             conditions:
+              percent_used > 60:
+                string:
+                  text: "MEM {used:mb}M/{total:mb}M"
+                  margin: 5
+                  deco:
+                    background:
+                      color: *orange
               percent_used > 80:
                 string:
                   text: "MEM {used:mb}M/{total:mb}M"
@@ -111,7 +122,7 @@ bar:
                   margin: 5
                   deco:
                     background:
-                      color: *blue
+                      color: *gray
 
     - battery:
         name: BAT0
