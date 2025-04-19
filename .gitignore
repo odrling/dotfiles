@@ -208,7 +208,9 @@ Cache
 !/.mozilla/Betterfox
 
 # applications
-#!/.local/share/applications
+!/.local/share/applications
+/.local/share/applications/*
+!/.local/share/applications/Karaberus.desktop
 !/.config/mimeapps.list
 
 # direnv
@@ -295,3 +297,6 @@ Cache
 !/.config/yambar
 /.config/yambar/*
 !/.config/yambar/config.yml
+
+# fuzzel
+!/.config/fuzzel
