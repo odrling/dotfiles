@@ -142,6 +142,3 @@ bar:
           - string:
               text: "{date} {time}"
               margin: 5
-              deco:
-                background:
-                  color: *neutral
