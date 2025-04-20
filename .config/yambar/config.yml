@@ -113,7 +113,7 @@ bar:
           - map:
               default:
                 string:
-                  text: &psi_mem_text "mem {psi_mem_full_avg10}%"
+                  text: &psi_mem_text "mem {psi_mem_full_avg10}% | {mem}"
                   margin: 5
               conditions:
                 psi_mem_full_avg10 > 1:
@@ -123,23 +123,6 @@ bar:
                     deco:
                       background:
                         color: *red
-
-    - mem:
-        poll-interval: 1000
-        content:
-          map:
-            default:
-              string:
-                text: &mem_text "MEM {used:mb}M/{total:mb}M"
-                margin: 5
-            conditions:
-              percent_used > 70:
-                string:
-                  text: *mem_text
-                  margin: 5
-                  deco:
-                    background:
-                      color: *red
 
     - network:
         content:
