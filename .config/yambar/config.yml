@@ -1,7 +1,7 @@
-red: &red b23f45ff
+red: &red c51b36ff
 green: &green 198130ff
 purple: &purple 8e39c5ff
-blue: &blue 4e62c1ff
+blue: &blue 4557e2ff
 neutral: &neutral 6f6685ff
 
 battery_content: &battery_content
