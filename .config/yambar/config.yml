@@ -125,6 +125,7 @@ bar:
                         color: *red
 
     - network:
+        poll-interval: 10000
         content:
           map:
             conditions:
