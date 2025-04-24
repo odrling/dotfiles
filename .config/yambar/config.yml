@@ -126,16 +126,24 @@ bar:
 
     - network:
         poll-interval: 10000
+        right-spacing: 2
         content:
           map:
             conditions:
               state == "up":
                 string:
-                  text: "{name} ({ipv4})"
+                  text: &iftext "{name} ({ipv4})"
                   margin: 5
                   deco:
                     background:
                       color: *blue
+              carrier && ipv4 != "127.0.0.1":
+                string:
+                  text: *iftext
+                  margin: 5
+                  deco:
+                    background:
+                      color: *neutral
 
     - battery:
         name: BAT0
