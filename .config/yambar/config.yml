@@ -137,6 +137,13 @@ bar:
                   deco:
                     background:
                       color: *blue
+              carrier && ipv4 != "127.0.0.1" && ipv4 == "":
+                string:
+                  text: "{name}"
+                  margin: 5
+                  deco:
+                    background:
+                      color: *neutral
               carrier && ipv4 != "127.0.0.1":
                 string:
                   text: *iftext
