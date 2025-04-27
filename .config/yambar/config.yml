@@ -37,7 +37,7 @@ battery_content: &battery_content
 bar:
   height: 26
   location: top
-  background: 333333ff
+  background: 000000ff
   font: sans:size=14
   font-shaping: none
   right-spacing: 2
