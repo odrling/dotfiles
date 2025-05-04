@@ -34,6 +34,11 @@ battery_content: &battery_content
               background:
                 color: *red
 
+psi_mem_usage: &psi_mem_usage
+  string:
+    text: "{mem}"
+    margin: 5
+
 bar:
   height: 26
   location: top
@@ -116,17 +121,19 @@ bar:
                         color: *red
           - map:
               default:
-                string:
-                  text: &psi_mem_text "mem {psi_mem_full_avg10}% | {mem}"
-                  margin: 5
+                - string:
+                    text: &psi_mem_text "mem {psi_mem_full_avg10}%"
+                    margin: 5
+                - <<: *psi_mem_usage
               conditions:
                 psi_mem_full_avg10 > 1:
-                  string:
-                    text: *psi_mem_text
-                    margin: 5
-                    deco:
-                      background:
-                        color: *red
+                  - string:
+                      text: *psi_mem_text
+                      margin: 5
+                      deco:
+                        background:
+                          color: *red
+                  - <<: *psi_mem_usage
 
     - network:
         poll-interval: 10000
