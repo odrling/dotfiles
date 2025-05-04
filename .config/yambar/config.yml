@@ -54,11 +54,14 @@ bar:
                   conditions:
                     # default tag
                     id == 0:
-                      string:
-                        text: "{layout} {title}"
-                        max: 100
-                        margin: 10
-                        font-shaping: full
+                      - string:
+                          text: "{layout}"
+                          margin: 10
+
+                      - string:
+                          text: "{title}"
+                          font-shaping: full
+                          max: 100
 
                     urgent:
                       string:
