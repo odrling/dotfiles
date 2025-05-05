@@ -96,7 +96,9 @@ reset='\[\033[00m\]'
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
-    PS1="${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} "
+    local virtual_env=""
+    [ -n "${VIRTUAL_ENV}" ] && virtual_env="($(basename "${VIRTUAL_ENV}")) "
+    PS1="${virtual_env}${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}${shell_char}${reset} "
 }
 
 precmd_bell() {
