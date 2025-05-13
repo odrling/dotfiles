@@ -1,6 +1,7 @@
 (import-macros {: setup : map! : augroup!} :macros)
 
-(setup :oil)
+(setup :oil {:view_options {:is_hidden_file (fn [name bufnr] false)}})
+
 (augroup! :oil_rename
           [[User] OilActionsPost (fn [event]
                                    (when (= event.data.actions.type :move)
