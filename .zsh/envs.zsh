@@ -159,7 +159,7 @@ odr-detect-hooks() {
     [ -f "meson.build" ] && odr-add-detected-hooks muon mesonfmt mesontest
     [ -f "go.mod" ] && odr-add-detected-hooks gofmt goerrcheck
     [ -f "Cargo.toml" ] && odr-add-detected-hooks clippy rustfmt
-    [ -f "tsconfig.json" ] && DETECTED_HOOKS+=("tsc")
+    [ -f "tsconfig.json" ] && odr-add-detected-hooks tsc
 }
 
 odr_previous_dir=''
