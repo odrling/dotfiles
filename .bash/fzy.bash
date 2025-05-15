@@ -14,7 +14,8 @@
 [[ $- =~ i ]] || return 0
 
 if command -v fzf > /dev/null 2>&1; then
-  __fzfcmd=fzf
+  eval "$(fzf --bash)"
+  return 0
 elif command -v fzy > /dev/null 2>&1; then
   __fzfcmd=fzy
 else

@@ -6,14 +6,15 @@
 # Distributed under terms of the MIT license.
 #
 
-ZSH_FZY_TMUX="${0:A:h}/fzy-tmux"
 if command -v fzf > /dev/null 2>&1; then
-  ZSH_FZY=fzf
+  eval $(fzf --zsh)
+  return 0
 elif command -v fzy > /dev/null 2>&1; then
   ZSH_FZY=fzy
 else
   return 1
 fi
+ZSH_FZY_TMUX="${0:A:h}/fzy-tmux"
 
 function fzy-history-default-command
 {
