@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Clipboard to mpv
+Comment=Send clipboard content to mpv
+Exec=mpvclip
+Icon=mpv
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Video;

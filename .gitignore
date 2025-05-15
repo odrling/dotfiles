@@ -211,6 +211,9 @@ Cache
 !/.local/share/applications
 /.local/share/applications/*
 !/.local/share/applications/Karaberus.desktop
+!/.local/share/applications/mpvclip.desktop
+!/.local/share/applications/foot-explorer.desktop
+
 !/.config/mimeapps.list
 
 # direnv
