@@ -195,6 +195,9 @@
     :build #((. vim.fn :firenvim#install) 0)
     :config #(config :firenvim)}
 
+   {1 :tani/dmacro.vim
+    :config #(config :dmacro)}
+
    {1 :NvChad/nvim-colorizer.lua
     :opts {:user_default_options {:names false}}}
 
