@@ -303,3 +303,6 @@ Cache
 
 # fuzzel
 !/.config/fuzzel
+
+# pipewire
+!/.config/pipewire
