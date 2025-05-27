@@ -47,6 +47,7 @@ Cache
 !/.config/mpv/script-opts/thumbfast.conf
 !/.config/mpv/script-opts/uosc.conf
 !/.config/mpv/script-opts/youtube-upnext.conf
+!/.config/mpv/script-opts/ytdl_hook.conf
 !/.config/mpv/fonts
 /.config/mpv/scripts/amoethyst.lua
 /.config/mpv/scripts/japan7.lua
