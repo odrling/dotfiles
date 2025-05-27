@@ -56,6 +56,8 @@ export FREETYPE_PROPERTIES="cff:no-stem-darkening=0"
 
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 
+export TZ=:/etc/localtime
+
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
