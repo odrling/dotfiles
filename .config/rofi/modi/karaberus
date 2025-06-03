@@ -2,11 +2,13 @@
 import gzip
 import json
 import os
+import pathlib
 import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TypedDict
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 
@@ -66,17 +68,52 @@ class KaraberusKaras(TypedDict):
     Karas: list[KaraberusKara]
 
 
+def xdg_cache_home() -> Path:
+    if xdg_cache_home_str := os.environ.get("XDG_CACHE_HOME"):
+        return Path(xdg_cache_home_str)
+    return Path(os.environ["HOME"]) / ".cache"
+
+
+def xdg_cache_dir() -> Path:
+    return xdg_cache_home() / "rofi-karaberus"
+
+
 def get_karas() -> KaraberusKaras:
+    cache_resp = xdg_cache_dir() / "resp.json.gz"
+    cache_etag = xdg_cache_dir() / "etag"
+
     conf = get_config()
+
     headers = {"Authorization": f"Bearer {conf.token}", "Accept-Encoding": "gzip"}
+    if cache_etag.exists():
+        headers["If-None-Match"] = cache_etag.read_text()
+
     url = f"{conf.host}/api/kara"
     req = Request(url, headers=headers)
-    resp = urlopen(req)
 
-    if resp.headers.get("Content-Encoding", "") == "gzip":
-        return json.load(gzip.open(resp))
+    try:
+        resp = urlopen(req)
+        cache_resp.parent.mkdir(exist_ok=True, parents=True)
+        with cache_resp.open("wb") as wf:
+            if resp.headers.get("Content-Encoding", "") == "gzip":
+                gresp = gzip.open(resp)
+            else:
+                gresp = resp
 
-    return json.load(resp)
+            with gzip.open(wf, mode="wb") as gzf:
+                while buf := gresp.read():
+                    _ = gzf.write(buf)
+
+        resp_etag: str
+        if resp_etag := resp.headers.get("ETag"):
+            _ = cache_etag.write_text(resp_etag)
+
+    except HTTPError as e:
+        if e.status != 304:
+            raise
+
+    with cache_resp.open("rb") as f:
+        return json.load(gzip.open(f))
 
 
 def set_prompt():
@@ -99,7 +136,7 @@ def send_kara_entries():
         if media_names:
             parts.append(", ".join(media_names))
 
-        print(f"{" - ".join(parts)}\0info\x1f{kara["ID"]}")
+        print(f"{' - '.join(parts)}\0info\x1f{kara['ID']}")
 
 
 def play_kara():
