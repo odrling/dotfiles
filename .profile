@@ -64,6 +64,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 
 ulimit -c unlimited
 
+[ "$(tty)" = '/dev/tty1' ] && STARTSESSION=1
+
 [ -f ~/.profile.local ] && . ~/.profile.local
 
 export CDPATH="$ODRCDPATH"
@@ -71,7 +73,7 @@ export CDPATH="$ODRCDPATH"
 command -v systemd-tmpfiles > /dev/null && systemd-tmpfiles --user --create
 command -v sd-tmpfiles > /dev/null && sd-tmpfiles --user --create
 
-[ "$(tty)" = '/dev/tty1' ] && exec startsession
+[ "${STARTSESSION}" = 1 ] && exec startsession
 
 if [ -n "$SSH_CONNECTION" ]; then
     export PINENTRY_USER_DATA="USE_CURSES=1"
