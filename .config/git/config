@@ -77,7 +77,7 @@
 [interactive]
 	diffFilter = delta --color-only
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [branch]
 	sort = -committerdate
 [credential]
