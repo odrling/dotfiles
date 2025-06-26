@@ -1,0 +1,3 @@
+#!/bin/sh
+# ntfysub_topic is a shell script to create in the user’s PATH
+exec ntfysub_topic
