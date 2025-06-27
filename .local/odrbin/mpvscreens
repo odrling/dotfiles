@@ -1,2 +1,2 @@
 #!/bin/sh
-exec swayimg --order=mtime --config=list.reverse=yes "$HOME/Pictures/${1:-mpv}"
+exec swayimg --order=mtime "$HOME/Pictures/${1:-mpv}"
