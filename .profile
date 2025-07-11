@@ -69,6 +69,8 @@ ulimit -c unlimited
 [ -f ~/.profile.local ] && . ~/.profile.local
 
 export CDPATH="$ODRCDPATH"
+[ -e "${XDG_CACHE_DIR}" ] && GOPATH=${XDG_CACHE_DIR}/go || GOPATH=~/.cache/go
+export GOPATH
 
 command -v systemd-tmpfiles > /dev/null && systemd-tmpfiles --user --create
 command -v sd-tmpfiles > /dev/null && sd-tmpfiles --user --create
