@@ -77,3 +77,4 @@ Comment[uk]=Тема курсорів Плазми KDE
 Comment[x-test]=xxKDE Plasma Cursor Themexx
 Comment[zh_CN]=KDE Plasma 光标主题
 Comment[zh_TW]=KDE Plasma 游標主題
+Inherits=steam
