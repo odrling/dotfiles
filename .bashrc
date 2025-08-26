@@ -102,7 +102,7 @@ set_prompt() {
 }
 
 precmd_bell() {
-    echo -en '\a'
+    printf "%$((`tput cols`-1))s\r\a"
 }
 
 precmd_functions+=(odr-set-end-cmd-time osc7_cwd set_prompt precmd_bell)
