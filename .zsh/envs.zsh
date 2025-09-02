@@ -102,8 +102,13 @@ odr-enable-python-venv() {
     odr-load-python-venv
 }
 
+odr-set-python-venv() {
+    git config odr.pythonvenv "$(realpath "$1")"
+    odr-load-python-venv
+}
+
 odr-disable-python-venv() {
-    git config odr.pythonvenv 0
+    git config --unset-all odr.pythonvenv
     deactivate
 }
 
@@ -112,6 +117,14 @@ odr-load-python-venv() {
         odr-load-poetry
     elif [ -f uv.lock ]; then
         odr-load-venv "${PWD}/.venv"
+    elif [ -n "$(git config odr.pythonvenv)" ]; then
+        VENVDIR="$(git config odr.pythonvenv)"
+        [ "$VENVDIR" = 1 ] && VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
+        if [ ! -d "$VENVDIR" ]; then
+            ewarn "found git config odr.pythonvenv but no local venv"
+            python -m venv "${VENVDIR}"
+        fi
+        odr-load-venv "$VENVDIR"
     elif [ -f pyproject.toml ]; then
         VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
         if [ -d "$VENVDIR" ]; then
@@ -119,13 +132,6 @@ odr-load-python-venv() {
         else
             ewarn "found pyproject.toml file but no local venv"
         fi
-    elif [ "$(git config odr.pythonvenv)" = 1 ]; then
-        VENVDIR="${PWD}/.venv/python-$(odr-python-minor-version)"
-        if [ ! -d "$VENVDIR" ]; then
-            ewarn "found git config odr.pythonvenv but no local venv"
-            python -m venv "${VENVDIR}"
-        fi
-        odr-load-venv "$VENVDIR"
     else
         return 1
     fi
@@ -135,7 +141,7 @@ odr-load-python-venv() {
 
 odr-display-hooks() {
     [ -n "${DETECTED_HOOKS}" ] && 
-        einfo "Detected hooks: ${DETECTED_HOOKS}. Enable them with enable-detected-hooks"
+        einfo "Detected hooks: ${DETECTED_HOOKS[@]}. Enable them with enable-detected-hooks"
     git config --get-regexp odrhooks\. 2>/dev/null
 }
 
@@ -151,7 +157,7 @@ odr-detect-python-hooks() {
 odr-add-detected-hooks() {
     for name in "${@}"; do
         [ "$(git config odrhooks.${name})" != 1 ] && DETECTED_HOOKS+=("${name}")
-        [ "${name}" = "ruff" ] && DETECTED_HOOKS+=("${name}-format")
+        [ "${name}" = "ruff" ] && DETECTED_HOOKS+=("ruff-format")
     done
 }
 
@@ -160,6 +166,7 @@ odr-detect-hooks() {
     [ -f "go.mod" ] && odr-add-detected-hooks gofmt goerrcheck
     [ -f "Cargo.toml" ] && odr-add-detected-hooks clippy rustfmt
     [ -f "tsconfig.json" ] && odr-add-detected-hooks tsc
+    [ -e ".pre-commit-config.yaml" ] && odr-add-detected-hooks pre-commit
 }
 
 odr_previous_dir=''
