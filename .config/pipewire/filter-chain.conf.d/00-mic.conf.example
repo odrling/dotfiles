@@ -1,0 +1,100 @@
+context.modules = [
+    # only needed when not starting with pipewire -c filter-chain.conf
+    # # The native communication protocol.
+    # { name = libpipewire-module-protocol-native }
+    #
+    # # Allows creating nodes that run in the context of the
+    # # client. Is used by all clients that want to provide
+    # # data to PipeWire.
+    # { name = libpipewire-module-client-node }
+    #
+    # # Makes a factory for wrapping nodes in an adapter with a
+    # # converter and resampler.
+    # { name = libpipewire-module-adapter }
+
+    {
+        name = libpipewire-module-filter-chain
+        args = {
+            node.description = "Microphone filter chain (Mono)"
+            media.name = "Microphone filter chain (Mono)"
+            filter.graph = {
+                nodes = [
+                    {
+                        type = builtin
+                        label = mixer
+                        name = mix_mono_in
+                    }
+                    {
+                        type = lv2
+                        plugin = "https://github.com/lucianodato/noise-repellent"
+                        name = noise-repellent
+                        control = {
+                            adaptive_noise_learn = 1
+                        }
+                    }
+                    {
+                        type = lv2
+                        plugin = "http://lsp-plug.in/plugins/lv2/gate_mono"
+                        name = gate
+                        control = {
+                            # Curve threshold [G]: 0.00100000..1.00000000
+                            gt = 0.013905
+                            # Curve zone size [G]: 0.00100000..1.00000000
+                            gz = 0.501180
+                        }
+                    }
+                    {
+                        type = lv2
+                        plugin = "http://lsp-plug.in/plugins/lv2/compressor_mono"
+                        name = compressor
+                        control = {
+                            # Attack threshold
+                            al = 0.030822
+                            # Ratio
+                            cr = 2.038311
+                            # Makeup gain
+                            mk = 2.526960
+                        }
+                    }
+                    {
+                        type = builtin
+                        label = copy
+                        name = mono_out
+                    }
+                    {
+                        type = builtin
+                        label = copy
+                        name = mono_out_L
+                    }
+                    {
+                        type = builtin
+                        label = copy
+                        name = mono_out_R
+                    }
+                ]
+                inputs = [ "mix_mono_in:In 1" "mix_mono_in:In 2" ]
+                outputs = [ "mono_out_L:Out" "mono_out_R:Out" ]
+                links = [ 
+                    { output = "mix_mono_in:Out" input = "noise-repellent:input" }
+                    { output = "noise-repellent:output" input = "gate:in" }
+                    { output = "gate:out" input = "compressor:in" }
+                    { output = "compressor:out" input = "mono_out:In" }
+                    { output = "mono_out:Out" input = "mono_out_L:In" }
+                    { output = "mono_out:Out" input = "mono_out_R:In" }
+                ]
+            }
+            audio_channels = 2
+            capture_props = {
+                node.name = "effect_input.microphones"
+                node.passive = true
+            }
+            playback.props = {
+                node.name = "effect_output.microphones"
+                node.passive = true
+                media.class = Audio/Source
+                audio.channels = 2
+                audio.position = [ FL FR ]
+            }
+        }
+    }
+]

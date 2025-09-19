@@ -1,0 +1,58 @@
+context.modules = [
+    # only needed when not starting with pipewire -c filter-chain.conf
+    # # The native communication protocol.
+    # { name = libpipewire-module-protocol-native }
+    #
+    # # Allows creating nodes that run in the context of the
+    # # client. Is used by all clients that want to provide
+    # # data to PipeWire.
+    # { name = libpipewire-module-client-node }
+    #
+    # # Makes a factory for wrapping nodes in an adapter with a
+    # # converter and resampler.
+    # { name = libpipewire-module-adapter }
+
+    {
+        name = libpipewire-module-filter-chain
+        args = {
+            node.description = "Microphone filter chain (Stereo)"
+            media.name = "Microphone filter chain (Stereo)"
+            filter.graph = {
+                nodes = [
+                    {
+                        type = lv2
+                        plugin = "https://github.com/lucianodato/noise-repellent"
+                        name = noise-repellent-L
+                        control = {
+                            adaptive_noise_learn = 1
+                        }
+                    }
+                    {
+                        type = lv2
+                        plugin = "https://github.com/lucianodato/noise-repellent"
+                        name = noise-repellent-R
+                        control = {
+                            adaptive_noise_learn = 1
+                        }
+                    }
+                ]
+                inputs = [ "noise-repellent-L:input" "noise-repellent-R:input" ]
+                outputs = [ "noise-repellent-L:output" "noise-repellent-R:output" ]
+                links = []
+            }
+            audio_channels = 2
+            capture_props = {
+                node.name = "effect_input.microphones"
+                node.passive = true
+                audio.channels = 2
+            }
+            playback.props = {
+                node.name = "effect_output.microphones"
+                node.passive = true
+                media.class = Audio/Source
+                audio.channels = 2
+                audio.position = [ FL FR ]
+            }
+        }
+    }
+]
