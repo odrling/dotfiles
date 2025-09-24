@@ -1,2 +1,2 @@
 #!/bin/sh
-wtype $(wl-paste)
+exec wtype "$(wl-paste)"
