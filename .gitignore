@@ -307,3 +307,6 @@ Cache
 
 # pipewire
 !/.config/pipewire
+
+# niri
+!/.config/niri
