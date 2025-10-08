@@ -48,45 +48,36 @@ bar:
   right-spacing: 2
 
   left:
-    - dwl:
-        number-of-tags: 9
-        dwl-info-filename: "/run/user/1000/dwl_status"
-        name-of-tags: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    - niri-workspaces:
         content:
-          list:
-            items:
-              - map:
-                  conditions:
-                    # default tag
-                    id == 0:
-                      - string:
-                          text: "{layout}"
-                          margin: 10
-
-                      - string:
-                          text: "{title}"
-                          font-shaping: full
-                          max: 100
-
-                    urgent:
-                      string:
-                        text: "{name}"
-                        margin: 10
-                        foreground: 000000ff
-                        deco:
-                          background:
-                            color: ffffffff
-                    selected:
-                      string:
-                        text: "{name}"
-                        margin: 10
-                        deco:
-                          background:
-                            color: *purple
-                    "~empty":
-                      string:
-                        text: "{name}"
-                        margin: 10
+          map:
+            default:
+              string:
+                text: "{id}"
+                margin: 10
+            conditions:
+              active:
+                string:
+                  text: "{id}"
+                  margin: 10
+                  deco:
+                    background:
+                      color: *purple
+              empty:
+                string:
+                  text: "{id}"
+                  margin: 10
+                  foreground: *neutral
+    - foreign-toplevel:
+        content:
+          map:
+            conditions:
+              ~activated:
+                empty: {}
+              activated:
+                string:
+                  text: "{app-id}: {title}"
+                  margin: 5
 
   right:
     - script:
