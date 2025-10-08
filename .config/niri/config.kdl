@@ -108,6 +108,14 @@ input {
     position x=1280 y=0
 }
 
+output "Samsung Electric Company S24F350 H4ZM505564" {
+    mode "1920x1080@71.91"
+}
+
+output "LG Electronics LG UltraFine 205NTVS32135" {
+    scale 2
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
