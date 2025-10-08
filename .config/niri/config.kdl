@@ -121,7 +121,7 @@ output "LG Electronics LG UltraFine 205NTVS32135" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 8
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -169,7 +169,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 3
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -177,7 +177,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#cc88ff"
 
         // Color of the ring on inactive monitors.
         //
