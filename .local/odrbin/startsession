@@ -1,9 +1,8 @@
 #!/bin/sh
 if command -v dwl > /dev/null; then
-  export XDG_CURRENT_DESKTOP=wlroots
+  # set DISPLAY for xwayland-satellite
   export GDK_BACKEND=wayland
-  STATUS_FILE="${XDG_RUNTIME_DIR}/dwl_status"
-  pgrep dwl || dbus-run-session -- dwl > ${STATUS_FILE}
+  pgrep niri || dbus-run-session -- niri
   s6-svscanctl -t ${S6_SCANDIR}
 elif command -v startx > /dev/null; then
   pgrep xinit || exec startx
