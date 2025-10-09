@@ -1,2 +1,4 @@
 #!/bin/sh
+s6-svwait -U ${S6_SCANDIR}/pipewire
+sleep 1
 exec yambar
