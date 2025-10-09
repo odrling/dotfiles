@@ -108,6 +108,10 @@ input {
     position x=1280 y=0
 }
 
+output "Chimei Innolux Corporation 0x14C9 Unknown" {
+    scale 1
+}
+
 output "Samsung Electric Company S24F350 H4ZM505564" {
     mode "1920x1080@71.91"
 }
