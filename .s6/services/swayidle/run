@@ -4,7 +4,7 @@ importas SWAYIDLE_TURN_OFF SWAYIDLE_TURN_OFF
 
 swayidle -w
 timeout ${SWAYIDLE_LOCK} "run_on_lock"
-timeout ${SWAYIDLE_TURN_OFF} "toggle_monitors off"
+timeout ${SWAYIDLE_TURN_OFF} "niri msg action power-off-monitors"
 resume "toggle_monitors on"
 after-resume "toggle_monitors on"
 before-sleep "run_on_lock"
