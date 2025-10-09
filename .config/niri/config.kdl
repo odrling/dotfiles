@@ -278,6 +278,10 @@ layout {
         top -5
         bottom -5
     }
+
+    tab-indicator {
+        place-within-column
+    }
 }
 
 // Add lines like this to spawn processes at startup.
