@@ -162,6 +162,72 @@ bar:
         name: BAT1
         <<: *battery_content
 
+    - pipewire:
+        anchors:
+          deco_unmuted: &deco_unmuted
+            margin: 5
+            deco:
+              background:
+                color: *neutral
+          deco_muted: &deco_muted
+            margin: 5
+            deco:
+              background:
+                color: *red
+        content:
+          list:
+            items:
+              - map:
+                  conditions:
+                    muted && type == "sink":
+                      map:
+                        conditions:
+                          icon == "audio-headset-bluetooth":
+                            string:
+                              text: "🎧 {linear_volume}%"
+                              <<: *deco_muted
+                        default:
+                          - ramp:
+                              tag: linear_volume
+                              items:
+                                - string:
+                                    text: "🔈 {linear_volume}%"
+                                    <<: *deco_muted
+                                - string:
+                                    text: "🔉 {linear_volume}%"
+                                    <<: *deco_muted
+                                - string:
+                                    text: "🔊 {linear_volume}%"
+                                    <<: *deco_muted
+                    type == "sink":
+                      map:
+                        conditions:
+                          icon == "audio-headset-bluetooth":
+                            string:
+                              text: "🎧 {linear_volume}%"
+                              <<: *deco_unmuted
+                        default:
+                          - ramp:
+                              tag: linear_volume
+                              items:
+                                - string:
+                                    text: "🔈 {linear_volume}%"
+                                    <<: *deco_unmuted
+                                - string:
+                                    text: "🔉 {linear_volume}%"
+                                    <<: *deco_unmuted
+                                - string:
+                                    text: "🔊 {linear_volume}%"
+                                    <<: *deco_unmuted
+                    muted && type == "source":
+                      - string:
+                          text: "🎙 {linear_volume}%"
+                          <<: *deco_muted
+                    type == "source":
+                      - string:
+                          text: "🎙 {linear_volume}%"
+                          <<: *deco_unmuted
+
     - clock:
         time-format: "%H:%M:%S"
         date-format: "%F"
