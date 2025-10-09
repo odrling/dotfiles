@@ -122,6 +122,10 @@ output "LG Electronics LG UltraFine 205NTVS32135" {
     scale 2
 }
 
+cursor {
+    hide-after-inactive-ms 5000
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
