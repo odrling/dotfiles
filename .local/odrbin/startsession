@@ -1,8 +1,7 @@
 #!/bin/sh
 if command -v dwl > /dev/null; then
-  # set DISPLAY for xwayland-satellite
   export GDK_BACKEND=wayland
-  pgrep niri || dbus-run-session -- niri
+  pgrep niri || dbus-run-session -- niri --session
   s6-svscanctl -t ${S6_SCANDIR}
 elif command -v startx > /dev/null; then
   pgrep xinit || exec startx
