@@ -154,14 +154,6 @@ bar:
                     background:
                       color: *neutral
 
-    - battery:
-        name: BAT0
-        <<: *battery_content
-
-    - battery:
-        name: BAT1
-        <<: *battery_content
-
     - pipewire:
         anchors:
           deco_unmuted: &deco_unmuted
@@ -227,6 +219,14 @@ bar:
                       - string:
                           text: "🎙 {linear_volume}%"
                           <<: *deco_unmuted
+
+    - battery:
+        name: BAT0
+        <<: *battery_content
+
+    - battery:
+        name: BAT1
+        <<: *battery_content
 
     - clock:
         time-format: "%H:%M:%S"
