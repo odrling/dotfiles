@@ -353,13 +353,22 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"firefox$"#
+    default-column-width { fixed 1140; }
+}
+
+window-rule {
     match app-id=r#"thunderbird$"#
-    open-maximized true
+    default-column-width { fixed 1140; }
 }
 
 window-rule {
     match app-id=r#"vesktop$"#
-    open-maximized true
+    default-column-width { fixed 1140; }
+}
+window-rule {
+    match app-id="footclient"
+    default-column-width { fixed 760; }
 }
 
 window-rule {
@@ -369,27 +378,27 @@ window-rule {
 
 window-rule {
     match app-id="OrcaSlicer"
-    open-maximized true
+    default-column-width { fixed 1140; }
 }
 
 window-rule {
     match app-id=r#"^blender"#
-    open-maximized true
+    default-column-width { proportion 0.8; }
 }
 
 window-rule {
     match app-id="gimp"
-    open-maximized true
-}
-
-window-rule {
-    match app-id="openscad"
-    open-maximized true
+    default-column-width { proportion 0.8; }
 }
 
 window-rule {
     match app-id="inkscape"
-    open-maximized true
+    default-column-width { proportion 0.8; }
+}
+
+window-rule {
+    match app-id="openscad"
+    default-column-width { fixed 1720; }
 }
 
 // Example: block out two password managers from screen capture.
