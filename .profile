@@ -30,10 +30,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # don’t download another go toolchain
 export GOTOOLCHAIN=local
 
-export SFEED_URL_FILE=$HOME/.sfeed/urls
-
-export NEOVIDE_MULTIGRID=1
-
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
 export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
 
@@ -45,9 +41,6 @@ export GPG_TTY=$(tty)
 ODRCDPATH=".:$HOME/git"
 
 export GRAPHICAL_TTY=1
-
-export GITSTATUS_AUTO_INSTALL=0
-export GITSTATUS_DAEMON=/usr/libexec/gitstatus/gitstatusd
 
 export UV_PYTHON_PREFERENCE=system
 export UV_PYTHON_DOWNLOADS=never
