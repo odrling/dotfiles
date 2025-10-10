@@ -274,12 +274,11 @@ layout {
     // Left and right struts will cause the next window to the side to always be visible.
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
-    // gap 8
     // struts {
-    //     left -8
-    //     right -8
-    //     top -8
-    //     bottom -8
+    //     left 0
+    //     right 0
+    //     top -2
+    //     bottom -2
     // }
 
     tab-indicator {
@@ -368,7 +367,7 @@ window-rule {
 }
 window-rule {
     match app-id="footclient"
-    default-column-width { fixed 760; }
+    default-column-width { fixed 768; }
 }
 
 window-rule {
