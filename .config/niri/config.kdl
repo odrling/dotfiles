@@ -693,3 +693,11 @@ binds {
     Mod+S { set-dynamic-cast-window; }
     Mod+Ctrl+S { set-dynamic-cast-monitor; }
 }
+
+clipboard {
+    disable-primary
+}
+
+debug {
+    enable-overlay-planes
+}
