@@ -11,6 +11,7 @@ alias dns="dig +short"
 alias fm=clifm
 alias tb="nc termbin.com 9999"
 alias neovide="neovide --nofork"
+alias msetup="meson setup builddir"
 alias mcomp="meson compile -C builddir"
 alias mtest="meson test -C builddir --verbose"
 alias mdev="meson devenv -C build"
