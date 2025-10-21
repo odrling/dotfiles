@@ -1,11 +1,14 @@
 #!/bin/sh
 BACKLIGHT_BACKEND=${BACKLIGHT_BACKEND:-KERNEL}
 
+# precision of 5% in shown brightness value
+PRECISION=5
+
 notify() {
     new_backlight=$1
     backlight_id=$(cat "${XDG_RUNTIME_DIR}/backlight_id")
     [ -z "${backlight_id}" ] && backlight_id=0
-    notify-send --replace-id="${backlight_id}" "backlight ${new_backlight}" -h "int:value:${new_backlight}" -p > "${XDG_RUNTIME_DIR}/backlight_id"
+    notify-send --replace-id="${backlight_id}" "backlight ${new_backlight}%" -h "int:value:${new_backlight}" -p > "${XDG_RUNTIME_DIR}/backlight_id"
 }
 
 kern () {
@@ -17,19 +20,20 @@ kern () {
 
         backlight=$(cat "${output}/actual_brightness")
         max_backlight=$(cat "${output}/max_brightness")
-        perc=$(expr "${backlight}" \* 100 / "${max_backlight}")
+        to_perc=$(expr ${max_backlight} / 100)
         if [ -n "$1" ]; then
             if [ -n "$2" ]; then
-                new_perc=$(expr "${perc}" "$1" "$2")
+                new_backlight=$(expr "${backlight}" "$1" \( "$2" \* ${to_perc} \) )
             else
-                new_perc=$1
+                new_backlight=$($1 \* ${to_perc})
             fi
 
-            new_backlight="$(expr "$new_perc" \* "${max_backlight}" / 100)"
             [ "${new_backlight}" -gt "${max_backlight}" ] && new_backlight=${max_backlight}
             [ "${new_backlight}" -lt 0 ] && new_backlight=0
             echo "${new_backlight}" > "${output}/brightness"
-            notify "${new_backlight}"
+
+            new_perc=$(expr ${new_backlight} / ${to_perc} / ${PRECISION} \* ${PRECISION})
+            notify "${new_perc}"
         else
             echo "${perc}%"
         fi
