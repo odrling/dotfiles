@@ -1,29 +1,40 @@
 #!/bin/sh
-# usage: omixer [+|-] n | omixer mute-input | omixer mute-output
+# usage: omixer n%+ | omixer mute-input | omixer mute-output
 
-notify() {
-    omixer_id=$(cat "${XDG_RUNTIME_DIR}/omixer_id")
-    [ -z "${omixer_id}" ] && omixer_id=0
-    notify-send --replace-id="${omixer_id}" "$@" -p > "${XDG_RUNTIME_DIR}/omixer_id"
+
+get_volume() {
+    wpctl get-volume $1 | cut -d' ' -f2- | sed 's/0\.0\|0\?\.//'
 }
 
 notify_input() {
+    volume_info=$(get_volume @DEFAULT_AUDIO_SOURCE@)
+    volume=$(echo ${volume_info} | cut -d' ' -f1)
+    muted=$(echo "${volume_info} " | cut -d' ' -f2)
     omixer_id=$(cat "${XDG_RUNTIME_DIR}/omixer_input_id")
     [ -z "${omixer_id}" ] && omixer_id=0
-    notify-send --replace-id="${omixer_id}" "$@" -p > "${XDG_RUNTIME_DIR}/omixer_input_id"
+    notify-send --replace-id="${omixer_id}" "Output: ${volume}% ${muted}" -h int:value:${volume} -p > "${XDG_RUNTIME_DIR}/omixer_input_id"
+}
+
+notify_volume() {
+    volume_info=$(get_volume @DEFAULT_AUDIO_SINK@)
+    volume=$(echo ${volume_info} | cut -d' ' -f1)
+    muted=$(echo "${volume_info} " | cut -d' ' -f2)
+    omixer_id=$(cat "${XDG_RUNTIME_DIR}/omixer_id")
+    [ -z "${omixer_id}" ] && omixer_id=0
+    notify-send --replace-id="${omixer_id}" "Output: ${volume}% ${muted}" -h int:value:${volume} -p > "${XDG_RUNTIME_DIR}/omixer_id"
 }
 
 case ${1} in
     toggle-output)
         wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-        notify "Output $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+        notify_volume
         ;;
     toggle-input)
         wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-        notify_input "Input $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
+        notify_input
         ;;
     *)
         wpctl set-volume @DEFAULT_AUDIO_SINK@ ${1} -l 1.0
-        notify "Output $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+        notify_volume
 esac
 
