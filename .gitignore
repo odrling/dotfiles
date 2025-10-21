@@ -233,7 +233,11 @@ Cache
 !/.s6/services/*/finish
 
 # cursor themes
-!/.icons
+!/.local/share/icons
+/.local/share/icons/*
+!/.local/share/icons/breeze-black
+!/.local/share/icons/default
+!/.local/share/icons/Adwaita
 
 # xdpw
 !/.config/xdg-desktop-portal-wlr
