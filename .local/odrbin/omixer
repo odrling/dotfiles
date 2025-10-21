@@ -20,7 +20,7 @@ case ${1} in
         ;;
     toggle-input)
         wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-        notify_input "Output $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
+        notify_input "Input $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
         ;;
     *)
         vol=$(volume | sed 's/%//')
