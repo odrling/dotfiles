@@ -3,3 +3,4 @@ default-timeout=10000
 background-color=#9966CCEE
 border-color=#CC88FFFF
 font=sans-serif 10
+progress-color=over #CC88FFFF
