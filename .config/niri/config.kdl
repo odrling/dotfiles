@@ -444,8 +444,8 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    Mod+Up   allow-when-locked=true { spawn "omixer" "+"; }
-    Mod+Down allow-when-locked=true { spawn "omixer" "-"; }
+    Mod+Up   allow-when-locked=true { spawn "omixer" "5%+"; }
+    Mod+Down allow-when-locked=true { spawn "omixer" "5%-"; }
     Mod+D    allow-when-locked=true { spawn "omixer" "toggle-output"; }
     Mod+M    allow-when-locked=true { spawn "omixer" "toggle-input"; }
 
