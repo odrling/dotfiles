@@ -3,22 +3,28 @@ BACKLIGHT_BACKEND=${BACKLIGHT_BACKEND:-KERNEL}
 
 kern () {
     for output in /sys/class/backlight/*; do
-        backlight=$(cat $output/actual_brightness)
-        max_backlight=$(cat $output/max_brightness)
-        perc=$(expr $backlight \* 100 / $max_backlight)
+        if [ "${output}" = "/sys/class/backlight/*" ]; then
+            echo "no backlight control on outputs"
+            break
+        fi
+
+        backlight=$(cat "${output}/actual_brightness")
+        max_backlight=$(cat "${output}/max_brightness")
+        perc=$(expr "${backlight}" \* 100 / "${max_backlight}")
         if [ -n "$1" ]; then
             if [ -n "$2" ]; then
-                new_perc=$(expr $perc $1 $2)
+                new_perc=$(expr "${perc}" "$1" "$2")
             else
                 new_perc=$1
             fi
 
-            new_backlight=$(expr $new_perc \* $max_backlight / 100)
-            [ $new_backlight -gt $max_backlight ] && new_backlight=$max_backlight
-            [ $new_backlight -lt 0 ] && new_backlight=0
-            echo $new_backlight > $output/brightness
+            new_backlight="$(expr "$new_perc" \* "${max_backlight}" / 100)"
+            [ "${new_backlight}" -gt "${max_backlight}" ] && new_backlight=${max_backlight}
+            [ "${new_backlight}" -lt 0 ] && new_backlight=0
+            echo "${new_backlight}" > "${output}/brightness"
+            notify-send "backlight ${new_backlight}" -h "int:value:${new_backlight}"
         else
-            echo $perc%
+            echo "${perc}%"
         fi
     done
 }
@@ -42,10 +48,10 @@ xbl () {
 
 case "$BACKLIGHT_BACKEND" in
     KERNEL)
-        kern $*
+        kern "$@"
         ;;
     XBACKLIGHT)
-        xbl $*
+        xbl "$@"
         ;;
 esac
 
