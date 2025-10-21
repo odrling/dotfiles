@@ -12,7 +12,7 @@ notify_input() {
     muted=$(echo "${volume_info} " | cut -d' ' -f2)
     omixer_id=$(cat "${XDG_RUNTIME_DIR}/omixer_input_id")
     [ -z "${omixer_id}" ] && omixer_id=0
-    notify-send --replace-id="${omixer_id}" "Output: ${volume}% ${muted}" -h int:value:${volume} -p > "${XDG_RUNTIME_DIR}/omixer_input_id"
+    notify-send --replace-id="${omixer_id}" "Input: ${volume}% ${muted}" -h int:value:${volume} -p > "${XDG_RUNTIME_DIR}/omixer_input_id"
 }
 
 notify_volume() {
