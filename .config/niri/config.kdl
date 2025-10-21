@@ -444,10 +444,10 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    Mod+Up   allow-when-locked=true { spawn "omixer" "5%+"; }
-    Mod+Down allow-when-locked=true { spawn "omixer" "5%-"; }
-    Mod+D    allow-when-locked=true { spawn "omixer" "toggle-output"; }
-    Mod+M    allow-when-locked=true { spawn "omixer" "toggle-input"; }
+    Mod+Up   allow-when-locked=true cooldown-ms=50 { spawn "omixer" "5%+"; }
+    Mod+Down allow-when-locked=true cooldown-ms=50 { spawn "omixer" "5%-"; }
+    Mod+D    allow-when-locked=true cooldown-ms=50 { spawn "omixer" "toggle-output"; }
+    Mod+M    allow-when-locked=true cooldown-ms=50 { spawn "omixer" "toggle-input"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
@@ -459,8 +459,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    Mod+Right allow-when-locked=true { spawn "backlight" "+" "5"; }
-    Mod+Left  allow-when-locked=true { spawn "backlight" "-" "5"; }
+    Mod+Right allow-when-locked=true cooldown-ms=150 { spawn "backlight" "+" "5"; }
+    Mod+Left  allow-when-locked=true cooldown-ms=150 { spawn "backlight" "-" "5"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
