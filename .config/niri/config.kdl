@@ -446,8 +446,8 @@ binds {
     // Using spawn-sh allows to pass multiple arguments together with the command.
     Mod+Up   allow-when-locked=true { spawn "omixer" "+"; }
     Mod+Down allow-when-locked=true { spawn "omixer" "-"; }
-    Mod+D    allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    Mod+M    allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    Mod+D    allow-when-locked=true { spawn "omixer" "toggle-output"; }
+    Mod+M    allow-when-locked=true { spawn "omixer" "toggle-input"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
