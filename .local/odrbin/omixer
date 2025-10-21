@@ -1,12 +1,35 @@
 #!/bin/sh
-# usage: omixer [+|-] n
-vol=$(volume | sed 's/%//')
-newvol=$(expr $vol ${1:-+} ${2:-2})
+# usage: omixer [+|-] n | omixer mute-input | omixer mute-output
 
-for card in $(aplay -l | grep -o '^card [0-9]*' | cut -d' ' -f2 | uniq); do
-    control=$(amixer -c $card scontrols | head -1 | grep -o "'.*'" | sed "s/^'\|'$//g")
-    echo $control
-    vol=$(amixer set -c "$card" "$control" "${newvol}%" | tail -1 | grep -oE "\[[0-9]+%\]")
-done
+notify() {
+    omixer_id=$(cat "${XDG_RUNTIME_DIR}/omixer_id")
+    [ -z "${omixer_id}" ] && omixer_id=0
+    notify-send --replace-id="${omixer_id}" "$@" -p > "${XDG_RUNTIME_DIR}/omixer_id"
+}
 
-pkill -SIGRTMIN+10 someblocks
+notify_input() {
+    omixer_id=$(cat "${XDG_RUNTIME_DIR}/omixer_input_id")
+    [ -z "${omixer_id}" ] && omixer_id=0
+    notify-send --replace-id="${omixer_id}" "$@" -p > "${XDG_RUNTIME_DIR}/omixer_input_id"
+}
+
+case ${1} in
+    toggle-output)
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        notify "Output $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+        ;;
+    toggle-input)
+        wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+        notify_input "Output $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
+        ;;
+    *)
+        vol=$(volume | sed 's/%//')
+        newvol=$(expr "${vol}" "${1:-+}" "${2:-2}")
+
+        for card in $(aplay -l | grep -o '^card [0-9]*' | cut -d' ' -f2 | uniq); do
+            control=$(amixer -c "${card}" scontrols | head -1 | grep -o "'.*'" | sed "s/^'\|'$//g")
+            echo "${control}"
+            vol=$(amixer set -c "$card" "$control" "${newvol}%" | tail -1 | grep -oE "\[[0-9]+%\]")
+        done
+esac
+
