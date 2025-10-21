@@ -30,7 +30,7 @@ case ${1} in
             control=$(amixer -c "${card}" scontrols | head -1 | grep -o "'.*'" | sed "s/^'\|'$//g")
             echo "${control}"
             vol=$(amixer set -c "$card" "$control" "${newvol}%" | tail -1 | grep -oE "\[[0-9]+%\]")
-            notify "Output Volume: ${vol}%" -h "int:value:${vol}"
+            notify "Output $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
         done
 esac
 
