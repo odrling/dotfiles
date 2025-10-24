@@ -123,7 +123,7 @@ output "LG Electronics LG UltraFine 205NTVS32135" {
 }
 
 cursor {
-    hide-after-inactive-ms 5000
+    // hide-after-inactive-ms 5000
 }
 
 // Settings that influence how windows are positioned and sized.
