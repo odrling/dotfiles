@@ -4,3 +4,4 @@ background-color=#9966CCEE
 border-color=#CC88FFFF
 font=sans-serif 10
 progress-color=source #CC88FFEE
+layer=overlay
