@@ -63,11 +63,6 @@ bar:
                   deco:
                     background:
                       color: *purple
-              empty:
-                string:
-                  text: "{id}"
-                  margin: 10
-                  foreground: *neutral
     - foreign-toplevel:
         content:
           map:
