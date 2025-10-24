@@ -367,17 +367,10 @@ window-rule {
 
 window-rule {
     match app-id=r#"^blender"#
-    default-column-width { proportion 0.8; }
-}
-
-window-rule {
     match app-id="gimp"
-    default-column-width { proportion 0.8; }
-}
-
-window-rule {
     match app-id="inkscape"
-    default-column-width { proportion 0.8; }
+
+    default-column-width { fixed 1536; }
 }
 
 window-rule {
