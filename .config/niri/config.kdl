@@ -112,6 +112,7 @@ input {
 
 output "Chimei Innolux Corporation 0x14C9 Unknown" {
     scale 1
+    position x=0 y=0
 }
 
 output "Samsung Electric Company S24F350 H4ZM505564" {
