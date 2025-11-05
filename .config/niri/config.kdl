@@ -373,6 +373,7 @@ window-rule {
     match app-id="gimp"
     match app-id="inkscape"
     match app-id="mpv-streamlink"
+    match app-id="OrcaSlicer"
 
     default-column-width { fixed 1536; }
 }
