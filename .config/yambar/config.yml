@@ -71,7 +71,7 @@ bar:
                 empty: {}
               activated:
                 string:
-                  text: "{app-id}: {title}"
+                  text: "{title}"
                   margin: 5
                   max: 100
 
