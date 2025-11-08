@@ -207,6 +207,7 @@ Cache
 !/.mozilla
 /.mozilla/*
 !/.mozilla/Betterfox
+!/.mozilla/user_pref.js
 
 # applications
 !/.local/share/applications
