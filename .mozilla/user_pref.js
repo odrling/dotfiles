@@ -591,7 +591,7 @@ user_pref("network.predictor.enabled", false);
 // and suspend tabs that you have not used in awhile.
 // [1] https://support.mozilla.org/en-US/kb/unload-inactive-tabs-save-system-memory-firefox
 // [2] https://hacks.mozilla.org/2021/10/tab-unloading-in-firefox-93/
-//user_pref("browser.tabs.unloadOnLowMemory", true); // DEFAULT
+user_pref("browser.tabs.unloadOnLowMemory", true); // DEFAULT
 
 // PREF: determine when tabs unload [WINDOWS] [LINUX]
 // Notify TabUnloader or send the memory pressure if the memory resource
