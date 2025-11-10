@@ -682,6 +682,9 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+    Mod+X { screenshot; }
+    Ctrl+Mod+X { screenshot-screen; }
+    Alt+Mod+X { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
