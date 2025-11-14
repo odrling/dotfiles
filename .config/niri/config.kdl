@@ -387,11 +387,6 @@ window-rule {
 }
 
 window-rule {
-    match app-id="openscad"
-    default-column-width { fixed 1720; }
-}
-
-window-rule {
     match is-window-cast-target=true
     
     border {
