@@ -1,0 +1,1 @@
+../dotSCAD/src/hollow_out.scad

@@ -315,3 +315,9 @@ Cache
 
 # niri
 !/.config/niri
+
+# OpenSCAD
+!/.local/share/OpenSCAD
+/.local/share/OpenSCAD/*
+!/.local/share/OpenSCAD/libraries
+!/.local/share/OpenSCAD/dotSCAD

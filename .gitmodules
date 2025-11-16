@@ -35,3 +35,6 @@
 [submodule ".config/mpv/submodules/mpv-reload"]
 	path = .config/mpv/submodules/mpv-reload
 	url = https://github.com/4e6/mpv-reload.git
+[submodule ".local/share/OpenSCAD/dotSCAD"]
+	path = .local/share/OpenSCAD/dotSCAD
+	url = https://github.com/JustinSDK/dotSCAD.git
