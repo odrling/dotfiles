@@ -613,6 +613,9 @@ user_pref("browser.low_commit_space_threshold_percent", 20); // default=5; LINUX
 // 60000=1min; 300000=5min; 600000=10min (default)
 user_pref("browser.tabs.min_inactive_duration_before_unload", 300000); // 5min; default=600000
 
+// PREF: fade out all unloaded tabs (and not just manually unloaded tabs)
+user_pref("browser.tabs.fadeOutUnloadedTabs", true);
+
 /****************************************************************************
  * SECTION: PROCESS COUNT                                                  *
 ****************************************************************************/
