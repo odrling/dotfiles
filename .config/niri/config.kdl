@@ -437,6 +437,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     // Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
+    Mod+T hotkey-overlay-title="Troubleshoot: foot" { spawn "odrfootclient" "env" "TROUBLESHOOT=y" "bash"; }
     Mod+O hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "lock"; }
     Mod+B {spawn "firefox"; }

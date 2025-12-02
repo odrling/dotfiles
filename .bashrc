@@ -111,5 +111,6 @@ source ~/.zsh/envs.zsh
 
 . ~/.shaliases
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
+[ -n "${TROUBLESHOOT}" ] && troubleshoot
 
 true  # always succeed
