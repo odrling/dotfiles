@@ -89,7 +89,7 @@ precmd_functions+=(odr-set-end-cmd-time vcs_info vcs_info_format precmd_bell)
 [ -n "$SSH_CONNECTION" ] && prompt_host='%B%F{red}%n@%m%f '
 
 setopt prompt_subst
-PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${cmd_run_time}${shell_char}%f '
+PROMPT='${prompt_host}%F{blue}%4~%f%b%F{green}${vcs_info_formatted}%f %(?.%F{green}.%F{red})${cmd_run_time}$(date +%H:%M)${shell_char}%f '
 
 # set format for the time command
 TIMEFMT="%J  %mU user %mS system %P  cpu  %*E total"
