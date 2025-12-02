@@ -32,6 +32,10 @@
 	prune = true
 	recurseSubmodules = on-demand
 	writeCommitGraph = true
+[fetch.fsck]
+	missingSpaceBeforeDate = warn
+[receive.fsck]
+	missingSpaceBeforeDate = warn
 [core]
 	longpaths = true
 	logallrefupdates = true
