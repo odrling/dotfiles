@@ -12,9 +12,9 @@ alias dns="dig +short"
 alias fm=clifm
 alias tb="nc termbin.com 9999"
 alias neovide="neovide --nofork"
-alias msetup="meson setup builddir"
-alias mcomp="meson compile -C builddir"
-alias mtest="meson test -C builddir --verbose"
+alias msetup="meson setup build"
+alias mcomp="meson compile -C build"
+alias mtest="meson test -C build --verbose"
 alias mdev="meson devenv -C build"
 alias eix="COLORSCHEME1=4 eix"
 alias httpserve='python -m http.server -d'
