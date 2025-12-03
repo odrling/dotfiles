@@ -1,0 +1,85 @@
+
+layer-rule {
+    match namespace="notifications"
+    block-out-from "screencast"
+}
+
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="footclient"
+    match app-id="xdg-desktop-portal-lxqt"
+
+    default-column-width { fixed 768; }
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id=r#"^blender"#
+    match app-id="gimp"
+    match app-id="inkscape"
+    match app-id="mpv-streamlink"
+    match app-id="OrcaSlicer"
+
+    default-column-width { fixed 1536; }
+}
+
+window-rule {
+    match app-id="com.chatterino.chatterino"
+
+    default-column-width { fixed 372; }
+}
+
+window-rule {
+    match is-window-cast-target=true
+    
+    border {
+        width 3
+
+        urgent-color "#ff8888"
+
+        active-gradient from="#cc3333" to="#c93d00" angle=45 in="oklch shorter hue" relative-to="workspace-view"
+
+        inactive-gradient from="#a75c55" to="#a55f44" angle=45 in="oklch shorter hue" relative-to="workspace-view"
+    }
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+// Example: enable rounded corners for all windows.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
