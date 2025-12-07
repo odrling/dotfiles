@@ -27,7 +27,7 @@ window-rule {
     match app-id="footclient"
     match app-id="xdg-desktop-portal-lxqt"
 
-    default-column-width { fixed 768; }
+    default-column-width { fixed 774; }
 }
 
 window-rule {
