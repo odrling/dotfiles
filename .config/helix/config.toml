@@ -2,9 +2,16 @@ theme = "github"
 
 [keys.normal]
 D = ["extend_to_line_bounds", "delete_selection"]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+V = ["select_mode", "extend_to_line_bounds"]
+X = "extend_line_above"
 
 [editor]
 end-of-line-diagnostics = "hint"
+
 
 [editor.cursor-shape]
 insert = "bar"
