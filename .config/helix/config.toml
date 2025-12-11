@@ -1,0 +1,26 @@
+theme = "github"
+
+[editor]
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "warning" # show warnings and errors on the cursorline inline
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = ""  # set wrap-indicator to "" to hide it
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+nbsp = "all"
+nnbsp = "all"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+character = "▏"
+skip-levels = 1
+

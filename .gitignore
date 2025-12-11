@@ -321,3 +321,6 @@ Cache
 /.local/share/OpenSCAD/*
 !/.local/share/OpenSCAD/libraries
 !/.local/share/OpenSCAD/dotSCAD
+
+# helix
+!/.config/helix
