@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 export BROWSER=firefox
-export EDITOR=vi
+export EDITOR=hx
 
 export FZF_DEFAULT_OPTS="-m --no-mouse"
 export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
