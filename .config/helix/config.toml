@@ -1,7 +1,15 @@
 theme = "github"
 
+[keys.normal]
+D = ["extend_to_line_bounds", "delete_selection"]
+
 [editor]
 end-of-line-diagnostics = "hint"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
 
 [editor.inline-diagnostics]
 cursor-line = "warning" # show warnings and errors on the cursorline inline
@@ -22,5 +30,5 @@ newline = "none"
 [editor.indent-guides]
 render = true
 character = "▏"
-skip-levels = 1
+skip-levels = 0
 
