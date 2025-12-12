@@ -20,5 +20,6 @@ alias eix="COLORSCHEME1=4 eix"
 alias httpserve='python -m http.server -d'
 alias qs="qsearch -HvR"
 alias qi="qwhich -pvI"
+alias qw="qwhich -t"
 alias vi="${EDITOR}"
 [ -x /usr/bin/gel ] && alias gel='/usr/bin/gel'
