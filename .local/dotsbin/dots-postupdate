@@ -13,13 +13,6 @@ ewarn() {
 	echo -e " ${NOCOLOR-\e[1;33m*\e[0m }${*}" >&2
 }
 
-if command -v nvim > /dev/null 2>&1; then
-    einfo "updating nvim"
-    BOOTSTRAP_NEOVIM=1 nvim --headless
-    nvim --headless "+Lazy! restore" +TSUpdateSync +qa || ewarn "nvim ended with status $?"
-    echo # nvim sometimes ends without a newline
-fi
-
 if command -v pipx > /dev/null 2>&1; then
     einfo "updating pipx packages"
     pipx upgrade-all || die "pipx update failed"
