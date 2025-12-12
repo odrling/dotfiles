@@ -38,3 +38,27 @@
 [submodule ".local/share/OpenSCAD/dotSCAD"]
 	path = .local/share/OpenSCAD/dotSCAD
 	url = https://github.com/JustinSDK/dotSCAD.git
+[submodule ".local/share/nvim/site/plugins/start/mini.nvim"]
+	path = .local/share/nvim/site/start/mini.nvim
+	url = https://github.com/nvim-mini/mini.nvim
+[submodule ".local/share/nvim/site/plugins/start/github-nvim-theme"]
+	path = .local/share/nvim/site/start/github-nvim-theme
+	url = https://github.com/projekt0n/github-nvim-theme.git
+[submodule ".config/nvim/start/mini.nvim"]
+	path = .config/nvim/start/mini.nvim
+	url = https://github.com/nvim-mini/mini.nvim
+[submodule ".config/nvim/start/oil.nvim"]
+	path = .config/nvim/start/oil.nvim
+	url = https://github.com/stevearc/oil.nvim.git
+[submodule ".config/nvim/start/telescope.nvim"]
+	path = .config/nvim/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule ".config/nvim/start/plenary.nvim"]
+	path = .config/nvim/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule ".config/nvim/start/nvim-lspconfig"]
+	path = .config/nvim/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".config/nvim/start/lsp_lines.nvim"]
+	path = .config/nvim/start/lsp_lines.nvim
+	url = https://git.sr.ht/~whynothugo/lsp_lines.nvim

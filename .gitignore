@@ -69,10 +69,12 @@ Cache
 # pypirc
 !/.pypirc
 
-# localbins
+# local
 !/.local
 !/.local/bin
 /.local/*
+!/.local/share
+/.local/share/*
 
 # ignore antibody
 !/.antibody/plugins
@@ -164,8 +166,6 @@ Cache
 !/.config/bottom
 
 # zinit
-!/.local/share
-/.local/share/*
 /.local/share/zinit/*
 !/.local/share/zinit/zinit.git
 
