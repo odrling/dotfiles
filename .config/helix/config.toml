@@ -12,6 +12,9 @@ X = "extend_line_above"
 [editor]
 end-of-line-diagnostics = "hint"
 
+[editor.file-picker]
+# show hidden files
+hidden = false
 
 [editor.cursor-shape]
 insert = "bar"
