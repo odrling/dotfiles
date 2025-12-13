@@ -14,6 +14,7 @@ vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP: Go to de
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
 vim.keymap.set("n", "gf", format_buf, { desc = "LSP: format buffer" })
 vim.keymap.set("n", "<leader>f", format_buf, { desc = "LSP: format buffer" })
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP: code actions" })
 
 function oil_cwd()
     vim.cmd.Oil(vim.fn.fnameescape(vim.fn.getcwd()))
