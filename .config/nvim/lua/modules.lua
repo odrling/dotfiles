@@ -18,7 +18,7 @@ require('mini.snippets').setup()
 require('mini.completion').setup()
 require('mini.cmdline').setup()
 
-require('oil').setup()
+require('oil').setup({ view_options = { show_hidden = true } })
 
 require("lsp_lines").setup()
 
