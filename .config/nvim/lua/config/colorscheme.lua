@@ -26,13 +26,13 @@ local palette = {
     base05 = "#333333",
     base06 = "#ffffff",
     base07 = "#888888",
-    base08 = "#ed6a43",
+    base08 = "#a71d5d",
     base09 = "#0086b3",
     base0A = "#795da3",
-    base0B = "#183691",
+    base0B = "#188018",
     base0C = "#183691",
     base0D = "#795da3",
-    base0E = "#a71d5d",
+    base0E = "#ed6a43",
     base0F = "#333333",
 }
 

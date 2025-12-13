@@ -71,3 +71,6 @@
 [submodule ".config/nvim/start/gitlinker.nvim"]
 	path = .config/nvim/start/gitlinker.nvim
 	url = https://github.com/ruifm/gitlinker.nvim.git
+[submodule ".config/nvim/start/gitsigns.nvim"]
+	path = .config/nvim/start/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
