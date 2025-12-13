@@ -1,0 +1,19 @@
+require('config.colorscheme')
+
+require('mini.basics').setup()
+require('config.miniclue')
+require('mini.git').setup()
+require('mini.diff').setup({ view = { style = "sign" } })
+require('mini.surround').setup()
+require('mini.statusline').setup()
+require('mini.notify').setup()
+require('mini.cursorword').setup()
+require('config.minihipatterns')
+require('config.telescope')
+require('mini.starter').setup({ header = "hi" })
+require('mini.pick').setup()
+require('config.minipairs')
+
+require('oil').setup()
+
+require("lsp_lines").setup()

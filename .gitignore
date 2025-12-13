@@ -155,7 +155,6 @@ Cache
 !/.config/nvim
 .netrwhist
 /.config/nvim/bundle
-/.config/nvim/lua
 /.config/nvim/*/packer_compiled.lua
 /.config/nvim/ftplugin/*.lua
 
