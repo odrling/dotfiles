@@ -15,6 +15,12 @@ ewarn() {
 
 dots submodule update --init "${HOME}"
 
+if command -v nvim > /dev/null 2>&1; then
+    einfo "updating nvim"
+    nvim --headless "+lua dots_post_update()" +qa || ewarn "nvim ended with status $?"
+    echo # nvim sometimes ends without a newline
+fi
+
 if command -v pipx > /dev/null 2>&1; then
     einfo "updating pipx packages"
     pipx upgrade-all || die "pipx update failed"

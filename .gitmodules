@@ -62,3 +62,6 @@
 [submodule ".config/nvim/start/lsp_lines.nvim"]
 	path = .config/nvim/start/lsp_lines.nvim
 	url = https://git.sr.ht/~whynothugo/lsp_lines.nvim
+[submodule ".config/nvim/start/nvim-treesitter"]
+	path = .config/nvim/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
