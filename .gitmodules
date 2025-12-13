@@ -65,3 +65,6 @@
 [submodule ".config/nvim/start/nvim-treesitter"]
 	path = .config/nvim/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".config/nvim/start/render-markdown.nvim"]
+	path = .config/nvim/start/render-markdown.nvim
+	url = https://github.com/MeanderingProgrammer/render-markdown.nvim.git

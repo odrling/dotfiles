@@ -3,7 +3,18 @@ treesitter.setup({
     install_dir = vim.fn.stdpath('data') .. '/treesitter'
 })
 
-local languages = { 'rust', 'c', 'cpp', 'python', 'zig', 'bash', 'lua' }
+local languages = {
+    'rust',
+    'c',
+    'cpp',
+    'python',
+    'zig',
+    'bash',
+    'lua',
+    'markdown',
+    'yaml',
+    'html',
+}
 treesitter.install(languages)
 
 local hl_languages = {}
@@ -13,4 +24,3 @@ for _, lang in ipairs(hl_languages) do
         callback = function() vim.treesitter.start() end,
     })
 end
-
