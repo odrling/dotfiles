@@ -18,8 +18,8 @@ vim.o.background = "light"
 --base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
 local palette = {
-    base00 = "#fefefe",
-    base01 = "#ffffff",
+    base00 = "#ffffff",
+    base01 = "#f8f8f8",
     base02 = "#d0afff",
     base03 = "#969896",
     base04 = "#ffffff",
