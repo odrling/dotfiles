@@ -20,8 +20,6 @@ require('gitsigns').setup({ current_line_blame = true })
 
 require('oil').setup({ view_options = { show_hidden = true } })
 
-require("lsp_lines").setup()
-
 require("config.treesitter")
 require("render-markdown").setup({ latex = { enabled = false } })
 
