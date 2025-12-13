@@ -17,6 +17,7 @@ require('config.minipairs')
 require('mini.snippets').setup()
 require('mini.completion').setup()
 require('mini.cmdline').setup()
+require('mini.jump').setup()
 
 require('oil').setup({ view_options = { show_hidden = true } })
 
