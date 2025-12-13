@@ -1,6 +1,6 @@
 require('config.colorscheme')
 
-require('mini.basics').setup()
+require('mini.basics').setup({ mappings = { basic = false } })
 require('mini.icons').setup()
 require('config.miniclue')
 require('mini.surround').setup()
