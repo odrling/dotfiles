@@ -23,3 +23,6 @@ vim.o.winborder = 'rounded'
 vim.o.backup = false
 vim.o.swapfile = false
 vim.o.writebackup = false
+
+-- rarely useful for me and takes a lot of space after some time
+vim.lsp.set_log_level("off")
