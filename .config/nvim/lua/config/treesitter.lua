@@ -18,7 +18,10 @@ local languages = {
 }
 treesitter.install(languages)
 
-local hl_languages = {}
+local hl_languages = {
+    'markdown',
+}
+
 for _, lang in ipairs(hl_languages) do
     vim.api.nvim_create_autocmd('FileType', {
         pattern = { lang },

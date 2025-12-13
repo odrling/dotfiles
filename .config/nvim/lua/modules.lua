@@ -24,4 +24,4 @@ require('oil').setup({ view_options = { show_hidden = true } })
 require("lsp_lines").setup()
 
 require("config.treesitter")
-require("render-markdown").setup()
+require("render-markdown").setup({ latex = { enabled = false } })
