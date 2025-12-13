@@ -1,6 +1,7 @@
 require('config.colorscheme')
 
 require('mini.basics').setup()
+require('mini.icons').setup()
 require('config.miniclue')
 require('mini.git').setup()
 require('mini.diff').setup({ view = { style = "sign" } })
@@ -13,6 +14,8 @@ require('config.telescope')
 require('mini.starter').setup({ header = "hi" })
 require('mini.pick').setup()
 require('config.minipairs')
+require('mini.snippets').setup()
+require('mini.completion').setup()
 
 require('oil').setup()
 
