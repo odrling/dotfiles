@@ -25,3 +25,5 @@ require("lsp_lines").setup()
 
 require("config.treesitter")
 require("render-markdown").setup({ latex = { enabled = false } })
+
+require('config.gitlinker')

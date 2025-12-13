@@ -68,3 +68,6 @@
 [submodule ".config/nvim/start/render-markdown.nvim"]
 	path = .config/nvim/start/render-markdown.nvim
 	url = https://github.com/MeanderingProgrammer/render-markdown.nvim.git
+[submodule ".config/nvim/start/gitlinker.nvim"]
+	path = .config/nvim/start/gitlinker.nvim
+	url = https://github.com/ruifm/gitlinker.nvim.git
