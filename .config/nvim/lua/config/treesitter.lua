@@ -12,6 +12,7 @@ local languages = {
     'bash',
     'lua',
     'markdown',
+    'markdown_inline',
     'yaml',
     'html',
 }
