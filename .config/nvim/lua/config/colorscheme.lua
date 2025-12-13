@@ -19,13 +19,13 @@ vim.o.background = "light"
 
 local palette = {
     base00 = "#ffffff",
-    base01 = "#f8f8f8",
+    base01 = "#f8f4fa",
     base02 = "#d0afff",
     base03 = "#969896",
     base04 = "#111111",
     base05 = "#333333",
     base06 = "#ffffff",
-    base07 = "#ffffff",
+    base07 = "#888888",
     base08 = "#ed6a43",
     base09 = "#0086b3",
     base0A = "#795da3",
