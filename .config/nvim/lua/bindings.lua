@@ -29,6 +29,8 @@ vim.keymap.set("n", "<C-k>", "<C-W>k")
 vim.keymap.set("n", "<C-h>", "<C-W>h")
 vim.keymap.set("n", "<C-l>", "<C-W>l")
 
+vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = "Copy to system clipboard" })
+
 vim.keymap.set("n", "<leader>n", "<CMD>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>p", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
 
