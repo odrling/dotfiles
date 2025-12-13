@@ -7,7 +7,8 @@ local function get_cgit_stripped_type_url(url_data)
 end
 
 require('gitlinker').setup({
-    mappings = "<leader>Y",
+    -- it can’t actually be disabled so let’s put a binding I don’t use
+    mappings = "ggy",
     callbacks = {
         ["git.odrling.xyz"] = get_cgit_stripped_type_url,
         ["git.kernel.org"] = get_cgit_stripped_type_url,

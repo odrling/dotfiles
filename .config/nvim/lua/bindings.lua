@@ -10,11 +10,11 @@ function format_buf()
     vim.lsp.buf.format({ async = true })
 end
 
-vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
-vim.keymap.set("n", "gf", format_buf, { desc = "LSP: format buffer" })
-vim.keymap.set("n", "<leader>f", format_buf, { desc = "LSP: format buffer" })
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP: code actions" })
+vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP Go to definition" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Go to definition" })
+vim.keymap.set("n", "gf", format_buf, { desc = "LSP format buffer" })
+vim.keymap.set("n", "<leader>f", format_buf, { desc = "LSP format buffer" })
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP code actions" })
 
 function oil_cwd()
     vim.cmd.Oil(vim.fn.fnameescape(vim.fn.getcwd()))
@@ -22,6 +22,12 @@ end
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Oil, { desc = "File explorer (parent directory)" })
 vim.keymap.set("n", "<leader>E", oil_cwd, { desc = "File explorer (working directory)" })
+
+vim.keymap.set(
+    "n", "<leader>y",
+    function() require('gitlinker').get_buf_range_url('n') end,
+    { desc = "Copy permalink" }
+)
 
 -- window movement
 vim.keymap.set("n", "<C-j>", "<C-W>j")
@@ -50,3 +56,113 @@ vim.keymap.set("n", "<leader>gd", function()
     gitsigns.toggle_word_diff()
     gitsigns.toggle_deleted()
 end, { desc = "Git: inline diff" })
+
+-- treesitter bindings
+local select = require('nvim-treesitter-textobjects.select')
+local move = require('nvim-treesitter-textobjects.move')
+
+vim.keymap.set(
+    { "x", "o" }, "af",
+    function()
+        select.select_textobject("@function.outer", "textobjects")
+    end,
+    { desc = "select outer function" }
+)
+vim.keymap.set(
+    { "x", "o" }, "if",
+    function()
+        select.select_textobject("@function.inner", "textobjects")
+    end,
+    { desc = "select inner function" }
+)
+vim.keymap.set(
+    { "x", "o" }, "ac",
+    function()
+        select.select_textobject("@class.outer", "textobjects")
+    end,
+    { desc = "select outer class" }
+)
+vim.keymap.set(
+    { "x", "o" }, "ic",
+    function()
+        select.select_textobject("@class.inner", "textobjects")
+    end,
+    { desc = "select inner class" }
+)
+
+vim.keymap.set(
+    { "x", "o" }, "as",
+    function()
+        select.select_textobject("@local.scope", "locals")
+    end,
+    { desc = "select scope" }
+)
+
+local objects = {
+    f = {
+        name = "function",
+        query = "@function.outer",
+        query_lib = "textobjects",
+    },
+    c = {
+        name = "class",
+        query = "@class.outer",
+        query_lib = "textobjects",
+    },
+    l = {
+        name = "loop",
+        query = { "@loop.inner", "@loop.outer" },
+        query_lib = "textobjects",
+    },
+    s = {
+        name = "scope",
+        query = "@local.scope",
+        query_lib = "locals",
+    },
+}
+
+for key, definition in pairs(objects) do
+    vim.keymap.set(
+        { 'n', 'x', 'o' }, 'm' .. key,
+        function()
+            move.goto_next_start(definition.query, definition.query_lib)
+        end,
+        { desc = "go to next " .. definition.name .. " start" }
+    )
+    vim.keymap.set(
+        { 'n', 'x', 'o' }, 'M' .. key,
+        function()
+            move.goto_next_end(definition.query, definition.query_lib)
+        end,
+        { desc = "go to next " .. definition.name .. " end" }
+    )
+    vim.keymap.set(
+        { 'n', 'x', 'o' }, 'm' .. key:upper(),
+        function()
+            move.goto_previous_start(definition.query, definition.query_lib)
+        end,
+        { desc = "go to previous " .. definition.name .. " start" }
+    )
+    vim.keymap.set(
+        { 'n', 'x', 'o' }, 'M' .. key:upper(),
+        function()
+            move.goto_previous_end(definition.query, definition.query_lib)
+        end,
+        { desc = "go to previous " .. definition.name .. " end" }
+    )
+end
+
+vim.keymap.set(
+    'n', 'md',
+    function()
+        vim.diagnostic.jump({ count = 1, float = true })
+    end,
+    { desc = "go to next diagnostic" }
+)
+vim.keymap.set(
+    'n', 'mD',
+    function()
+        vim.diagnostic.jump({ count = -1, float = true })
+    end,
+    { desc = "go to previous diagnostic" }
+)

@@ -2,6 +2,7 @@ local treesitter = require('nvim-treesitter')
 treesitter.setup({
     install_dir = vim.fn.stdpath('data') .. '/treesitter'
 })
+require("nvim-treesitter-textobjects").setup()
 
 local languages = {
     'rust',

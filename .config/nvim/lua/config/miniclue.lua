@@ -30,6 +30,14 @@ miniclue.setup({
         -- `z` key
         { mode = 'n', keys = 'z' },
         { mode = 'x', keys = 'z' },
+
+        -- movements
+        { mode = 'n', keys = 'm' },
+        { mode = 'x', keys = 'm' },
+        { mode = 'o', keys = 'm' },
+        { mode = 'n', keys = 'M' },
+        { mode = 'x', keys = 'M' },
+        { mode = 'o', keys = 'M' },
     },
 
     clues = {
