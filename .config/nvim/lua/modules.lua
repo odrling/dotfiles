@@ -20,3 +20,5 @@ require('mini.completion').setup()
 require('oil').setup()
 
 require("lsp_lines").setup()
+
+require("config.treesitter")
