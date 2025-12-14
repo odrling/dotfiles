@@ -57,12 +57,12 @@ window-rule {
 window-rule {
     match app-id="com.chatterino.chatterino"
 
-    default-column-width { fixed 372; }
+    default-column-width { fixed 378; }
 }
 
 window-rule {
     match is-window-cast-target=true
-    
+
     border {
         width 3
 
