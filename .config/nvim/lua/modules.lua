@@ -13,7 +13,7 @@ require('mini.starter').setup({ header = "hi" })
 require('mini.pick').setup()
 require('mini.snippets').setup()
 require('mini.completion').setup()
-require('mini.cmdline').setup()
+require('mini.cmdline').setup({ autocorrect = { enabled = false } })
 require('mini.jump').setup()
 
 require('gitsigns').setup({ current_line_blame = true })
