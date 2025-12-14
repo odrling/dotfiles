@@ -164,3 +164,6 @@ vim.keymap.set(
     end,
     { desc = "go to previous diagnostic" }
 )
+
+vim.keymap.set('n', 'mp', '}', { desc = "go to next paragraph"})
+vim.keymap.set('n', 'mp', '{', { desc = "go to previous paragraph"})
