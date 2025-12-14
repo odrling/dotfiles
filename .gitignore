@@ -156,7 +156,6 @@ Cache
 .netrwhist
 /.config/nvim/bundle
 /.config/nvim/*/packer_compiled.lua
-/.config/nvim/ftplugin/*.lua
 
 # flake8
 !/.flake8
