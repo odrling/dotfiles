@@ -76,3 +76,6 @@
 	path = .config/nvim/start/nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
 	branch = main
+[submodule ".config/nvim/start/undotree"]
+	path = .config/nvim/start/undotree
+	url = https://github.com/mbbill/undotree.git
