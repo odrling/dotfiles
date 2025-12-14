@@ -52,8 +52,6 @@ miniclue.setup({
         { mode = 'n', keys = '<Leader>ga', postkeys = '<Leader>g' },
         { mode = 'n', keys = '<Leader>gb', postkeys = '<Leader>g' },
         { mode = 'n', keys = '<Leader>gd', postkeys = '<Leader>g' },
-        { mode = 'n', keys = '<Leader>gj', postkeys = '<Leader>g' },
-        { mode = 'n', keys = '<Leader>gk', postkeys = '<Leader>g' },
         { mode = 'n', keys = '<Leader>gn', postkeys = '<Leader>g' },
         { mode = 'n', keys = '<Leader>gp', postkeys = '<Leader>g' },
         { mode = 'n', keys = '<Leader>gr', postkeys = '<Leader>g' },
