@@ -26,3 +26,6 @@ vim.o.writebackup = false
 
 -- rarely useful for me and takes a lot of space after some time
 vim.lsp.set_log_level("off")
+
+-- use system vim syntaxes/ftdetect
+vim.opt.rtp:append('/usr/share/vim/vimfiles')
