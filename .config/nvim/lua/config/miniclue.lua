@@ -48,6 +48,16 @@ miniclue.setup({
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
+        { mode = 'n', keys = '<Leader>g',  desc = "Git+" },
+        { mode = 'n', keys = '<Leader>ga', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gb', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gd', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gj', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gk', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gn', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gp', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gr', postkeys = '<Leader>g' },
+        { mode = 'n', keys = '<Leader>gs', postkeys = '<Leader>g' },
     },
 
     window = {
