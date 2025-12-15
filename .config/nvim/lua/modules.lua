@@ -25,3 +25,5 @@ require("config.treesitter")
 require("render-markdown").setup({ latex = { enabled = false } })
 
 require('config.gitlinker')
+
+vim.cmd.helptags('ALL')
