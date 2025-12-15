@@ -11,9 +11,9 @@ require('mini.pick').setup()
 require('mini.snippets').setup()
 require('mini.starter').setup({ header = "hi" })
 require('mini.statusline').setup()
-require('mini.surround').setup()
 require('config.miniclue')
 require('config.minihipatterns')
+require('config.minisurround')
 
 require('config.telescope')
 
