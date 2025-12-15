@@ -1,7 +1,9 @@
 require('telescope').setup({
     pickers = {
-        -- show hidden files
-        hidden = true,
+        find_files = {
+            -- show hidden files
+            hidden = true,
+        }
     },
     defaults = {
         layout_strategy = "vertical",
