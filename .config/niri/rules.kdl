@@ -46,15 +46,6 @@ window-rule {
 }
 
 window-rule {
-    match is-floating=false app-id="mpv"
-    match is-floating=false app-id="mpv-streamlink"
-
-    border {
-        off
-    }
-}
-
-window-rule {
     match app-id="com.chatterino.chatterino"
 
     default-column-width { fixed 378; }
