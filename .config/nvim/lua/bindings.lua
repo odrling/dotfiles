@@ -1,102 +1,119 @@
 local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find files' })
-vim.keymap.set('n', '<leader>s', builtin.live_grep, { desc = 'Live grep' })
-vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Find buffers' })
-vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Search help tags' })
-vim.keymap.set('n', '<leader>n', vim.cmd.noh, { desc = 'Stop highlighting' })
+local function nmap(lhs, rhs, desc)
+    vim.keymap.set('n', lhs, rhs, { desc = desc })
+end
 
-vim.keymap.set('n', '<C-t>', require('neoterm').open, { desc = 'Open terminal' })
+local function nxmap(lhs, rhs, desc)
+    vim.keymap.set({ 'n', 'x' }, lhs, rhs, { desc = desc })
+end
+
+local function nxomap(lhs, rhs, desc)
+    vim.keymap.set({ 'n', 'x', 'o' }, lhs, rhs, { desc = desc })
+end
+
+local function xomap(lhs, rhs, desc)
+    vim.keymap.set({ 'x', 'o' }, lhs, rhs, { desc = desc })
+end
+
+nmap('<leader><leader>', builtin.find_files, 'Find files')
+nmap('<leader>s', builtin.live_grep, 'Live grep')
+nmap('<leader>b', builtin.buffers, 'Find buffers')
+nmap('<leader>h', builtin.help_tags, 'Search help tags')
+nmap('<leader>n', vim.cmd.noh, 'Stop highlighting')
+
+nmap('<C-t>', require('neoterm').open, 'Open terminal')
 vim.keymap.set('t', '<C-t>', require('neoterm').close, { desc = 'Close terminal' })
 
-function format_buf()
+local function format_buf()
     vim.lsp.buf.format({ async = true })
 end
 
-vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP Go to definition" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Go to definition" })
-vim.keymap.set("n", "gf", format_buf, { desc = "LSP format buffer" })
-vim.keymap.set("n", "<leader>f", format_buf, { desc = "LSP format buffer" })
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP code actions" })
+nmap("<leader>d", vim.lsp.buf.definition, "LSP Go to definition")
+nmap("gd", vim.lsp.buf.definition, "LSP Go to definition")
+nmap("gf", format_buf, "LSP format buffer")
+nmap("<leader>f", format_buf, "LSP format buffer")
+nmap("<leader>a", vim.lsp.buf.code_action, "LSP code actions")
 
-function oil_cwd()
+local function oil_cwd()
     vim.cmd.Oil(vim.fn.fnameescape(vim.fn.getcwd()))
 end
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Oil, { desc = "File explorer (parent directory)" })
-vim.keymap.set("n", "<leader>E", oil_cwd, { desc = "File explorer (working directory)" })
+nmap("<leader>e", vim.cmd.Oil, "File explorer (parent directory)")
+nmap("<leader>E", oil_cwd, "File explorer (working directory)")
 
-vim.keymap.set(
-    "n", "<leader>y",
+nmap(
+    "<leader>y",
     function() require('gitlinker').get_buf_range_url('n') end,
-    { desc = "Copy permalink" }
+    "Copy permalink"
 )
 
 -- window movement
-vim.keymap.set("n", "<C-j>", "<C-W>j")
-vim.keymap.set("n", "<C-k>", "<C-W>k")
-vim.keymap.set("n", "<C-h>", "<C-W>h")
-vim.keymap.set("n", "<C-l>", "<C-W>l")
+nmap("<C-j>", "<C-W>j")
+nmap("<C-k>", "<C-W>k")
+nmap("<C-h>", "<C-W>h")
+nmap("<C-l>", "<C-W>l")
 
-vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set({ 'n', 'x' }, '<C-c>', '"+y', { desc = "Copy to system clipboard" })
+nxmap('gy', '"+y', "Copy to system clipboard")
+nxmap('<C-c>', '"+y', "Copy to system clipboard")
 
-vim.keymap.set("n", "<leader>n", "<CMD>bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>p", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
+nmap("<leader>n", "<CMD>bnext<CR>", "Next buffer")
+nmap("<leader>p", "<CMD>bprevious<CR>", "Previous buffer")
 
-vim.keymap.set("n", "<leader>ga", "<CMD>Gitsigns stage_buffer<CR>", { desc = "stage hunk" })
-vim.keymap.set("n", "<leader>gs", "<CMD>Gitsigns stage_hunk<CR>", { desc = "stage hunk" })
-vim.keymap.set("n", "<leader>gr", "<CMD>Gitsigns reset_hunk<CR>", { desc = "reset hunk" })
-vim.keymap.set("n", "<leader>gv", "<CMD>Gitsigns preview_hunk<CR>", { desc = "preview hunk" })
-vim.keymap.set("n", "<leader>gb", "<CMD>Gitsigns blame<CR>", { desc = "blame" })
-vim.keymap.set("n", "<leader>gn", "<CMD>Gitsigns next_hunk<CR>", { desc = "next hunk" })
-vim.keymap.set("n", "<leader>gp", "<CMD>Gitsigns prev_hunk<CR>", { desc = "previous hunk" })
-vim.keymap.set("n", "<leader>gd", function()
+nmap("<leader>ga", "<CMD>Gitsigns stage_buffer<CR>", "stage hunk")
+nmap("<leader>gs", "<CMD>Gitsigns stage_hunk<CR>", "stage hunk")
+nmap("<leader>gr", "<CMD>Gitsigns reset_hunk<CR>", "reset hunk")
+nmap("<leader>gv", "<CMD>Gitsigns preview_hunk<CR>", "preview hunk")
+nmap("<leader>gb", "<CMD>Gitsigns blame<CR>", "blame")
+nmap("<leader>gn", "<CMD>Gitsigns next_hunk<CR>", "next hunk")
+nmap("<leader>gp", "<CMD>Gitsigns prev_hunk<CR>", "previous hunk")
+
+nmap("<leader>gd", function()
     local gitsigns = require('gitsigns')
     gitsigns.toggle_linehl()
     gitsigns.toggle_word_diff()
     gitsigns.toggle_deleted()
-end, { desc = "inline diff" })
+end, "Toggle inline diff")
 
 -- treesitter bindings
 local select = require('nvim-treesitter-textobjects.select')
 local move = require('nvim-treesitter-textobjects.move')
 
-vim.keymap.set(
-    { "x", "o" }, "af",
+xomap(
+    "af",
     function()
         select.select_textobject("@function.outer", "textobjects")
     end,
-    { desc = "select outer function" }
+    "select outer function"
 )
-vim.keymap.set(
-    { "x", "o" }, "if",
+xomap(
+    "if",
     function()
         select.select_textobject("@function.inner", "textobjects")
     end,
-    { desc = "select inner function" }
+    "select inner function"
 )
-vim.keymap.set(
-    { "x", "o" }, "ac",
+xomap(
+    "ac",
     function()
         select.select_textobject("@class.outer", "textobjects")
     end,
-    { desc = "select outer class" }
+    "select outer class"
 )
-vim.keymap.set(
-    { "x", "o" }, "ic",
+xomap(
+    "ic",
     function()
         select.select_textobject("@class.inner", "textobjects")
     end,
-    { desc = "select inner class" }
+    "select inner class"
 )
 
-vim.keymap.set(
-    { "x", "o" }, "as",
+xomap(
+    "as",
     function()
         select.select_textobject("@local.scope", "locals")
     end,
-    { desc = "select scope" }
+    "select scope"
 )
 
 local objects = {
@@ -123,50 +140,48 @@ local objects = {
 }
 
 for key, definition in pairs(objects) do
-    vim.keymap.set(
-        { 'n', 'x', 'o' }, 'm' .. key,
+    nxomap(
+        'm' .. key,
         function()
             move.goto_next_start(definition.query, definition.query_lib)
         end,
-        { desc = "go to next " .. definition.name .. " start" }
+        "go to next " .. definition.name .. " start"
     )
-    vim.keymap.set(
-        { 'n', 'x', 'o' }, 'M' .. key,
+    nxomap(
+        'M' .. key,
         function()
             move.goto_next_end(definition.query, definition.query_lib)
         end,
-        { desc = "go to next " .. definition.name .. " end" }
+        "go to next " .. definition.name .. " end"
     )
-    vim.keymap.set(
-        { 'n', 'x', 'o' }, 'm' .. key:upper(),
+    nxomap(
+        'm' .. key:upper(),
         function()
             move.goto_previous_start(definition.query, definition.query_lib)
         end,
-        { desc = "go to previous " .. definition.name .. " start" }
+        "go to previous " .. definition.name .. " start"
     )
-    vim.keymap.set(
-        { 'n', 'x', 'o' }, 'M' .. key:upper(),
+    nxomap(
+        'M' .. key:upper(),
         function()
             move.goto_previous_end(definition.query, definition.query_lib)
         end,
-        { desc = "go to previous " .. definition.name .. " end" }
+        "go to previous " .. definition.name .. " end"
     )
 end
 
-vim.keymap.set(
-    'n', 'md',
+nmap('md',
     function()
         vim.diagnostic.jump({ count = 1, float = true })
     end,
-    { desc = "go to next diagnostic" }
+    "go to next diagnostic"
 )
-vim.keymap.set(
-    'n', 'mD',
+nmap('mD',
     function()
         vim.diagnostic.jump({ count = -1, float = true })
     end,
-    { desc = "go to previous diagnostic" }
+    "go to previous diagnostic"
 )
 
-vim.keymap.set('n', 'mp', '}', { desc = "go to next paragraph" })
-vim.keymap.set('n', 'mP', '{', { desc = "go to previous paragraph" })
+nmap('mp', '}', "go to next paragraph")
+nmap('mP', '{', "go to previous paragraph")
