@@ -20,6 +20,7 @@ nmap('<leader><leader>', builtin.find_files, 'Find files')
 nmap('<leader>s', builtin.live_grep, 'Live grep')
 nmap('<leader>b', builtin.buffers, 'Find buffers')
 nmap('<leader>h', builtin.help_tags, 'Search help tags')
+nmap('<leader>r', builtin.lsp_references, 'Search LSP references')
 nmap('<leader>n', vim.cmd.noh, 'Stop highlighting')
 
 nmap('<C-t>', require('neoterm').open, 'Open terminal')
