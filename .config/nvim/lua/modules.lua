@@ -26,4 +26,6 @@ require("render-markdown").setup({ latex = { enabled = false } })
 
 require('config.gitlinker')
 
+require('neoterm').setup({ position = 'center', width = 0.85, height = 0.85 })
+
 vim.cmd.helptags('ALL')

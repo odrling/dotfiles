@@ -6,6 +6,9 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Search help tags' })
 vim.keymap.set('n', '<leader>n', vim.cmd.noh, { desc = 'Stop highlighting' })
 
+vim.keymap.set('n', '<C-t>', require('neoterm').open, { desc = 'Open terminal' })
+vim.keymap.set('t', '<C-t>', require('neoterm').close, { desc = 'Close terminal' })
+
 function format_buf()
     vim.lsp.buf.format({ async = true })
 end

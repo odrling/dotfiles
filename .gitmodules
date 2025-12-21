@@ -79,3 +79,6 @@
 [submodule ".config/nvim/start/undotree"]
 	path = .config/nvim/start/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule ".config/nvim/start/neoterm.nvim"]
+	path = .config/nvim/start/neoterm.nvim
+	url = https://github.com/itmecho/neoterm.nvim.git
