@@ -21,6 +21,8 @@ require('gitsigns').setup({ current_line_blame = true })
 
 require('oil').setup({ view_options = { show_hidden = true } })
 
+require('inc_rename').setup()
+
 require("config.treesitter")
 require("render-markdown").setup({ latex = { enabled = false } })
 require("nvim-ts-autotag").setup()

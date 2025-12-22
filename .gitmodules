@@ -94,3 +94,6 @@
 [submodule ".config/nvim/start/nvim-ts-autotag"]
 	path = .config/nvim/start/nvim-ts-autotag
 	url = https://github.com/windwp/nvim-ts-autotag.git
+[submodule ".config/nvim/start/inc-rename.nvim"]
+	path = .config/nvim/start/inc-rename.nvim
+	url = https://github.com/smjonas/inc-rename.nvim.git
