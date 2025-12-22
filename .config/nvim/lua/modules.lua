@@ -19,7 +19,7 @@ require('config.telescope')
 
 require('gitsigns').setup({ current_line_blame = true })
 
-require('oil').setup({ view_options = { show_hidden = true } })
+require('config.oil')
 
 require('inc_rename').setup()
 
