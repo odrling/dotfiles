@@ -88,3 +88,6 @@
 [submodule ".config/nvim/start/nvim-treesitter-endwise"]
 	path = .config/nvim/start/nvim-treesitter-endwise
 	url = https://github.com/RRethy/nvim-treesitter-endwise.git
+[submodule ".config/nvim/start/nvim-ts-context-commentstring"]
+	path = .config/nvim/start/nvim-ts-context-commentstring
+	url = https://github.com/JoosepAlviste/nvim-ts-context-commentstring.git
