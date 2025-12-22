@@ -85,3 +85,6 @@
 [submodule ".config/nvim/start/nvim-parinfer"]
 	path = .config/nvim/start/nvim-parinfer
 	url = https://github.com/gpanders/nvim-parinfer.git
+[submodule ".config/nvim/start/nvim-treesitter-endwise"]
+	path = .config/nvim/start/nvim-treesitter-endwise
+	url = https://github.com/RRethy/nvim-treesitter-endwise.git
