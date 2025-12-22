@@ -82,3 +82,6 @@
 [submodule ".config/nvim/start/neoterm.nvim"]
 	path = .config/nvim/start/neoterm.nvim
 	url = https://github.com/itmecho/neoterm.nvim.git
+[submodule ".config/nvim/start/nvim-parinfer"]
+	path = .config/nvim/start/nvim-parinfer
+	url = https://github.com/gpanders/nvim-parinfer.git
