@@ -23,6 +23,7 @@ require('oil').setup({ view_options = { show_hidden = true } })
 
 require("config.treesitter")
 require("render-markdown").setup({ latex = { enabled = false } })
+require("nvim-ts-autotag").setup()
 
 require('config.gitlinker')
 
