@@ -60,10 +60,11 @@ vim.lsp.config('gopls', {
     }
 })
 
-vim.lsp.enable('clangd')
 vim.lsp.enable('basedpyright')
+vim.lsp.enable('clangd')
+vim.lsp.enable('glsl_analyzer')
+vim.lsp.enable('gopls')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('openscad_lsp')
 vim.lsp.enable('ruff')
 vim.lsp.enable('rust_analyzer')
-vim.lsp.enable('glsl_analyzer')
-vim.lsp.enable('lua_ls')
-vim.lsp.enable('gopls')
