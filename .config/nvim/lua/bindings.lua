@@ -24,8 +24,8 @@ nmap('<leader>R', builtin.lsp_references, 'Search LSP references')
 nmap('<leader>r', ':IncRename ', 'LSP rename')
 nmap('<leader>n', vim.cmd.noh, 'Stop highlighting')
 
-nmap('<C-x>', require('neoterm').open, 'Open terminal')
-vim.keymap.set('t', '<C-x>', require('neoterm').close, { desc = 'Close terminal' })
+nmap('<leader>t', require('neoterm').open, 'Open terminal')
+vim.keymap.set('t', '<C-d>', require('neoterm').close, { desc = 'Close terminal' })
 
 local function format_buf()
     vim.lsp.buf.format({ async = true })
