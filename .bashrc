@@ -44,6 +44,7 @@ source ~/.bash/bash-preexec/bash-preexec.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=auto
+GIT_PS1_DESCRIBE_STYLE=branch
 source ~/.bash/git-prompt.sh
 
 odr-set-begin-cmd-time() {
