@@ -56,6 +56,9 @@ Cache
 !/.config/mpv/.envrc
 !/.config/mpv/submodules
 
+# jj
+!/.config/jj
+
 # picom config file
 !/.config/picom.conf
 
