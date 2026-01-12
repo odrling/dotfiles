@@ -12,3 +12,9 @@ show-cryptographic-signatures = true
 behavior = "own"
 backend = "gpg"
 key = "9055EDDADC76E19A3820F9C22A82DB10234FF357"
+
+[aliases]
+s = ["status"]
+l = ["log", "-r", "all()"]
+ll = ["log", "--git", "--stat"]
+p = ["git", "push"]
