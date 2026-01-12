@@ -6,3 +6,8 @@ email = "florianbadie@odrling.xyz"
 
 [ui]
 default-command = "log"
+
+[signing]
+behavior = "own"
+backend = "gpg"
+key = "9055EDDADC76E19A3820F9C22A82DB10234FF357"
