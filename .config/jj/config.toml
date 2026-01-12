@@ -6,6 +6,7 @@ email = "florianbadie@odrling.xyz"
 
 [ui]
 default-command = "log"
+show-cryptographic-signatures = true
 
 [signing]
 behavior = "own"
