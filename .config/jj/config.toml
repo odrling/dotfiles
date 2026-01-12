@@ -3,3 +3,6 @@
 [user]
 name = "odrling"
 email = "florianbadie@odrling.xyz"
+
+[ui]
+default-command = "log"
