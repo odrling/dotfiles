@@ -102,6 +102,8 @@ odr-update-gpg-agent() {
 }
 preexec_functions+=(odr-update-gpg-agent odr-set-begin-cmd-time)
 
+command -v jj > /dev/null && source <(COMPLETE=zsh jj)
+
 # local config
 . ~/.shaliases
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
