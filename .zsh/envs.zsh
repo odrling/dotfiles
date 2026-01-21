@@ -142,7 +142,7 @@ odr-load-python-venv() {
 odr-display-hooks() {
     [ -n "${DETECTED_HOOKS}" ] && 
         einfo "Detected hooks: ${DETECTED_HOOKS[@]}. Enable them with enable-detected-hooks"
-    git config --get-regexp odrhooks\. 2>/dev/null
+    git --no-pager config --get-regexp odrhooks\. 2>/dev/null
 }
 
 odr-detect-python-hooks() {
