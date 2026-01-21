@@ -110,6 +110,8 @@ precmd_functions+=(odr-set-end-cmd-time osc7_cwd set_prompt precmd_bell)
 
 source ~/.zsh/envs.zsh
 
+command -v jj > /dev/null && source <(COMPLETE=bash jj)
+
 . ~/.shaliases
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 [ -n "${TROUBLESHOOT}" ] && troubleshoot
