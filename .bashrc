@@ -38,14 +38,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # fzf/fzy
 source ~/.bash/fzy.bash
-
 source ~/.bash/bash-preexec/bash-preexec.sh
-
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWUPSTREAM=auto
-GIT_PS1_DESCRIBE_STYLE=branch
-source ~/.bash/git-prompt.sh
+source ~/.bash/jj.bash
 
 odr-set-begin-cmd-time() {
     begin_cmd_time=${SECONDS}
@@ -97,9 +91,10 @@ reset='\[\033[00m\]'
 
 set_prompt() {
     [ "$?" != 0 ] && prompt_color="$red" || prompt_color="$green"
+    vcs_prompt="$(jjgit_prompt)"
     local virtual_env=""
     [ -n "${VIRTUAL_ENV}" ] && virtual_env="($(basename "${VIRTUAL_ENV}")) "
-    PS1="${virtual_env}${prompt_host}${blue}\w${green}$(__git_ps1) ${prompt_color}${cmd_run_time}$(date +%H:%M)${shell_char}${reset} "
+    PS1="${virtual_env}${prompt_host}${blue}\w${green}${vcs_prompt} ${prompt_color}${cmd_run_time}$(date +%H:%M)${shell_char}${reset} "
 }
 
 precmd_bell() {
