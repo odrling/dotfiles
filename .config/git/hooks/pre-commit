@@ -6,44 +6,4 @@
 # think this stuff is worth it, you can buy me a beer in return.   odrling
 # -----------------------------------------------------------------------------
 
-die() {
-	echo -e " ${NOCOLOR-\e[1;31m*\e[0m }${*}" >&2
-	exit 1
-}
-
-einfo() {
-	echo -e " ${NOCOLOR-\e[1;32m*\e[0m }${*}" >&2
-}
-
-ewarn() {
-	echo -e " ${NOCOLOR-\e[1;33m*\e[0m }${*}" >&2
-}
-
-
-runif() {
-    if [ "$(git config "odrhooks.$1")" = 1 ]; then
-        name="${NOCOLOR-\e[1;31m}${1}${NOCOLOR-\e[0m}"
-        shift
-        einfo "${name}\n${*}"
-        sh -c "$*" || die "${name}: failed"
-    fi
-    return 0
-}
-
-runif "isort" isort . --check
-runif "black" black . --check --diff
-runif "ruff" ruff check .
-runif "ruff-format" ruff format --check --diff .
-runif "fawltydeps" fawltydeps
-runif "pyright" pyright .
-runif "clangformat" 'fd --glob \*.c | xargs clang-format -Werror -n'
-runif "gofmt" '[ "$(gofmt -l . | wc -l)" -eq 0 ] || (gofmt -l -d .; exit 1)'
-runif "goerrcheck" "go run github.com/kisielk/errcheck@latest ./..."
-runif "muonfmt" "fd meson.build | xargs muon fmt -q"
-runif "muon" "muon analyze"
-runif "mesonfmt" "meson format -r -q"
-runif "mesontest" "meson test -C builddir --verbose"
-runif "clippy" "cargo clippy --all-targets -- -D warnings"
-runif "rustfmt" "cargo fmt --all"
-runif "tsc" "tsc --noEmit"
-runif "pre-commit" "pre-commit"
+exec odrcheck
