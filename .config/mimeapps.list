@@ -8,9 +8,9 @@ video/x-matroska=mpv.desktop;
 video/mp4=mpv.desktop;
 image/*=nsxiv.desktop
 image/png=nsxiv.desktop
-image/jpeg=nsxiv.desktop
+image/jpeg=swayimg.desktop
 image/webp=nsxiv.desktop
-x-scheme-handler/magnet=torrent.desktop
+x-scheme-handler/magnet=deluge.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/ftp=firefox.desktop
@@ -23,10 +23,12 @@ application/xhtml+xml=userapp-firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
-application/x-bittorrent=torrent.desktop
+application/x-bittorrent=deluge.desktop
 video/x-msvideo=mpv.desktop
 video/webm=mpv.desktop
 inode/directory=foot-explorer.desktop
+application/epub+zip=org.pwmt.zathura.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
