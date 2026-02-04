@@ -1,4 +1,3 @@
 player=mpv
 player-args=--profile=streamlink
 twitch-low-latency
-twitch-disable-ads
