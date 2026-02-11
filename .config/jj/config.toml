@@ -8,6 +8,9 @@ email = "florianbadie@odrling.xyz"
 default-command = ["log", "--stat"]
 show-cryptographic-signatures = true
 
+[git]
+private-commits = "description('private:*')"
+
 [signing]
 behavior = "own"
 backend = "gpg"
