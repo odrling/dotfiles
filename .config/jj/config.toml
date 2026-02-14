@@ -20,7 +20,7 @@ key = "9055EDDADC76E19A3820F9C22A82DB10234FF357"
 log = "builtin_log_comfortable"
 
 [aliases]
-s = ["status"]
+s = ["log", "--stat"]
 l = ["log", "-r", "all()", "-T", "builtin_log_oneline", "--no-graph"]
 ll = ["log", "--git", "--stat"]
 p = ["git", "push"]
