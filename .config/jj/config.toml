@@ -5,7 +5,7 @@ name = "odrling"
 email = "florianbadie@odrling.xyz"
 
 [ui]
-default-command = ["log", "--stat"]
+default-command = "log"
 show-cryptographic-signatures = true
 
 [git]
