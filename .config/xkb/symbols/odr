@@ -67,7 +67,7 @@ xkb_symbols "basic" {
     key <AC07>	{ [                j,                J,            downarrow,            Udiaeresis ] }; // j J ü Ü
     key <AC08>	{ [                k,                K,              uparrow,            Idiaeresis ] }; // k K ï Ï
     key <AC09>	{ [                l,                L,           rightarrow,             0x100013F ] }; // l L ŀ Ŀ
-    key <AC10>	{ [                m,                M,           odiaeresis,            Odiaeresis ] }; // m M ö Ö
+    key <AC10>	{ [                m,                M,            0x1002014,             0x1002013 ] }; // m M — –
     key <AC11>	{ [           ugrave,          percent,           dead_acute,                Ugrave ] }; // ù % ´ Ù
     key <BKSL>	{ [         asterisk,               mu,           dead_grave,           dead_macron ] }; // * µ ` ¯
 
@@ -78,7 +78,7 @@ xkb_symbols "basic" {
     key <AB03>  { [                c,                C,             ccedilla,             copyright ] }; // c C ç ©
     key <AB04>  { [                v,                V,            0x100202F,             leftarrow ] }; // v V ⍽ ← (espace fine insécable)
     key <AB05>  { [                b,                B,            downarrow,               uparrow ] }; // b B ↓ ↑
-    key <AB06>  { [                n,                N,              notsign,               notsign ] }; // n N ¬ ¬
+    key <AB06>  { [                n,                N,               ntilde,                Ntilde ] }; // n N ¬ ¬
     key <AB07>  { [            comma,         question,         questiondown,             0x1002026 ] }; // , ? ¿ …
     key <AB08>  { [        semicolon,           period,             multiply,             0x10022C5 ] }; // ; . × ⋅
     key <AB09>  { [            colon,            slash,             division,             0x1002215 ] }; // : / ÷ ∕
