@@ -607,7 +607,7 @@ user_pref("browser.low_commit_space_threshold_mb", 3276); // default=200; WINDOW
 // and use this percent value (out of 100) to determine if Firefox is in a
 // low memory scenario.
 // [1] https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02
-user_pref("browser.low_commit_space_threshold_percent", 20); // default=5; LINUX
+user_pref("browser.low_commit_space_threshold_percent", 50); // default=5; LINUX
 
 // PREF: determine how long (in ms) tabs are inactive before they unload
 // 60000=1min; 300000=5min; 600000=10min (default)
