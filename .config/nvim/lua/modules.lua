@@ -24,7 +24,7 @@ require('config.oil')
 require('inc_rename').setup()
 
 require("config.treesitter")
-require("render-markdown").setup({ latex = { enabled = false } })
+require("config.render-markdown")
 require("nvim-ts-autotag").setup()
 
 require('config.gitlinker')
