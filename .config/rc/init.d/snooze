@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+TIMEDEF=${RC_SVCNAME#*.}
+SNOOZE_DIR="${HOME}/.snooze"
+
+SNOOZE_RUN_DIR="${SNOOZE_DIR}/${RC_SVCNAME}"
+TIMEFILE="${SNOOZE_DIR}/.timefile_${TIMEDEF}"
+
+case ${TIMEDEF} in
+    minutely)
+        TIMEWAIT=60
+        ;;
+    hourly)
+        TIMEWAIT=1h
+        ;;
+    daily)
+        TIMEWAIT=1d
+        ;;
+esac
+
+name="snooze"
+description="periodic tasks"
+
+command="snooze"
+command_args="-H* -M* -S* -t ${TIMEFILE} -T ${TIMEWAIT} snooze-run ${SNOOZE_RUN_DIR} ${TIMEFILE}"
+supervisor=supervise-daemon
