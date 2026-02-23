@@ -1,9 +1,0 @@
-#!/bin/execlineb -P
-importas HOME HOME
-define PARTS_DIR ${HOME}/.snooze/daily
-define TIMEFILE ${HOME}/.snooze/.timefile_daily
-define TIMEWAIT 1d
-
-chrt --idle 0 ionice -c 3 snooze -H* -M* -S* -t $TIMEFILE -T $TIMEWAIT
-execlineb -Pc
-"foreground { run-parts ${PARTS_DIR} } foreground { run-parts ${PARTS_DIR}/local } touch $TIMEFILE"

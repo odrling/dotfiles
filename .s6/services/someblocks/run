@@ -1,3 +1,0 @@
-#!/bin/execlineb -P
-foreground { s6-svwait "$S6_SCANDIR/somebar" }
-someblocks

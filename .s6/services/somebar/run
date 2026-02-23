@@ -1,3 +1,0 @@
-#!/bin/execlineb -P
-importas DWL_STATUS_PIPE DWL_STATUS_PIPE
-redirfd -r 0 ${DWL_STATUS_PIPE} somebar
