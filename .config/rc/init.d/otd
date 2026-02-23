@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+name="otd"
+description="Open Tablet Daemon"
+
+command="otd-daemon"
+#command_args=""
+supervisor=supervise-daemon

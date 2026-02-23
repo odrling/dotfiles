@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name="pipewire-filter-chain"
+description="pipewire filter chain"
+
+command="pipewire"
+command_args="-c filter-chain.conf"
+supervisor=supervise-daemon
+
+depend() {
+    need pipewire
+}

@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+name="mqtteer"
+description="system monitoring"
+
+command="mqtteer"
+supervisor=supervise-daemon
