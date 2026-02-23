@@ -1,0 +1,8 @@
+#!/bin/sh
+# usage: snooze-run <directory> <timefile>
+dir="${1}"
+timefile="${2}"
+
+run-parts "${dir}"
+run-parts "${dir}/local"
+touch "${timefile}"
