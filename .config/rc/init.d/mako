@@ -1,7 +1,10 @@
 #!/sbin/openrc-run
 
+MAKO_CONFIG="${MAKO_CONFIG:-${XDG_CONFIG_HOME}/mako/config}"
+
 name="mako"
 description="notification daemon for wayland"
 
 command="mako"
+command_args="-c ${MAKO_CONFIG}"
 supervisor=supervise-daemon
