@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+S6_SCANDIR=${S6_SCANDIR:-"${HOME}/.s6/scandir"}
+
+name="s6-svscan"
+description="start the remaining s6 services before I transition away"
+
+command="s6-svscan"
+command_args="${S6_SCANDIR}"
+supervisor=supervise-daemon

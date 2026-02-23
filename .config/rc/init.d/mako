@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+name="mako"
+description="notification daemon for wayland"
+
+command="mako"
+supervisor=supervise-daemon

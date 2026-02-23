@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+name="gammastep"
+description="set color temperature of display according to time of day"
+
+command="gammastep"
+supervisor=supervise-daemon

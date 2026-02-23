@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+name="pipewire"
+description="pipewire media server"
+
+command="gentoo-pipewire-launcher"
+command_args="restart"
+supervisor=supervise-daemon

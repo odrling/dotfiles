@@ -1,2 +1,2 @@
 #!/bin/sh
-exec s6-svscan ${S6_SCANDIR}
+openrc --user graphical

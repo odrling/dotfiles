@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+name="foot-server"
+description="foot server"
+
+command="foot"
+command_args="--server=${XDG_RUNTIME_DIR}/foot.sock"
+supervisor=supervise-daemon
+
+start_pre() {
+    export GRAPHICAL_TTY=1
+    . ~/.config/environment
+}

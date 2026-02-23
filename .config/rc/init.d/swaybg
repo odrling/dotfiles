@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+name="swaybg"
+description="desktop wallpaper"
+
+command="swaybg"
+command_args="-i ${HOME}/.wallpaper"
+supervisor=supervise-daemon

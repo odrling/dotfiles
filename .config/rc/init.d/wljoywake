@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+name="wljoywake"
+description="keep screen on when joystick is used"
+
+command="wljoywake"
+command_args="-t 30"
+supervisor=supervise-daemon

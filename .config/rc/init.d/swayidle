@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+
+name="swayidle"
+description="Idle manager for Wayland"
+
+command="swayidle"
+command_args="-w"
+supervisor=supervise-daemon
+

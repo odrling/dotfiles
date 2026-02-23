@@ -34,6 +34,9 @@ Cache
 /.config/*
 !/.config/.envrc
 
+# environment
+!/.config/environment
+
 # mpv config file
 !/.config/mpv
 /.config/mpv/*
@@ -55,6 +58,16 @@ Cache
 !/.config/mpv/shaders
 !/.config/mpv/.envrc
 !/.config/mpv/submodules
+
+# openrc
+!/.config/rc
+/.config/rc/*
+!/.config/rc/rc.conf
+!/.config/rc/init.d
+!/.config/rc/conf.d
+!/.config/rc/runlevels
+/.config/rc/runlevels/*/*
+!/.config/rc/runlevels/*/.keep
 
 # jj
 !/.config/jj
@@ -84,6 +97,11 @@ Cache
 
 # sway
 !/.config/sway
+
+# swayidle
+!/.config/swayidle
+/.config/swayidle/*
+!/.config/swayidle/config
 
 # i3blocks
 !/.config/i3blocks
