@@ -65,6 +65,8 @@ Cache
 !/.config/rc/rc.conf
 !/.config/rc/init.d
 !/.config/rc/conf.d
+/.config/rc/conf.d/*
+/.config/rc/conf.d/.keep
 !/.config/rc/runlevels
 /.config/rc/runlevels/*/*
 !/.config/rc/runlevels/*/.keep
