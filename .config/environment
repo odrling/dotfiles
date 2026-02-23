@@ -1,8 +1,6 @@
 export BROWSER=firefox
 export EDITOR=vi
 
-export FZF_DEFAULT_OPTS="-m --no-mouse"
-export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
@@ -24,10 +22,14 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # don’t download another go toolchain
 export GOTOOLCHAIN=local
 
+[ -e "${XDG_CACHE_DIR}" ] && GOPATH=${XDG_CACHE_DIR}/go || GOPATH=~/.cache/go
+export GOPATH
+
 export PNPM_HOME="/home/odrling/.local/share/pnpm"
-export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:$HOME/.go/bin"
+export PATH="$HOME/.local/bin:$HOME/.local/odrbin:$PNPM_HOME:$PATH:$HOME/.luarocks/bin:${GOPATH}/bin"
 
 export FZF_DEFAULT_OPTS="-m"
+export FZF_DEFAULT_COMMAND="find . -type f | cut -d'/' -f2-"
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND="fd"
 
 export GPG_TTY=$(tty)
@@ -52,5 +54,3 @@ ODRCDPATH=".:$HOME/git"
 [ -f "${XDG_CONFIG_HOME}/environment.local" ] && . "${XDG_CONFIG_HOME}/environment.local"
 
 export CDPATH="$ODRCDPATH"
-[ -e "${XDG_CACHE_DIR}" ] && GOPATH=${XDG_CACHE_DIR}/go || GOPATH=~/.cache/go
-export GOPATH
