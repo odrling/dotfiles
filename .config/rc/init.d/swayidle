@@ -1,10 +1,12 @@
 #!/sbin/openrc-run
 
+SWAYIDLE_CONFIG=${SWAYIDLE_CONFIG:-${XDG_CONFIG_HOME}/swayidle/config}
+
 name="swayidle"
 description="Idle manager for Wayland"
 
 command="swayidle"
-command_args="-w"
+command_args="-w -C ${SWAYIDLE_CONFIG}"
 supervisor=supervise-daemon
 
 start_pre() {
