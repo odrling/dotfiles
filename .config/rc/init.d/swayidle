@@ -7,3 +7,6 @@ command="swayidle"
 command_args="-w"
 supervisor=supervise-daemon
 
+start_pre() {
+    export NIRI_SOCKET
+}
