@@ -1,4 +1,6 @@
 #!/sbin/openrc-run
+XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 MAKO_CONFIG="${MAKO_CONFIG:-${XDG_CONFIG_HOME}/mako/config}"
 
@@ -7,4 +9,6 @@ description="notification daemon for wayland"
 
 command="mako"
 command_args="-c ${MAKO_CONFIG}"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
 supervisor=supervise-daemon

@@ -1,4 +1,6 @@
 #!/sbin/openrc-run
+XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 SWAYIDLE_CONFIG=${SWAYIDLE_CONFIG:-${XDG_CONFIG_HOME}/swayidle/config}
 
@@ -7,6 +9,8 @@ description="Idle manager for Wayland"
 
 command="swayidle"
 command_args="-w -C ${SWAYIDLE_CONFIG}"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
 supervisor=supervise-daemon
 extra_commands="lock"
 description_lock="enter idle state (lock)"

@@ -1,4 +1,6 @@
 #!/sbin/openrc-run
+XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 TIMEDEF=${RC_SVCNAME#*.}
 SNOOZE_DIR="${HOME}/.snooze"
@@ -23,4 +25,6 @@ description="periodic tasks"
 
 command="snooze"
 command_args="-H* -M* -S* -t ${TIMEFILE} -T ${TIMEWAIT} snooze-run ${SNOOZE_RUN_DIR} ${TIMEFILE}"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
 supervisor=supervise-daemon

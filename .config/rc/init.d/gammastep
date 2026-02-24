@@ -1,7 +1,11 @@
 #!/sbin/openrc-run
+XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 name="gammastep"
 description="set color temperature of display according to time of day"
 
 command="gammastep"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
 supervisor=supervise-daemon
