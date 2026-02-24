@@ -37,6 +37,9 @@ Cache
 # environment
 !/.config/environment
 
+# logrotate
+!/.config/logrotate.conf
+
 # mpv config file
 !/.config/mpv
 /.config/mpv/*
