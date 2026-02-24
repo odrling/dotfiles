@@ -29,7 +29,7 @@ local function unset_git_dir()
 end
 
 function dots_post_update()
-    vim.cmd.TSUpdate()
+    require('nvim-treesitter').update():wait(60000)
 end
 
 vim.api.nvim_create_autocmd('BufReadPre', {
