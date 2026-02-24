@@ -8,7 +8,13 @@ description="Idle manager for Wayland"
 command="swayidle"
 command_args="-w -C ${SWAYIDLE_CONFIG}"
 supervisor=supervise-daemon
+extra_commands="lock"
+description_lock="enter idle state (lock)"
 
 start_pre() {
     export NIRI_SOCKET
+}
+
+lock() {
+    ${supervisor} ${RC_SVCNAME} --signal SIGUSR1
 }
