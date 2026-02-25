@@ -61,6 +61,7 @@ vim.lsp.config('gopls', {
 })
 
 vim.lsp.enable('basedpyright')
+vim.lsp.enable('ty')
 vim.lsp.enable('clangd')
 vim.lsp.enable('glsl_analyzer')
 vim.lsp.enable('gopls')
