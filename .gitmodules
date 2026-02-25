@@ -9,7 +9,7 @@
 	path = .config/mpv/submodules/groupwatch_sync
 	url = https://github.com/po5/groupwatch_sync.git
 [submodule ".mozilla/Betterfox"]
-	path = .mozilla/Betterfox
+	path = .config/mozilla/Betterfox
 	url = https://github.com/yokoffing/Betterfox.git
 [submodule ".local/share/fonts/dots"]
 	path = .local/share/fonts/dots

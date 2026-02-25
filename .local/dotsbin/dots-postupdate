@@ -32,10 +32,14 @@ if command -v uv > /dev/null 2>&1; then
 fi
 
 if [ -d ~/.mozilla/firefox ]; then
-    for i in ~/.mozilla/firefox/*/; do
-        einfo "installing Betterfox in $i"
-        cp -v ~/.mozilla/Betterfox/user.js "$i"
-        cat ~/.mozilla/user_pref.js >> "$i/user.js"
+    mv ~/.mozilla/* "${XDG_CONFIG_HOME}/mozilla/"
+fi
+
+if [ -d "${XDG_CONFIG_HOME}/mozilla" ]
+    for i in "${XDG_CONFIG_HOME}"/mozilla/firefox/*/; do
+        einfo "installing Betterfox in ${i}"
+        cp -v "${XDG_CONFIG_HOME}"/mozilla/Betterfox/user.js "${i}"
+        cat "${XDG_CONFIG_HOME}"/mozilla/user_pref.js >> "${i}/user.js"
     done
 else
     ewarn "not installing Betterfox because firefox config directory wasn't found"

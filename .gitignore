@@ -228,10 +228,10 @@ Cache
 !/.config/htop
 
 # mozilla conf
-!/.mozilla
-/.mozilla/*
-!/.mozilla/Betterfox
-!/.mozilla/user_pref.js
+!/.config/mozilla
+/.config/mozilla/*
+!/.config/mozilla/Betterfox
+!/.config/mozilla/user_pref.js
 
 # applications
 !/.local/share/applications
