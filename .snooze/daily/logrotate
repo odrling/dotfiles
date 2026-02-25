@@ -1,2 +1,2 @@
 #!/bin/sh
-exec logrotate "${XDG_CONFIG_HOME}/logrotate.conf"
+exec logrotate -s "${XDG_STATE_HOME}/logrotate.status" "${XDG_CONFIG_HOME}/logrotate.conf"
