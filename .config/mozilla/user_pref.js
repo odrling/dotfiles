@@ -667,4 +667,4 @@ user_pref("browser.tabs.fadeOutUnloadedTabs", true);
     //user_pref("dom.ipc.processCount", 8); // determine by number of CPU cores/processors
 
 // slightly larger min tab width
-user_pref("browser.tabs.tabMinWidth", true);
+user_pref("browser.tabs.tabMinWidth", 110);
