@@ -31,11 +31,12 @@ if command -v uv > /dev/null 2>&1; then
     uv tool upgrade --all || die "pipx update failed"
 fi
 
-if [ -d ~/.mozilla/firefox ]; then
-    mv ~/.mozilla/* "${XDG_CONFIG_HOME}/mozilla/"
+if [ -d ~/.mozilla ]; then
+    mv -v ~/.mozilla/* "${XDG_CONFIG_HOME}/mozilla/"
+    rm -rv ~/.mozilla
 fi
 
-if [ -d "${XDG_CONFIG_HOME}/mozilla" ]
+if [ -d "${XDG_CONFIG_HOME}/mozilla" ]; then
     for i in "${XDG_CONFIG_HOME}"/mozilla/firefox/*/; do
         einfo "installing Betterfox in ${i}"
         cp -v "${XDG_CONFIG_HOME}"/mozilla/Betterfox/user.js "${i}"
