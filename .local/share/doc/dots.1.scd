@@ -6,8 +6,8 @@ dots - manage dotfiles
 
 # SYNOPSIS
 
-*dots* update
-*dots* add [OPTIONS]... [<files>]
+*dots* update++
+*dots* add [OPTIONS]... [<files>]++
 *dots* commit [OPTIONS]...
 
 # DESCRIPTION
