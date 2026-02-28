@@ -28,3 +28,4 @@ command_args="-H* -M* -S* -t ${TIMEFILE} -T ${TIMEWAIT} snooze-run ${SNOOZE_RUN_
 output_log="${LOGFILE}"
 error_log="${LOGFILE}"
 supervisor=supervise-daemon
+supervise_daemon_args="--ionice 3 --nicelevel 10"
