@@ -25,6 +25,8 @@ if command -v scdoc > /dev/null 2>&1; then
     einfo "updating man pages"
     mkdir -p ~/.local/share/man/man1
     scdoc < ~/.local/share/doc/dots.1.scd > ~/.local/share/man/man1/dots.1
+
+    command -v mandb > /dev/null 2>&1 && mandb --user-db ~/.local/share/man
 fi
 
 if command -v pipx > /dev/null 2>&1; then
