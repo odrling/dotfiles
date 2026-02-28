@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -z "${CHT_SH_STYLE}" ] && CHT_SH_STYLE=xcode
+
+curl -s "https://cht.sh/${1}?style=${CHT_SH_STYLE}" | less
