@@ -51,6 +51,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 
 ulimit -c unlimited
 
+export MANPATH="${HOME}/.local/share/man:${MANPATH}"
+
 ODRCDPATH=".:$HOME/git"
 
 [ -f "${XDG_CONFIG_HOME}/environment.local" ] && . "${XDG_CONFIG_HOME}/environment.local"

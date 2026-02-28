@@ -97,6 +97,9 @@ Cache
 !/.local/share
 /.local/share/*
 
+# docs
+!/.local/share/doc
+
 # ignore antibody
 !/.antibody/plugins
 
