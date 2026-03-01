@@ -24,8 +24,8 @@ vim.o.backup = false
 vim.o.swapfile = false
 vim.o.writebackup = false
 
--- don’t let the default gentoo autocmd do its thing as it breaks gitcommit
-vim.g.leave_my_cursor_position_alone = true
+-- don’t let the default gentoo autocmds do their things
+vim.api.nvim_del_augroup_by_name("gentoo")
 
 -- use system vim syntaxes/ftdetect
 vim.opt.rtp:append('/usr/share/vim/vimfiles')
