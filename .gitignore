@@ -76,6 +76,7 @@ Cache
 
 # jj
 !/.config/jj
+/.config/jj/repos
 
 # picom config file
 !/.config/picom.conf
