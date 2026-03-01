@@ -1,6 +1,10 @@
 #!/sbin/openrc-run
 LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
+depend() {
+    need dbus
+}
+
 name="pipewire"
 description="pipewire media server"
 

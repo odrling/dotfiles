@@ -2,6 +2,10 @@
 XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
+depend() {
+    need dbus
+}
+
 MAKO_CONFIG="${MAKO_CONFIG:-${XDG_CONFIG_HOME}/mako/config}"
 
 name="mako"
