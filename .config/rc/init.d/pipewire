@@ -1,12 +1,10 @@
 #!/sbin/openrc-run
-XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 name="pipewire"
 description="pipewire media server"
 
-command="gentoo-pipewire-launcher"
-command_args="restart"
+command="/usr/bin/pipewire"
 output_log="${LOGFILE}"
 error_log="${LOGFILE}"
 supervisor=supervise-daemon
