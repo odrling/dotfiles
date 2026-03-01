@@ -8,6 +8,10 @@ set colored-stats on
 set completion-ignore-case on
 # treat - and _ the same
 set completion-map-case on
+# replace long common prefixes with ellipses
+set completion-prefix-display-length 15
+# never query user before completions
+set completion-query-items 0
 
 set history-size 1048576
 
