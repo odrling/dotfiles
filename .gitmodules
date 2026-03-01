@@ -97,3 +97,6 @@
 [submodule ".config/nvim/start/inc-rename.nvim"]
 	path = .config/nvim/start/inc-rename.nvim
 	url = https://github.com/smjonas/inc-rename.nvim.git
+[submodule ".config/nvim/start/remember.nvim"]
+	path = .config/nvim/start/remember.nvim
+	url = https://github.com/vladdoster/remember.nvim.git

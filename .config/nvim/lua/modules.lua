@@ -15,6 +15,8 @@ require('config.miniclue')
 require('config.minihipatterns')
 require('config.minisurround')
 
+require('remember')
+
 require('config.telescope')
 
 require('gitsigns').setup({ current_line_blame = true })
