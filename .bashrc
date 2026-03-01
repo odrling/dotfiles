@@ -36,6 +36,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 . ~/.bash/completions
 
+. ~/.bash/complete-alias/complete_alias
+
 # fzf/fzy
 source ~/.bash/fzy.bash
 source ~/.bash/bash-preexec/bash-preexec.sh
@@ -110,5 +112,8 @@ command -v jj > /dev/null && source <(COMPLETE=bash jj)
 . ~/.shaliases
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 [ -n "${TROUBLESHOOT}" ] && troubleshoot
+
+# completion for aliases
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
 
 true  # always succeed
