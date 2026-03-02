@@ -6,7 +6,7 @@ name="wlsunset"
 description="set color temperature of display according to time of day"
 
 command="wlsunset"
-command_args=""
+command_args="${WLSUNSET_OPTS}"
 output_log="${LOGFILE}"
 error_log="${LOGFILE}"
 supervisor=supervise-daemon
