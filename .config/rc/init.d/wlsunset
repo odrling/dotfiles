@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+WLSUNSET_OPTS="${WLSUNSET_OPTS:-S 7:00 -s 20:00 -d 5}"
+
+name="wlsunset"
+description="set color temperature of display according to time of day"
+
+command="wlsunset"
+command_args=""
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
+supervisor=supervise-daemon
