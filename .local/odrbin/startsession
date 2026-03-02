@@ -4,4 +4,4 @@ dbus_socket="${XDG_RUNTIME_DIR}/bus"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$dbus_socket"
 # start niri
 rc-service --user niri start
-exec sleep infinity
+exec waitpid $(cat "${XDG_RUNTIME_DIR}/supervise-niri.pid")
