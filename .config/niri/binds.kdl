@@ -11,15 +11,15 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Colon { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     // Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     Mod+T hotkey-overlay-title="Troubleshoot: foot" { spawn "odrfootclient" "env" "TROUBLESHOOT=y" "bash"; }
     Mod+O hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "lock"; }
-    Mod+B {spawn "firefox"; }
+    Super+Ctrl+L hotkey-overlay-title="Lock the Screen" { spawn "lock"; }
+    Mod+B hotkey-overlay-title=null { spawn "firefox"; }
     Mod+P {spawn "passmenu"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -30,10 +30,10 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    Mod+Up   allow-when-locked=true cooldown-ms=50 { spawn "omixer" "5%+"; }
-    Mod+Down allow-when-locked=true cooldown-ms=50 { spawn "omixer" "5%-"; }
-    Mod+D    allow-when-locked=true cooldown-ms=50 { spawn "omixer" "toggle-output"; }
-    Mod+M    allow-when-locked=true cooldown-ms=50 { spawn "omixer" "toggle-input"; }
+    Mod+Up   allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="Increase volume" { spawn "omixer" "5%+"; }
+    Mod+Down allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="Decrease volume"{ spawn "omixer" "5%-"; }
+    Mod+D    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Deafen</b> default audio output" { spawn "omixer" "toggle-output"; }
+    Mod+M    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Mute</b> default audio input" { spawn "omixer" "toggle-input"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
@@ -45,8 +45,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    Mod+Right allow-when-locked=true cooldown-ms=150 { spawn "backlight" "+" "5"; }
-    Mod+Left  allow-when-locked=true cooldown-ms=150 { spawn "backlight" "-" "5"; }
+    Mod+Right allow-when-locked=true cooldown-ms=150 hotkey-overlay-title="Increase screen brightness" { spawn "backlight" "+" "5"; }
+    Mod+Left  allow-when-locked=true cooldown-ms=150 hotkey-overlay-title="Decrease screen brightness" { spawn "backlight" "-" "5"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
@@ -59,26 +59,26 @@ binds {
     // Mod+Down  { focus-window-down; }
     // Mod+Up    { focus-window-up; }
     // Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-or-monitor-left; }
+    Mod+H hotkey-overlay-title="Focus column left"    { focus-column-or-monitor-left; }
     // Mod+J     { focus-window-down; }
     // Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-or-monitor-right; }
+    Mod+L hotkey-overlay-title="Focus column right"    { focus-column-or-monitor-right; }
 
     // Mod+Ctrl+Left  { move-column-left; }
     // Mod+Ctrl+Down  { move-window-down; }
     // Mod+Ctrl+Up    { move-window-up; }
     // Mod+Ctrl+Right { move-column-right; }
-    Mod+Shift+H     { move-column-left-or-to-monitor-left; }
+    Mod+Shift+H hotkey-overlay-title="Move column left"    { move-column-left-or-to-monitor-left; }
     // Mod+Shift+J     { move-window-down; }
     // Mod+Shift+K     { move-window-up; }
-    Mod+Shift+L     { move-column-right-or-to-monitor-right; }
+    Mod+Shift+L hotkey-overlay-title="Move column right"    { move-column-right-or-to-monitor-right; }
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
-    Mod+J     { focus-window-or-workspace-down; }
-    Mod+K     { focus-window-or-workspace-up; }
-    Mod+Shift+J     { move-window-down-or-to-workspace-down; }
-    Mod+Shift+K     { move-window-up-or-to-workspace-up; }
+    Mod+J hotkey-overlay-title="Focus window down"     { focus-window-or-workspace-down; }
+    Mod+K hotkey-overlay-title="Focus window up"    { focus-window-or-workspace-up; }
+    Mod+Shift+J hotkey-overlay-title="Move window down"    { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K hotkey-overlay-title="Move window up"    { move-window-up-or-to-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -135,15 +135,15 @@ binds {
     // To avoid scrolling through workspaces really fast, you can use
     // the cooldown-ms property. The bind will be rate-limited to this value.
     // You can set a cooldown on any bind, but it's most useful for the wheel.
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+WheelScrollDown      cooldown-ms=150 hotkey-overlay-title=null { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 hotkey-overlay-title=null { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 hotkey-overlay-title=null { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 hotkey-overlay-title=null { move-column-to-workspace-up; }
 
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+    Mod+WheelScrollRight      hotkey-overlay-title=null { focus-column-right; }
+    Mod+WheelScrollLeft       hotkey-overlay-title=null { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight hotkey-overlay-title=null { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  hotkey-overlay-title=null { move-column-left; }
 
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
@@ -197,8 +197,8 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+BracketLeft hotkey-overlay-title=null { consume-or-expel-window-left; }
+    Mod+BracketRight hotkey-overlay-title=null { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
@@ -257,9 +257,10 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-    Mod+X { screenshot; }
-    Ctrl+Mod+X { screenshot-screen; }
-    Alt+Mod+X { screenshot-window; }
+
+    Mod+X hotkey-overlay-title="Take a <b>screenshot (area)</b>" { screenshot; }
+    Ctrl+Mod+X hotkey-overlay-title="Take a <b>screenshot (screen)</b>" { screenshot-screen; }
+    Alt+Mod+X hotkey-overlay-title="Take a <b>screenshot (window)</b>" { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -279,6 +280,6 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
-    Mod+S { set-dynamic-cast-window; }
-    Mod+Ctrl+S { set-dynamic-cast-monitor; }
+    Mod+S hotkey-overlay-title="Set <b>dynamic cast</b> window" { set-dynamic-cast-window; }
+    Mod+Ctrl+S hotkey-overlay-title="Set <b>dynamic cast monitor</b>" { set-dynamic-cast-monitor; }
 }
