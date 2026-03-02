@@ -47,7 +47,7 @@ export TZ=:/etc/localtime
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+command -v gpgconf >/dev/null 2>&1 && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 ulimit -c unlimited
 
