@@ -1,6 +1,7 @@
 #!/sbin/openrc-run
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2 or later
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 depend() {
 	need pipewire dbus
@@ -9,3 +10,5 @@ depend() {
 supervisor=supervise-daemon
 command="/usr/bin/pipewire"
 command_args="-c pipewire-pulse.conf"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"

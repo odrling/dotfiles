@@ -2,4 +2,6 @@
 export GDK_BACKEND=wayland
 dbus_socket="${XDG_RUNTIME_DIR}/bus"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$dbus_socket"
-pgrep niri || exec niri --session >> ${XDG_STATE_HOME}/session.log 2>&1
+# start niri
+rc-service --user niri start
+exec sleep infinity

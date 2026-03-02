@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+
+depend() {
+    need dbus
+}
+
+command="niri"
+command_args="--session"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
+supervisor="supervise-daemon"
+
+start_pre() {
+    export GRAPHICAL_TTY=1
+    . ~/.config/environment
+}
