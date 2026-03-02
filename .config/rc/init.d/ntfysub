@@ -10,3 +10,5 @@ command_args="${TOPICS}"
 output_log="${LOGFILE}"
 error_log="${LOGFILE}"
 supervisor=supervise-daemon
+
+respawn_max=0
