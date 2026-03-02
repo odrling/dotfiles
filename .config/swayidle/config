@@ -1,6 +1,2 @@
 timeout 60 'run_on_lock'
 timeout 55 'niri msg action power-off-monitors'
-after-resume 'toggle_monitors on'
-before-sleep 'run_on_lock'
-lock 'run_on_lock'
-idlehint 1200
