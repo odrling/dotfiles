@@ -28,6 +28,10 @@ debug {
     enable-overlay-planes
 }
 
+cursor {
+    xcursor-theme "breeze-black"
+}
+
 switch-events {
     lid-close { spawn "lock"; }
 }
