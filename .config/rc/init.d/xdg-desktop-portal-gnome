@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+
+name="xdg-desktop-portal-gnome"
+description="xdg-desktop-portal-gnome daemon"
+
+supervisor="supervise-daemon"
+command="/usr/libexec/xdg-desktop-portal-gnome"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"

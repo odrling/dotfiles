@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+
+name="xdg-desktop-portal-gtk"
+description="xdg-desktop-portal-gtk daemon"
+
+supervisor="supervise-daemon"
+command="/usr/libexec/xdg-desktop-portal-gtk"
+output_log="${LOGFILE}"
+error_log="${LOGFILE}"
