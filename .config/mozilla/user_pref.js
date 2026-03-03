@@ -670,5 +670,5 @@ user_pref("browser.tabs.fadeOutUnloadedTabs", true);
 user_pref("browser.tabs.tabMinWidth", 110);
 
 // xdg-desktop-portal configuration
-user_pref("widget.use-xdg-desktop-portal.file-picker", 1)
-user_pref("widget.use-xdg-desktop-portal.mime-handler", 1)
+user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
+user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
