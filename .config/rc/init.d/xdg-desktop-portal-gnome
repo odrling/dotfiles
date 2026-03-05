@@ -6,5 +6,6 @@ description="xdg-desktop-portal-gnome daemon"
 
 supervisor="supervise-daemon"
 command="/usr/libexec/xdg-desktop-portal-gnome"
+command_args="-v"
 output_log="${LOGFILE}"
 error_log="${LOGFILE}"
