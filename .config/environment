@@ -55,6 +55,8 @@ export MANPATH="${HOME}/.local/share/man:${MANPATH}"
 
 ODRCDPATH=".:$HOME/git"
 
+export TORSOCKS_CONF_FILE="${XDG_CONFIG_HOME}/torsocks.conf"
+
 [ -f "${XDG_CONFIG_HOME}/environment.local" ] && . "${XDG_CONFIG_HOME}/environment.local"
 
 export CDPATH="$ODRCDPATH"

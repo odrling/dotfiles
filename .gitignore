@@ -352,3 +352,6 @@ Cache
 
 # helix
 !/.config/helix
+
+# torsocks
+!/.config/torsocks.conf
