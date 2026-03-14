@@ -8,7 +8,39 @@ include "%L"
 <Multi_key> <less> <less> <3>                        : "❤️"  # red heart
 <Multi_key> <asterisk> <asterisk>                    : "✨"  # sparkles
 
+# Circled numbers
+<Multi_key> <o> <1>: "➀"
+<Multi_key> <o> <2>: "➁"
+<Multi_key> <o> <3>: "➂"
+<Multi_key> <o> <4>: "➃"
+<Multi_key> <o> <5>: "➄"
+<Multi_key> <o> <6>: "➅"
+<Multi_key> <o> <7>: "➆"
+<Multi_key> <o> <8>: "➇"
+<Multi_key> <o> <9>: "➈"
+<Multi_key> <o> <0>: "➉"
+<Multi_key> <O> <1>: "➀"
+<Multi_key> <O> <2>: "➁"
+<Multi_key> <O> <3>: "➂"
+<Multi_key> <O> <4>: "➃"
+<Multi_key> <O> <5>: "➄"
+<Multi_key> <O> <6>: "➅"
+<Multi_key> <O> <7>: "➆"
+<Multi_key> <O> <8>: "➇"
+<Multi_key> <O> <9>: "➈"
+<Multi_key> <O> <0>: "➉"
+
+# c cedilla
+<Multi_key> <c> <c>: "ç"
+<Multi_key> <C> <C>: "Ç"
+
+# guillemet
+<Multi_key> <less> <less>: "«" guillemotleft # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+<Multi_key> <greater> <greater>: "»" guillemotright # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+
 # Misc
 <Multi_key> <minus> <minus>: "—" # em-dash
 <Multi_key> <e> <m>: "—" # em-dash
 <Multi_key> <e> <n>: "–" # en-dash
+
+<Multi_key> <d> <d>: " ◈◆◈◆◈◆◈◆◈ " # divider
