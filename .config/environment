@@ -57,6 +57,8 @@ ODRCDPATH=".:$HOME/git"
 
 export TORSOCKS_CONF_FILE="${XDG_CONFIG_HOME}/torsocks.conf"
 
+export XCOMPOSEFILE="${XDG_CONFIG_HOME}/XCompose"
+
 [ -f "${XDG_CONFIG_HOME}/environment.local" ] && . "${XDG_CONFIG_HOME}/environment.local"
 
 export CDPATH="$ODRCDPATH"

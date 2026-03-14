@@ -16,7 +16,7 @@ input {
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
             layout "odr"
-            options "caps:escape,shift:both_capslock_cancel"
+            options "caps:escape,shift:both_capslock_cancel,compose:rctrl"
         }
 
         // Enable numlock on startup, omitting this setting disables it.
