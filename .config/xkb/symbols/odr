@@ -12,7 +12,7 @@
 // ┃Tab ↹  ┃ a à │ z â │ e é │ r { │ t } │ y   │ u ù │ i   │ o   │ p   │ ^ ~ │ $ ø ┃   ⏎   ┃
 // ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┺┓      ┃
 // ┃        ┃ Q   │ S Σ │ D   │ F “ │ G ” │ H   │ J   │ K   │ L   │ M   │ %   │ µ  ̄ ┃      ┃
-// ┃Maj ⇬   ┃ q   │ s # │ d   │ f ‘ │ g ’ │ h ← │ j ↓ │ k ↑ │ l → │ m   │ ù ' │ * ` ┃      ┃
+// ┃Maj ⇬   ┃ q   │ s # │ d   │ f ‘ │ g ’ │ h ← │ j ↓ │ k ↑ │ l → │ m   │ % ' │ * ` ┃      ┃
 // ┣━━━━━━━┳┹────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┲┷━━━━━┻━━━━━━┫
 // ┃       ┃ > ≥ │ W « │ X » │ C Ç │ V   │ B   │ N Ñ │ ? … │ .   │ / ∕ │ § − ┃             ┃
 // ┃Shift ⇧┃ < ≤ │ w < │ x > │ c ç │ v   │ b   │ n ñ │ , ¿ │ ; . │ : × │ ! ¡ ┃Shift ⇧      ┃
@@ -68,7 +68,7 @@ xkb_symbols "basic" {
     key <AC08>	{ [                k,                K,              uparrow,            Idiaeresis ] }; // k K ï Ï
     key <AC09>	{ [                l,                L,           rightarrow,             0x100013F ] }; // l L ŀ Ŀ
     key <AC10>	{ [                m,                M,            0x1002014,             0x1002013 ] }; // m M — –
-    key <AC11>	{ [           ugrave,          percent,           dead_acute,                Ugrave ] }; // ù % ´ Ù
+    key <AC11>	{ [          percent,          percent,           dead_acute,                Ugrave ] }; // ù % ´ Ù
     key <BKSL>	{ [         asterisk,               mu,           dead_grave,           dead_macron ] }; // * µ ` ¯
 
     // Fourth row
