@@ -51,7 +51,7 @@ if settings.on_focus then
     mp.observe_property("focused", "bool", control_wlsunset)
 end
 if settings.on_vo_configuration then
-    mp.observe_property("focused", "bool", control_wlsunset)
+    mp.observe_property("vo-configured", "bool", control_wlsunset)
 end
 mp.register_event("shutdown", restart_wlsunset)
 
