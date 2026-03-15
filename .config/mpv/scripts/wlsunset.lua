@@ -1,8 +1,8 @@
 -- wlsunset.lua - disable wlsunset while mpv is playing a video
 -- could use USR1 but I find it not as easy to use for this purpose
 local settings = {
-    on_focus = true,
-    on_vo_configuration = false,
+    on_focus = false,
+    on_vo_configuration = true,
 }
 
 local opts = require("mp.options")
@@ -13,6 +13,12 @@ local wlsunset_state
 
 local function reset_manual()
     manual = false
+
+    wlsunset_state = (
+        on_focus and mp.get_property("focused") and
+        on_vo_configuration and mp.get_property("vo-configured")
+    )
+    update_wlsunset()
 end
 
 local function update_wlsunset()
@@ -37,7 +43,8 @@ local function control_wlsunset(name, value)
 end
 
 local function restart_wlsunset()
-    mp.commandv("run", "rc-service", "-U", "wlsunset", "start")
+    wlsunset_state = true
+    update_wlsunset()
 end
 
 if settings.on_focus then
