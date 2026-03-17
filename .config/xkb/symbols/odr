@@ -6,7 +6,7 @@
 //
 // ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
 // │ ³ ¸ │ 1  ̨ │ 2   │ 3 ˘ │ 4 — │ 5 – │ 6 ‑ │ 7 ë │ 8   │ 9   │ 0   │ °   │ + ± ┃ ⌫ Retour┃
-// │ ² ¹ │ & ˇ │ ~   │ ' " │ ( [ │ ) ] │ - | │ è ê │ _ \ │ ^   │ @   │ `   │ = ≠ ┃  arrière┃
+// │ ² ¹ │ & ˇ │ é ~ │ ' " │ ( [ │ ) ] │ - | │ è ê │ _ \ │ ^   │ @   │ `   │ = ≠ ┃  arrière┃
 // ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
 // ┃       ┃ A À │ Z Â │ E É │ R   │ T   │ Y   │ U Ù │ I   │ O   │ P   │ ¨ ˚ │ £ Ø ┃Entrée ┃
 // ┃Tab ↹  ┃ a à │ z â │ e é │ r { │ t } │ y   │ u ù │ i   │ o   │ p   │ ^ ~ │ $ ø ┃   ⏎   ┃
@@ -31,7 +31,7 @@ xkb_symbols "basic" {
     // First row
     key <TLDE>	{ [      twosuperior,    threesuperior,          onesuperior,          dead_cedilla ] }; // ² ³ ¹ ¸
     key <AE01>	{ [        ampersand,                1,           dead_caron,           dead_ogonek ] }; // & 1 ˇ ˛
-    key <AE02>	{ [       asciitilde,                2,           asciitilde,            asciitilde ] }; // é 2 ~ É
+    key <AE02>	{ [           eacute,                2,           asciitilde,            asciitilde ] }; // é 2 ~ É
     key <AE03>	{ [       apostrophe,                3,             quotedbl,            dead_breve ] }; // ' 3 " ˘
     key <AE04>	{ [        parenleft,                4,          bracketleft,             0x1002014 ] }; // ( 4 [ — (tiret cadratin)
     key <AE05>	{ [       parenright,                5,         bracketright,             0x1002013 ] }; // ) 5 ] – (tiret demi-cadratin)
