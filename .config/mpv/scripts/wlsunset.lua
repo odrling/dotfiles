@@ -43,7 +43,7 @@ local function control_wlsunset(name, value)
 end
 
 local function restart_wlsunset()
-    wlsunset_state = true
+    wlsunset_state = false
     update_wlsunset()
 end
 
