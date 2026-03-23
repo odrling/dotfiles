@@ -8,8 +8,8 @@
 // │ ³ ¸ │ 1  ̨ │ 2   │ 3 ˘ │ 4 — │ 5 – │ 6 ‑ │ 7 ë │ 8   │ 9   │ 0   │ °   │ + ± ┃ ⌫ Retour┃
 // │ ² ¹ │ & ˇ │ é ~ │ ' " │ ( [ │ ) ] │ - | │ è ê │ _ \ │ ^   │ @   │ `   │ = ≠ ┃  arrière┃
 // ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
-// ┃       ┃ A À │ Z Â │ E É │ R   │ T   │ Y   │ U Ù │ I   │ O   │ P   │ ¨ ˚ │ £ Ø ┃Entrée ┃
-// ┃Tab ↹  ┃ a à │ z â │ e é │ r { │ t } │ y   │ u ù │ i   │ o   │ p   │ ^ ~ │ $ ø ┃   ⏎   ┃
+// ┃       ┃ A À │ Z Â │ E   │ R   │ T   │ Y   │ U Ù │ I   │ O   │ P   │ ¨ ˚ │ £ Ø ┃Entrée ┃
+// ┃Tab ↹  ┃ a à │ z â │ e { │ r } │ t Þ │ y   │ u ù │ i   │ o   │ p   │ ^ ~ │ $ ø ┃   ⏎   ┃
 // ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┺┓      ┃
 // ┃        ┃ Q   │ S Σ │ D   │ F “ │ G ” │ H   │ J   │ K   │ L   │ M   │ %   │ µ  ̄ ┃      ┃
 // ┃Maj ⇬   ┃ q   │ s # │ d   │ f ‘ │ g ’ │ h ← │ j ↓ │ k ↑ │ l → │ m   │ % ' │ * ` ┃      ┃
@@ -46,9 +46,9 @@ xkb_symbols "basic" {
     // Second row
     key <AD01>	{ [                a,                A,               agrave,                Agrave ] }; // a A à À
     key <AD02>	{ [                z,                Z,          acircumflex,           Acircumflex ] }; // z Z â Â
-    key <AD03>	{ [                e,                E,               eacute,                Eacute ] }; // e E { €
-    key <AD04>	{ [                r,                R,            braceleft,            registered ] }; // r R } ®
-    key <AD05>	{ [                t,                T,           braceright,                 THORN ] }; // t T ™ Þ
+    key <AD03>	{ [                e,                E,            braceleft,             braceleft ] }; // e E { €
+    key <AD04>	{ [                r,                R,           braceright,            braceright ] }; // r R } ®
+    key <AD05>	{ [                t,                T,                THORN,                 THORN ] }; // t T ™ Þ
     key <AD06>	{ [                y,                Y,           ydiaeresis,            Ydiaeresis ] }; // y Y ÿ Ÿ
     key <AD07>	{ [                u,                U,               ugrave,                Ugrave ] }; // u U ù Ù
     key <AD08>	{ [                i,                I,          icircumflex,           Icircumflex ] }; // i I î Î
