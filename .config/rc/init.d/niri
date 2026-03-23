@@ -7,8 +7,8 @@ depend() {
 
 command="niri"
 command_args="--session"
-supervisor="supervise-daemon"
-respawn_max=1
+command_background="yes"
+pidfile="${XDG_RUNTIME_DIR}/niri.pid"
 
 start_pre() {
     export GRAPHICAL_TTY=1
