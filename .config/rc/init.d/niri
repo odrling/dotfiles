@@ -10,6 +10,7 @@ command_args="--session"
 output_log="${LOGFILE}"
 error_log="${LOGFILE}"
 supervisor="supervise-daemon"
+respawn_max=1
 
 start_pre() {
     export GRAPHICAL_TTY=1
