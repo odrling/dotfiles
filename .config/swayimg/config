@@ -14,6 +14,7 @@ Right = next_file
 j = next_file
 g = first_file
 Shift+g = last_file
+e = exec gimp "%"
 
 [keys.gallery]
 y = exec hikari -c "%"
@@ -23,3 +24,4 @@ h = step_left
 l = step_right
 g = first_file
 Shift+g = last_file
+e = exec gimp "%"
