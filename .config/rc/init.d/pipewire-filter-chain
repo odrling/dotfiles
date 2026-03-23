@@ -1,17 +1,13 @@
 #!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
 
 depend() {
     need pipewire
 }
-
-XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
-LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
 
 name="pipewire-filter-chain"
 description="pipewire filter chain"
 
 command="pipewire"
 command_args="-c filter-chain.conf"
-output_log="${LOGFILE}"
-error_log="${LOGFILE}"
 supervisor=supervise-daemon

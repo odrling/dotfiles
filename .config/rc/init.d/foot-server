@@ -1,14 +1,11 @@
 #!/sbin/openrc-run
-XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
-LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+. "${XDG_CONFIG_HOME}/rc/log.sh"
 
 name="foot-server"
 description="foot server"
 
 command="foot"
 command_args="--server=${XDG_RUNTIME_DIR}/foot.sock"
-output_log="${LOGFILE}"
-error_log="${LOGFILE}"
 supervisor=supervise-daemon
 
 start_pre() {

@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+. "${XDG_CONFIG_HOME}/rc/log.sh"
 
 depend() {
     need dbus
@@ -7,8 +7,6 @@ depend() {
 
 command="niri"
 command_args="--session"
-output_log="${LOGFILE}"
-error_log="${LOGFILE}"
 supervisor="supervise-daemon"
 respawn_max=1
 

@@ -1,6 +1,5 @@
 #!/sbin/openrc-run
-XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
-LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+. "${XDG_CONFIG_HOME}/rc/log.sh"
 
 S6_SCANDIR=${S6_SCANDIR:-"${HOME}/.s6/scandir"}
 
@@ -9,6 +8,4 @@ description="start the remaining s6 services before I transition away"
 
 command="s6-svscan"
 command_args="${S6_SCANDIR}"
-output_log="${LOGFILE}"
-error_log="${LOGFILE}"
 supervisor=supervise-daemon

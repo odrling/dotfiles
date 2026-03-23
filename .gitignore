@@ -69,6 +69,7 @@ Cache
 !/.config/rc
 /.config/rc/*
 !/.config/rc/rc.conf
+!/.config/rc/log.sh
 !/.config/rc/init.d
 !/.config/rc/conf.d
 /.config/rc/conf.d/*

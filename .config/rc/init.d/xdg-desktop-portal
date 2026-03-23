@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-LOGFILE="${XDG_STATE_HOME}/rc/${RC_SVCNAME}.log"
+. "${XDG_CONFIG_HOME}/rc/log.sh"
 
 name="xdg-desktop-portal"
 description="xdg-desktop-portal daemon"
@@ -7,5 +7,3 @@ description="xdg-desktop-portal daemon"
 supervisor="supervise-daemon"
 command="/usr/libexec/xdg-desktop-portal"
 command_args="-v"
-output_log="${LOGFILE}"
-error_log="${LOGFILE}"
