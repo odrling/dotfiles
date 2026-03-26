@@ -1,4 +1,5 @@
 #!/bin/sh
+command -v seedfiles > /dev/null && sdtmp=seedfiles
 command -v sd-tmpfiles > /dev/null && sdtmp=sd-tmpfiles
 command -v systemd-tmpfiles > /dev/null && sdtmp=systemd-tmpfiles
 
