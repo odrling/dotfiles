@@ -19,7 +19,7 @@ binds {
     Mod+T hotkey-overlay-title="Troubleshoot: foot" { spawn "odrfootclient" "env" "TROUBLESHOOT=y" "bash"; }
     Mod+O hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Ctrl+L hotkey-overlay-title="Lock the Screen" { spawn "lock"; }
-    Mod+B hotkey-overlay-title=null { spawn "firefox"; }
+    Mod+B hotkey-overlay-title=null { spawn "browser"; }
     Mod+P {spawn "passmenu"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
