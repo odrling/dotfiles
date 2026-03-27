@@ -241,6 +241,11 @@ Cache
 !/.config/mozilla/Betterfox
 !/.config/mozilla/user_pref.js
 
+# librewolf
+!/.config/librewolf
+/.config/librewolf/librewolf/*
+!/.config/librewolf/librewolf/librewolf.overrides.cfg
+
 # applications
 !/.local/share/applications
 /.local/share/applications/*
