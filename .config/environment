@@ -1,4 +1,4 @@
-export BROWSER=firefox
+export BROWSER=browser
 export EDITOR=vi
 
 export XDG_CONFIG_HOME="${HOME}/.config"
