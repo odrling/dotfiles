@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/streamlink "--twitch-api-header=Authorization=$(rbw get twitch_token)" "$@"
