@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+depend() {
+    need dbus
+}
+
+name="fcitx5"
+description="fcitx5 daemon"
+
+command="fcitx5"
+supervisor=supervise-daemon
