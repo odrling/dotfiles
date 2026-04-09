@@ -293,6 +293,9 @@ Cache
 
 # fcitx5
 !/.config/fcitx5
+/.config/fcitx5/*
+!/.config/fcitx5/config
+!/.config/fcitx5/profile
 
 # fonts
 !/.local/share/fonts
