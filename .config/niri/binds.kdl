@@ -20,6 +20,7 @@ binds {
     Mod+O hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Ctrl+L hotkey-overlay-title="Lock the Screen" { spawn "lock"; }
     Mod+B hotkey-overlay-title=null { spawn "browser"; }
+    Mod+Shift+B hotkey-overlay-title=null { spawn "browser2"; }
     Mod+P {spawn "passmenu"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
