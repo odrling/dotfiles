@@ -14,7 +14,7 @@ private-commits = "description('private:*')"
 [signing]
 behavior = "own"
 backend = "gpg"
-key = "9055EDDADC76E19A3820F9C22A82DB10234FF357"
+key = "6F833491FFFEDA4FBA26F0E19F85BCBC5A9FDB2F"
 
 [templates]
 log = "builtin_log_comfortable"
