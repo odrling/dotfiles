@@ -35,3 +35,5 @@ cursor {
 switch-events {
     lid-close { spawn "lock"; }
 }
+
+include optional=true "local.kdl"

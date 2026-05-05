@@ -357,6 +357,7 @@ Cache
 
 # niri
 !/.config/niri
+/.config/niri/local.kdl
 
 # OpenSCAD
 !/.local/share/OpenSCAD
