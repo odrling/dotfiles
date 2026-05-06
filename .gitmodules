@@ -103,3 +103,6 @@
 [submodule ".bash/complete-alias"]
 	path = .bash/complete-alias
 	url = https://github.com/cykerway/complete-alias.git
+[submodule ".config/nvim/start/gpg.nvim"]
+	path = .config/nvim/start/gpg.nvim
+	url = https://github.com/benoror/gpg.nvim.git
