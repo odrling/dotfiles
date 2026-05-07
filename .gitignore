@@ -370,3 +370,6 @@ Cache
 
 # torsocks
 !/.config/torsocks.conf
+
+# ledger
+!/.config/ledger
