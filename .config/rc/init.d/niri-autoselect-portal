@@ -5,5 +5,5 @@ name="niri-autoselect-portal"
 description="niri-autoselect-portal daemon"
 
 supervisor="supervise-daemon"
-command="/usr/bin/niri-autoselect-portal"
+command="/usr/libexec/niri-autoselect-portal"
 command_args="-v"
