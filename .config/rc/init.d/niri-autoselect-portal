@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+name="niri-autoselect-portal"
+description="niri-autoselect-portal daemon"
+
+supervisor="supervise-daemon"
+command="/usr/bin/niri-autoselect-portal"
+command_args="-v"
