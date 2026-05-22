@@ -1,4 +1,5 @@
 --market
 --pedantic
 --effective
+--cleared
 --bold-if account=~/Assets/
