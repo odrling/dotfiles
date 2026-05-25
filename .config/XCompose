@@ -44,3 +44,6 @@ include "%L"
 <Multi_key> <e> <n>: "–" # en-dash
 
 <Multi_key> <d> <d>: " ◈◆◈◆◈◆◈◆◈ " # divider
+
+<Multi_key> <o> <m>: "ω"  # omega
+<Multi_key> <O> <M>: "Ω"  # omega
