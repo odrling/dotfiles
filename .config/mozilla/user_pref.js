@@ -40,3 +40,8 @@ user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
 user_pref("privacy.resistFingerprinting", true)
 user_pref("privacy.resistFingerprinting.block_mozAddonManager", true)
 user_pref("privacy.resistFingerprinting.letterboxing", true)
+
+// PREF: disable JIT optimization
+// This removes most of the attack surface while keeping JIT compilation.
+user_pref("javascript.options.ion", false);
+user_pref("javascript.options.wasm_optimizingjit", false);
