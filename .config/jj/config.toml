@@ -5,7 +5,7 @@ name = "odrling"
 email = "florianbadie@odrling.xyz"
 
 [ui]
-default-command = "log"
+default-command = ["log", "-r", "trunk()::@", "--stat"]
 show-cryptographic-signatures = true
 
 [git]
@@ -21,7 +21,8 @@ log = "builtin_log_comfortable"
 
 [aliases]
 s = ["log", "--stat"]
-l = ["log", "-r", "all()", "-T", "builtin_log_oneline", "--no-graph"]
+l = ["log"]
+la = ["log", "-r", "all()"]
 ll = ["log", "--git", "--stat"]
 p = ["git", "push"]
 push = ["git", "push"]
