@@ -45,3 +45,15 @@ user_pref("privacy.resistFingerprinting.letterboxing", true);
 // This removes most of the attack surface while keeping JIT compilation.
 user_pref("javascript.options.ion", false);
 user_pref("javascript.options.wasm_optimizingjit", false);
+
+// PREF: delete all browsing data on shutdown
+user_pref("privacy.sanitize.sanitizeOnShutdown", true);
+user_pref("privacy.clearOnShutdown_v2.cache", true);
+user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", true);
+user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", true);
+user_pref("privacy.clearOnShutdown_v2.downloads", true); // [HIDDEN]
+user_pref("privacy.clearOnShutdown_v2.formdata", true);
+
+// PREF: after crashes or restarts, do not save extra session data
+// such as form content, scrollbar positions, and POST data
+user_pref("browser.sessionstore.privacy_level", 2);
