@@ -57,3 +57,8 @@ user_pref("privacy.clearOnShutdown_v2.formdata", true);
 // PREF: after crashes or restarts, do not save extra session data
 // such as form content, scrollbar positions, and POST data
 user_pref("browser.sessionstore.privacy_level", 2);
+
+// PREF: disable service workers
+// This will break push notifications (blocked in Betterfox by default).
+user_pref("dom.serviceWorkers.enabled", false);
+user_pref("dom.serviceWorkers.privateBrowsing.enabled", false);
