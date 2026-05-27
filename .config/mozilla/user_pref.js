@@ -37,9 +37,9 @@ user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
 user_pref("widget.use-xdg-desktop-portal.mime-handler", 1);
 
 // Resist Fingerprinting
-user_pref("privacy.resistFingerprinting", true);
+user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.resistFingerprinting.block_mozAddonManager", true);
-user_pref("privacy.resistFingerprinting.letterboxing", true);
+user_pref("privacy.resistFingerprinting.letterboxing", false);
 
 // PREF: disable JIT optimization
 // This removes most of the attack surface while keeping JIT compilation.
