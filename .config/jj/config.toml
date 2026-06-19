@@ -6,7 +6,6 @@ email = "florianbadie@odrling.xyz"
 
 [ui]
 default-command = ["log", "-r", "ancestors(reachable(@, mutable())::@, 2) | trunk()", "--stat"]
-show-cryptographic-signatures = true
 
 [git]
 private-commits = "description('private:*')"
