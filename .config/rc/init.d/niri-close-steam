@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+name="niri-close-steam"
+description="shut down steam when client is closed"
+
+command="niri-close-steam"
+supervisor=supervise-daemon
