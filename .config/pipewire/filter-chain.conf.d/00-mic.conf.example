@@ -84,7 +84,7 @@ context.modules = [
                 ]
             }
             audio_channels = 2
-            capture_props = {
+            capture.props = {
                 node.name = "effect_input.microphones"
                 node.passive = true
             }
