@@ -21,23 +21,12 @@ context.modules = [
                 nodes = [
                     {
                         type = lv2
-                        plugin = "https://github.com/lucianodato/noise-repellent"
-                        name = noise-repellent-L
-                        control = {
-                            adaptive_noise_learn = 1
-                        }
-                    }
-                    {
-                        type = lv2
-                        plugin = "https://github.com/lucianodato/noise-repellent"
-                        name = noise-repellent-R
-                        control = {
-                            adaptive_noise_learn = 1
-                        }
+                        plugin = "https://github.com/lucianodato/noise-repellent#adaptive-stereo"
+                        name = noise-repellent
                     }
                 ]
-                inputs = [ "noise-repellent-L:input" "noise-repellent-R:input" ]
-                outputs = [ "noise-repellent-L:output" "noise-repellent-R:output" ]
+                inputs = [ "noise-repellent:input_1" "noise-repellent:input_2" ]
+                outputs = [ "noise-repellent:output_1" "noise-repellent:output_2" ]
                 links = []
             }
             audio_channels = 2

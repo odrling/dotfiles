@@ -26,7 +26,7 @@ context.modules = [
                     }
                     {
                         type = lv2
-                        plugin = "https://github.com/lucianodato/noise-repellent"
+                        plugin = "https://github.com/lucianodato/noise-repellent#adaptive"
                         name = noise-repellent
                         control = {
                             adaptive_noise_learn = 1
