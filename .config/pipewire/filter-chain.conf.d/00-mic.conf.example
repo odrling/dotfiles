@@ -21,8 +21,8 @@ context.modules = [
                 nodes = [
                     {
                         type = builtin
-                        label = null
-                        name = null
+                        label = "null"
+                        name = "null"
                     }
                     {
                         type = lv2
