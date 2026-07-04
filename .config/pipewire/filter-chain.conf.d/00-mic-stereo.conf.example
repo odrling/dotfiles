@@ -21,8 +21,15 @@ context.modules = [
                 nodes = [
                     {
                         type = lv2
-                        plugin = "https://github.com/lucianodato/noise-repellent#adaptive-stereo"
+                        plugin = "https://github.com/lucianodato/noise-repellent-stereo#new"
                         name = noise-repellent
+                        control = {
+                            adaptive_noise = 1
+                            # 0 = "SPP-MMSE (Speech)"
+                            # 1 = "Brandt (Music)"
+                            # 2 = "Min. Statistics (General)"
+                            #adaptive_method = 2
+                        }
                     }
                 ]
                 inputs = [ "noise-repellent:input_1" "noise-repellent:input_2" ]

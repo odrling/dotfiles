@@ -26,8 +26,15 @@ context.modules = [
                     }
                     {
                         type = lv2
-                        plugin = "https://github.com/lucianodato/noise-repellent#adaptive"
+                        plugin = "https://github.com/lucianodato/noise-repellent#new"
                         name = noise-repellent
+                        control = {
+                            adaptive_noise = 1
+                            # 0 = "SPP-MMSE (Speech)"
+                            # 1 = "Brandt (Music)"
+                            # 2 = "Min. Statistics (General)"
+                            #adaptive_method = 2
+                        }
                     }
                     {
                         type = lv2
