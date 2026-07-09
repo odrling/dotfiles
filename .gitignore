@@ -373,3 +373,7 @@ Cache
 
 # ledger
 !/.config/ledger
+
+# noctalia
+!/.config/noctalia
+/.config/noctalia/00-settings.toml

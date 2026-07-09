@@ -17,7 +17,7 @@ binds {
     // Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     Mod+T hotkey-overlay-title="Troubleshoot: foot" { spawn "odrfootclient" "env" "TROUBLESHOOT=y" "bash"; }
-    Mod+O hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+O hotkey-overlay-title="Run an Application: noctalia" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Super+Ctrl+L hotkey-overlay-title="Lock the Screen" { spawn "lock"; }
     Mod+B hotkey-overlay-title=null { spawn "browser"; }
     Mod+Shift+B hotkey-overlay-title=null { spawn "browser2"; }

@@ -1,4 +1,4 @@
 #!/bin/sh
-swaylock -f
+noctalia msg session lock
 gpg-connect-agent reloadagent /bye
 pkill rbw-agent
