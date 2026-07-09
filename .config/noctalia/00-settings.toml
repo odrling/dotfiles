@@ -1,0 +1,72 @@
+[bar.default]
+auto_hide = true
+background_opacity = 0.85
+end = [
+    "media",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "wallpaper",
+    "session"
+]
+font_weight = 600
+margin_edge = 0
+margin_ends = 0
+radius = 0
+reserve_space = false
+shadow = false
+start = [ "launcher", "workspaces" ]
+
+[desktop_widgets]
+enabled = false
+
+[hot_corners]
+enabled = true
+
+    [hot_corners.top_right]
+    action = "control_center"
+
+[idle]
+behavior_order = [ "screen-off", "lock" ]
+pre_action_fade_seconds = 5
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 270.0
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 300.0
+
+
+[location]
+sunrise = "07:00"
+sunset = "20:00"
+
+[nightlight]
+enabled = true
+
+[shell]
+clipboard_enabled = false
+polkit_agent = true
+screen_time_enabled = true
+settings_show_advanced = true
+show_location = false
+
+    [shell.panel]
+    launcher_placement = "attached"
+
+[theme]
+builtin = "Catppuccin"
+mode = "light"
+source = "wallpaper"
+wallpaper_scheme = "m3-rainbow"
+
+[weather]
+enabled = false

@@ -376,4 +376,5 @@ Cache
 
 # noctalia
 !/.config/noctalia
-/.config/noctalia/00-settings.toml
+/.config/noctalia/*
+!/.config/noctalia/00-settings.toml
