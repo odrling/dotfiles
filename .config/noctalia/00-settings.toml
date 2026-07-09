@@ -3,11 +3,10 @@ auto_hide = false
 reserve_space = true
 position = "right"
 background_opacity = 0.85
-start = [ "workspaces" ]
+start = [ "notifications", "workspaces" ]
 center = [ "clock" ]
 end = [
     "clipboard",
-    "notifications",
     "network",
     "bluetooth",
     "output_volume",
@@ -93,6 +92,9 @@ font_family = "League Spartan Black"
 scale = 1.35
 format = "{:%H:%M:%S}"
 vertical_format = "{:%H\\n•\\n%M\\n•\\n%S}"
+
+[widget.notifications]
+hide_when_no_unread = true
 
 [widget.network]
 show_label = false
