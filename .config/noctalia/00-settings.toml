@@ -10,8 +10,6 @@ end = [
     "volume",
     "brightness",
     "battery",
-    "wallpaper",
-    "session"
 ]
 font_weight = 600
 margin_edge = 0
