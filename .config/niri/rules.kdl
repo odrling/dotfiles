@@ -44,7 +44,7 @@ window-rule {
     match app-id="mpv-streamlink"
     match app-id="OrcaSlicer"
 
-    default-column-width { fixed 1502; }
+    default-column-width { fixed 1536; }
 }
 
 window-rule {
