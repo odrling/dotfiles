@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+name="noctalia"
+description="noctalia shell"
+
+command="noctalia"
+supervisor=supervise-daemon
