@@ -46,8 +46,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    Mod+Right allow-when-locked=true cooldown-ms=150 hotkey-overlay-title="Increase screen brightness" { spawn "backlight" "+" "5"; }
-    Mod+Left  allow-when-locked=true cooldown-ms=150 hotkey-overlay-title="Decrease screen brightness" { spawn "backlight" "-" "5"; }
+    Mod+Right allow-when-locked=true cooldown-ms=150 hotkey-overlay-title="Increase screen brightness" { spawn "noctalia" "msg" "brightness-up" "current" "5%"; }
+    Mod+Left  allow-when-locked=true cooldown-ms=150 hotkey-overlay-title="Decrease screen brightness" { spawn "noctalia" "msg" "brightness-down" "current" "5%"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
