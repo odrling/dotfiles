@@ -1,7 +1,10 @@
 [bar.default]
-auto_hide = true
-reserve_space = false
+auto_hide = false
+reserve_space = true
+position = "right"
 background_opacity = 0.85
+start = [ "workspaces" ]
+center = [ "clock" ]
 end = [
     "clipboard",
     "notifications",
@@ -18,7 +21,6 @@ margin_edge = 0
 margin_ends = 0
 radius = 0
 shadow = false
-start = [ "launcher", "workspaces" ]
 
 [desktop_widgets]
 enabled = true
@@ -82,6 +84,10 @@ hide_inactive = true
 [widget.volume]
 device = "input"
 
+[widget.clock]
+capsule = true
+font_weight = 700
+
 [hot_corners]
 enabled = true
 
@@ -130,3 +136,7 @@ wallpaper_scheme = "m3-rainbow"
 
 [weather]
 enabled = false
+
+[shell.animation]
+speed = 2.0
+
