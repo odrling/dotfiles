@@ -27,14 +27,14 @@ notify_volume() {
 case ${1} in
     toggle-output)
         wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-        notify_volume
+        # notify_volume
         ;;
     toggle-input)
         wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-        notify_input
+        # notify_input
         ;;
     *)
         wpctl set-volume @DEFAULT_AUDIO_SINK@ ${1} -l 1.0
-        notify_volume
+        # notify_volume
 esac
 
