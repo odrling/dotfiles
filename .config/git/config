@@ -106,6 +106,7 @@
 [url "ssh://git@git.inpt.fr/"]
     insteadOf = https://git.inpt.fr/
 [url "git@git.odrling.xyz:repos"]
-    pushInsteadOf = https://git.odrling.xyz
+    insteadOf = https://git.odrling.xyz
+    pushInsteadOf = git://git.odrling.xyz
 [url "ssh://git@gitlab.alpinelinux.org"]
 	pushInsteadOf = https://gitlab.alpinelinux.org
