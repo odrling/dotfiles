@@ -145,7 +145,7 @@ show_location = false
 [theme]
 builtin = "Catppuccin"
 mode = "light"
-source = "wallpaper"
+source = "builtin"
 wallpaper_scheme = "m3-rainbow"
 
 [weather]
