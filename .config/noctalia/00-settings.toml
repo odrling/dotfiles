@@ -1,17 +1,15 @@
 [bar.default]
-auto_hide = false
+auto_hide = true
+reserve_space = false
 background_opacity = 0.85
 end = [
-    "sysmon",
-    "ram",
-    "media",
-    "network",
-    "bluetooth",
     "clipboard",
     "notifications",
+    "brightness",
+    "network",
+    "bluetooth",
     "output_volume",
     "volume",
-    "brightness",
     "battery",
     "privacy"
 ]
@@ -19,12 +17,62 @@ font_weight = 600
 margin_edge = 0
 margin_ends = 0
 radius = 0
-reserve_space = true
 shadow = false
 start = [ "launcher", "workspaces" ]
 
 [desktop_widgets]
-enabled = false
+enabled = true
+schema_version = 2
+widget_order = [
+    "desktop-widget-0000000000000001",
+    "desktop-widget-0000000000000002",
+    "desktop-widget-0000000000000003"
+]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 144.0
+    box_width = 320.0
+    cx = 1740.0
+    cy = 996.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        bands = 32
+        show_when_idle = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 144.0
+    box_width = 320.0
+    cx = 1740.0
+    cy = 840.0
+    output = "HDMI-A-1"
+    rotation = -0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background = true
+        layout = "horizontal"
+        shadow = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 128.0
+    box_width = 320.0
+    cx = 1740.0
+    cy = 690.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        stat = "cpu_usage"
+        stat2 = "cpu_temp"
 
 [widget.media]
 hide_when_no_media = true
@@ -40,7 +88,9 @@ device = "input"
 enabled = true
 
     [hot_corners.top_right]
-    action = "control_center"
+    action = "command"
+    command = "noctalia msg panel-open control-center notifications"
+
 
 [idle]
 behavior_order = [ "screen-off", "lock" ]
