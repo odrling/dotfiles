@@ -38,8 +38,8 @@ widget_order = [
 
     [desktop_widgets.widget.desktop-widget-0000000000000001]
     box_height = 144.0
-    box_width = 320.0
-    cx = 1740.0
+    box_width = 300.0
+    cx = 1722.0
     cy = 996.0
     rotation = 0.0
     type = "audio_visualizer"
@@ -50,8 +50,8 @@ widget_order = [
 
     [desktop_widgets.widget.desktop-widget-0000000000000002]
     box_height = 144.0
-    box_width = 320.0
-    cx = 1740.0
+    box_width = 300.0
+    cx = 1722.0
     cy = 840.0
     rotation = -0.0
     type = "media_player"
@@ -63,8 +63,8 @@ widget_order = [
 
     [desktop_widgets.widget.desktop-widget-0000000000000003]
     box_height = 184.0
-    box_width = 320.0
-    cx = 1740.0
+    box_width = 300.0
+    cx = 1722.0
     cy = 660.0
     rotation = 0.0
     type = "sysmon"
@@ -83,10 +83,18 @@ hide_inactive = true
 
 [widget.volume]
 device = "input"
+show_label = false
+
+[widget.output_volume]
+show_label = false
+
 
 [widget.clock]
 capsule = true
 font_weight = 700
+
+[widget.network]
+show_label = false
 
 [hot_corners]
 enabled = true
