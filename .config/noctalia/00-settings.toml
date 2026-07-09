@@ -92,7 +92,7 @@ capsule = false
 font_family = "League Spartan Black"
 scale = 1.35
 format = "{:%H:%M:%S}"
-vertical_format = "{:%H\\n··\\n%M\\n··\\n%S}"
+vertical_format = "{:%H\\n•\\n%M\\n•\\n%S}"
 
 [widget.network]
 show_label = false
