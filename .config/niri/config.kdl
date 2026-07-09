@@ -33,7 +33,7 @@ cursor {
 }
 
 switch-events {
-    lid-close { spawn "lock"; }
+    lid-close { spawn "noctalia" "msg" "session" "lock"; }
 }
 
 include optional=true "local.kdl"
