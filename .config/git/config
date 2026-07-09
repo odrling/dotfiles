@@ -40,8 +40,6 @@
 	longpaths = true
 	logallrefupdates = true
 	hooksPath = "~/.config/git/hooks"
-	untrackedcache = true
-	fsmonitor = true
 [pull]
 	ff = "only"
 	rebase = "merges"
