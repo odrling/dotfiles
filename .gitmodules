@@ -13,7 +13,7 @@
 	url = https://github.com/yokoffing/Betterfox.git
 [submodule ".local/share/fonts/dots"]
 	path = .local/share/fonts/dots
-	url = https://git.odrling.xyz/fonts
+	url = git://git.odrling.xyz/fonts
 [submodule ".bash/bash-preexec"]
 	path = .bash/bash-preexec
 	url = https://github.com/rcaloras/bash-preexec.git
