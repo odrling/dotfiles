@@ -39,7 +39,6 @@ widget_order = [
     box_width = 320.0
     cx = 1740.0
     cy = 996.0
-    output = "HDMI-A-1"
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -52,7 +51,6 @@ widget_order = [
     box_width = 320.0
     cx = 1740.0
     cy = 840.0
-    output = "HDMI-A-1"
     rotation = -0.0
     type = "media_player"
 
@@ -66,7 +64,6 @@ widget_order = [
     box_width = 320.0
     cx = 1740.0
     cy = 690.0
-    output = "HDMI-A-1"
     rotation = 0.0
     type = "sysmon"
 
