@@ -1,26 +1,40 @@
 [bar.default]
-auto_hide = true
+auto_hide = false
 background_opacity = 0.85
 end = [
+    "sysmon",
+    "ram",
     "media",
-    "notifications",
-    "clipboard",
     "network",
     "bluetooth",
+    "clipboard",
+    "notifications",
+    "output_volume",
     "volume",
     "brightness",
     "battery",
+    "privacy"
 ]
 font_weight = 600
 margin_edge = 0
 margin_ends = 0
 radius = 0
-reserve_space = false
+reserve_space = true
 shadow = false
 start = [ "launcher", "workspaces" ]
 
 [desktop_widgets]
 enabled = false
+
+[widget.media]
+hide_when_no_media = true
+title_scroll = "on_hover"
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.volume]
+device = "input"
 
 [hot_corners]
 enabled = true
