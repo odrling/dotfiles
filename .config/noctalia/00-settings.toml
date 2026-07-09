@@ -1,6 +1,6 @@
 [bar.default]
-auto_hide = false
-reserve_space = true
+auto_hide = true
+reserve_space = false
 position = "right"
 background_opacity = 0.85
 start = [ "notifications", "workspaces" ]
