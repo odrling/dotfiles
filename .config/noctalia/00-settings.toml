@@ -60,16 +60,17 @@ widget_order = [
         shadow = false
 
     [desktop_widgets.widget.desktop-widget-0000000000000003]
-    box_height = 128.0
+    box_height = 184.0
     box_width = 320.0
     cx = 1740.0
-    cy = 690.0
+    cy = 660.0
     rotation = 0.0
     type = "sysmon"
 
         [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
         stat = "cpu_usage"
         stat2 = "cpu_temp"
+        shadow = false
 
 [widget.media]
 hide_when_no_media = true
