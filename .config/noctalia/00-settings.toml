@@ -8,7 +8,6 @@ center = [ "clock" ]
 end = [
     "clipboard",
     "notifications",
-    "brightness",
     "network",
     "bluetooth",
     "output_volume",
@@ -88,12 +87,19 @@ show_label = false
 [widget.output_volume]
 show_label = false
 
-
 [widget.clock]
 capsule = true
 font_weight = 700
 
 [widget.network]
+show_label = false
+
+[widget.battery]
+display_mode = "graphic"
+scale = 0.80
+show_label = false
+
+[widget.brightness]
 show_label = false
 
 [hot_corners]
