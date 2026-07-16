@@ -91,6 +91,9 @@ Cache
 # tmux config file
 !/.tmux.conf
 !/.tmate.conf
+!/.config/tmux
+/.config/tmux/*
+!/.config/tmux/tmux.conf
 
 # pypirc
 !/.pypirc
