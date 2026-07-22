@@ -27,7 +27,7 @@ local function on_load()
          local base_dl_url = settings.host.."/api/kara/"..id.."/download/"
          mp.set_property("stream-open-filename", base_dl_url .. "video")
          mp.commandv("sub-add", base_dl_url .. "sub")
-         mp.commandv("audio-add", base_dl_url .. "audio")
+         mp.commandv("audio-add", base_dl_url .. "inst", "auto")
       end
    end
 end
