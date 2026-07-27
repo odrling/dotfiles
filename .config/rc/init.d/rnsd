@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+name="rnsd"
+description="Reticulum Network Stack Daemon"
+
+command="rnsd"
+supervisor=supervise-daemon
