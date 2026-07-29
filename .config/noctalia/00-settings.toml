@@ -132,6 +132,7 @@ pre_action_fade_seconds = 5
 
 
 [location]
+custom_schedule = true
 sunrise = "07:00"
 sunset = "20:00"
 
