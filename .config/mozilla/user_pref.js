@@ -62,3 +62,8 @@ user_pref("browser.sessionstore.privacy_level", 2);
 // This will break push notifications (blocked in Betterfox by default).
 user_pref("dom.serviceWorkers.enabled", false);
 user_pref("dom.serviceWorkers.privateBrowsing.enabled", false);
+
+// PREF: start with blank page
+// preferred because it focuses the omnibar instead of the search field of the
+// default homepage
+user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html")
