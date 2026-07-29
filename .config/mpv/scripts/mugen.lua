@@ -23,7 +23,7 @@ local function on_load()
     if kid ~= nil then
         local kdata = get_kdata(kid)
         local mediafile = "https://kara.moe/downloads/medias/" .. kdata.mediafile
-        local subfile = "https://kara.moe/downloads/lyrics/" .. kdata.subfile
+        local subfile = "https://kara.moe/downloads/lyrics/" .. kid .. ".ass"
         mp.set_property("stream-open-filename", mediafile)
         -- mp.set_property("replaygain-fallback", kdata.gain)
         mp.set_property("title", get_title(kdata))
