@@ -66,4 +66,4 @@ user_pref("dom.serviceWorkers.privateBrowsing.enabled", false);
 // PREF: start with blank page
 // preferred because it focuses the omnibar instead of the search field of the
 // default homepage
-user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html")
+user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html");
