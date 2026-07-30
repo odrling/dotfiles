@@ -62,3 +62,5 @@ export XCOMPOSEFILE="${XDG_CONFIG_HOME}/XCompose"
 [ -f "${XDG_CONFIG_HOME}/environment.local" ] && . "${XDG_CONFIG_HOME}/environment.local"
 
 export CDPATH="$ODRCDPATH"
+
+export GDK_BACKEND=wayland
