@@ -161,3 +161,5 @@ enabled = false
 [shell.animation]
 speed = 2.0
 
+[hooks]
+session_locked = "run_on_lock"
