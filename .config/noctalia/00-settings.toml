@@ -148,6 +148,7 @@ show_location = false
 
     [shell.panel]
     launcher_placement = "attached"
+    open_near_click_control_center = true
 
 [theme]
 builtin = "Catppuccin"
@@ -163,3 +164,7 @@ speed = 2.0
 
 [hooks]
 session_locked = "run_on_lock"
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
