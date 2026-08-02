@@ -23,6 +23,6 @@ name="snooze"
 description="periodic tasks"
 
 command="snooze"
-command_args="-H* -M* -S* -t ${TIMEFILE} -T ${TIMEWAIT} snooze-run ${SNOOZE_RUN_DIR} ${TIMEFILE}"
+command_args="-H* -M* -S* -t ${TIMEFILE} -s ${TIMEWAIT} -T ${TIMEWAIT} snooze-run ${SNOOZE_RUN_DIR} ${TIMEFILE}"
 supervisor=supervise-daemon
 supervise_daemon_args="--ionice 3 --nicelevel 10"
