@@ -3,7 +3,7 @@ auto_hide = true
 reserve_space = false
 position = "right"
 background_opacity = 0.85
-start = [ "notifications", "workspaces" ]
+start = [ "notifications", "privacy", "workspaces" ]
 center = [ "clock" ]
 end = [
     "clipboard",
@@ -12,7 +12,6 @@ end = [
     "output_volume",
     "volume",
     "battery",
-    "privacy"
 ]
 font_weight = 600
 margin_edge = 0
