@@ -1,5 +1,6 @@
 [bar.default]
-auto_hide = true
+auto_hide = false
+smart_auto_hide = true
 reserve_space = false
 position = "right"
 background_opacity = 0.85
