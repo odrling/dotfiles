@@ -20,7 +20,7 @@ configuration {
   }
 }
 
-@theme "purple"
+@theme "noctalia"
 
 #window {
     anchor: north;
