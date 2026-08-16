@@ -16,6 +16,10 @@ local function xomap(lhs, rhs, desc)
     vim.keymap.set({ 'x', 'o' }, lhs, rhs, { desc = desc })
 end
 
+nmap('+','j')
+nmap('-', 'k')
+nmap('<Down>', 'gj')
+nmap('<Up>', 'gk')
 nmap('<leader><leader>', builtin.find_files, 'Find files')
 nmap('<leader>s', builtin.live_grep, 'Live grep')
 nmap('<leader>b', builtin.buffers, 'Find buffers')
