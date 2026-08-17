@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+name="kanata"
+description="kanata daemon"
+
+: ${KANATA_CONFIG:-${XDG_CONFIG_HOME}/kanata/kanata.kbd}
+
+command="kanata"
+command_args="--cfg ${KANATA_CONFIG}"
+supervisor=supervise-daemon
+
+start_pre() {
+    export GRAPHICAL_TTY=1
+    . ~/.config/environment
+}
