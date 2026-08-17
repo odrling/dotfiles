@@ -384,3 +384,6 @@ Cache
 
 # wayland-sessions
 !/.local/share/wayland-sessions
+
+# kanata
+!/.config/kanata
