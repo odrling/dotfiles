@@ -7,7 +7,7 @@ description="kanata daemon"
 : ${KANATA_CONFIG:=${XDG_CONFIG_HOME}/kanata/kanata.kbd}
 
 command="kanata"
-command_args="--cfg ${KANATA_CONFIG}"
+command_args="--cfg ${KANATA_CONFIG} --nodelay"
 supervisor=supervise-daemon
 
 start_pre() {
