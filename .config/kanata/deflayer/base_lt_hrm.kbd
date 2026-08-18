@@ -17,7 +17,7 @@
   ;; Space-cadet thumb keys: Shift/BackSpace, AltGr/Enter.
   ;; Acts as a modifier by default, or as BackSpace/Enter when tapped separately.
   sft (tap-hold-press $tap_timeout $hold_timeout bspc (layer-while-held numpad))
-  sym (tap-hold-press $tap_timeout $hold_timeout ret (layer-while-held symbols))
+  sym (tap-dance $tap_timeout ((layer-while-held symbols) ret))
 
   ;; Home-row mods
   aa (tap-hold $tap_timeout $long_hold_timeout a lalt)
