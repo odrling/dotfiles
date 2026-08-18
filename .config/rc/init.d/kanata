@@ -4,7 +4,7 @@
 name="kanata"
 description="kanata daemon"
 
-: ${KANATA_CONFIG:-${XDG_CONFIG_HOME}/kanata/kanata.kbd}
+: ${KANATA_CONFIG:=${XDG_CONFIG_HOME}/kanata/kanata.kbd}
 
 command="kanata"
 command_args="--cfg ${KANATA_CONFIG}"
