@@ -7,10 +7,11 @@ description="kanata daemon"
 : ${KANATA_CONFIG:=${XDG_CONFIG_HOME}/kanata/kanata.kbd}
 
 command="kanata"
-command_args="--cfg ${KANATA_CONFIG} --nodelay"
+command_args="--cfg ${KANATA_CONFIG} --nodelay --no-wait --quiet"
 supervisor=supervise-daemon
 
 start_pre() {
-    export GRAPHICAL_TTY=1
-    . ~/.config/environment
+    ebegin "Checking configuration"
+        ${command} --cfg "${KANATA_CONFIG}" --check
+    eend $? "Incorrect configuration file"
 }
