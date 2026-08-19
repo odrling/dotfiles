@@ -303,7 +303,7 @@ xkb_symbols "ergol" {
     key <LSGT> {[ less            , greater         , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; // < >
 
     // Space bar
-    key <SPCE> {[ space           , space           , space           , nobreakspace    , U2019           , U2019           ]}; //         ’ ’
+    key <SPCE> {[ space           , space           , space           , space    , U2019           , U2019           ]}; //         ’ ’
 
     include "level3(ralt_switch)"
 };
