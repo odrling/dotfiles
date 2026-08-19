@@ -45,8 +45,8 @@
 ;; If you just want angle mod, you still have to enable the standard base.
 
 ;; (include deflayer/base.kbd)  ;; standard keyboard behavior
-;; (include deflayer/base_lt.kbd)  ;; layer-taps on both thumb keys
-(include deflayer/base_lt_hrm.kbd)  ;; layer-taps + home-row mods
+(include deflayer/base_lt.kbd)  ;; layer-taps on both thumb keys
+;; (include deflayer/base_lt_hrm.kbd)  ;; layer-taps + home-row mods
 
 ;; Note: not enabling layer-taps here makes the rest of the file useless.
 
