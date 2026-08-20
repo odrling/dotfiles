@@ -67,3 +67,6 @@ user_pref("dom.serviceWorkers.privateBrowsing.enabled", false);
 // preferred because it focuses the omnibar instead of the search field of the
 // default homepage
 user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html");
+
+// enable animation-timeline API
+user_pref("layout.css.scroll-driven-animations.enabled", true)
