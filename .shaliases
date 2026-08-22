@@ -25,6 +25,6 @@ alias httpserve='python -m http.server -d'
 alias qs="qsearch -HvR"
 alias qi="qwhich -pvI"
 alias qw="qwhich -t"
-alias vi="${EDITOR}"
+alias vi="$EDITOR"
 alias cpref="cp -r --reflink --update"
 [ -x /usr/bin/gel ] && alias gel='/usr/bin/gel'
