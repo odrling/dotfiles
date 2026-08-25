@@ -34,7 +34,7 @@ binds {
     Mod+Up   allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="Increase volume" { spawn "omixer" "5%+"; }
     Mod+Down allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="Decrease volume"{ spawn "omixer" "5%-"; }
     //Mod+D    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Deafen</b> default audio output" { spawn "omixer" "toggle-output"; }
-    //Mod+M    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Mute</b> default audio input" { spawn "omixer" "toggle-input"; }
+    Mod+Z    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Mute</b> default audio input" { spawn "omixer" "toggle-input"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
