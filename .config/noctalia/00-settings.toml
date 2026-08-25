@@ -168,3 +168,6 @@ session_locked = "run_on_lock"
 [control_center]
 sidebar = "full"
 sidebar_section = "full"
+
+[wallpaper]
+enabled = false
