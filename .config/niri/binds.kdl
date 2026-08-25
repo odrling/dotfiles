@@ -17,7 +17,7 @@ binds {
     // Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "odrfootclient"; }
     //Mod+T hotkey-overlay-title="Toggle bar" { spawn "noctalia" "msg" "bar-toggle"; }
-    Mod+O hotkey-overlay-title="Run an Application: noctalia" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+U hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
     Super+Ctrl+L hotkey-overlay-title="Lock the Screen" { spawn "lock"; }
     Mod+B hotkey-overlay-title=null { spawn "browser"; }
     Mod+Shift+B hotkey-overlay-title=null { spawn "browser2"; }
@@ -33,8 +33,8 @@ binds {
     // Using spawn-sh allows to pass multiple arguments together with the command.
     Mod+Up   allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="Increase volume" { spawn "omixer" "5%+"; }
     Mod+Down allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="Decrease volume"{ spawn "omixer" "5%-"; }
-    //Mod+D    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Deafen</b> default audio output" { spawn "omixer" "toggle-output"; }
-    Mod+Z    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Mute</b> default audio input" { spawn "omixer" "toggle-input"; }
+    Mod+D    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Deafen</b> default audio output" { spawn "omixer" "toggle-output"; }
+    Mod+M    allow-when-locked=true cooldown-ms=50 hotkey-overlay-title="<b>Mute</b> default audio input" { spawn "omixer" "toggle-input"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
@@ -110,8 +110,8 @@ binds {
 
     Mod+Page_Down      { focus-monitor-down; }
     Mod+Page_Up        { focus-monitor-up; }
-    Mod+M              { focus-monitor-down; }
-    Mod+D              { focus-monitor-up; }
+    // Mod+M              { focus-monitor-down; }
+    // Mod+D              { focus-monitor-up; }
     Mod+Shift+Page_Down { move-column-to-monitor-down; }
     Mod+Shift+Page_Up   { move-column-to-monitor-up; }
     Mod+Shift+M         { move-column-to-monitor-down; }
