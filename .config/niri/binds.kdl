@@ -110,12 +110,12 @@ binds {
 
     Mod+Page_Down      { focus-monitor-down; }
     Mod+Page_Up        { focus-monitor-up; }
-    // Mod+M              { focus-monitor-down; }
-    // Mod+D              { focus-monitor-up; }
+    Mod+H              { focus-monitor-down; }
+    Mod+G              { focus-monitor-up; }
     Mod+Shift+Page_Down { move-column-to-monitor-down; }
     Mod+Shift+Page_Up   { move-column-to-monitor-up; }
-    Mod+Shift+M         { move-column-to-monitor-down; }
-    Mod+Shift+D         { move-column-to-monitor-up; }
+    Mod+Shift+H         { move-column-to-monitor-down; }
+    Mod+Shift+G         { move-column-to-monitor-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
