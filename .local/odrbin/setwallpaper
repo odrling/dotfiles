@@ -2,11 +2,7 @@
 WPDIR="$HOME/Pictures/Wallpapers"
 
 [ -z "$2" ] && TARGET="$HOME/.wallpaper" || TARGET="$2"
+SRC="$1"
+notify-send "wallpaper" "${SRC}"
 
-if ! [ -z "$1" ]; then
-	mkdir -p "$WPDIR"
-	cp "$1" "$WPDIR" > /dev/null
-	cp -lf "$WPDIR/$(basename "$1")" "$TARGET"
-fi
-
-[ -z "$1" ] || notify-send 'New wallpaper set' "$TARGET"
+cp "${SRC}" "${TARGET}" && rc-service -U swaybg restart
