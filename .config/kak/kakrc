@@ -2,9 +2,19 @@ colorscheme reeder
 
 add-highlighter global/ number-lines -hlcursor -relative -min-digits 3
 add-highlighter global/ show-matching
+add-highlighter global/ show-whitespaces -spc "~" -nbsp "" -lf "" -tab "" -indent "" -only-trailing
+add-highlighter global/ show-whitespaces -lf "" -spc ""
+add-highlighter global/ wrap -indent
 
 set-option global scrolloff 5,5
+set-option global autoreload true
 
+# git
+hook global InsertIdle .* %{ git show-diff }
+hook global WinCreate .* %{ git show-diff }
+hook global BufReload .* %{ git show-diff }
+
+# lsp
 eval %sh{kak-lsp}
 lsp-enable
 lsp-auto-hover-enable
