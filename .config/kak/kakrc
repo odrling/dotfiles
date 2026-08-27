@@ -4,7 +4,7 @@ add-highlighter global/ number-lines -hlcursor -relative -min-digits 3
 add-highlighter global/ show-matching
 add-highlighter global/ show-whitespaces -spc "~" -nbsp " " -lf "" -tab " " -indent " " -only-trailing
 add-highlighter global/ show-whitespaces -lf "" -spc " "
-add-highlighter global/ wrap -indent
+add-highlighter global/ wrap -indent -word
 
 set-option global scrolloff 5,5
 set-option global autoreload true
