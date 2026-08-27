@@ -8,6 +8,8 @@ add-highlighter global/ wrap -indent
 
 set-option global scrolloff 5,5
 set-option global autoreload true
+set-option global tabstop 4
+set-option global indentwidth 4
 
 map global normal <c-t> <c-o>
 
