@@ -387,3 +387,6 @@ Cache
 
 # kanata
 !/.config/kanata
+
+# kakoune
+!/.config/kak
