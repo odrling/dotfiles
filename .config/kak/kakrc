@@ -22,6 +22,7 @@ hook global BufReload .* %{ git update-diff }
 eval %sh{kak-lsp}
 lsp-enable
 lsp-auto-hover-enable
+lsp-auto-signature-help-enable
 
 set global lsp_hover_anchor true
 
