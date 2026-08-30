@@ -38,6 +38,7 @@ eval %sh{kak-lsp}
 lsp-enable
 lsp-auto-hover-enable
 lsp-auto-signature-help-enable
+lsp-inlay-hints-enable global
 
 set global lsp_hover_anchor true
 
@@ -57,3 +58,23 @@ map global object f '<a-semicolon>lsp-object Function Method<ret>' -docstring 'L
 map global object t '<a-semicolon>lsp-object Class Interface Module Namespace Struct<ret>' -docstring 'LSP class or module'
 map global object d '<a-semicolon>lsp-diagnostic-object error warning<ret>' -docstring 'LSP errors and warnings'
 map global object D '<a-semicolon>lsp-diagnostic-object error<ret>' -docstring 'LSP errors'
+
+
+# lsp settings
+
+remove-hooks global lsp-filetype-python
+hook -group lsp-filetype-python global BufSetOption filetype=python %{
+    set-option buffer lsp_servers %{
+        [ruff]
+        args = ["server", "--quiet"]
+        root_globs = ["pyproject.toml", "setup.py", "poetry.lock", ".git", ".hg"]
+        settings_section = "_"
+        [ruff.settings._.globalSettings]
+        organizeImports = true
+        fixAll = true
+
+        [basedpyright-langserver]
+        root_globs = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", ".git", ".hg"]
+        args = ["--stdio"]
+    }
+}
