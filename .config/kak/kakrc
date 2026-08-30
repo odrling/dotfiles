@@ -39,6 +39,7 @@ lsp-enable
 lsp-auto-hover-enable
 lsp-auto-signature-help-enable
 lsp-inlay-hints-enable global
+lsp-inlay-diagnostics-enable global
 
 set global lsp_hover_anchor true
 
@@ -58,7 +59,6 @@ map global object f '<a-semicolon>lsp-object Function Method<ret>' -docstring 'L
 map global object t '<a-semicolon>lsp-object Class Interface Module Namespace Struct<ret>' -docstring 'LSP class or module'
 map global object d '<a-semicolon>lsp-diagnostic-object error warning<ret>' -docstring 'LSP errors and warnings'
 map global object D '<a-semicolon>lsp-diagnostic-object error<ret>' -docstring 'LSP errors'
-
 
 # lsp settings
 
