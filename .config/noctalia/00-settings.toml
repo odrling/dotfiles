@@ -136,9 +136,6 @@ custom_schedule = true
 sunrise = "07:00"
 sunset = "20:00"
 
-[nightlight]
-enabled = true
-
 [shell]
 clipboard_enabled = false
 polkit_agent = true
