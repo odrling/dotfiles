@@ -11,7 +11,36 @@ set-option global autoreload true
 set-option global tabstop 4
 set-option global indentwidth 4
 
+set-option global grepcmd 'rg --column --smart-case --sort path'
+
 map global normal <c-t> <c-o>
+
+# pickers
+declare-user-mode pickers
+map global user p ':enter-user-mode pickers<ret>' -docstring 'pickers mode'
+map global pickers b ':pickers-buffer<ret>' -docstring 'Open fuzzy buffer picker'
+map global pickers i ':pickers-buffer-info<ret>' -docstring 'Show currently open buffers'
+map global pickers a ':pickers-buffer-alternate<ret>' -docstring 'Switch to previously opened buffer'
+map global pickers f ':pickers-file<ret>' -docstring 'Open fuzzy file picker in git root or current working directory'
+map global pickers o ':pickers-file-cbd<ret>' -docstring "Open fuzzy file picker in current buffer's directory"
+map global pickers g ':pickers-grep<ret>' -docstring "Open grep picker in git root"
+map global pickers <a-g> ':pickers-grep-cbd<ret>' -docstring "Open grep picker in buffer's directory"
+
+map global user <space> ':pickers-file<ret>' -docstring 'Search file'
+map global user s ':pickers-grep<ret>' -docstring 'Grep'
+
+hook global WinCreate \*pickers-grep\* %{
+  map window normal <ret> ':pickers-grep-open<ret>'
+  map window normal <a-ret> "%%s<ret>)" -docstring "Select all matched grep text"
+  alias window write pickers-grep-write
+  alias window w pickers-grep-write
+}
+hook global WinCreate \*pickers-file\* %{
+  map window normal <ret> ':pickers-file-open<ret>'
+}
+hook global WinCreate \*pickers-buffer\* %{
+  map window normal <ret> ':pickers-buffer-open<ret>'
+}
 
 # git
 declare-git-mode
