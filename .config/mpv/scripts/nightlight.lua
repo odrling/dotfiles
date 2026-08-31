@@ -3,7 +3,7 @@
 local settings = {
     on_focus = false,
     on_vo_configuration = true,
-    backend = 'noctalia'
+    backend = 'wlsunset'
 }
 
 local opts = require("mp.options")
