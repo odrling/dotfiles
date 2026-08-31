@@ -7,7 +7,7 @@ local settings = {
 }
 
 local opts = require("mp.options")
-opts.read_options(settings, "wlsunset")
+opts.read_options(settings, "nightlight")
 
 local manual = false
 local nightlight_state
