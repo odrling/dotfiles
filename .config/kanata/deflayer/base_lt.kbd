@@ -5,19 +5,19 @@
   q    w    e    r    t         y    u    i    o    p
   a    s    d    f    g         h    j    k    l    ;
   z    x    c    v    b    <    n    m    ,    .    /
-            @alt          @nav            _)
+            @nav          @sft            @sym)
 
 
 ;; Timing variables are defined in `kanata.kbd` file.
 
 (defalias
   ;; Main mod-tap: Nav layer when held, Space when tapped.
-  nav (tap-hold $tap_timeout $long_hold_timeout spc (layer-while-held navigation))
+  nav (tap-hold $tap_timeout $long_hold_timeout ret (layer-while-held navigation))
 
   ;; Space-cadet thumb keys: Alt/BackSpace, AltGr/Enter.
   ;; Acts as a modifier by default, or as BackSpace/Enter when tapped separately.
-  alt (tap-hold-press $tap_timeout $hold_timeout (one-shot-press 2000 lalt) lsft)
-  sym (tap-hold-press $tap_timeout $hold_timeout ret (layer-while-held symbols)))
+  sft (tap-hold-press $tap_timeout $hold_timeout spc lsft)
+  sym (tap-hold-press $tap_timeout $hold_timeout (one-shot-press 2000 lalt) (layer-while-held symbols)))
 
 
 ;; vim: set ft=lisp:
