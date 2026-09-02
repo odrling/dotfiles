@@ -63,7 +63,7 @@ hook global BufOpenFile .* %{
 }
 
 # lsp
-try {
+try %{
     eval %sh{kak-lsp}
     lsp-enable
     lsp-auto-hover-enable
