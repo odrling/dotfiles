@@ -15,6 +15,9 @@ set-option global grepcmd 'rg --column --smart-case --sort path'
 
 map global normal <c-t> <c-o>
 
+hook global BufOpenFile .* %{ editorconfig-load }
+hook global BufNewFile .* %{ editorconfig-load }
+
 # pickers
 declare-user-mode pickers
 map global user p ':enter-user-mode pickers<ret>' -docstring 'pickers mode'
