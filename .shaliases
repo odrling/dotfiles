@@ -1,4 +1,6 @@
 
+# allow alias expansion in sudo commands
+alias sudo="sudo "
 alias venv="source ~/.venvs/venv/bin/activate$VENV_SUFFIX"
 alias ytdl='yt-dlp --extractor-args "youtube:player_client=all"'
 alias ag="ag --nogroup"
