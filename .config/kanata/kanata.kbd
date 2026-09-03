@@ -70,8 +70,8 @@
 ;; Mapped on [Space]+[P] in both navigation layers.
 
 ;; (defalias run M-p)  ;; [Command]-[P]
-;; (defalias run XX)  ;; do nothing
-(defalias run M-e)  ;; do nothing
+(defalias run XX)  ;; do nothing
+;; (defalias run M-e)  ;; do nothing
 
 
 ;;-----------------------------------------------------------------------------
