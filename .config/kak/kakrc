@@ -14,9 +14,24 @@ set-option global indentwidth 4
 set-option global grepcmd 'rg --column --smart-case --sort path'
 
 map global normal <c-t> <c-o>
+map global normal '#' :comment-line<ret>
 
 hook global BufOpenFile .* %{ editorconfig-load }
 hook global BufNewFile .* %{ editorconfig-load }
+
+# Switch cursor color in insert mode
+
+set-face global InsertCursor default,cyan
+
+hook global ModeChange .*:.*:insert %{
+    set-face window PrimaryCursor InsertCursor
+    set-face window PrimaryCursorEol InsertCursor
+}
+
+hook global ModeChange .*:insert:.* %{ try %{
+    unset-face window PrimaryCursor
+    unset-face window PrimaryCursorEol
+} }
 
 # pickers
 declare-user-mode pickers
