@@ -5,7 +5,7 @@
   q    w    e    r    t         y    u    i    o    p
   a    s    d    f    g         h    j    k    l    ;
   z    x    c    v    b    <    n    m    ,    .    /
-  esc  lalt  @nav         @sft            _)
+  esc  lalt  @nav         @sft            @sym)
 
 
 ;; Timing variables are defined in `kanata.kbd` file.
@@ -17,7 +17,7 @@
   ;; Space-cadet thumb keys: Alt/BackSpace, AltGr/Enter.
   ;; Acts as a modifier by default, or as BackSpace/Enter when tapped separately.
   sft (tap-hold-press $tap_timeout $hold_timeout spc lsft)
-  sym (tap-hold-press $tap_timeout $hold_timeout (one-shot-press 2000 ralt) (layer-while-held symbols)))
+  sym (layer-while-held symbols))
 
 
 ;; vim: set ft=lisp:

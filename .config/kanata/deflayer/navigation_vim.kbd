@@ -11,7 +11,7 @@
   @pad XX   XX   XX   XX        home pgdn pgup end  XX
   XX   XX   bck  fwd  XX        lft  down up   rght XX
   XX   XX   XX   XX   XX    _   @mwl @mwd @mwu @mwr XX
-  _  _      @std            _             ret)
+  _  _      @std            _             _)
 
 
 ;; NumPad
