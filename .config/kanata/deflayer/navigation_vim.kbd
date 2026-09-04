@@ -11,7 +11,7 @@
   XX   @run C-S-e XX  XX        home A-a  A-l  end  XX
   lalt @wm  @ms  lsft XX        lft  down up   rght XX
   XX   XX   XX   XX   XX    _   @mwl @mwd @mwu @mwr XX
-  _  _      @std            _             @num)
+  _  _      @std            _             C-S-ret   _)
 
 
 ;; NumPad
@@ -20,21 +20,21 @@
   XX   home up   end  pgup      @/   @7   @8   @9   @+
   XX   lft  down rght pgdn      @-   @4   @5   @6   @*
   XX   XX   XX   XX   XX    _   @,   @1   @2   @3   @.
-  @std  _   @std           @nbs           @0)
+  @std  _   @std           @nbs           @0        _)
 
 (deflayer wm
   _    _    _    _    _     _   _    _    _    _    _
   XX   XX   M-r  M-r  XX        XX    XX     XX     XX     XX
   M-q  lsft lsft lsft M-g       M-lft M-down M-up   M-rght @run
   XX   XX   XX   XX   XX    _   XX    M-r    M-g    XX     XX
-  @std @std   @std             M-ret           @std)
+  @std @std   @std             @std           @std        M-ret)
 
 (deflayer mousenav
   _    _    _    _    _     _   _    _    _    _    _
   XX   XX   M-r  M-r  XX        XX   pgdn pgup XX   XX
   XX   lsft lsft lsft XX        bck  A-j  A-k  fwd  XX
   XX   XX   XX   XX   XX    _   @mwl @mwd @mwu @mwr XX
-  @std @std   @std             @std           @std)
+  @std @std   @std             @std           @std  _)
 
 ;; function keys
 (deflayer funpad
@@ -42,7 +42,7 @@
   f1   f2   f3   f4   XX        XX   XX   XX   XX   XX
   f5   f6   f7   f8   XX        XX   lalt lctl lmet _
   f9   f10  f11  f12  XX   XX   XX   XX   XX   XX   XX
-  _  _      @std           _              @std)
+  _  _      @std           _              @std      _)
 
 
 (defalias
