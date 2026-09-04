@@ -122,14 +122,17 @@ pre_action_fade_seconds = 5
 
     [idle.behavior.screen-off]
     action = "screen_off"
-    enabled = true
+    enabled = false
     timeout = 270.0
 
     [idle.behavior.lock]
-    action = "lock"
-    enabled = true
+    action = "command"
+    command = "run_on_lock"
+    enabled = false
     timeout = 300.0
 
+[lockscreen]
+enabled = false
 
 [location]
 custom_schedule = true
@@ -158,9 +161,6 @@ enabled = false
 
 [shell.animation]
 speed = 2.0
-
-[hooks]
-session_locked = "run_on_lock"
 
 [control_center]
 sidebar = "full"
