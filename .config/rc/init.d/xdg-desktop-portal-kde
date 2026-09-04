@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+. "${XDG_CONFIG_HOME}/rc/log.sh"
+
+name="xdg-desktop-portal-kde"
+description="xdg-desktop-portal-kde daemon"
+
+supervisor="supervise-daemon"
+command="/usr/libexec/xdg-desktop-portal-kde"
+command_args="-v"
