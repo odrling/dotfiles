@@ -7,6 +7,13 @@
   z    x    c    v    b    <    n    m    ,    .    /
   esc  lalt  @sft         @nav            @sym    ret)
 
+(deflayer shift
+  S-1    S-2    S-3    S-4    S-5    S-bspc S-6    S-7    S-8    S-9    S-0
+  S-q    S-w    S-e    S-r    S-t           S-y    S-u    S-i    S-o    S-p
+  S-a    S-s    S-d    S-f    S-g           S-h    S-j    S-k    S-l    S-;
+  S-z    S-x    S-c    S-v    S-b    S-<    S-n    S-m    S-,    S-.    S-/
+  _  _  _         _            @num     S-ret)
+
 
 ;; Timing variables are defined in `kanata.kbd` file.
 
@@ -16,7 +23,7 @@
 
   ;; Space-cadet thumb keys: Alt/BackSpace, AltGr/Enter.
   ;; Acts as a modifier by default, or as BackSpace/Enter when tapped separately.
-  sft lsft
+  sft (layer-while-held shift)
   sym (layer-while-held symbols))
 
 
