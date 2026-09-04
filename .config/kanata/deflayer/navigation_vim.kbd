@@ -27,7 +27,7 @@
   XX   XX   M-r  M-r  XX        XX    XX     XX     XX     XX
   M-q  lsft lsft lsft M-g       M-lft M-down M-up   M-rght @run
   XX   XX   XX   XX   XX    _   XX    M-r    M-g    XX     XX
-  @std @std   @std             @std           @std)
+  @std @std   @std             M-ret           @std)
 
 (deflayer mousenav
   _    _    _    _    _     _   _    _    _    _    _
