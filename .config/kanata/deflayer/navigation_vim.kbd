@@ -32,7 +32,7 @@
 (deflayer mousenav
   _    _    _    _    _     _   _    _    _    _    _
   XX   XX   M-r  M-r  XX        XX   pgdn pgup XX   XX
-  XX   lsft lsft lsft XX        bck  A-j  A-k  fwd  XX
+  XX   lsft lsft lsft XX        bck  A-y  A-k  fwd  XX
   XX   XX   XX   XX   XX    _   @mwl @mwd @mwu @mwr XX
   @std @std   @std             @std           @std  _)
 
