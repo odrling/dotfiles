@@ -23,10 +23,10 @@
   @std  _   @std           @nbs           @0        _)
 
 (deflayer wm
-  _    _    _    _    _     _   _    _    _    _    _
-  XX   XX   M-r  M-r  XX        XX    XX     XX     XX     XX
+  _    _    _    _    _     _   _     _      _      _      _
+  M-q  M-w  M-e  M-r  M-t       M-y   M-u    M-i    M-o    M-p
   M-q  lsft lsft lsft M-g       M-lft M-down M-up   M-rght @run
-  XX   XX   XX   XX   XX    _   XX    M-r    M-g    XX     XX
+  M-z  M-x  M-c  M-v  M-b   _   M-n   M-r    M-g    M-,    M-.
   @std @std   @std             @std           @std        M-ret)
 
 (deflayer mousenav
