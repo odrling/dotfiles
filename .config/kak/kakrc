@@ -93,6 +93,7 @@ try %{
 
     set-option global modelinefmt "%opt{lsp_modeline} %opt{modelinefmt}"
 
+    map global user h ':lsp-hover<ret>' -docstring 'lsp hover'
     map global user l ':enter-user-mode lsp<ret>' -docstring 'LSP mode'
 
     map global goto d <esc>:lsp-definition<ret> -docstring 'LSP definition'
