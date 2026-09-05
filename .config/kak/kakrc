@@ -84,7 +84,7 @@ hook global BufOpenFile .* %{
 try %{
     eval %sh{kak-lsp}
     lsp-enable
-    lsp-auto-hover-enable
+    # lsp-auto-hover-enable
     lsp-auto-signature-help-enable
     lsp-inlay-hints-enable global
     lsp-inlay-diagnostics-enable global
