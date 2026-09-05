@@ -9,8 +9,8 @@
 (deflayer navigation
   @pad XX   XX   XX   XX   lrld XX   XX   XX   XX   XX
   XX   @run C-S-e XX  XX        home A-a  A-l  end  XX
-  lalt @wm  @ms  lsft XX        lft  down up   rght XX
-  XX   XX   XX   XX   XX    _   @mwl @mwd @mwu @mwr XX
+  lalt @wm  @ms  lsft XX        b    down up   t    XX
+  XX   XX   XX   XX   XX    _   lft  pgdn pgup rght XX
   _  _      @std            _             C-S-ret   _)
 
 
